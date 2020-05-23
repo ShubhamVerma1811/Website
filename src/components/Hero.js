@@ -1,11 +1,15 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 
 function Hero() {
   const URI = 'https://gitconnected.com/v1/portfolio/shubhamverma1811';
   const [data, setData] = useState({});
   const {
-    basics, skills, projects, work,
-    } = data;
+    basics,
+    skills,
+    projects,
+    work,
+  } = data;
 
   useEffect(() => {
     async function fetchData() {
