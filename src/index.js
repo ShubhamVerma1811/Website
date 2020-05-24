@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './assets/main.css';
-import { DataProvider } from './context/DataContext';
+import { InitialDataProvider } from './context/InitialDataContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <DataProvider>
+    <InitialDataProvider>
       <App />
-    </DataProvider>
+    </InitialDataProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
