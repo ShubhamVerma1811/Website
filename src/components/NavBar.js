@@ -2,7 +2,7 @@ import React from 'react';
 
 const NavBar = () => (
   <div>
-    <nav className="flex items-center justify-between bg-teal-300 flex-wrap p-6">
+    <nav className="flex items-center justify-between bg-teal-300 flex-wrap p-6 w-full">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <img
           src="https://cdn.dribbble.com/users/1222918/screenshots/4495723/s1d.jpg"

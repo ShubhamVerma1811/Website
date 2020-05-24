@@ -13,10 +13,10 @@
   "scripts": {
     "start": "npm run watch:css && react-scripts start",
     "build": "npm run build:css && react-scripts build",
+    "lint": "eslint src",
     "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css", 
     "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
     "test": "react-scripts test",
-    "lint": "eslint src --quiet",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
