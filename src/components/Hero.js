@@ -1,34 +1,23 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
-import './styles/Hero.css';
+import React, { useContext } from 'react';
+import { ApiDataContext } from '../context/ApiDataContext';
+import '../styles/Hero.css';
 
 const styles = {
   fontFamily: 'Karla',
 };
 
 function Hero() {
-  const URI = 'https://gitconnected.com/v1/portfolio/shubhamverma1811';
-  const [data, setData] = useState({});
-  const {
-    basics, skills, projects, work,
-  } = data;
-
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch(URI);
-      const receivedData = await res.json();
-      setData(receivedData);
-    }
-    fetchData();
-  }, []);
+  const [data, setApiData] = useContext(ApiDataContext);
+  const { basics } = data;
 
   return (
-    <div className="bg-red-400 max-h-screen">
+    <div className="bg-red-400 h-screen mt-12">
       {basics && (
-        <>
-          <h1 className="text-6xl font-primary">{data.basics.name}</h1>
-          <h1 className="text-5xl font-bold">{data.basics.label}</h1>
-        </>
+        <div className="flex flex-col justify-center items-center">
+          <h1 className="text-6xl font-primary">{basics.name}</h1>
+          <h1 className="text-5xl font-bold">{basics.label}</h1>
+        </div>
       )}
     </div>
   );
