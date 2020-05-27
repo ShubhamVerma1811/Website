@@ -1,5 +1,5 @@
-import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import React, { createContext, useState } from 'react';
 
 export const InitialDataContext = createContext();
 
@@ -239,5 +239,6 @@ export const InitialDataProvider = ({ children }) => {
 };
 
 InitialDataProvider.propTypes = {
-  children: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  children: PropTypes.object.isRequired,
 };

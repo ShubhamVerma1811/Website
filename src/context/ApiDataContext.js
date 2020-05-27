@@ -24,14 +24,15 @@ const ApiDataProvider = ({ children }) => {
   }, []);
 
   return (
-    <ApiDataContext.Provider value={[apiData, setApiData]}>
+    <ApiDataContext.Provider value={apiData}>
       {children}
     </ApiDataContext.Provider>
   );
 };
 
 ApiDataProvider.propTypes = {
-  children: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  children: PropTypes.array.isRequired,
 };
 
 export default ApiDataProvider;
