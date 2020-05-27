@@ -8,13 +8,14 @@
     "@testing-library/user-event": "^7.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-scroll": "^1.7.16"
   },
   "scripts": {
     "start": "npm run watch:css && react-scripts start",
     "build": "npm run build:css && react-scripts build",
     "lint": "eslint src",
-    "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css", 
+    "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
     "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
