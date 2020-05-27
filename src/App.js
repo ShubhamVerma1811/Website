@@ -1,10 +1,11 @@
 import React from 'react';
+import './assets/App.css';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import Gallery from './components/Gallery';
 import Hero from './components/Hero';
 import NavBar from './components/NavBar';
 import ApiDataProvider from './context/ApiDataContext';
-import Gallery from './components/Gallery';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
 
 function App() {
   return (
