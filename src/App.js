@@ -4,6 +4,7 @@ import NavBar from './components/NavBar';
 import ApiDataProvider from './context/ApiDataContext';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Hero />
         <Gallery />
         <Contact />
+        <Footer />
       </ApiDataProvider>
     </div>
   );

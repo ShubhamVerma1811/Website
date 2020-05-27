@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-scroll';
 import { ApiDataContext } from '../context/ApiDataContext';
 
 const NavBar = () => {
@@ -7,13 +6,13 @@ const NavBar = () => {
   const { profiles } = data.basics;
 
   return (
-    <header className="text-gray-700 body-font">
+    <header id="nav" className="text-gray-700 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <a
           href="#"
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
         >
-          <svg
+          {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             stroke="currentColor"
@@ -24,7 +23,7 @@ const NavBar = () => {
             viewBox="0 0 24 24"
           >
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-          </svg>
+          </svg> */}
           <span className="ml-3 text-xl">Shubham Verma</span>
         </a>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
@@ -40,17 +39,12 @@ const NavBar = () => {
           >
             LinkedIn
           </a>
-          <Link
-            to="contact"
-            smooth={true}
-            duration={1000}
-            className="mr-5 hover:text-gray-900  cursor-pointer"
+          <a
+            href="https://hackerrank.com/shubhamverma18"
+            className="mr-5 hover:text-gray-900"
           >
-            Contact
-          </Link>
-          {/* <a href="#" className="mr-5 hover:text-gray-900">
-          Fourth Link
-        </a> */}
+            HackerRank
+          </a>
         </nav>
         {/* <button className="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0">
         Button

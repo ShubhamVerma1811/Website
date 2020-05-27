@@ -4,6 +4,7 @@ import App from './App';
 import './assets/main.css';
 import { InitialDataProvider } from './context/InitialDataContext';
 
+
 ReactDOM.render(
   <React.StrictMode>
     <InitialDataProvider>
