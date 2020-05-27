@@ -8,12 +8,12 @@ const styles = {
 };
 
 function Hero() {
-  const [data, setApiData] = useContext(ApiDataContext);
+  const data = useContext(ApiDataContext);
   const { basics } = data;
 
   return (
     <section className="text-gray-700 body-font">
-      <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+      <div className="container mx-auto flex px-5 py-12 md:flex-row flex-col items-center">
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
           <img
             className="object-cover object-center rounded"
@@ -29,8 +29,9 @@ function Hero() {
             {basics.label.toUpperCase()}
           </h1>
           <p className="mb-8 leading-relaxed">
-            I am a Front End Developer with knowledge of HTML, CSS, JS and React.
-            I have been learning Back End Development and tinkering with Competitive Programming.
+            I am a Front End Developer with knowledge of HTML, CSS, JS and
+            React. I have been learning Back End Development and tinkering with
+            Competitive Programming.
           </p>
           <div className="flex justify-center">
             <button
