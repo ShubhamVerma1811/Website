@@ -1,4 +1,5 @@
 {
+  "homepage": "https://shubhamverma1811.github.io/Website",
   "name": "website2.0",
   "version": "0.1.0",
   "private": true,
@@ -6,12 +7,15 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "gh-pages": "^2.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "react-scroll": "^1.7.16"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "npm run watch:css && react-scripts start",
     "build": "npm run build:css && react-scripts build",
     "lint": "eslint src",
