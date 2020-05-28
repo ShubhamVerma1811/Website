@@ -32,7 +32,7 @@ function Contact() {
                 EMAIL
               </h2>
               <a
-                href="mailto:imshubamverma.sv@gmail.com"
+                href="mailto:hi@shubhamverma.me"
                 className="text-indigo-500 leading-relaxed"
               >
                 hi@shubhamverma.me
