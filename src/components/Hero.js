@@ -34,22 +34,22 @@ function Hero() {
             Competitive Programming.
           </p>
           <div className="flex justify-center">
-            <button
-              type="submit"
-              className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-            >
-              <a href="resume.pdf" download="Resume-Shubham Verma">
+            <a href="resume.pdf" download="Resume-Shubham Verma">
+              <button
+                type="submit"
+                className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+              >
                 Download Resume
-              </a>
-            </button>
-            <button
-              type="submit"
-              className="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg"
-            >
-              <Link to="contact" smooth duration={1000}>
+              </button>
+            </a>
+            <Link to="contact" smooth duration={1000}>
+              <button
+                type="submit"
+                className="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg"
+              >
                 Contact
-              </Link>
-            </button>
+              </button>
+            </Link>
           </div>
         </div>
       </div>

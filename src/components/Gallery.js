@@ -21,8 +21,8 @@ function Gallery() {
           {projects.map((project) => (
             <div key={project.name} className="lg:w-1/3 sm:w-1/2 p-4">
               <div className="flex relative">
-                {project.images.length > 0
-                  && project.images.map((image) => (
+                {project.images.length > 0 &&
+                  project.images.map((image) => (
                     <img
                       alt="gallery"
                       className="absolute inset-0 w-full h-full object-cover object-center"
@@ -55,22 +55,22 @@ function Gallery() {
                     )}
                   </div>
                   <div className="flex justify-start items-center">
-                    <button
-                      type="button"
-                      className="mt-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-500 hover:text-white rounded text-lg"
-                    >
-                      <a href={project.website} target="_blank">
+                    <a href={project.website} target="_blank">
+                      <button
+                        className="mt-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-500 hover:text-white rounded text-lg"
+                        type="button"
+                      >
                         Live Demo
-                      </a>
-                    </button>
-                    <button
-                      type="button"
-                      className="mt-4 ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-2 focus:outline-none hover:bg-gray-300 rounded text-lg hover:bg-indigo-500 hover:text-white"
-                    >
-                      <a href={project.githubUrl} target="_blank">
+                      </button>
+                    </a>
+                    <a href={project.githubUrl} target="_blank">
+                      <button
+                        type="button"
+                        className="mt-4 ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-2 focus:outline-none hover:bg-gray-300 rounded text-lg hover:bg-indigo-500 hover:text-white"
+                      >
                         GitHub Repo
-                      </a>
-                    </button>
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -78,7 +78,6 @@ function Gallery() {
           ))}
         </div>
       </div>
-      )
     </section>
   );
 }

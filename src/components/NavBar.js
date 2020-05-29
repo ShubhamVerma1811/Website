@@ -9,7 +9,7 @@ const NavBar = () => {
     <header id="nav" className="text-gray-700 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <a
-          href="google.com"
+          href="#"
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
         >
           <span className="ml-3 text-xl">Shubham Verma</span>
