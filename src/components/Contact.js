@@ -4,7 +4,7 @@ function Contact() {
   return (
     <section id="contact" className="text-gray-700 body-font relative">
       <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 flex justify-center pt-24">
-        Contact Us
+        Contact Me
       </h1>
       <div className="container px-5 py-12 mx-auto flex sm:flex-no-wrap flex-wrap pt-0">
         <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">

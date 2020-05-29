@@ -8,6 +8,7 @@ const NavBar = () => {
   return (
     <header id="nav" className="text-gray-700 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a
           href="#"
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
