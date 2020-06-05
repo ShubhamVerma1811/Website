@@ -34,7 +34,7 @@ function Hero() {
             Competitive Programming.
           </p>
           <div className="flex justify-center">
-            <a href="resume.pdf" download="Resume-Shubham Verma">
+            <a href="resume.pdf" download="Resume-Shubham Verma.pdf">
               <button
                 type="submit"
                 className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
