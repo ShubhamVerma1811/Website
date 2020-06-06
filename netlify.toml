@@ -66,3 +66,6 @@ to="https://shubhamverma1811.github.io/patatapClone"
 from="/rgbgame"
 to="https://shubhamverma1811.github.io/rgbgame"
 
+[[redirects]]
+from="/pernTodo"
+to="https://pern-todo-list.herokuapp.com"
