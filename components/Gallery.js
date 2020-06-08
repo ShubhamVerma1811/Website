@@ -19,6 +19,7 @@ const Gallery = ({ projects }) => (
                     alt="gallery"
                     className="absolute inset-0 w-full h-full object-cover object-center"
                     src={image.resolutions.mobile.url}
+                    loading="lazy"
                   />
                 ))}
               <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
