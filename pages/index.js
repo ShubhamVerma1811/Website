@@ -21,10 +21,6 @@ const Index = (props) => {
           content="Shubham Verma - Frontend Developer Portfolio"
         />
         <link rel="apple-touch-icon" href="/custom-icon.png" />
-        <link
-          rel="canonical"
-          href="http://example.com/2017/09/a-new-article-to-read.html"
-        />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="msapplication-config" content="browserconfig.xml" />
