@@ -10,7 +10,6 @@ const Index = (props) => {
   return (
     <Fragment>
       <Head>
-        <html lang="en" />
         <title>Shubham Verma | Portfolio</title>
         <link rel="shortcut icon" href="../favicon.png" type="image/x-icon" />
         <meta
