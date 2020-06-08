@@ -54,7 +54,7 @@ const Gallery = ({ projects }) => (
                       Live Demo
                     </button>
                   </a>
-                  <a href={project.githubUrl} target="_blank">
+                  <a href={project.githubUrl} target="_blank" rel="noreferrer">
                     <button
                       type="button"
                       className="mt-4 ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-2 focus:outline-none hover:bg-gray-300 rounded text-lg hover:bg-indigo-500 hover:text-white"
