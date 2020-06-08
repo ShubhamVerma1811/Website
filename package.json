@@ -18,7 +18,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "deploy": "npm run build && npm run export",
+    "export": "next export"
   },
   "keywords": [],
   "author": "",
