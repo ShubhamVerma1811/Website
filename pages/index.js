@@ -1,15 +1,16 @@
-import Head from "next/head";
-import { Fragment } from "react";
-import Contact from "../components/Contact";
-import Footer from "../components/Footer";
-import Gallery from "../components/Gallery";
-import Header from "../components/Header";
-import Hero from "../components/Hero";
+import Head from 'next/head';
+import { Fragment } from 'react';
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
+import Gallery from '../components/Gallery';
+import Header from '../components/Header';
+import Hero from '../components/Hero';
 
 const Index = (props) => {
   return (
     <Fragment>
       <Head>
+        <html lang="en" />
         <title>Shubham Verma | Portfolio</title>
         <link rel="shortcut icon" href="../favicon.png" type="image/x-icon" />
         <meta
@@ -36,7 +37,7 @@ const Index = (props) => {
 
 export async function getStaticProps() {
   const res = await fetch(
-    "https://gitconnected.com/v1/portfolio/shubhamverma1811"
+    'https://gitconnected.com/v1/portfolio/shubhamverma1811',
   );
   const data = await res.json();
 
