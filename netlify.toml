@@ -69,3 +69,6 @@ to="https://shubhamverma1811.github.io/rgbgame"
 [[redirects]]
 from="/pernTodo"
 to="https://pern-todo-list.herokuapp.com"
+
+[[plugins]]
+package = "netlify-plugin-is-website-vulnerable"
