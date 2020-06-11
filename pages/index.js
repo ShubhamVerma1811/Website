@@ -34,7 +34,7 @@ const Index = (props) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch(
     'https://gitconnected.com/v1/portfolio/shubhamverma1811',
   );
