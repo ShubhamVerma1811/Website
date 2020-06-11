@@ -20,8 +20,7 @@ const Hero = ({ basics }) => {
           </h1>
           <p className="mb-8 leading-relaxed">
             I am a Front End Developer with knowledge of HTML, CSS, JS and
-            React. I have been learning Back End Development and tinkering with
-            Competitive Programming.
+            React and NextJS. I am a passionate coder and a creative thinker.
           </p>
           <div className="flex justify-center">
             <a href="../resume.pdf" download="Resume-Shubham Verma.pdf">

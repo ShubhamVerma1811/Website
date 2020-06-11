@@ -47,18 +47,27 @@ const Gallery = ({ projects }) => (
                   )}
                 </div>
                 <div className="flex justify-start items-center">
-                  <a href={project.website} target="_blank" rel="noreferrer">
+                  <a
+                    href={project.website}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
                     <button
-                      className="mt-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-500 hover:text-white rounded text-lg"
+                      className="inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-500 hover:text-white rounded text-lg"
                       type="button"
                     >
                       Live Demo
                     </button>
                   </a>
-                  <a href={project.githubUrl} target="_blank" rel="noreferrer">
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="ml-4"
+                  >
                     <button
                       type="button"
-                      className="mt-4 ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-2 focus:outline-none hover:bg-gray-300 rounded text-lg hover:bg-indigo-500 hover:text-white"
+                      className="inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-2 focus:outline-none hover:bg-gray-300 rounded text-lg hover:bg-indigo-500 hover:text-white"
                     >
                       GitHub Repo
                     </button>
