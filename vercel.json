@@ -18,6 +18,63 @@
     {
       "source": "/Insure",
       "destination": "https://shubhamverma1811.github.io/Insure"
+    },
+
+    {
+      "source": "/QuizAppReact",
+      "destination": "https://shubhamverma1811.github.io/QuizAppReact"
+    },
+    {
+      "source": "/Weathery",
+      "destination": "https://shubhamverma1811.github.io/Weathery"
+    },
+    {
+      "source": "/BaseApparel",
+      "destination": "https://shubhamverma1811.github.io/BaseApparel"
+    },
+    {
+      "source": "/LCO",
+      "destination": "https://shubhamverma1811.github.io/LCO"
+    },
+    {
+      "source": "/Fylo",
+      "destination": "https://shubhamverma1811.github.io/Fylo"
+    },
+    {
+      "source": "/Manage",
+      "destination": "https://shubhamverma1811.github.io/Manage"
+    },
+    {
+      "source": "/Shortly",
+      "destination": "https://shubhamverma1811.github.io/Shortly"
+    },
+    {
+      "source": "/EasyBank",
+      "destination": "https://shubhamverma1811.github.io/EasyBank"
+    },
+    {
+      "source": "/PTracking",
+      "destination": "https://shubhamverma1811.github.io/PTracking"
+    },
+    {
+      "source": "/Huddle",
+      "destination": "https://shubhamverma1811.github.io/Huddle"
+    },
+    {
+      "source": "/rgbgame2",
+      "destination": "https://shubhamverma1811.github.io/rgbgame2"
+    },
+    {
+      "source": "/patatapClone",
+      "destination": "https://shubhamverma1811.github.io/patatapClone"
+    },
+    {
+      "source": "/rgbgame",
+      "destination": "https://shubhamverma1811.github.io/rgbgame"
+    },
+    {
+      "source": "/pernTodo",
+      "destination": "https://pern-todo-list.herokuapp.com"
     }
   ]
 }
