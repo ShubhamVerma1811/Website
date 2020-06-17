@@ -18,7 +18,7 @@ const Gallery = ({ projects }) => (
                   <img
                     alt="gallery"
                     className="absolute inset-0 w-full h-full object-cover object-center"
-                    src={image.resolutions.mobile.url}
+                    src={image.resolutions.desktop.url}
                     loading="lazy"
                   />
                 ))}
