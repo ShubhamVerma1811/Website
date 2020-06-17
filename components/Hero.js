@@ -24,7 +24,7 @@ const Hero = ({ basics }) => {
           </p>
           <div className="flex justify-center">
             <a
-              href="../Resume-Shubham Verma.pdf"
+              href="../Resume-ShubhamVerma.pdf"
               download="Resume-Shubham Verma.pdf"
             >
               <button
