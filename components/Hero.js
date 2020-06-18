@@ -1,10 +1,10 @@
-import { Link } from "react-scroll";
+import { Link } from 'react-scroll';
 
 const Hero = ({ basics }) => {
   return (
     <section className="text-gray-700 body-font">
       <div className="container mx-auto flex px-5 py-12 md:flex-row flex-col items-center">
-        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0 flex justify-center">
           <img
             className="object-cover object-center rounded"
             alt="hero"

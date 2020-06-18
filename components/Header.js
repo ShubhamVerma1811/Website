@@ -11,7 +11,7 @@ const Header = ({ profiles }) => {
         >
           <span className="ml-3 text-xl">Shubham Verma</span>
         </a>
-        <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <nav className="md:ml-auto flex flex-wrap items-center text-base justify-evenly">
           <a
             href={profiles[1].url}
             className="mr-5 hover:text-gray-900 cursor-pointer"
@@ -26,7 +26,7 @@ const Header = ({ profiles }) => {
           </a>
           <a
             href="https://hackerrank.com/shubhamverma18"
-            className="mr-5 hover:text-gray-900"
+            className="hover:text-gray-900"
           >
             HackerRank
           </a>
