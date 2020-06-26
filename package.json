@@ -9,7 +9,8 @@
     "node-fetch": "^2.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scroll": "^1.7.16"
+    "react-scroll": "^1.7.16",
+    "shortid": "^2.2.15"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.2.0",

@@ -1,3 +1,5 @@
+import shortid from 'shortid';
+
 const Gallery = ({ projects }) => (
   <section className="text-gray-700 body-font">
     <div className="container px-5 py-12 mx-auto">
@@ -11,11 +13,12 @@ const Gallery = ({ projects }) => (
       </div>
       <div className="flex flex-wrap -m-4">
         {projects.map((project) => (
-          <div key={project.name} className="lg:w-1/3 sm:w-1/2 p-4">
+          <div key={shortid.generate()} className="lg:w-1/3 sm:w-1/2 p-4">
             <div className="flex relative">
               {project.images.length > 0 &&
                 project.images.map((image) => (
                   <img
+                    key={shortid.generate()}
                     alt="gallery"
                     className="absolute inset-0 w-full h-full object-cover object-center"
                     src={image.resolutions.desktop.url}
@@ -34,14 +37,24 @@ const Gallery = ({ projects }) => (
                   <div>
                     <p className="text-indigo-500">Languages Used : </p>
                     {project.languages.map((lang) => (
-                      <p className="leading-relaxed inline pr-3">{lang}</p>
+                      <p
+                        key={shortid.generate()}
+                        className="leading-relaxed inline pr-3"
+                      >
+                        {lang}
+                      </p>
                     ))}
                   </div>
                   {project.libraries.length > 0 && (
                     <div>
                       <p className="text-indigo-500">Libraries Used : </p>
                       {project.libraries.map((lib) => (
-                        <p className="leading-relaxed inline pr-4">{lib}</p>
+                        <p
+                          key={shortid.generate()}
+                          className="leading-relaxed inline pr-4"
+                        >
+                          {lib}
+                        </p>
                       ))}
                     </div>
                   )}

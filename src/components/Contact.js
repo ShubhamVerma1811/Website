@@ -7,7 +7,7 @@ const Contact = () => (
       <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
         <iframe
           className="absolute inset-0"
-          style={{ filter: "grayscale(1) contrast(1.2) opacity(0.4)" }}
+          style={{ filter: 'grayscale(1) contrast(1.2) opacity(0.4)' }}
           title="map"
           marginHeight="0"
           marginWidth="0"

@@ -1,4 +1,4 @@
-import "../styles/tailwind.css";
+import '../styles/tailwind.css';
 
 const Header = ({ profiles }) => {
   return (

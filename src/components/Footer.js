@@ -1,4 +1,4 @@
-import { Link } from "react-scroll";
+import { Link } from 'react-scroll';
 
 const Footer = () => {
   return (
@@ -13,10 +13,10 @@ const Footer = () => {
           <span className="ml-3 text-xl">Shubham Verma</span>
         </Link>
         <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
-          Made with{" "}
+          Made with{' '}
           <span role="img" aria-label="img">
             🖤
-          </span>{" "}
+          </span>{' '}
           React, NextJS and TailBlocks © 2020
         </p>
         <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
@@ -78,4 +78,4 @@ const Footer = () => {
   );
 };
 
-export default Footer
+export default Footer;
