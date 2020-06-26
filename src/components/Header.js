@@ -1,5 +1,3 @@
-import '../styles/tailwind.css';
-
 const Header = ({ profiles }) => {
   return (
     <header id="nav" className="text-gray-700 body-font" id="header">
