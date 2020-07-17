@@ -10,7 +10,8 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <title>Shubham Verma | Portfolio</title>
-        <link rel="shortcut icon" href="../favicon.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+        <link rel='manifest' href='manifest.json'></link>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, viewport-fit=cover"
