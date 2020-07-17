@@ -9,13 +9,13 @@
     "node-fetch": "^2.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scroll": "^1.7.16",
+    "react-scroll": "^1.8.0",
     "shortid": "^2.2.15"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^2.2.0",
-    "autoprefixer": "^9.8.0",
-    "tailwindcss": "^1.4.6"
+    "@fullhuman/postcss-purgecss": "^2.3.0",
+    "autoprefixer": "^9.8.5",
+    "tailwindcss": "^1.5.1"
   },
   "scripts": {
     "dev": "next dev",
