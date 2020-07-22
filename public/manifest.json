@@ -5,7 +5,7 @@
   "short_name": "Shubham Verma |",
   "scope": "/",
   "display": "standalone",
-  "start_url": "https://shubhamverma.me/",
+  "start_url": "/",
   "background_color": "transparent",
   "theme_color": "black",
   "description": "Shubham Verma - Frontend Developer Portfolio",
