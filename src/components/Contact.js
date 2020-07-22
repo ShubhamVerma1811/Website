@@ -56,23 +56,41 @@ const Contact = () => (
         <p className="leading-relaxed mb-5 text-gray-600">
           Have something to say?
         </p>
-        <input
-          className="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
-          placeholder="Name"
-          type="text"
-          name="Name"
-        />
-        <input
-          className="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
-          placeholder="Email"
-          type="email"
-          name="Email"
-        />
-        <textarea
-          className="bg-white rounded border border-gray-400 focus:outline-none h-32 focus:border-indigo-500 text-base px-4 py-2 mb-4 resize-none"
-          placeholder="Message"
-          name="Message"
-        />
+        <div className="form-group">
+          <input
+            className="form-input w-full bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
+            placeholder="Name"
+            type="text"
+            name="Name"
+            id="name"
+          />
+          <label htmlFor="name" className="form-label">
+            Name
+          </label>
+        </div>
+        <div className="form-group">
+          <input
+            className="form-input w-full bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
+            placeholder="Email"
+            type="email"
+            name="Email"
+            id="email"
+          />
+          <label htmlFor="email" className="form-label">
+            Email
+          </label>
+        </div>
+        <div className="form-group">
+          <textarea
+            className="form-input w-full bg-white rounded border border-gray-400 focus:outline-none h-32 focus:border-indigo-500 text-base px-4 py-2 mb-4 resize-none"
+            placeholder="Message"
+            name="Message"
+            id="message"
+          />
+          <label htmlFor="message" className="form-label form-label-textarea">
+            Message
+          </label>
+        </div>
         <button
           type="submit"
           className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
@@ -81,6 +99,49 @@ const Contact = () => (
         </button>
       </form>
     </div>
+
+    <style jsx>
+      {`
+        .form-label {
+          display: block;
+          transform: translate(1em, -3em);
+          transform-origin: 0 0;
+          transition: all 0.3s;
+          background-color: white;
+          width: max-content;
+        }
+        .form-input {
+          box-shadow: none;
+          border-radius: none;
+          transition: all 0.5s;
+        }
+
+        .form-input::placeholder {
+          color: transparent;
+        }
+
+        .form-label-textarea {
+          transform: translate(1em, -6em);
+          transform-origin: 0 0;
+          transition: all 0.3s;
+        }
+
+        .form-input:focus {
+          box-shadow: none;
+          outline: none;
+        }
+
+        .form-input:focus + .form-label,
+        .form-input:not(:placeholder-shown) + .form-label {
+          transform: translateY(-4.3em) scale(1);
+        }
+
+        .form-input:focus + .form-label-textarea,
+        .form-input:not(:placeholder-shown) + .form-label-textarea {
+          transform: translateY(-10em) scale(1);
+        }
+      `}
+    </style>
   </section>
 );
 
