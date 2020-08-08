@@ -75,6 +75,18 @@
     {
       "source": "/pernTodo",
       "destination": "https://pern-todo-list.herokuapp.com"
+    },
+    {
+      "source": "/react-ecommerce",
+      "destination": "https://react-ecommerce1.vercel.app"
+    },
+    {
+      "source": "/ninjaChat",
+      "destination": "https://udemy-ninja-chat-3d84b.web.app/"
+    },
+    {
+      "source": "/ninjaSmoothies",
+      "destination": "https://udemy-ninja-smoothies-c59b7.web.app/"
     }
   ]
 }
