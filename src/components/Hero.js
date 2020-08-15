@@ -20,14 +20,11 @@ const Hero = ({ basics }) => {
               {basics.label.toUpperCase()}
             </h1>
             <p className="mb-8 leading-relaxed">
-              I am a Front End Developer with knowledge of HTML, CSS, JS,
-              React and NextJS. I am a passionate coder and a creative thinker.
+              I am a Front End Developer with knowledge of HTML, CSS, JS, React
+              and NextJS. I am a passionate coder and a creative thinker.
             </p>
             <div className="flex justify-center">
-              <a
-                href="../Resume-ShubhamVerma.pdf"
-                download="Resume-Shubham Verma.pdf"
-              >
+              <a href="../Shubham's Resume.pdf" download="Shubham's Resume.pdf">
                 <button
                   type="submit"
                   className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
