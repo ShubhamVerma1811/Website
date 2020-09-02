@@ -11,7 +11,7 @@ class MyDocument extends Document {
       <Html lang="en">
         <title>Shubham Verma | Portfolio</title>
         <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-        <link rel='manifest' href='manifest.json'></link>
+        <link rel="manifest" href="manifest.json"></link>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, viewport-fit=cover"
@@ -24,6 +24,12 @@ class MyDocument extends Document {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="msapplication-config" content="browserconfig.xml" />
+        <script
+          async
+          defer
+          data-website-id="49bdc54c-3163-4375-9cf9-c4ee6487e195"
+          src="https://umami-tan.vercel.app/umami.js"
+        ></script>
         <Head />
         <body>
           <Main />

@@ -27,3 +27,4 @@ yarn-error.log*
 **/public/workbox-*.js*
 **/public/sw.js
 **/public/service-*.js*
+.vscode
