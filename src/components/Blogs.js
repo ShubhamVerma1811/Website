@@ -2,7 +2,6 @@ import React from 'react';
 
 const Blogs = ({ blogs }) => {
   const posts = blogs.data.user.publication.posts.slice(0, 3);
-  // const posts = blogs:{data:{user:publication:{posts}}}
 
   return (
     <section className="text-gray-500 bg-gray-900 body-font">
