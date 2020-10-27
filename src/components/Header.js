@@ -16,7 +16,7 @@ const Header = ({ profiles }) => {
               rel="noopener noreferrer"
               href={profile.url}
               key={index}
-              className="mr-5 hover:text-white cursor-pointer umami--click--nav-github-link">
+              className={`mr-5 hover:text-white cursor-pointer umami--click--nav-${profile.network}-link`}>
               {profile.network}
             </a>
           ))}

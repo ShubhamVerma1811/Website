@@ -20,7 +20,7 @@ const Blogs = ({ blogs }) => {
                     rel="noopener noreferrer"
                     href={`https://blogs.shubhamverma.me/${post.slug}`}>
                     <img
-                      className="lg:h-48 md:h-36 w-full object-cover object-center"
+                      className={`lg:h-48 md:h-36 w-full object-cover object-center umami--click-${post.slug}`}
                       src={post.coverImage}
                       alt="blog"
                     />
@@ -39,7 +39,7 @@ const Blogs = ({ blogs }) => {
                       <a
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 cursor-pointer"
+                        className={`text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 cursor-pointer umami--click-${post.slug}`}
                         href={`https://blogs.shubhamverma.me/${post.slug}`}>
                         Learn More
                         <svg

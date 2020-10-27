@@ -24,7 +24,7 @@ const Hero = ({ basics }) => {
                 href="https://drive.google.com/file/d/1WL5bIjipkpulVW6a3gcwHgMGpvvU6IFq/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer">
-                <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg umami--click--hero-download-resume">
+                <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg umami--click--hero-view-resume">
                   View Resume
                 </button>
               </a>

@@ -37,7 +37,7 @@ const Gallery = ({ projects }) => (
                   target="_blank"
                   rel="noopener noreferrer"
                   href={project.website}
-                  className="text-indigo-500 inline-flex items-center mt-3 cursor-pointer mr-6">
+                  className={`text-indigo-500 inline-flex items-center mt-3 cursor-pointer mr-6 umami--click-${project.displayName}-live`}>
                   Live Demo
                   <svg
                     fill="none"
@@ -54,7 +54,7 @@ const Gallery = ({ projects }) => (
                   target="_blank"
                   rel="noopener noreferrer"
                   href={project.githubUrl}
-                  className="text-indigo-500 inline-flex items-center mt-3 cursor-pointer">
+                  className={`text-indigo-500 inline-flex items-center mt-3 cursor-pointer umami--click-${project.displayName}-github`}>
                   GitHub Repo
                   <svg
                     fill="none"
