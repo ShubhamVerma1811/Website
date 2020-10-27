@@ -15,7 +15,9 @@ const Blogs = ({ blogs }) => {
             {posts.map((post) => (
               <div key={post._id} className="p-4 md:w-1/2 lg:w-1/3">
                 <div className="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
-                  <a href={`https://blogs.shubhamverma.me/${post.slug}`}>
+                  <a
+                    target="noopener noreferrer _blank"
+                    href={`https://blogs.shubhamverma.me/${post.slug}`}>
                     <img
                       className="lg:h-48 md:h-36 w-full object-cover object-center"
                       src={post.coverImage}
@@ -34,6 +36,7 @@ const Blogs = ({ blogs }) => {
                     </p>
                     <div className="flex items-center flex-wrap ">
                       <a
+                        target="noopener noreferrer _blank"
                         className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 cursor-pointer"
                         href={`https://blogs.shubhamverma.me/${post.slug}`}>
                         Learn More

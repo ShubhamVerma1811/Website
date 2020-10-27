@@ -12,6 +12,7 @@ const Header = ({ profiles }) => {
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
           {profiles.map((profile, index) => (
             <a
+              target="noopener noreferrer _blank"
               href={profile.url}
               key={index}
               className="mr-5 hover:text-white cursor-pointer umami--click--nav-github-link">

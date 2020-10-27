@@ -22,7 +22,7 @@ const Hero = ({ basics }) => {
             <div className="flex justify-center">
               <a
                 href="https://drive.google.com/file/d/1WL5bIjipkpulVW6a3gcwHgMGpvvU6IFq/view?usp=sharing"
-                target="noopener noreferrer">
+                target="noopener noreferrer _blank">
                 <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg umami--click--hero-download-resume">
                   View Resume
                 </button>
