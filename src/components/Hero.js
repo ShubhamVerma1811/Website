@@ -2,7 +2,7 @@ import { Link } from 'react-scroll';
 
 const Hero = ({ basics }) => {
   return (
-    <section className="text-gray-700 body-font">
+    <section className="text-gray-500 bg-gray-900 body-font">
       <main>
         <div className="container mx-auto flex px-5 py-12 md:flex-row flex-col items-center">
           <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0 flex justify-center">
@@ -13,30 +13,22 @@ const Hero = ({ basics }) => {
             />
           </div>
           <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-            <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-              Hi, I am
-              {` ${basics.name}`}
+            <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
+              Hi, I am {basics.name}
               <br />
               {basics.label.toUpperCase()}
             </h1>
-            <p className="mb-8 leading-relaxed">
-              I am a Front End Developer with knowledge of HTML, CSS, JS, React
-              and NextJS. I am a passionate coder and a creative thinker.
-            </p>
+            <p className="mb-8 leading-relaxed">{basics.summary}</p>
             <div className="flex justify-center">
-              <a href="../Shubham's Resume.pdf" download="Shubham's Resume.pdf">
-                <button
-                  type="submit"
-                  className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-                >
-                  Download Resume
+              <a
+                href="https://drive.google.com/file/d/1WL5bIjipkpulVW6a3gcwHgMGpvvU6IFq/view?usp=sharing"
+                target="noopener noreferrer">
+                <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg umami--click--hero-download-resume">
+                  View Resume
                 </button>
               </a>
               <Link to="contact" smooth duration={1000}>
-                <button
-                  type="submit"
-                  className="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg"
-                >
+                <button className="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg umami--click--hero-contact">
                   Contact
                 </button>
               </Link>

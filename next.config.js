@@ -9,7 +9,6 @@ module.exports = withCSS(
       register: true,
       scope: '/',
       sw: 'service-worker.js',
-      //...
     },
   }),
 );

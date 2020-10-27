@@ -1,32 +1,23 @@
+import Link from 'next/link';
+
 const Header = ({ profiles }) => {
   return (
-    <header id="nav" className="text-gray-700 body-font" id="header">
-      <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <a
-          href="#"
-          className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
-        >
+    <header className="text-gray-500 bg-gray-900 body-font" id="header">
+      <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center cursor-pointer">
+        <Link
+          href="/"
+          className="flex title-font font-medium items-center text-white mb-4 md:mb-0 umami--click--nav-logo">
           <span className="ml-3 text-xl">Shubham Verma</span>
-        </a>
-        <nav className="md:ml-auto flex flex-wrap items-center text-base justify-evenly">
-          <a
-            href={profiles[1].url}
-            className="mr-5 hover:text-gray-900 cursor-pointer"
-          >
-            GitHub
-          </a>
-          <a
-            href={profiles[2].url}
-            className="mr-5 hover:text-gray-900 cursor-pointer"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://hackerrank.com/shubhamverma18"
-            className="hover:text-gray-900"
-          >
-            HackerRank
-          </a>
+        </Link>
+        <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+          {profiles.map((profile, index) => (
+            <a
+              href={profile.url}
+              key={index}
+              className="mr-5 hover:text-white cursor-pointer umami--click--nav-github-link">
+              {profile.network}
+            </a>
+          ))}
         </nav>
       </div>
     </header>
