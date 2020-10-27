@@ -20,9 +20,7 @@ const Index = ({ data, blogData }) => {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch(
-    'https://gitconnected.com/v1/portfolio/shubhamverma1811',
-  );
+  const res = await fetch('https://shubhamverma1811.github.io/APIS/api.json');
   const data = await res.json();
 
   const blogRes = await fetch('https://api.hashnode.com', {
@@ -38,7 +36,7 @@ export async function getServerSideProps() {
               posts(page:0){
                 _id
                 title
-                brief
+             brief
                 slug
                 totalReactions
                 replyCount

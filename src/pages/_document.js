@@ -9,7 +9,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <title>Shubham Verma | Portfolio</title>
+        <title>Frontend Developer | Shubham Verma</title>
         <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
         <link rel="manifest" href="manifest.json"></link>
         <meta
@@ -20,7 +20,6 @@ class MyDocument extends Document {
           name="description"
           content="Shubham Verma - Frontend Developer Portfolio"
         />
-        <link rel="apple-touch-icon" href="/custom-icon.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="msapplication-config" content="browserconfig.xml" />
