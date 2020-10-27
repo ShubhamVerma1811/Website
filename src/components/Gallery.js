@@ -34,7 +34,8 @@ const Gallery = ({ projects }) => (
                 </p>
 
                 <a
-                  target="noopener noreferrer _blank"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   href={project.website}
                   className="text-indigo-500 inline-flex items-center mt-3 cursor-pointer mr-6">
                   Live Demo
@@ -50,7 +51,8 @@ const Gallery = ({ projects }) => (
                   </svg>
                 </a>
                 <a
-                  target="noopener noreferrer _blank"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   href={project.githubUrl}
                   className="text-indigo-500 inline-flex items-center mt-3 cursor-pointer">
                   GitHub Repo

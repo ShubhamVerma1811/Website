@@ -59,6 +59,8 @@ const Contact = () => (
             </p>
             <span className="inline-flex">
               <a
+                target="_blank"
+                rel="noopener noreferrer"
                 href="https://linkedin.com/in/ShubhamVerma1811"
                 class="ml-3 text-gray-600">
                 <svg
@@ -76,6 +78,8 @@ const Contact = () => (
                 </svg>
               </a>
               <a
+                target="_blank"
+                rel="noopener noreferrer"
                 href="https://twitter.com/Shubham_Verma18"
                 className="ml-4 text-gray-500">
                 <svg
@@ -89,6 +93,8 @@ const Contact = () => (
                 </svg>
               </a>
               <a
+                target="_blank"
+                rel="noopener noreferrer"
                 href="https://instagram.com/shubham.verma.me"
                 className="ml-4 text-gray-500">
                 <svg
