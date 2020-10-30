@@ -13,10 +13,10 @@ const Footer = () => {
         </Link>
         <p className="text-sm text-gray-600 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">
           Made with{' '}
-          <span role="img" aria-label="img">
+          <span role="img" aria-label="img" alt="Love">
             🤍
           </span>{' '}
-          React, NextJS and TailBlocks © 2020
+          and NextJS © 2020
         </p>
       </div>
     </footer>

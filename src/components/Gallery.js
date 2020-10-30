@@ -14,7 +14,7 @@ const Gallery = ({ projects }) => (
             <div
               className="p-4 lg:w-1/3 md:w-1/2 sm:mb-0 mb-6"
               key={shortid.generate()}>
-              <div className="rounded-lg h-64 overflow-hidden">
+              <div className="rounded-lg h-auto overflow-hidden">
                 {project.images.length > 0 &&
                   project.images.map((image) => (
                     <img
