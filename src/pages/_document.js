@@ -23,12 +23,11 @@ class MyDocument extends Document {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="msapplication-config" content="browserconfig.xml" />
-        {/* <script
+        <script
           async
           defer
           data-website-id="49bdc54c-3163-4375-9cf9-c4ee6487e195"
-          src="https://umami-azure.vercel.app/umami.js"
-        ></script> */}
+          src="https://umami-azure.vercel.app/umami.js"></script>
         <Head />
         <body>
           <Main />
