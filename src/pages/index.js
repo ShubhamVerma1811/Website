@@ -13,7 +13,6 @@ const Index = ({ data, blogData }) => {
       <Hero basics={data.basics} />
       <Gallery projects={data.projects} />
       <Blogs blogs={blogData} />
-      <Contact />
       <Footer />
     </Fragment>
   );
