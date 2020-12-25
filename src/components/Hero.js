@@ -1,6 +1,26 @@
-import { Link } from 'react-scroll';
-
 const Hero = ({ basics }) => {
+  if (typeof window !== 'undefined') {
+    (function () {
+      var qs,
+        js,
+        q,
+        s,
+        d = document,
+        gi = d.getElementById,
+        ce = d.createElement,
+        gt = d.getElementsByTagName,
+        id = 'typef_orm_share',
+        b = 'https://embed.typeform.com/';
+      if (!gi.call(d, id)) {
+        js = ce.call(d, 'script');
+        js.id = id;
+        js.src = b + 'embed.js';
+        q = gt.call(d, 'script')[0];
+        q.parentNode.insertBefore(js, q);
+      }
+    })();
+  }
+
   return (
     <section className="text-gray-500 bg-gray-900 body-font">
       <main>
@@ -28,11 +48,14 @@ const Hero = ({ basics }) => {
                   View Resume
                 </button>
               </a>
-              <Link to="contact" smooth duration={1000}>
-                <button className="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg umami--click--hero-contact">
-                  Contact
-                </button>
-              </Link>
+              <a
+                href="https://form.typeform.com/to/KSbANS2c?typeform-medium=embed-snippet"
+                data-mode="popup"
+                className="typeform-share ml-4 inline-flex cursor-pointer text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg umami--click--hero-contact"
+                data-size="100"
+                target="_blank">
+                Contact
+              </a>
             </div>
           </div>
         </div>

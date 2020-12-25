@@ -11,6 +11,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scroll": "^1.8.1",
+    "react-typeform-embed": "^0.2.1",
     "shortid": "^2.2.15"
   },
   "devDependencies": {
