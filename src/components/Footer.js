@@ -16,7 +16,7 @@ const Footer = () => {
           <span role="img" aria-label="img" alt="Love">
             🤍
           </span>{' '}
-          and NextJS © 2020
+          and NextJS © 2021
         </p>
       </div>
     </footer>
