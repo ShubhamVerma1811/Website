@@ -1,4 +1,4 @@
-const Hero = ({ basics }) => {
+const Hero = ({ basics, skills }) => {
   if (typeof window !== 'undefined') {
     (function () {
       var qs,
@@ -39,6 +39,18 @@ const Hero = ({ basics }) => {
               {basics.label.toUpperCase()}
             </h1>
             <p className="mb-8 leading-relaxed">{basics.summary}</p>
+            <span className="mb-8">
+              <h2 className="text-lg">My Skills are:</h2>
+              <span className="flex flex-wrap items-center md:my-2 w-full">
+                {skills.map((skill, index) => (
+                  <p
+                    key={index}
+                    className="border-2 border-indigo-500 text-white rounded-lg px-3 py-1 mr-1 hover:bg-indigo-500 cursor-pointer md:mb-2">
+                    {skill}
+                  </p>
+                ))}
+              </span>
+            </span>
             <div className="flex justify-center">
               <a
                 href="https://drive.google.com/file/d/1WL5bIjipkpulVW6a3gcwHgMGpvvU6IFq/view?usp=sharing"

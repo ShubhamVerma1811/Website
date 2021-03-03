@@ -9,7 +9,7 @@ const Index = ({ data, blogData }) => {
   return (
     <Fragment>
       <Header profiles={data.basics.profiles} />
-      <Hero basics={data.basics} />
+      <Hero basics={data.basics} skills={data.skills} />
       <Gallery projects={data.projects} />
       <Blogs blogs={blogData} />
       <Footer />
