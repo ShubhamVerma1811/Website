@@ -29,44 +29,67 @@ const Gallery = ({ projects }) => (
                 <h2 className="text-xl font-medium title-font text-white mt-5">
                   {project.displayName}
                 </h2>
+                <div className="flex items-center">
+                  <p className="mr-1">Stack : </p>
+                  {project.libraries.length
+                    ? project.libraries.map((lib) => (
+                        <p className="text-white px-2 py-1 bg-indigo-500 mr-1 rounded-xl">
+                          {lib}
+                        </p>
+                      ))
+                    : project.languages.map((lang) => (
+                        <p className="text-white px-2 py-1 bg-indigo-500 mr-1 rounded-xl">
+                          {lang}
+                        </p>
+                      ))}
+                </div>
                 <p className="text-base leading-relaxed mt-2">
                   {project.summary}
                 </p>
 
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={project.website}
-                  className={`text-indigo-500 inline-flex items-center mt-3 cursor-pointer mr-6 umami--click-${project.displayName}-live`}>
-                  Live Demo
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 ml-2"
-                    viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={project.githubUrl}
-                  className={`text-indigo-500 inline-flex items-center mt-3 cursor-pointer umami--click-${project.displayName}-github`}>
-                  GitHub Repo
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-4 h-4 ml-2"
-                    viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
+                {project.website && (
+                  <span className={`umami--click-${project.displayName}-live`}>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={project.website}
+                      className={`text-indigo-500 inline-flex items-center mt-3 cursor-pointer mr-6 `}>
+                      Live Demo
+                      <svg
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        className="w-4 h-4 ml-2"
+                        viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                  </span>
+                )}
+                {project.githubUrl && (
+                  <span
+                    className={`umami--click-${project.displayName}-github`}>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={project.githubUrl}
+                      className={`text-indigo-500 inline-flex items-center mt-3 cursor-pointer `}>
+                      GitHub Repo
+                      <svg
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        className="w-4 h-4 ml-2"
+                        viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                      </svg>
+                    </a>
+                  </span>
+                )}
               </div>
             </div>
           ))}
