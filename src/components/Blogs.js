@@ -13,14 +13,16 @@ const Blogs = ({ blogs }) => {
         <div className="container px-5 mx-auto">
           <div className="flex flex-wrap -m-4">
             {posts.map((post) => (
-              <div key={post._id} className="p-4 md:w-1/2 lg:w-1/3">
+              <div
+                key={post._id}
+                className={`p-4 md:w-1/2 lg:w-1/3 umami--click-${post.slug}`}>
                 <div className="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
                     href={`https://blogs.shubhamverma.me/${post.slug}`}>
                     <img
-                      className={`lg:h-48 md:h-36 w-full object-cover object-center umami--click-${post.slug}`}
+                      className={`lg:h-48 md:h-36 w-full object-cover object-center`}
                       src={post.coverImage}
                       alt="blog"
                     />
