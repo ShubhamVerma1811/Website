@@ -23,6 +23,7 @@ class MyDocument extends Document {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="msapplication-config" content="browserconfig.xml" />
+        <meta name="monetization" content="$ilp.uphold.com/RpM3whjzmfzH" />
         <script
           async
           defer
