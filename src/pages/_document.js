@@ -27,8 +27,8 @@ class MyDocument extends Document {
         <script
           async
           defer
-          data-website-id="49bdc54c-3163-4375-9cf9-c4ee6487e195"
-          src="https://umami-azure.vercel.app/umami.js"></script>
+          data-website-id={process.env.NEXT_PUBLIC_UMAMI_UUID}
+          src={process.env.NEXT_PUBLIC_UMAMI_URI}></script>
         <Head />
         <body>
           <Main />
