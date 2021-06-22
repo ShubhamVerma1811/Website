@@ -43,7 +43,7 @@ const Blogs = ({ blogs }) => {
                         rel="noopener noreferrer"
                         className={`text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 cursor-pointer umami--click-${post.slug}`}
                         href={`https://blogs.shubhamverma.me/${post.slug}`}>
-                        Learn More
+                        Read More
                         <svg
                           className="w-4 h-4 ml-2"
                           viewBox="0 0 24 24"

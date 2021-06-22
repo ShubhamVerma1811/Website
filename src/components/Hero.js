@@ -40,7 +40,7 @@ const Hero = ({ basics, skills }) => {
             </h1>
             <p className="mb-8 leading-relaxed">{basics.summary}</p>
             <span className="mb-8">
-              <h2 className="text-lg">My Skills are:</h2>
+              <h2 className="text-lg">My Skills include:</h2>
               <span className="flex flex-wrap items-center md:my-2 w-full">
                 {skills.map((skill, index) => (
                   <p
