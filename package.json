@@ -12,12 +12,20 @@
     "react-dom": "^16.13.1",
     "react-scroll": "^1.8.1",
     "react-typeform-embed": "^0.2.1",
-    "shortid": "^2.2.15"
+    "shortid": "^2.2.15",
+    "swr": "^0.5.6"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.3.0",
+    "@types/autoprefixer": "^10.2.0",
+    "@types/node-fetch": "^2.5.12",
+    "@types/react": "^16.14.11",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-scroll": "^1.8.3",
+    "@types/shortid": "^0.0.29",
     "autoprefixer": "^9.8.6",
-    "tailwindcss": "^1.8.12"
+    "tailwindcss": "^1.8.12",
+    "typescript": "^4.3.5"
   },
   "scripts": {
     "dev": "next dev",
@@ -25,7 +33,7 @@
     "start": "next start",
     "deploy": "npm run export",
     "export": "next export",
-    "format": "prettier --write src/**/*.{js,json,css,scss,hmtl}"
+    "format": "prettier --write .  --ignore-path .gitignore"
   },
   "keywords": [],
   "author": "Shubham Verma",
