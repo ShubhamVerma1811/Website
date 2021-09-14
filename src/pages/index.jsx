@@ -18,7 +18,7 @@ const Index = ({ data, blogData }) => {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch('https://shubham-verma-apis-hub.vercel.app/api.json');
+  const res = await fetch(process.env.PORTFOLIO_API_URI);
   const data = await res.json();
 
   const blogRes = await fetch('https://api.hashnode.com', {
