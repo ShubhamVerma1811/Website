@@ -19,6 +19,7 @@ const Index = ({ data, blogData }) => {
 
 export async function getServerSideProps() {
   const res = await fetch(process.env.PORTFOLIO_API_URI);
+  const username = process.env.HASHNODE_USERNAME;
   const data = await res.json();
 
   const blogRes = await fetch('https://api.hashnode.com', {
@@ -29,7 +30,7 @@ export async function getServerSideProps() {
     body: JSON.stringify({
       query: `
         {
-          user(username:"shubhamverma18"){
+          user(username:"${username}"){
             publication{
               posts(page:0){
                 _id

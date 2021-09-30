@@ -12,18 +12,18 @@ const Blogs = ({ blogs }) => {
         </div>
         <div className="container px-5 mx-auto">
           <div className="flex flex-wrap -m-4">
-            {posts.map((post) => (
+            {posts?.map((post) => (
               <div
-                key={post._id}
+                key={post?._id}
                 className="p-4 md:w-1/2 lg:w-1/3 overflow-hidden">
                 <div className="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
-                    href={`https://blogs.shubhamverma.me/${post.slug}`}>
+                    href={`https://blogs.shubhamverma.me/${post?.slug}`}>
                     <img
-                      className={`lg:h-48 md:h-36 w-full object-cover object-center umami--click-${post.slug}`}
-                      src={post.coverImage}
+                      className={`lg:h-48 md:h-36 w-full object-cover object-center umami--click-${post?.slug}`}
+                      src={post?.coverImage}
                       alt="blog"
                     />
                   </a>
@@ -32,17 +32,17 @@ const Blogs = ({ blogs }) => {
                       CATEGORY
                     </h2>
                     <h1 className="title-font text-lg font-medium text-white mb-3">
-                      {post.title}
+                      {post?.title}
                     </h1>
                     <p className="leading-relaxed mb-3">
-                      {post.brief.substr(0, 120)} . . .
+                      {post?.brief.substr(0, 120)} . . .
                     </p>
                     <div className="flex items-center flex-wrap ">
                       <a
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 cursor-pointer umami--click-${post.slug}`}
-                        href={`https://blogs.shubhamverma.me/${post.slug}`}>
+                        className={`text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 cursor-pointer umami--click-${post?.slug}`}
+                        href={`https://blogs.shubhamverma.me/${post?.slug}`}>
                         Read More
                         <svg
                           className="w-4 h-4 ml-2"
