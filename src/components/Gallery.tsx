@@ -1,6 +1,12 @@
 import shortid from 'shortid';
+import { IProject } from '../types';
+import React from 'react';
 
-const Gallery = ({ projects }) => (
+interface GalleryProps {
+  projects: IProject[];
+}
+
+const Gallery = ({ projects }: GalleryProps) => (
   <section className="text-gray-500 bg-gray-900 body-font">
     <div className="px-5 py-24 mx-auto">
       <div className="flex flex-col text-center w-full mb-12">
@@ -10,35 +16,39 @@ const Gallery = ({ projects }) => (
       </div>
       <div className="container px-5 mx-auto">
         <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
-          {projects.map((project) => (
+          {projects?.map((project) => (
             <div
               className="p-4 lg:w-1/3 md:w-1/2 sm:mb-0 mb-6"
               key={shortid.generate()}>
               <div className="rounded-lg h-auto overflow-hidden">
-                {project.images.length > 0 &&
-                  project.images.map((image) => (
+                {project?.images?.length > 0 &&
+                  project?.images?.map((image) => (
                     <img
                       alt="content"
                       key={shortid.generate()}
                       className="object-cover object-center h-full w-full"
-                      src={image.resolutions.desktop.url}
+                      src={image?.resolutions?.desktop.url}
                     />
                   ))}
               </div>
               <div>
                 <h2 className="text-xl font-medium title-font text-white mt-5">
-                  {project.displayName}
+                  {project?.displayName}
                 </h2>
                 <div className="flex items-center">
                   <p className="mr-1">Stack : </p>
-                  {project.libraries.length
-                    ? project.libraries.map((lib) => (
-                        <p className="text-white px-2 py-1 bg-indigo-500 mr-1 rounded-xl">
+                  {project?.libraries?.length
+                    ? project?.libraries?.map((lib, idx) => (
+                        <p
+                          className="text-white px-2 py-1 bg-indigo-500 mr-1 rounded-xl"
+                          key={idx}>
                           {lib}
                         </p>
                       ))
-                    : project.languages.map((lang) => (
-                        <p className="text-white px-2 py-1 bg-indigo-500 mr-1 rounded-xl">
+                    : project?.languages?.map((lang, idx) => (
+                        <p
+                          className="text-white px-2 py-1 bg-indigo-500 mr-1 rounded-xl"
+                          key={idx}>
                           {lang}
                         </p>
                       ))}

@@ -1,7 +1,12 @@
-import React from 'react';
+import { IBlogs } from '../types';
 
-const Blogs = ({ blogs }) => {
-  const posts = blogs.data.user.publication.posts.slice(0, 3);
+
+interface IBlogsProps {
+  blogs: IBlogs;
+}
+
+const Blogs = ({ blogs }: IBlogsProps) => {
+  const posts = blogs?.data?.user?.publication?.posts?.slice(0, 3);
   return (
     <section className="text-gray-500 bg-gray-900 body-font">
       <div className="px-5 py-12 mx-auto">
@@ -31,7 +36,7 @@ const Blogs = ({ blogs }) => {
                     <h2 className="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">
                       CATEGORY
                     </h2>
-                    <h1 className="title-font text-lg font-medium text-white mb-3">
+                    <h1 className="title-font text-lg font-medium text-white mb-3 truncate">
                       {post?.title}
                     </h1>
                     <p className="leading-relaxed mb-3">

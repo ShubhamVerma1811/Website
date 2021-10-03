@@ -5,11 +5,11 @@
   "main": "index.js",
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
-    "next": "^10.0.0",
+    "next": "^11.1.2",
     "next-pwa": "^3.1.5",
     "node-fetch": "^2.6.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-scroll": "^1.8.1",
     "react-typeform-embed": "^0.2.1",
     "shortid": "^2.2.15",
@@ -23,9 +23,13 @@
     "@types/react-dom": "^17.0.9",
     "@types/react-scroll": "^1.8.3",
     "@types/shortid": "^0.0.29",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
     "autoprefixer": "^9.8.6",
-    "tailwindcss": "^1.8.12",
-    "typescript": "^4.3.5"
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.26.1",
+    "tailwindcss": "^2.2.16",
+    "typescript": "^4.4.3"
   },
   "scripts": {
     "dev": "next dev",
@@ -33,7 +37,8 @@
     "start": "next start",
     "deploy": "npm run export",
     "export": "next export",
-    "format": "prettier --write .  --ignore-path .gitignore"
+    "format": "prettier --write .  --ignore-path .gitignore",
+    "lint": "eslint --fix ./src/**/*"
   },
   "keywords": [],
   "author": "Shubham Verma",

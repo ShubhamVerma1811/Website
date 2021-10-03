@@ -1,11 +1,18 @@
-const Hero = ({ basics, skills }) => {
+import { IBasics, ISkills } from '../types';
+import React from 'react'
+
+
+interface HeroProps {
+  basics: IBasics;
+  skills: ISkills[];
+}
+
+const Hero = ({ basics, skills }: HeroProps) => {
   if (typeof window !== 'undefined') {
     (function () {
-      var qs,
-        js,
-        q,
-        s,
-        d = document,
+      let js,
+        q;
+        const d = document,
         gi = d.getElementById,
         ce = d.createElement,
         gt = d.getElementsByTagName,
@@ -14,8 +21,10 @@ const Hero = ({ basics, skills }) => {
       if (!gi.call(d, id)) {
         js = ce.call(d, 'script');
         js.id = id;
+        //@ts-expect-error Object might be null
         js.src = b + 'embed.js';
         q = gt.call(d, 'script')[0];
+        //@ts-expect-error Object might be null
         q.parentNode.insertBefore(js, q);
       }
     })();
@@ -45,7 +54,7 @@ const Hero = ({ basics, skills }) => {
                 {skills.map((skill, index) => (
                   <p
                     key={index}
-                    className="border-2 border-indigo-500 text-white rounded-lg px-3 py-1 mr-1 hover:bg-indigo-500 cursor-pointer md:mb-2">
+                    className="border-2 border-indigo-500 text-white rounded-lg px-3 py-1 m-1 hover:bg-indigo-500 cursor-pointer md:mb-2">
                     {skill}
                   </p>
                 ))}
@@ -65,7 +74,8 @@ const Hero = ({ basics, skills }) => {
                 data-mode="popup"
                 className="typeform-share ml-4 inline-flex cursor-pointer text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg umami--click--hero-contact"
                 data-size="100"
-                target="_blank">
+                target="_blank"
+                rel="noreferrer">
                 Contact
               </a>
             </div>
