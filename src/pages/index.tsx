@@ -16,12 +16,15 @@ interface HomeProps {
 const Home = ({ portfolio, blogs, pullRequests }: HomeProps) => {
   return (
     <div className="container mx-auto">
-        <Header profiles={portfolio.basics.profiles} />
-        <Hero basics={portfolio.basics} skills={portfolio.skills} />
-        <Gallery projects={portfolio.projects} />
-        <Blogs blogs={blogs} />
-        <PullRequests pullRequests={pullRequests} />
-        <Footer />
+      <Header profiles={portfolio.basics.profiles} />
+      <Hero basics={portfolio.basics} skills={portfolio.skills} />
+      <Gallery projects={portfolio.projects} />
+      <Blogs blogs={blogs} />
+      <PullRequests
+        pullRequests={pullRequests}
+        filteredPRIDs={portfolio.filteredPRIDs}
+      />
+      <Footer />
     </div>
   );
 };
@@ -32,6 +35,7 @@ export async function getServerSideProps() {
   const hashnodeUsername = process.env.HASHNODE_USERNAME;
   const GITHUB_GRAPHQL_ENDPOINT = process.env.GITHUB_GRAPHQL_ENDPOINT;
   const githubUsername = process.env.GITHUB_USERNAME;
+  const bearerToken = process.env.GITHUB_TOKEN;
 
   const blogRes = await fetch(HASHNODE_GRAPHQL_ENDPOINT!, {
     method: 'POST',
@@ -63,7 +67,7 @@ export async function getServerSideProps() {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer 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`,
+      Authorization: `Bearer ${bearerToken}`,
     },
     body: JSON.stringify({
       query: `

@@ -14,6 +14,7 @@ export interface IPortfolio {
   languages: any[];
   interests: any[];
   references: any[];
+  filteredPRIDs: string[];
 }
 
 export interface IBasics {

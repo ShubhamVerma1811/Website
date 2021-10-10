@@ -4,11 +4,16 @@ import React from 'react';
 
 interface PullRequestsProps {
   pullRequests: IPullRequests;
+  filteredPRIDs: string[];
 }
 
-const PullRequests = ({ pullRequests }: PullRequestsProps) => {
+const PullRequests = ({ pullRequests, filteredPRIDs }: PullRequestsProps) => {
   const [PRs] = useState(
-    pullRequests?.data?.user?.pullRequests?.nodes.slice(0, 6),
+    pullRequests?.data?.user?.pullRequests?.nodes
+      .filter((pr) => {
+        if (!filteredPRIDs.includes(pr.id)) return pr;
+      })
+      .slice(0, 6),
   );
 
   // const [length] = useState(6);
