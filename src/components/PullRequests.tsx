@@ -46,7 +46,7 @@ const PullRequests = ({ pullRequests, filteredPRIDs }: PullRequestsProps) => {
                       </a>
                     </h2>
                     <h2 className="text-lg  font-medium title-font mb-2 truncate ">
-                      State:
+                      Status:
                       <span className="text-white"> {pr?.state}</span>
                     </h2>
                   </div>
