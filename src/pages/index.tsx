@@ -18,12 +18,12 @@ const Home = ({ portfolio, blogs, pullRequests }: HomeProps) => {
     <div className="container mx-auto">
       <Header profiles={portfolio.basics.profiles} />
       <Hero basics={portfolio.basics} skills={portfolio.skills} />
-      <Gallery projects={portfolio.projects} />
-      <Blogs blogs={blogs} />
       <PullRequests
         pullRequests={pullRequests}
         filteredPRIDs={portfolio.filteredPRIDs}
       />
+      <Gallery projects={portfolio.projects} />
+      <Blogs blogs={blogs} />
       <Footer />
     </div>
   );
