@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { IAuthorAssociation, IPullRequests } from '../types';
-import React from 'react';
 
 interface PullRequestsProps {
   pullRequests: IPullRequests;
@@ -10,9 +9,11 @@ interface PullRequestsProps {
 const PullRequests = ({ pullRequests, filteredPRIDs }: PullRequestsProps) => {
   const [PRs] = useState(
     pullRequests?.data?.user?.pullRequests?.nodes
-      .filter((pr) => {
-        if (!filteredPRIDs.includes(pr.id)) return pr;
-      })
+      .filter(
+        (pr) =>
+          pr.authorAssociation !== IAuthorAssociation.Owner &&
+          !filteredPRIDs.includes(pr.id),
+      )
       .slice(0, 6),
   );
 
@@ -28,8 +29,6 @@ const PullRequests = ({ pullRequests, filteredPRIDs }: PullRequestsProps) => {
         </div>
         <div className="flex flex-wrap -m-4">
           {PRs.map((pr) => {
-            if (pr.authorAssociation === IAuthorAssociation.Owner) return null;
-
             return (
               <div className="xl:w-1/3 md:w-1/2 p-4 w-full" key={pr.id}>
                 <div className="border border-gray-700 border-opacity-75 p-6 rounded-lg overflow-hidden">
