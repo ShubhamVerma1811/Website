@@ -1,12 +1,14 @@
+import { useLoadMore } from '../hooks/useLoadMore';
 import { IBlogs } from '../types';
-
+import LoadMoreButton from './LoadMoreButton';
 
 interface IBlogsProps {
   blogs: IBlogs;
 }
 
 const Blogs = ({ blogs }: IBlogsProps) => {
-  const posts = blogs?.data?.user?.publication?.posts?.slice(0, 3);
+  const _posts = blogs?.data?.user?.publication?.posts;
+  const { items: posts, hasMore, loadMore } = useLoadMore(_posts);
   return (
     <section className="text-gray-500 bg-gray-900 body-font">
       <div className="px-5 py-12 mx-auto">
@@ -96,6 +98,7 @@ const Blogs = ({ blogs }: IBlogsProps) => {
           </div>
         </div>
       </div>
+      <LoadMoreButton hasMore={hasMore} loadMore={loadMore} />
     </section>
   );
 };

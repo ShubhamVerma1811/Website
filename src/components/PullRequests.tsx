@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { useLoadMore } from '../hooks/useLoadMore';
 import { IAuthorAssociation, IPullRequests } from '../types';
+import LoadMoreButton from './LoadMoreButton';
 
 interface PullRequestsProps {
   pullRequests: IPullRequests;
@@ -7,17 +9,19 @@ interface PullRequestsProps {
 }
 
 const PullRequests = ({ pullRequests, filteredPRIDs }: PullRequestsProps) => {
-  const [PRs] = useState(
-    pullRequests?.data?.user?.pullRequests?.nodes
-      .filter(
-        (pr) =>
-          pr.authorAssociation !== IAuthorAssociation.Owner &&
-          !filteredPRIDs.includes(pr.id),
-      )
-      .slice(0, 6),
+  const [_PRs] = useState(
+    pullRequests?.data?.user?.pullRequests?.nodes.filter(
+      (pr) =>
+        pr.authorAssociation !== IAuthorAssociation.Owner &&
+        !filteredPRIDs.includes(pr.id),
+    ),
   );
 
-  // const [length] = useState(6);
+  const {
+    items: PRs,
+    hasMore,
+    loadMore,
+  } = useLoadMore<IPullRequests['nodes']>(_PRs, 3);
 
   return (
     <section className="text-gray-400 body-font bg-gray-900">
@@ -84,28 +88,7 @@ const PullRequests = ({ pullRequests, filteredPRIDs }: PullRequestsProps) => {
           })}
         </div>
       </div>
-      {/* <div className="flex items-center justify-center w-max">
-        <span className="flex items-center">
-          <button
-            className="flex mx-auto mr-4  text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-            onClick={() => {
-              setPRs(
-                pullRequests?.data?.user?.pullRequests?.nodes.slice(length, 1),
-              );
-            }}>
-            Prev
-          </button>
-          <button
-            className="flex mx-auto  text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-            onClick={() => {
-              setPRs(
-                pullRequests?.data?.user?.pullRequests?.nodes.slice(length, 1),
-              );
-            }}>
-            Next
-          </button>
-        </span>
-      </div> */}
+      <LoadMoreButton hasMore={hasMore} loadMore={loadMore} />
     </section>
   );
 };
