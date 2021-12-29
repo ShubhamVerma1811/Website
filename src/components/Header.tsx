@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { IProfile } from '../types';
-import React from 'react'
-
+import React from 'react';
 
 interface HeaderProps {
   profiles: IProfile[];

@@ -1,6 +1,5 @@
 import { IBasics, ISkills } from '../types';
-import React from 'react'
-
+import React from 'react';
 
 interface HeroProps {
   basics: IBasics;
@@ -10,9 +9,8 @@ interface HeroProps {
 const Hero = ({ basics, skills }: HeroProps) => {
   if (typeof window !== 'undefined') {
     (function () {
-      let js,
-        q;
-        const d = document,
+      let js, q;
+      const d = document,
         gi = d.getElementById,
         ce = d.createElement,
         gt = d.getElementsByTagName,
