@@ -17,7 +17,7 @@ const Footer = () => {
           <span role="img" aria-label="img">
             🤍
           </span>{' '}
-          and NextJS © 2021
+          and NextJS © {(new Date()).getFullYear()}
         </p>
       </div>
     </footer>
