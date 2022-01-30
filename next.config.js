@@ -1,6 +1,4 @@
-const withPWA = require('next-pwa');
-
-module.exports = withPWA({
+module.exports = {
   pwa: {
     dest: 'public',
     disable: false,
@@ -11,4 +9,4 @@ module.exports = withPWA({
   images: {
     domains: ['project-images.gitconnectedcontent.com'],
   },
-});
+};

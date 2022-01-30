@@ -29,7 +29,7 @@ const Home = ({ portfolio, blogs, pullRequests }: HomeProps) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const portfolioResponse = await fetch(process.env.PORTFOLIO_API_URI!);
   const HASHNODE_GRAPHQL_ENDPOINT = process.env.HASHNODE_GRAPHQL_ENDPOINT;
   const hashnodeUsername = process.env.HASHNODE_USERNAME;
@@ -104,6 +104,7 @@ export async function getServerSideProps() {
       blogs,
       pullRequests,
     },
+    revalidate: 3600,
   };
 }
 
