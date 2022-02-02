@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { IProfile } from '../types';
 import React from 'react';
+import { IProfile } from '../types';
 
 interface HeaderProps {
   profiles: IProfile[];
@@ -8,21 +8,22 @@ interface HeaderProps {
 
 const Header = ({ profiles }: HeaderProps) => {
   return (
-    <header className="text-gray-500 bg-gray-900 body-font" id="header">
-      <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center cursor-pointer">
+    <header className="body-font bg-gray-900 text-gray-500" id="header">
+      <div className="container mx-auto flex cursor-pointer flex-col flex-wrap items-center p-5 md:flex-row">
         <Link href="/">
-          <span className="flex title-font font-medium items-center text-white mb-4 md:mb-0 umami--click--nav-logo ml-3 text-xl">
+          <span className="title-font umami--click--nav-logo mb-4 ml-3 flex items-center text-xl font-medium text-white md:mb-0">
             Shubham Verma
           </span>
         </Link>
-        <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <nav className="flex flex-wrap items-center justify-center text-base md:ml-auto">
           {profiles?.map((profile, index) => (
             <a
               target="_blank"
               rel="noopener noreferrer"
               href={profile.url}
               key={index}
-              className={`mr-5 hover:text-white cursor-pointer umami--click--nav-${profile.network}-link`}>
+              className={`mr-5 cursor-pointer hover:text-white umami--click--nav-${profile.network}-link`}
+            >
               {profile.network}
             </a>
           ))}
