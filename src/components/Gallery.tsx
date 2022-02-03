@@ -45,16 +45,14 @@ const Gallery = ({ projects: _projects }: GalleryProps) => {
                       ? project?.libraries?.map((lib, idx) => (
                           <p
                             className="mr-1 rounded-xl bg-indigo-500 px-2 py-1 text-white"
-                            key={idx}
-                          >
+                            key={idx}>
                             {lib}
                           </p>
                         ))
                       : project?.languages?.map((lang, idx) => (
                           <p
                             className="mr-1 rounded-xl bg-indigo-500 px-2 py-1 text-white"
-                            key={idx}
-                          >
+                            key={idx}>
                             {lang}
                           </p>
                         ))}
@@ -65,14 +63,12 @@ const Gallery = ({ projects: _projects }: GalleryProps) => {
 
                   {project.website && (
                     <span
-                      className={`umami--click-${project.displayName}-live`}
-                    >
+                      className={`umami--click-${project.displayName}-live`}>
                       <a
                         target="_blank"
                         rel="noopener noreferrer"
                         href={project.website}
-                        className={`mt-3 mr-6 inline-flex cursor-pointer items-center text-indigo-500 `}
-                      >
+                        className={`mt-3 mr-6 inline-flex cursor-pointer items-center text-indigo-500 `}>
                         Live Demo
                         <svg
                           fill="none"
@@ -81,8 +77,7 @@ const Gallery = ({ projects: _projects }: GalleryProps) => {
                           strokeLinejoin="round"
                           strokeWidth="2"
                           className="ml-2 h-4 w-4"
-                          viewBox="0 0 24 24"
-                        >
+                          viewBox="0 0 24 24">
                           <path d="M5 12h14M12 5l7 7-7 7"></path>
                         </svg>
                       </a>
@@ -90,14 +85,12 @@ const Gallery = ({ projects: _projects }: GalleryProps) => {
                   )}
                   {project.githubUrl && (
                     <span
-                      className={`umami--click-${project.displayName}-github`}
-                    >
+                      className={`umami--click-${project.displayName}-github`}>
                       <a
                         target="_blank"
                         rel="noopener noreferrer"
                         href={project.githubUrl}
-                        className={`mt-3 inline-flex cursor-pointer items-center text-indigo-500 `}
-                      >
+                        className={`mt-3 inline-flex cursor-pointer items-center text-indigo-500 `}>
                         GitHub Repo
                         <svg
                           fill="none"
@@ -106,8 +99,7 @@ const Gallery = ({ projects: _projects }: GalleryProps) => {
                           strokeLinejoin="round"
                           strokeWidth="2"
                           className="ml-2 h-4 w-4"
-                          viewBox="0 0 24 24"
-                        >
+                          viewBox="0 0 24 24">
                           <path d="M5 12h14M12 5l7 7-7 7"></path>
                         </svg>
                       </a>

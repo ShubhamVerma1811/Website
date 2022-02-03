@@ -52,8 +52,7 @@ const Hero = ({ basics, skills }: HeroProps) => {
                 {skills.map((skill, index) => (
                   <p
                     key={index}
-                    className="m-1 cursor-pointer rounded-lg border-2 border-indigo-500 px-3 py-1 text-white hover:bg-indigo-500 md:mb-2"
-                  >
+                    className="m-1 cursor-pointer rounded-lg border-2 border-indigo-500 px-3 py-1 text-white hover:bg-indigo-500 md:mb-2">
                     {skill}
                   </p>
                 ))}
@@ -63,8 +62,7 @@ const Hero = ({ basics, skills }: HeroProps) => {
               <a
                 href="https://drive.google.com/file/d/1WL5bIjipkpulVW6a3gcwHgMGpvvU6IFq/view?usp=sharing"
                 target="_blank"
-                rel="noopener noreferrer"
-              >
+                rel="noopener noreferrer">
                 <button className="umami--click--hero-view-resume inline-flex rounded border-0 bg-indigo-500 py-2 px-6 text-lg text-white hover:bg-indigo-600 focus:outline-none">
                   View Resume
                 </button>
@@ -75,8 +73,7 @@ const Hero = ({ basics, skills }: HeroProps) => {
                 className="typeform-share umami--click--hero-contact ml-4 inline-flex cursor-pointer rounded border-0 bg-gray-800 py-2 px-6 text-lg text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
                 data-size="100"
                 target="_blank"
-                rel="noreferrer"
-              >
+                rel="noreferrer">
                 Contact
               </a>
             </div>

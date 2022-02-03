@@ -41,8 +41,7 @@ const PullRequests = ({ pullRequests, filteredPRIDs }: PullRequestsProps) => {
                       <a
                         href={pr?.repository?.url}
                         target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                        rel="noopener noreferrer">
                         Repo:{' '}
                         <span className="text-white">
                           {pr?.repository?.name}
@@ -70,8 +69,7 @@ const PullRequests = ({ pullRequests, filteredPRIDs }: PullRequestsProps) => {
                       "
                     href={pr?.url}
                     target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                    rel="noopener noreferrer">
                     View the PR
                     <svg
                       fill="none"
@@ -80,8 +78,7 @@ const PullRequests = ({ pullRequests, filteredPRIDs }: PullRequestsProps) => {
                       strokeLinejoin="round"
                       strokeWidth="2"
                       className="ml-2 h-4 w-4"
-                      viewBox="0 0 24 24"
-                    >
+                      viewBox="0 0 24 24">
                       <path d="M5 12h14M12 5l7 7-7 7"></path>
                     </svg>
                   </a>

@@ -22,8 +22,7 @@ const Header = ({ profiles }: HeaderProps) => {
               rel="noopener noreferrer"
               href={profile.url}
               key={index}
-              className={`mr-5 cursor-pointer hover:text-white umami--click--nav-${profile.network}-link`}
-            >
+              className={`mr-5 cursor-pointer hover:text-white umami--click--nav-${profile.network}-link`}>
               {profile.network}
             </a>
           ))}
