@@ -5,11 +5,7 @@ const notion = new Client({
 });
 
 class Notion {
-  getPosts() {
-    return [1, 2, 3];
-  }
-
-  async getDatabase(database_id: string) {
+  async getPosts(database_id: string) {
     return await notion.databases.query({
       database_id,
     });

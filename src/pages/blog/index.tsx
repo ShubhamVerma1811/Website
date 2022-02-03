@@ -23,7 +23,7 @@ const Blog = (props: IBlog) => {
 export default Blog;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const database = await notion.getDatabase(
+  const database = await notion.getPosts(
     '914232ab-7e40-448b-bfc4-ddade4d4ccde',
   );
 

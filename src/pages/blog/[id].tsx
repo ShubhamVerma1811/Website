@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Link from 'next/link';
 import Notion from '../../services/notion';
 
 const notion = new Notion();
@@ -11,7 +12,12 @@ interface IBlog {
 const Blog = (props: IBlog) => {
   return (
     <>
-      <h1 className="text-white">
+      <Link href="/blog">
+        <a>
+          <h1 className="prose text-white">BLOGS</h1>
+        </a>
+      </Link>
+      <h1 className=" prose text-white">
         {props.blogInfo?.properties?.name?.title[0]?.plain_text}
       </h1>
       <div
@@ -26,11 +32,9 @@ const Blog = (props: IBlog) => {
 export default Blog;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const database = await notion.getDatabase(
-    '914232ab-7e40-448b-bfc4-ddade4d4ccde',
-  );
+  const posts = await notion.getPosts('914232ab-7e40-448b-bfc4-ddade4d4ccde');
 
-  const paths = database.results?.map((page) => ({
+  const paths = posts.results?.map((page) => ({
     params: {
       id: page.id,
     },
@@ -65,27 +69,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 const annotationToHtml = (text, type) => {
   const annotations = text.annotations;
 
-  if (
-    !annotations.bold &&
-    !annotations.italic &&
-    !annotations.underline &&
-    !annotations.strikethrough
-  ) {
-    return text.plain_text;
-  }
-
   // let bg;
   // if (annotations.color.indexOf("_background") > -1) {
   //   bg = annotations.color.replace("_background", "");
   // }
 
-  return `<${type} style="color:${annotations.color}">
+  return `<${type} style="color:${
+    annotations.color === 'default' ? 'white' : annotations.color
+  }">
   ${annotations.bold ? '<b>' : ''}
   ${annotations.italic ? '<em>' : ''}
   ${annotations.code ? '<code style="color:red">' : ''}
   ${annotations.strikethrough ? '<s>' : ''}
   ${annotations.underline ? '<u>' : ''}
-  ${text?.text?.link?.url ? `<a href=${text?.text?.link?.url}>` : ''}
+  ${
+    text?.text?.link?.url
+      ? `<a href=${text?.text?.link?.url} style="color:white">`
+      : ''
+  }
   ${text.plain_text}
   ${text?.text?.link?.url ? `</a>` : ''}
   ${annotations.underline ? '</u>' : ''}
@@ -129,7 +130,7 @@ function re(results) {
         break;
 
       case 'image':
-        code += `<div><img src="${block.image.file.url}" alt="${block.image.caption[0]?.plain_text}" width="100%"/>
+        code += `<div><img src="${block.image.file?.url}" alt="${block.image.caption[0]?.plain_text}" width="100%"/>
       <small>${block.image.caption[0]?.plain_text}</small>
       </div>`;
         break;
