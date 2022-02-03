@@ -31,5 +31,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       database,
     },
+    revalidate: 120, // 2 mins
   };
 };

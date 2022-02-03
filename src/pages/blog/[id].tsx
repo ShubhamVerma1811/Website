@@ -129,8 +129,8 @@ function re(results) {
         break;
 
       case 'image':
-        code += `<div><img src="${block.image.file.url}" alt="${block.image.caption[0].plain_text}" width="100%"/>
-      <small>${block.image.caption[0].plain_text}</small>
+        code += `<div><img src="${block.image.file.url}" alt="${block.image.caption[0]?.plain_text}" width="100%"/>
+      <small>${block.image.caption[0]?.plain_text}</small>
       </div>`;
         break;
 
