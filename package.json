@@ -5,15 +5,18 @@
   "main": "index.js",
   "dependencies": {
     "@notionhq/client": "^0.4.13",
-    "@tailwindcss/typography": "^0.5.1",
     "next": "^12.0.10",
+    "notion-to-md": "^2.3.0",
     "prismjs": "^1.26.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scroll": "^1.8.1",
-    "react-typeform-embed": "^1.0.7"
+    "react-typeform-embed": "^1.0.7",
+    "remark": "^14.0.2",
+    "remark-html": "^15.0.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.1",
     "@types/eslint": "^8.4.1",
     "@types/prettier": "^2.4.3",
     "@types/prismjs": "^1.26.0",

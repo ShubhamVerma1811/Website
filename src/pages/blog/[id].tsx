@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
+import React from 'react';
 import Notion from '../../services/notion';
 
 const notion = new Notion();
@@ -11,21 +12,21 @@ interface IBlog {
 
 const Blog = (props: IBlog) => {
   return (
-    <>
+    <div className="mx-auto max-w-7xl">
       <Link href="/blog">
         <a>
           <h1 className="prose text-white">BLOGS</h1>
         </a>
       </Link>
-      <h1 className=" prose text-white">
+      <h1 className="text-4xl font-extrabold text-white lg:text-7xl">
         {props.blogInfo?.properties?.name?.title[0]?.plain_text}
       </h1>
       <div
-        className="text-white"
+        className="prose max-w-none text-white prose-hr:my-4 "
         dangerouslySetInnerHTML={{
-          __html: re(props.blogContent?.results),
+          __html: props.html,
         }}></div>
-    </>
+    </div>
   );
 };
 
@@ -49,18 +50,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (!params || !params.id) throw new Error('No id found in params');
 
-  const blogInfo = await notion.getPageInfo(
-    typeof params.id === 'string' ? params.id : params.id[0],
-  );
+  const id = typeof params.id === 'string' ? params.id : params.id[0];
 
-  const blogContent = await notion.getPageContent(
-    typeof params.id === 'string' ? params.id : params.id[0],
-  );
+  const blogInfo = await notion.getPageInfo(id);
+
+  const blogContent = await notion.getPageContent(id);
+
+  const html = await notion.getNotionToMarkdown(id);
 
   return {
     props: {
       blogInfo,
       blogContent,
+      html,
     },
     revalidate: 10,
   };
