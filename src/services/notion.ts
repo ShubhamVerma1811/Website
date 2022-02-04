@@ -1,6 +1,7 @@
 import { Client } from '@notionhq/client';
 import { NotionToMarkdown } from 'notion-to-md';
 import { remark } from 'remark';
+import gfm from 'remark-gfm';
 import html from 'remark-html';
 
 const notion = new Client({
@@ -30,11 +31,21 @@ class Notion {
     const mdblocks = await n2m.pageToMarkdown(page_id);
     const mdString = n2m.toMarkdownString(mdblocks);
 
-    return this.markdownToHtml(mdString);
+    const html = await this.markdownToHtml(mdString);
+
+    // fs.writeFile(`./md/${page_id}.md`, mdString, (err) => {
+    //   console.log(err);
+    // });
+
+    // fs.writeFile(`./html/${page_id}.html`, html, (err) => {
+    //   console.log(err);
+    // });
+
+    return html;
   }
 
   async markdownToHtml(markdown) {
-    const result = await remark().use(html).process(markdown);
+    const result = await remark().use(html).use(gfm).process(markdown);
     return result.toString();
   }
 }

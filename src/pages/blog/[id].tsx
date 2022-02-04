@@ -19,11 +19,12 @@ const Blog = (props: IBlog) => {
           <h1 className="prose text-white">BLOGS</h1>
         </a>
       </Link>
-      <h1 className="text-4xl font-extrabold text-white lg:text-7xl">
+      <h1 className="text-center text-4xl font-extrabold uppercase text-white lg:text-7xl">
         {props.blogInfo?.properties?.name?.title[0]?.plain_text}
       </h1>
       <div
-        className="prose max-w-none text-white prose-hr:my-4 "
+        id="container"
+        className="prose prose-invert max-w-none "
         dangerouslySetInnerHTML={{
           __html: props.html,
         }}></div>

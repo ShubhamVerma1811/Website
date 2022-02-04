@@ -13,6 +13,7 @@
     "react-scroll": "^1.8.1",
     "react-typeform-embed": "^1.0.7",
     "remark": "^14.0.2",
+    "remark-gfm": "^3.0.1",
     "remark-html": "^15.0.1"
   },
   "devDependencies": {

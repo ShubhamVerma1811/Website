@@ -14,7 +14,7 @@ const Blog = (props: IBlog) => {
     <Link href={`/blog/${page.id}`}>
       <a>
         <h1 className="text-white">
-          {page.properties.name.title[0].plain_text}
+          {page.properties.name.title[0]?.plain_text}
         </h1>
       </a>
     </Link>
