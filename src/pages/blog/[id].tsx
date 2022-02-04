@@ -8,6 +8,7 @@ const notion = new Notion();
 interface IBlog {
   blogInfo: any;
   blogContent: any;
+  html: any;
 }
 
 const Blog = (props: IBlog) => {

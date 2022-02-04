@@ -9,6 +9,7 @@ interface IBlog {
 }
 
 const Blog = (props: IBlog) => {
+  // @ts-ignore
   return props.database.results.map((page) => (
     <Link href={`/blog/${page.id}`}>
       <a>
@@ -22,6 +23,7 @@ const Blog = (props: IBlog) => {
 
 export default Blog;
 
+// @ts-ignore
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const database = await notion.getPosts(
     '914232ab-7e40-448b-bfc4-ddade4d4ccde',

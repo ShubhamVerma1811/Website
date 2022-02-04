@@ -24,5 +24,6 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'react/jsx-key': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
   },
 };
