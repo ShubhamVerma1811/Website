@@ -14,9 +14,7 @@
     "react-typeform-embed": "^1.0.7",
     "rehype-highlight": "^5.0.2",
     "remark": "^14.0.2",
-    "remark-gfm": "^3.0.1",
-    "remark-text-decoration": "^1.1.0",
-    "remark-underline": "^1.0.5"
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.1",

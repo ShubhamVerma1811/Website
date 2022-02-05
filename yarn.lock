@@ -2318,16 +2318,6 @@ remark-stringify@^10.0.0:
     mdast-util-to-markdown "^1.0.0"
     unified "^10.0.0"
 
-remark-text-decoration@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/remark-text-decoration/-/remark-text-decoration-1.1.0.tgz#0c6f7eab9ed3139268d9ff871fc25a6a763a927f"
-  integrity sha512-VCNyu4Pe9m+arpmXALQm23kJpbX38ucxRL1Q56C8E1a8DmI4+iE6AlFqN02oH462PGT4oBfF5eJMmcLe4X5KTA==
-
-remark-underline@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/remark-underline/-/remark-underline-1.0.5.tgz#7526408f4440be7fb2afdaf19ba4460341cf9d42"
-  integrity sha512-+3+O9aQZ6Z1WESGTxrXGneV6caref2CdaTB3bsbmyWWL9z4hdScy3e1/kwudcEXKH36YqevjDFnUXlGS9bN4yQ==
-
 remark@^14.0.2:
   version "14.0.2"
   resolved "https://registry.yarnpkg.com/remark/-/remark-14.0.2.tgz#4a1833f7441a5c29e44b37bb1843fb820797b40f"
