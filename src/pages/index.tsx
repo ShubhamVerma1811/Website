@@ -16,7 +16,16 @@ interface HomeProps {
 const Home = ({ portfolio, blogs, pullRequests }: HomeProps) => {
   return (
     <div className="container mx-auto">
-      <Header profiles={portfolio.basics.profiles} />
+      <Header
+        profiles={[
+          {
+            id: 1,
+            network: 'Blog',
+            url: '/blog',
+            username: 'shubhamverma',
+          },
+        ]}
+      />
       <Hero basics={portfolio.basics} skills={portfolio.skills} />
       <PullRequests
         pullRequests={pullRequests}

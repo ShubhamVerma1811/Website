@@ -17,14 +17,12 @@ const Header = ({ profiles }: HeaderProps) => {
         </Link>
         <nav className="flex flex-wrap items-center justify-center text-base md:ml-auto">
           {profiles?.map((profile, index) => (
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={profile.url}
-              key={index}
-              className={`mr-5 cursor-pointer hover:text-white umami--click--nav-${profile.network}-link`}>
-              {profile.network}
-            </a>
+            <Link href={profile.url} key={index}>
+              <a
+                className={`mr-5 cursor-pointer hover:text-white umami--click--nav-${profile.network}-link`}>
+                {profile.network}
+              </a>
+            </Link>
           ))}
         </nav>
       </div>

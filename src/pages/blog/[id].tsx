@@ -14,8 +14,9 @@ interface IBlog {
 }
 
 const Blog = (props: IBlog) => {
+  const date = new Date(props.blogInfo?.properties?.created?.created_time);
   return (
-    <div className="mx-auto max-w-7xl">
+    <div className="mx-5">
       <Link href="/blog">
         <a>
           <h1 className="prose text-white">BLOGS</h1>
@@ -24,31 +25,49 @@ const Blog = (props: IBlog) => {
       <h1 className="text-center text-4xl font-extrabold uppercase text-white lg:text-7xl">
         {props.blogInfo?.properties?.name?.title[0]?.plain_text}
       </h1>
-      <ReactMarkdown
-        remarkPlugins={[
-          [
-            gfm,
-            {
-              fencedCodeBlocks: true,
-              inlineCodeMarker: '`',
-            },
-          ],
-          rehypeHighlight,
-        ]}
-        className="prose text-white prose-headings:text-white prose-a:text-white prose-blockquote:not-italic prose-blockquote:text-white prose-strong:text-white prose-code:text-white
+      <div className="lg:grid lg:grid-cols-3">
+        <aside className="prose max-w-sm border border-white text-white">
+          <p>
+            Published on {date.getDate()}/{date.getMonth() + 1}/
+            {date.getFullYear()}
+          </p>
+          {props.blogInfo?.properties?.tags?.multi_select?.map((tag: any) => (
+            <p className="border border-white" key={tag.id}>
+              {tag?.name}
+            </p>
+          ))}
+        </aside>
+        <main className="w-full">
+          <article>
+            <ReactMarkdown
+              remarkPlugins={[
+                [
+                  gfm,
+                  {
+                    fencedCodeBlocks: true,
+                    inlineCodeMarker: '`',
+                  },
+                ],
+                rehypeHighlight,
+              ]}
+              className="prose text-white prose-headings:text-white prose-a:text-white prose-blockquote:not-italic prose-blockquote:text-white prose-strong:text-white prose-code:text-white
         prose-code:before:content-none prose-code:after:content-none prose-ul:text-white prose-li:text-white "
-        components={{
-          img: (props: any) => {
-            return (
-              <>
-                <img {...props} className="my-0" />
-                <small>{props.alt}</small>
-              </>
-            );
-          },
-        }}>
-        {props.md}
-      </ReactMarkdown>
+              components={{
+                img: (props: any) => {
+                  return (
+                    <figure>
+                      <img src={props.src} alt={props.alt} className="my-0" />
+                      <figcaption>{props.alt}</figcaption>
+                    </figure>
+                  );
+                },
+              }}>
+              {props.md}
+            </ReactMarkdown>
+          </article>
+        </main>
+      </div>
+      <div></div>
     </div>
   );
 };
