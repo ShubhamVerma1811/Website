@@ -1,8 +1,5 @@
 import { Client } from '@notionhq/client';
 import { NotionToMarkdown } from 'notion-to-md';
-import { remark } from 'remark';
-import gfm from 'remark-gfm';
-import html from 'remark-html';
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -14,6 +11,18 @@ class Notion {
   async getPosts(database_id: string) {
     return await notion.databases.query({
       database_id,
+      sorts: [
+        {
+          property: 'published',
+          direction: 'descending',
+        },
+      ],
+      filter: {
+        property: 'active',
+        checkbox: {
+          equals: true,
+        },
+      },
     });
   }
 
@@ -27,26 +36,11 @@ class Notion {
     });
   }
 
-  async getNotionToMarkdown(page_id) {
+  async getMakrkdown(page_id: string) {
     const mdblocks = await n2m.pageToMarkdown(page_id);
     const mdString = n2m.toMarkdownString(mdblocks);
 
-    const html = await this.markdownToHtml(mdString);
-
-    // fs.writeFile(`./md/${page_id}.md`, mdString, (err) => {
-    //   console.log(err);
-    // });
-
-    // fs.writeFile(`./html/${page_id}.html`, html, (err) => {
-    //   console.log(err);
-    // });
-
-    return html;
-  }
-
-  async markdownToHtml(markdown) {
-    const result = await remark().use(html).use(gfm).process(markdown);
-    return result.toString();
+    return mdString;
   }
 }
 
