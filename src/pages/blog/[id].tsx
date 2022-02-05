@@ -25,20 +25,22 @@ const Blog = (props: IBlog) => {
       <h1 className="text-center text-4xl font-extrabold uppercase text-white lg:text-7xl">
         {props.blogInfo?.properties?.name?.title[0]?.plain_text}
       </h1>
-      <div className="lg:grid lg:grid-cols-3">
+      <div className="lg:grid lg:grid-cols-4">
         <aside className="prose max-w-sm border border-white text-white">
           <p>
             Published on {date.getDate()}/{date.getMonth() + 1}/
             {date.getFullYear()}
           </p>
           {props.blogInfo?.properties?.tags?.multi_select?.map((tag: any) => (
-            <p className="border border-white" key={tag.id}>
-              {tag?.name}
-            </p>
+            <Link href={`/tag/${tag.name}`}>
+              <a className="border border-white text-white" key={tag.id}>
+                {tag?.name}
+              </a>
+            </Link>
           ))}
         </aside>
-        <main className="w-full">
-          <article>
+        <main className="w-full lg:col-span-3">
+          <article className="max-w-5xl">
             <ReactMarkdown
               remarkPlugins={[
                 [
@@ -50,8 +52,8 @@ const Blog = (props: IBlog) => {
                 ],
                 rehypeHighlight,
               ]}
-              className="prose text-white prose-headings:text-white prose-a:text-white prose-blockquote:not-italic prose-blockquote:text-white prose-strong:text-white prose-code:text-white
-        prose-code:before:content-none prose-code:after:content-none prose-ul:text-white prose-li:text-white "
+              className="prose w-full max-w-none text-white prose-headings:text-white prose-a:text-white prose-blockquote:not-italic prose-blockquote:text-white prose-strong:text-white
+        prose-code:text-white prose-code:before:content-none prose-code:after:content-none prose-ul:text-white prose-li:text-white"
               components={{
                 img: (props: any) => {
                   return (

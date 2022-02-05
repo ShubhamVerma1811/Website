@@ -1,8 +1,16 @@
-import { Client } from '@notionhq/client';
+import { Client, LogLevel } from '@notionhq/client';
 import { NotionToMarkdown } from 'notion-to-md';
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
+  fetch: (url, options) => {
+    console.log('FETCH LOGS', { url, options });
+    return fetch(url, options);
+  },
+  logLevel: LogLevel.DEBUG,
+  logger: (level, message, extraInfo) => {
+    console.log('LOGGER LOGS', { level, message, extraInfo });
+  },
 });
 
 const n2m = new NotionToMarkdown({ notionClient: notion });
@@ -41,6 +49,24 @@ class Notion {
     const mdString = n2m.toMarkdownString(mdblocks);
 
     return mdString;
+  }
+
+  async getPostsByTagName(tagName: string) {
+    const posts = await notion.databases.query({
+      database_id: '914232ab-7e40-448b-bfc4-ddade4d4ccde',
+      filter: {
+        and: [
+          {
+            property: 'tags',
+            multi_select: {
+              contains: tagName,
+            },
+          },
+        ],
+      },
+    });
+
+    return posts;
   }
 }
 
