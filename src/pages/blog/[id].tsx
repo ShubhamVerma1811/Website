@@ -35,7 +35,8 @@ const Blog = (props: IBlog) => {
           ],
           rehypeHighlight,
         ]}
-        className="prose text-white prose-headings:text-white prose-a:text-white prose-blockquote:text-white prose-code:text-white prose-code:before:content-none prose-code:after:content-none prose-ul:text-white prose-li:text-white"
+        className="prose text-white prose-headings:text-white prose-a:text-white prose-blockquote:not-italic prose-blockquote:text-white prose-strong:text-white prose-code:text-white
+        prose-code:before:content-none prose-code:after:content-none prose-ul:text-white prose-li:text-white "
         components={{
           img: (props: any) => {
             return (
