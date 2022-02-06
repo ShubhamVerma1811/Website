@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -48,6 +49,18 @@ const Blog = (props: IBlog) => {
   return (
     <PageLayout>
       <BlogLayout>
+        <Head>
+          <title>
+            {props.blogInfo?.properties?.name?.title[0]?.plain_text} | Shubham
+            Verma
+          </title>
+          <meta
+            name="description"
+            content={
+              props.blogInfo?.properties?.subtitle?.rich_text[0]?.plain_text
+            }
+          />
+        </Head>
         <div className="mx-5">
           <div className="lg:grid lg:grid-cols-4">
             <aside className="prose max-w-sm  text-white">

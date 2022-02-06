@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
 import { PageLayout } from '../../layouts';
 import Notion from '../../services/notion';
@@ -14,6 +15,10 @@ const Blog = (props: IBlog) => {
   // @ts-ignore
   return (
     <PageLayout>
+      <Head>
+        <title>Blogs | Shubham Verma</title>
+        <meta name="description" content="Blogs by Shubham Verma" />
+      </Head>
       <div className="mx-5 mt-20 lg:mx-auto lg:mt-36 lg:grid lg:grid-cols-4">
         <div>
           <h1 className="prose mb-6 text-4xl text-white lg:mb-auto">Blogs</h1>
