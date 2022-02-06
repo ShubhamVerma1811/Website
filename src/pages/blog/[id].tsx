@@ -4,9 +4,10 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import rehypeHighlight from 'rehype-highlight';
 import gfm from 'remark-gfm';
+import { BlogLayout, PageLayout } from '../../layouts';
 import Notion from '../../services/notion';
+import { minutesToRead } from '../../services/read';
 
 const notion = new Notion();
 
@@ -17,113 +18,100 @@ interface IBlog {
 
 const Blog = (props: IBlog) => {
   const date = new Date(props.blogInfo?.properties?.created?.created_time);
-  const [showBackToTop, setShowBackToTop] = React.useState(false);
 
-  React.useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 200) {
-        setShowBackToTop(true);
-      } else {
-        setShowBackToTop(false);
-      }
-    };
+  const mins = minutesToRead(props.md);
 
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const sidebar = [
+    {
+      title: 'Posted',
+      info: `${date.toDateString()}`,
+      classes: '',
+    },
+    {
+      title: 'Read',
+      info: `${mins === 0 ? 1 : mins} min(s)`,
+      classes: '',
+    },
+    {
+      title: 'Tags',
+      info: props.blogInfo?.properties?.tags?.multi_select?.map((tag: any) => (
+        <Link href={`/blog/tag/${tag.name}`} key={tag.id}>
+          <a className="prose mr-3 mb-3 border border-gray-700 px-3 py-2 text-white no-underline">
+            {tag.name}
+          </a>
+        </Link>
+      )),
+      classes: 'hidden lg:block',
+    },
+  ];
 
   return (
-    <div className="mx-5">
-      <div className="h-48" />
-      <Link href="/blog">
-        <a>
-          <h1 className="prose text-white">BLOGS</h1>
-        </a>
-      </Link>
+    <PageLayout>
+      <BlogLayout>
+        <div className="mx-5">
+          <div className="lg:grid lg:grid-cols-4">
+            <aside className="prose max-w-sm  text-white">
+              {sidebar.map((item, index) => (
+                <div
+                  className={`mb-3 flex flex-row lg:block lg:flex-col ${item?.classes}`}
+                  key={index}>
+                  <span className="prose mr-2 text-xl text-gray-400">
+                    {item.title}
+                  </span>
+                  <span className="my-1" />
+                  <span className="flex flex-wrap">{item.info}</span>
+                </div>
+              ))}
+            </aside>
+            <main className="w-full lg:col-span-3">
+              <article className="max-w-5xl">
+                <h1 className="text-4xl font-normal text-white md:text-5xl">
+                  {props.blogInfo?.properties?.name?.title[0]?.plain_text}
+                </h1>
+                <ReactMarkdown
+                  remarkPlugins={[gfm]}
+                  className="prose w-full max-w-none overflow-hidden text-white prose-headings:text-white prose-h1:text-4xl prose-h2:mx-0 prose-h2:mt-8 prose-h2:mb-0 prose-h2:text-3xl prose-h2:font-medium prose-p:my-5 prose-p:mx-0 prose-p:text-xl prose-p:font-light prose-a:text-blue-500 prose-a:underline prose-a:hover:underline prose-blockquote:text-white prose-strong:text-white prose-code:rounded-md prose-code:bg-gray-800 prose-code:p-1 prose-code:font-normal prose-code:text-white prose-code:before:content-none prose-code:after:content-none prose-img:rounded-sm"
+                  components={{
+                    img: (props: any) => {
+                      return (
+                        <figure>
+                          <img
+                            src={props.src}
+                            alt={props.alt}
+                            className="my-0"
+                          />
 
-      <div className="lg:grid lg:grid-cols-4">
-        <aside className="prose max-w-sm border border-white text-white">
-          <p>
-            Published on {date.getDate()}/{date.getMonth() + 1}/
-            {date.getFullYear()}
-          </p>
-          {props.blogInfo?.properties?.tags?.multi_select?.map((tag: any) => (
-            <Link href={`/tag/${tag.name}`}>
-              <a className="border border-white text-white" key={tag.id}>
-                {tag?.name}
-              </a>
-            </Link>
-          ))}
-        </aside>
-        <main className="w-full lg:col-span-3">
-          <article className="max-w-5xl">
-            <h1 className="text-4xl font-normal text-white md:text-5xl">
-              {props.blogInfo?.properties?.name?.title[0]?.plain_text}
-            </h1>
-            <ReactMarkdown
-              remarkPlugins={[
-                [
-                  gfm,
-                  {
-                    fencedCodeBlocks: true,
-                    inlineCodeMarker: '`',
-                  },
-                ],
-                rehypeHighlight,
-              ]}
-              className="prose w-full max-w-none overflow-hidden text-white prose-headings:text-white prose-h1:text-4xl prose-h2:mx-0 prose-h2:mt-8 prose-h2:mb-0 prose-h2:text-3xl prose-h2:font-medium prose-p:my-5 prose-p:mx-0 prose-p:text-xl prose-p:font-light prose-a:text-blue-500 prose-a:underline prose-a:hover:underline prose-blockquote:text-white prose-strong:text-white prose-code:bg-gray-800 prose-code:p-1 prose-code:font-normal prose-code:text-gray-400 prose-code:before:content-none prose-code:after:content-none prose-img:rounded-sm"
-              components={{
-                img: (props: any) => {
-                  return (
-                    <figure>
-                      <img src={props.src} alt={props.alt} className="my-0" />
-
-                      <figcaption>{props.alt}</figcaption>
-                    </figure>
-                  );
-                },
-                code({ node, inline, className, children, ...props }) {
-                  const match = /language-(\w+)/.exec(className || '');
-                  return !inline && match ? (
-                    <SyntaxHighlighter
-                      style={nord}
-                      language={match[1]}
-                      PreTag="div"
-                      customStyle={{ fontFamily: '"Fira Code", "monospace"' }}
-                      showLineNumbers
-                      wrapLines
-                      {...props}>
-                      {String(children).replace(/\n$/, '')}
-                    </SyntaxHighlighter>
-                  ) : (
-                    <code className={className} {...props}>
-                      {children}
-                    </code>
-                  );
-                },
-              }}>
-              {props.md}
-            </ReactMarkdown>
-          </article>
-        </main>
-      </div>
-      <div className="h-48" />
-      {showBackToTop && (
-        <button
-          className="border-text-white fixed right-5 bottom-5 h-12 w-12 rounded-full border bg-gray-900 text-white shadow"
-          onClick={() => {
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth',
-            });
-          }}>
-          Top
-        </button>
-      )}
-    </div>
+                          <figcaption>{props.alt}</figcaption>
+                        </figure>
+                      );
+                    },
+                    code({ node, inline, className, children, ...props }) {
+                      const match = /language-(\w+)/.exec(className || '');
+                      return !inline && match ? (
+                        <SyntaxHighlighter
+                          style={nord}
+                          language={match[1]}
+                          PreTag="div"
+                          showLineNumbers
+                          wrapLines
+                          {...props}>
+                          {String(children).replace(/\n$/, '')}
+                        </SyntaxHighlighter>
+                      ) : (
+                        <code className={className} {...props}>
+                          {children}
+                        </code>
+                      );
+                    },
+                  }}>
+                  {props.md}
+                </ReactMarkdown>
+              </article>
+            </main>
+          </div>
+        </div>
+      </BlogLayout>
+    </PageLayout>
   );
 };
 

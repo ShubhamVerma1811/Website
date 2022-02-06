@@ -1,9 +1,8 @@
 import Blogs from '../components/Blogs';
-import Footer from '../components/Footer';
 import Gallery from '../components/Gallery';
-import Header from '../components/Header';
 import Hero from '../components/Hero';
 import PullRequests from '../components/PullRequests';
+import { PageLayout } from '../layouts';
 import { IBlogs, IPortfolio } from '../types';
 import { IPullRequests } from '../types/github.types';
 
@@ -15,17 +14,7 @@ interface HomeProps {
 
 const Home = ({ portfolio, blogs, pullRequests }: HomeProps) => {
   return (
-    <div className="container mx-auto">
-      <Header
-        profiles={[
-          {
-            id: 1,
-            network: 'Blog',
-            url: '/blog',
-            username: 'shubhamverma',
-          },
-        ]}
-      />
+    <PageLayout>
       <Hero basics={portfolio.basics} skills={portfolio.skills} />
       <PullRequests
         pullRequests={pullRequests}
@@ -33,8 +22,7 @@ const Home = ({ portfolio, blogs, pullRequests }: HomeProps) => {
       />
       <Gallery projects={portfolio.projects} />
       <Blogs blogs={blogs} />
-      <Footer />
-    </div>
+    </PageLayout>
   );
 };
 

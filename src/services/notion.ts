@@ -1,16 +1,15 @@
-import { Client, LogLevel } from '@notionhq/client';
+import { Client } from '@notionhq/client';
 import { NotionToMarkdown } from 'notion-to-md';
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
-  logLevel: LogLevel.DEBUG,
 });
 
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
 class Notion {
   async getPosts(database_id: string) {
-    return await notion.databases.query({
+    const post = await notion.databases.query({
       database_id,
       sorts: [
         {
@@ -25,6 +24,17 @@ class Notion {
         },
       },
     });
+
+    // this.posts = post
+
+    // while(post.has_more) {
+    //   const next = await notion.databases.query({
+    //     database_id,
+    //     start_cursor: post?.next_cursor,
+    //   });
+    // }
+
+    return post;
   }
 
   async getPageInfo(page_id: string) {

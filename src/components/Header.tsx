@@ -19,7 +19,7 @@ const Header = ({ profiles }: HeaderProps) => {
           {profiles?.map((profile, index) => (
             <Link href={profile.url} key={index}>
               <a
-                className={`mr-5 cursor-pointer hover:text-white umami--click--nav-${profile.network}-link`}>
+                className={`mr-5 cursor-pointer capitalize  umami--click--nav-${profile.network}-link text-white`}>
                 {profile.network}
               </a>
             </Link>

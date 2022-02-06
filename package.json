@@ -12,7 +12,6 @@
     "react-markdown": "^8.0.0",
     "react-scroll": "^1.8.1",
     "react-syntax-highlighter": "^15.4.5",
-    "rehype-highlight": "^5.0.2",
     "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
