@@ -165,6 +165,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (!matchedPost) {
     return {
       notFound: true,
+      revalidate: 10,
     };
   }
 
