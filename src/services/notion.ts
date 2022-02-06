@@ -3,14 +3,7 @@ import { NotionToMarkdown } from 'notion-to-md';
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
-  fetch: (url, options) => {
-    console.log('FETCH LOGS', { url, options });
-    return fetch(url, options);
-  },
   logLevel: LogLevel.DEBUG,
-  logger: (level, message, extraInfo) => {
-    console.log('LOGGER LOGS', { level, message, extraInfo });
-  },
 });
 
 const n2m = new NotionToMarkdown({ notionClient: notion });

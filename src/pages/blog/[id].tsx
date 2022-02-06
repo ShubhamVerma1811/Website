@@ -17,6 +17,23 @@ interface IBlog {
 
 const Blog = (props: IBlog) => {
   const date = new Date(props.blogInfo?.properties?.created?.created_time);
+  const [showBackToTop, setShowBackToTop] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <div className="mx-5">
@@ -57,8 +74,7 @@ const Blog = (props: IBlog) => {
                 ],
                 rehypeHighlight,
               ]}
-              className="prose w-full max-w-none text-white prose-headings:text-white prose-h1:text-4xl prose-h2:mx-0 prose-h2:mt-8 prose-h2:mb-0 prose-h2:text-3xl prose-h2:font-medium prose-p:my-5 prose-p:mx-0 prose-p:text-xl prose-p:font-light prose-a:text-blue-500 prose-a:underline prose-a:hover:underline prose-blockquote:text-white prose-strong:text-white prose-code:font-normal prose-code:text-gray-400 prose-code:before:content-none prose-code:after:content-none
-              "
+              className="prose w-full max-w-none overflow-hidden text-white prose-headings:text-white prose-h1:text-4xl prose-h2:mx-0 prose-h2:mt-8 prose-h2:mb-0 prose-h2:text-3xl prose-h2:font-medium prose-p:my-5 prose-p:mx-0 prose-p:text-xl prose-p:font-light prose-a:text-blue-500 prose-a:underline prose-a:hover:underline prose-blockquote:text-white prose-strong:text-white prose-code:bg-gray-800 prose-code:p-1 prose-code:font-normal prose-code:text-gray-400 prose-code:before:content-none prose-code:after:content-none prose-img:rounded-sm"
               components={{
                 img: (props: any) => {
                   return (
@@ -95,16 +111,18 @@ const Blog = (props: IBlog) => {
         </main>
       </div>
       <div className="h-48" />
-      <button
-        className="border-text-white fixed right-5 bottom-5 h-12 w-12 rounded-full border bg-gray-900 text-white shadow"
-        onClick={() => {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-          });
-        }}>
-        Top
-      </button>
+      {showBackToTop && (
+        <button
+          className="border-text-white fixed right-5 bottom-5 h-12 w-12 rounded-full border bg-gray-900 text-white shadow"
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
+          }}>
+          Top
+        </button>
+      )}
     </div>
   );
 };
