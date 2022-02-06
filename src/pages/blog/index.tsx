@@ -11,7 +11,7 @@ interface IBlog {
 const Blog = (props: IBlog) => {
   // @ts-ignore
   return props.database.results.map((page) => (
-    <Link href={`/blog/${page.id}`}>
+    <Link href={`/blog/${page.id}`} key={page.id}>
       <a>
         <h1 className="text-white">
           {page.properties.name.title[0]?.plain_text}
