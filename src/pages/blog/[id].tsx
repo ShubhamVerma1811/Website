@@ -18,19 +18,19 @@ interface IBlog {
 }
 
 const Blog = (props: IBlog) => {
-  const date = new Date(props.blogInfo?.properties?.created?.created_time);
+  const date = props.blogInfo?.properties?.published?.date?.start;
 
   const mins = minutesToRead(props.md);
 
   const sidebar = [
     {
       title: 'Posted',
-      info: `${date.toDateString()}`,
+      info: `${date}`,
       classes: '',
     },
     {
       title: 'Read',
-      info: `${mins === 0 ? 1 : mins} min(s)`,
+      info: `${mins} min(s)`,
       classes: '',
     },
     {
