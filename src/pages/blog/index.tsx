@@ -28,7 +28,9 @@ const Blog = (props: IBlog) => {
           {props.database.results.map((page: any) => {
             return (
               <div className=" mb-12">
-                <Link href={`/blog/${page.id}`} key={page.id}>
+                <Link
+                  href={`/blog/${page.properties.slug?.rich_text?.[0].plain_text}`}
+                  key={page.id}>
                   <a>
                     <h2 className="prose text-3xl  text-white">
                       {page.properties.name.title[0]?.plain_text}
@@ -60,9 +62,7 @@ export default Blog;
 
 // @ts-ignore
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const database = await notion.getPosts(
-    '914232ab-7e40-448b-bfc4-ddade4d4ccde',
-  );
+  const database = await notion.getPosts();
 
   return {
     props: {

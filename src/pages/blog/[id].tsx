@@ -131,7 +131,7 @@ const Blog = (props: IBlog) => {
 export default Blog;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await notion.getPosts('914232ab-7e40-448b-bfc4-ddade4d4ccde');
+  const posts = await notion.getPosts();
 
   const paths = posts.results?.map((page) => ({
     params: {
@@ -141,7 +141,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: 'blocking',
   };
 };
 
@@ -150,9 +150,28 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const id = typeof params.id === 'string' ? params.id : params.id[0];
 
-  const blogInfo = await notion.getPageInfo(id);
+  // Grab the slug from the post URL
+  const slug = id;
+  // Get all posts from the Notion database
+  const posts = await notion.getPosts();
 
-  const md = await notion.getMakrkdown(id);
+  // Find the post with a matching slug property
+  const matchedPost = posts.results.filter((post: any) => {
+    if (post?.properties?.slug) {
+      return post.properties.slug?.rich_text?.[0].plain_text === slug;
+    }
+  })[0];
+
+  if (!matchedPost) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const blogInfo = await notion.getPageInfo(matchedPost.id);
+
+  // Get the post's markdown content
+  const md = await notion.getMakrkdown(matchedPost.id);
 
   return {
     props: {

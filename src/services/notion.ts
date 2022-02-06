@@ -8,9 +8,9 @@ const notion = new Client({
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
 class Notion {
-  async getPosts(database_id: string) {
-    const post = await notion.databases.query({
-      database_id,
+  async getPosts() {
+    return await notion.databases.query({
+      database_id: process.env.NOTION_BLOG_DATABASE_ID as string,
       sorts: [
         {
           property: 'published',
@@ -18,33 +18,48 @@ class Notion {
         },
       ],
       filter: {
-        property: 'active',
-        checkbox: {
-          equals: true,
-        },
+        and: [
+          {
+            property: 'active',
+            checkbox: {
+              equals: true,
+            },
+          },
+          {
+            property: 'environment',
+            multi_select: {
+              contains: process.env.NOTION_ENVIRONMENT as string,
+            },
+          },
+        ],
       },
     });
-
-    // this.posts = post
-
-    // while(post.has_more) {
-    //   const next = await notion.databases.query({
-    //     database_id,
-    //     start_cursor: post?.next_cursor,
-    //   });
-    // }
-
-    return post;
   }
 
+  // / Get a Notion database page info by ID
   async getPageInfo(page_id: string) {
     return await notion.pages.retrieve({ page_id });
   }
 
   async getPageContent(block_id: string) {
-    return await notion.blocks.children.list({
-      block_id,
-    });
+    const baseQuery = {
+      block_id: block_id,
+      page_size: 100,
+    };
+    let results = [];
+    let postContent = await notion.blocks.children.list(baseQuery);
+
+    results = [...postContent.results];
+
+    while (postContent.has_more && postContent.next_cursor) {
+      postContent = await notion.blocks.children.list({
+        ...baseQuery,
+        start_cursor: postContent.next_cursor,
+      });
+      results = [...results, ...postContent.results];
+    }
+
+    return results;
   }
 
   async getMakrkdown(page_id: string) {
