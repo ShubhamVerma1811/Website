@@ -1,104 +1,34 @@
-import { useLoadMore } from '../hooks/useLoadMore';
-import { IBlogs } from '../types';
-import LoadMoreButton from './LoadMoreButton';
+import Link from 'next/link';
+import BlogsBlock from '../blocks/blogs';
 
 interface IBlogsProps {
-  blogs: IBlogs;
+  blogs: any;
 }
 
 const Blogs = ({ blogs }: IBlogsProps) => {
-  const _posts = blogs?.data?.user?.publication?.posts;
-  const { items: posts, hasMore, loadMore } = useLoadMore(_posts);
+  // const _posts = blogs?.data?.user?.publication?.posts;
+  // const { items: posts, hasMore, loadMore } = useLoadMore(_posts);
   return (
-    <section className="text-gray-500 bg-gray-900 body-font">
-      <div className="px-5 py-12 mx-auto">
-        <div className="flex flex-col text-center w-full mb-12">
-          <h1 className="sm:text-3xl text-2xl font-medium title-font text-white">
+    <section className="body-font bg-gray-900 text-gray-500">
+      <div className="mx-auto px-5 py-12">
+        <div className="mb-12 flex w-full flex-col text-center">
+          <h1 className="title-font text-2xl font-medium text-white sm:text-3xl">
             Blogs
           </h1>
         </div>
-        <div className="container px-5 mx-auto">
-          <div className="flex flex-wrap -m-4">
-            {posts?.map((post) => (
-              <div
-                key={post?._id}
-                className="p-4 md:w-1/2 lg:w-1/3 overflow-hidden">
-                <div className="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={`https://blogs.shubhamverma.me/${post?.slug}`}>
-                    <img
-                      className={`lg:h-48 md:h-36 w-full object-cover object-center umami--click-${post?.slug}`}
-                      src={post?.coverImage}
-                      alt="blog"
-                    />
-                  </a>
-                  <div className="p-6">
-                    <h2 className="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">
-                      CATEGORY
-                    </h2>
-                    <h1 className="title-font text-lg font-medium text-white mb-3 truncate">
-                      {post?.title}
-                    </h1>
-                    <p className="leading-relaxed mb-3">
-                      {post?.brief.substr(0, 120)} . . .
-                    </p>
-                    <div className="flex items-center flex-wrap ">
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 cursor-pointer umami--click-${post?.slug}`}
-                        href={`https://blogs.shubhamverma.me/${post?.slug}`}>
-                        Read More
-                        <svg
-                          className="w-4 h-4 ml-2"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          fill="none"
-                          strokeLinecap="round"
-                          strokeLinejoin="round">
-                          <path d="M5 12h14"></path>
-                          <path d="M12 5l7 7-7 7"></path>
-                        </svg>
-                      </a>
-                      <span className="text-gray-600 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-800">
-                        <svg
-                          className="w-4 h-4 mr-1"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          fill="none"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          viewBox="0 0 24 24">
-                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                          <circle cx="12" cy="12" r="3"></circle>
-                        </svg>
-                        {post.totalReactions}
-                      </span>
-                      <span className="text-gray-600 inline-flex items-center leading-none text-sm">
-                        <svg
-                          className="w-4 h-4 mr-1"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          fill="none"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          viewBox="0 0 24 24">
-                          <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                        </svg>
-                        {post.replyCount}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div className="container mx-auto px-5">
+          <div className="-m-4">
+            {blogs.slice(0, 3).map((blog: any, index: number) => (
+              <BlogsBlock {...blog} key={index} />
             ))}
           </div>
         </div>
+        <Link href="/blog">
+          <a className="text-xl text-indigo-400 underline">View All Blogs</a>
+        </Link>
       </div>
-      <LoadMoreButton hasMore={hasMore} loadMore={loadMore} />
+
+      {/* <LoadMoreButton hasMore={hasMore} loadMore={loadMore} /> */}
     </section>
   );
 };

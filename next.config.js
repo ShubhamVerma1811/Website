@@ -1,12 +1,9 @@
 module.exports = {
-  pwa: {
-    dest: 'public',
-    disable: false,
-    register: true,
-    scope: '/',
-    sw: 'service-worker.js',
-  },
-  images: {
-    domains: ['project-images.gitconnectedcontent.com'],
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
   },
 };

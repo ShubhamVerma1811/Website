@@ -1,23 +1,23 @@
-import { Link } from 'react-scroll';
 import React from 'react';
+import { Link } from 'react-scroll';
 
 const Footer = () => {
   return (
-    <footer className="text-gray-500 bg-gray-900 body-font">
-      <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+    <footer className="body-font bg-gray-900 text-gray-500">
+      <div className="container mx-auto flex flex-col items-center px-5 py-8 sm:flex-row">
         <Link
           to="header"
           smooth
           duration={1000}
-          className="flex title-font font-medium items-center md:justify-start justify-center text-white umami--click--footer-logo cursor-pointer">
+          className="title-font umami--click--footer-logo flex cursor-pointer items-center justify-center font-medium text-white md:justify-start">
           <span className="ml-3 text-xl">Shubham Verma</span>
         </Link>
-        <p className="text-sm text-gray-600 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">
+        <p className="mt-4 text-sm text-gray-600 sm:ml-4 sm:mt-0 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:pl-4">
           Made with{' '}
           <span role="img" aria-label="img">
             🤍
           </span>{' '}
-          and NextJS © {(new Date()).getFullYear()}
+          and NextJS © {new Date().getFullYear()}
         </p>
       </div>
     </footer>
