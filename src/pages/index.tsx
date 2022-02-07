@@ -3,6 +3,7 @@ import Gallery from '../components/Gallery';
 import Hero from '../components/Hero';
 import PullRequests from '../components/PullRequests';
 import { PageLayout } from '../layouts';
+import Notion from '../services/notion';
 import { IBlogs, IPortfolio } from '../types';
 import { IPullRequests } from '../types/github.types';
 
@@ -28,37 +29,9 @@ const Home = ({ portfolio, blogs, pullRequests }: HomeProps) => {
 
 export async function getStaticProps() {
   const portfolioResponse = await fetch(process.env.PORTFOLIO_API_URI!);
-  const HASHNODE_GRAPHQL_ENDPOINT = process.env.HASHNODE_GRAPHQL_ENDPOINT;
-  const hashnodeUsername = process.env.HASHNODE_USERNAME;
   const GITHUB_GRAPHQL_ENDPOINT = process.env.GITHUB_GRAPHQL_ENDPOINT;
   const githubUsername = process.env.GITHUB_USERNAME;
   const bearerToken = process.env.GITHUB_TOKEN;
-
-  const blogRes = await fetch(HASHNODE_GRAPHQL_ENDPOINT!, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: `
-        {
-          user(username:"${hashnodeUsername}"){
-            publication{
-              posts(page:0){
-                _id
-                title
-             brief
-                slug
-                totalReactions
-                replyCount
-                coverImage
-              }
-            }
-          }
-        }
-      `,
-    }),
-  });
 
   const pullRequestsRes = await fetch(GITHUB_GRAPHQL_ENDPOINT!, {
     method: 'POST',
@@ -92,8 +65,10 @@ export async function getStaticProps() {
   });
 
   const portfolio = await portfolioResponse.json();
-  const blogs = await blogRes.json();
   const pullRequests = await pullRequestsRes.json();
+
+  const notion = new Notion();
+  const blogs = (await notion.getPosts()).results;
 
   return {
     props: {
@@ -101,7 +76,7 @@ export async function getStaticProps() {
       blogs,
       pullRequests,
     },
-    revalidate: 3600,
+    revalidate: 120,
   };
 }
 

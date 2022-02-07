@@ -81,6 +81,12 @@ const Blog = (props: IBlog) => {
                 <h1 className="text-4xl font-normal text-white md:text-5xl">
                   {props.blogInfo?.properties?.name?.title[0]?.plain_text}
                 </h1>
+                <p className="prose mt-2 text-base text-gray-400">
+                  {
+                    props.blogInfo?.properties?.subtitle?.rich_text[0]
+                      ?.plain_text
+                  }
+                </p>
                 <ReactMarkdown
                   remarkPlugins={[gfm]}
                   className="prose w-full max-w-none overflow-hidden text-white prose-headings:text-white prose-h1:text-4xl prose-h2:mx-0 prose-h2:mt-8 prose-h2:mb-0 prose-h2:text-3xl prose-h2:font-medium prose-p:my-5 prose-p:mx-0 prose-p:text-xl prose-p:font-light prose-a:text-blue-500 prose-a:underline prose-a:hover:underline prose-blockquote:text-white prose-strong:text-white prose-code:rounded-md prose-code:bg-gray-800 prose-code:p-1 prose-code:font-normal prose-code:text-white prose-code:before:content-none prose-code:after:content-none prose-img:rounded-sm"
