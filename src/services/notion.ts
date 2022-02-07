@@ -80,6 +80,12 @@ class Notion {
               contains: tagName,
             },
           },
+          {
+            property: 'environment',
+            multi_select: {
+              contains: process.env.NOTION_ENVIRONMENT as string,
+            },
+          },
         ],
       },
     });
