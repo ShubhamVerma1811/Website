@@ -89,7 +89,7 @@ const Blog = (props: IBlog) => {
                 </p>
                 <ReactMarkdown
                   remarkPlugins={[gfm]}
-                  className="prose w-full max-w-none overflow-hidden text-white prose-headings:text-white prose-h1:text-4xl prose-h2:mx-0 prose-h2:mt-8 prose-h2:mb-0 prose-h2:text-3xl prose-h2:font-medium prose-p:my-5 prose-p:mx-0 prose-p:text-xl prose-p:font-light prose-a:text-blue-500 prose-a:underline prose-a:hover:underline prose-blockquote:text-white prose-strong:text-white prose-code:rounded-md prose-code:bg-gray-800 prose-code:p-1 prose-code:font-normal prose-code:text-white prose-code:before:content-none prose-code:after:content-none prose-img:rounded-sm"
+                  className="prose w-full max-w-none overflow-hidden text-white prose-headings:text-white prose-h1:text-4xl prose-h2:mx-0 prose-h2:mt-8 prose-h2:mb-0 prose-h2:text-3xl prose-h2:font-medium prose-p:my-5 prose-p:mx-0 prose-p:text-xl prose-p:font-light prose-a:text-indigo-500 prose-a:underline prose-a:hover:underline prose-blockquote:text-white prose-strong:text-white prose-code:rounded-md prose-code:bg-gray-800 prose-code:p-1 prose-code:font-normal prose-code:text-white prose-code:before:content-none prose-code:after:content-none prose-img:rounded-sm"
                   components={{
                     img: (props: any) => {
                       return (
@@ -139,11 +139,11 @@ export default Blog;
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await notion.getPosts();
 
-  const paths = posts.results?.map((page) => ({
-    params: {
-      id: page.id,
-    },
-  }));
+  const paths = posts.results?.map((page: any) => {
+    return {
+      params: { slug: page?.properties.slug?.rich_text?.[0].plain_text },
+    };
+  });
 
   return {
     paths,
@@ -152,12 +152,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (!params || !params.id) throw new Error('No id found in params');
-
-  const id = typeof params.id === 'string' ? params.id : params.id[0];
+  if (!params || !params.slug) throw new Error('No slug found in params');
 
   // Grab the slug from the post URL
-  const slug = id;
+
+  const slug = typeof params.slug === 'string' ? params.slug : params.slug[0];
   // Get all posts from the Notion database
   const posts = await notion.getPosts();
 
