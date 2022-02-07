@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@notionhq/client": "^0.4.13",
+    "copy-text-to-clipboard": "^3.0.1",
     "next": "^12.0.10",
     "notion-to-md": "^2.3.0",
     "react": "^17.0.2",

@@ -3,9 +3,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import gfm from 'remark-gfm';
+import CodeBlock from '../../blocks/code';
 import { BlogLayout, PageLayout } from '../../layouts';
 import Notion from '../../services/notion';
 import { minutesToRead } from '../../services/read';
@@ -104,23 +103,11 @@ const Blog = (props: IBlog) => {
                         </figure>
                       );
                     },
-                    code({ node, inline, className, children, ...props }) {
-                      const match = /language-(\w+)/.exec(className || '');
-                      return !inline && match ? (
-                        <SyntaxHighlighter
-                          style={nord}
-                          language={match[1]}
-                          PreTag="div"
-                          showLineNumbers
-                          wrapLines
-                          {...props}>
-                          {String(children).replace(/\n$/, '')}
-                        </SyntaxHighlighter>
-                      ) : (
-                        <code className={className} {...props}>
-                          {children}
-                        </code>
-                      );
+                    pre: (props: any) => {
+                      return <pre className="relative">{props.children}</pre>;
+                    },
+                    code(props) {
+                      return <CodeBlock {...props} />;
                     },
                   }}>
                   {props.md}
