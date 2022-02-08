@@ -19,7 +19,7 @@ const Blog = (props: IBlog) => {
         <title>Blog | Shubham Verma</title>
         <meta name="description" content="Blogs by Shubham Verma" />
       </Head>
-      <div className="mx-5 mt-20 lg:mx-auto lg:mt-36 lg:grid lg:grid-cols-4">
+      <div className="mx-9 mt-20  lg:mt-36 lg:grid lg:grid-cols-4">
         <div>
           <h1 className="prose mb-6 text-4xl text-white lg:mb-auto">Blog</h1>
         </div>
