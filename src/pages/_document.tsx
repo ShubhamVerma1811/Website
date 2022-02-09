@@ -23,13 +23,6 @@ class MyDocument extends Document {
           name="viewport"
           content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
-        <meta
-          name="description"
-          content="Shubham Verma - Frontend Developer Portfolio"
-        />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        <meta name="msapplication-config" content="browserconfig.xml" />
         <meta name="monetization" content="$ilp.uphold.com/RpM3whjzmfzH" />
         <script
           async
