@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Blogs from '../components/Blogs';
 import Gallery from '../components/Gallery';
 import Hero from '../components/Hero';
@@ -16,6 +17,13 @@ interface HomeProps {
 const Home = ({ portfolio, blogs, pullRequests }: HomeProps) => {
   return (
     <PageLayout>
+      <Head>
+        <title>Shubham Verma | Frontend Developer Portfolio</title>
+        <meta
+          name="description"
+          content="Shubham Verma | Frontend Developer Portfolio"
+        />
+      </Head>
       <Hero basics={portfolio.basics} skills={portfolio.skills} />
       <PullRequests
         pullRequests={pullRequests}

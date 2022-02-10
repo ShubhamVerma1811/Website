@@ -45,6 +45,8 @@ const Blog = (props: IBlog) => {
     },
   ];
 
+  console.log(props.blogInfo?.properties?.subtitle?.rich_text[0]?.plain_text);
+
   return (
     <PageLayout>
       <BlogLayout>
@@ -58,6 +60,10 @@ const Blog = (props: IBlog) => {
             content={
               props.blogInfo?.properties?.subtitle?.rich_text[0]?.plain_text
             }
+          />
+          <meta
+            property="og:image"
+            content={props.blogInfo?.properties?.thumbnail?.files[0]?.file?.url}
           />
         </Head>
         <div className="mx-5">
