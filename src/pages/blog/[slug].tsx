@@ -57,7 +57,6 @@ const Blog = (props: IBlog) => {
         method: 'POST',
         body: JSON.stringify({
           page_id: props?.blogInfo?.id,
-          views: props?.blogInfo?.properties?.views?.number ?? 0,
         }),
       });
 
