@@ -52,8 +52,8 @@ const Blog = (props: IBlog) => {
   ];
 
   useEffect(() => {
-    setViews(props.blogInfo?.properties?.name);
-  }, [props.blogInfo?.properties?.name]);
+    setViews(props.blogInfo?.properties?.views?.number);
+  }, [props.blogInfo?.properties?.views?.number]);
 
   useEffect(() => {
     async function views() {
