@@ -52,17 +52,17 @@ const Blog = (props: IBlog) => {
   ];
 
   useEffect(() => {
+    setViews(props.blogInfo?.properties?.views?.number);
+  }, [props.blogInfo?.properties?.views?.number]);
+
+  useEffect(() => {
     async function views() {
-      const res = await fetch('/api/views', {
+      await fetch('/api/views', {
         method: 'POST',
         body: JSON.stringify({
           page_id: props?.blogInfo?.id,
         }),
       });
-
-      const _views = await res.json();
-
-      setViews(_views);
     }
 
     views();
