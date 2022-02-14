@@ -94,7 +94,7 @@ class Notion {
   }
 
   async updateViews(page_id: string, views: number) {
-    await notion.pages.update({
+    const page = await notion.pages.update({
       page_id,
       properties: {
         views: {
@@ -102,6 +102,9 @@ class Notion {
         },
       },
     });
+
+    // @ts-ignore
+    return page?.properties?.views?.number;
   }
 }
 

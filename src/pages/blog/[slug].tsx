@@ -17,6 +17,7 @@ interface IBlog {
 }
 
 const Blog = (props: IBlog) => {
+  const [views, setViews] = React.useState<string | number>('--');
   const date = props.blogInfo?.properties?.published?.date?.start;
 
   const mins = minutesToRead(props.md);
@@ -45,20 +46,24 @@ const Blog = (props: IBlog) => {
     },
     {
       title: 'Views',
-      info: props.blogInfo?.properties?.views?.number,
+      info: views,
       classes: '',
     },
   ];
 
   useEffect(() => {
     async function views() {
-      await fetch('/api/views', {
+      const res = await fetch('/api/views', {
         method: 'POST',
         body: JSON.stringify({
           page_id: props?.blogInfo?.id,
           views: props?.blogInfo?.properties?.views?.number ?? 0,
         }),
       });
+
+      const _views = await res.json();
+
+      setViews(_views);
     }
 
     views();
