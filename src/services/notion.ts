@@ -92,6 +92,17 @@ class Notion {
 
     return posts;
   }
+
+  async updateViews(page_id: string, views: number) {
+    await notion.pages.update({
+      page_id,
+      properties: {
+        views: {
+          number: views + 1,
+        },
+      },
+    });
+  }
 }
 
 export default Notion;

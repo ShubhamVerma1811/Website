@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import CodeBlock from '../../blocks/code';
@@ -29,7 +29,7 @@ const Blog = (props: IBlog) => {
     },
     {
       title: 'Read',
-      info: `${mins} min(s)`,
+      info: `${mins} min`,
       classes: '',
     },
     {
@@ -43,9 +43,26 @@ const Blog = (props: IBlog) => {
       )),
       classes: 'hidden lg:block',
     },
+    {
+      title: 'Views',
+      info: props.blogInfo?.properties?.views?.number,
+      classes: '',
+    },
   ];
 
-  console.log(props.blogInfo?.properties?.subtitle?.rich_text[0]?.plain_text);
+  useEffect(() => {
+    async function views() {
+      await fetch('/api/views', {
+        method: 'POST',
+        body: JSON.stringify({
+          page_id: props?.blogInfo?.id,
+          views: props?.blogInfo?.properties?.views?.number ?? 0,
+        }),
+      });
+    }
+
+    views();
+  }, []);
 
   return (
     <PageLayout>
