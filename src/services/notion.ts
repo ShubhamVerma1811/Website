@@ -93,12 +93,17 @@ class Notion {
     return posts;
   }
 
-  async updateViews(page_id: string, views: number) {
+  async updateViews(page_id: string) {
+    const view =
+      // @ts-ignore
+
+      (await this.getPageInfo(page_id))?.properties?.views?.number ?? 0;
+
     const page = await notion.pages.update({
       page_id,
       properties: {
         views: {
-          number: views + 1,
+          number: view + 1,
         },
       },
     });
