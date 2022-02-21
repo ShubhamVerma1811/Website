@@ -65,7 +65,9 @@ const Blog = (props: IBlog) => {
       });
     }
 
-    views();
+    process.env.NODE_ENV === 'production' &&
+      process.env.NOTION_ENVIRONMENT === 'PRODUCTION' &&
+      views();
   }, []);
 
   return (
