@@ -74,7 +74,7 @@ const Blog = (props: IBlog) => {
         <Head>
           <title>
             {props.blogInfo?.properties?.name?.title[0]?.plain_text} | Shubham
-            Verma
+            Verma Blogs
           </title>
           <meta
             name="description"
@@ -82,9 +82,57 @@ const Blog = (props: IBlog) => {
               props.blogInfo?.properties?.subtitle?.rich_text[0]?.plain_text
             }
           />
+          <meta name="author" content="Shubham Verma" />
+          <meta
+            name="publish_date"
+            property="og:publish_date"
+            content="2019-10-21T00:00:00-0600"></meta>
+          {/* <!-- Twitter Card data --> */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@verma__shubham" />
+          <meta
+            name="twitter:title"
+            content={props.blogInfo?.properties?.name?.title[0]?.plain_text}
+          />
+          <meta
+            name="twitter:description"
+            content={
+              props.blogInfo?.properties?.subtitle?.rich_text[0]?.plain_text
+            }
+          />
+          <meta name="twitter:creator" content="@verma__shubham" />
+          <meta
+            name="twitter:image"
+            content={props.blogInfo?.properties?.thumbnail?.files[0]?.file?.url}
+          />
+          <meta
+            name="twitter:image:alt"
+            content={
+              props.blogInfo?.properties?.subtitle?.rich_text[0]?.plain_text
+            }
+          />
+          {/* <!-- Open Graph data --> */}
+          <meta
+            property="og:title"
+            content={props.blogInfo?.properties?.name?.title[0]?.plain_text}
+          />
+          <meta property="og:type" content="article" />
+          <meta property="og:url" content="http://www.example.com/" />
           <meta
             property="og:image"
             content={props.blogInfo?.properties?.thumbnail?.files[0]?.file?.url}
+          />
+          <meta
+            property="og:image:alt"
+            content={
+              props.blogInfo?.properties?.subtitle?.rich_text[0]?.plain_text
+            }
+          />
+          <meta
+            property="og:description"
+            content={
+              props.blogInfo?.properties?.subtitle?.rich_text[0]?.plain_text
+            }
           />
         </Head>
         <div className="mx-5">
