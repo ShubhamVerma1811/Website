@@ -50,5 +50,8 @@
   },
   "keywords": [],
   "author": "Shubham Verma",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "16.10"
+  }
 }
