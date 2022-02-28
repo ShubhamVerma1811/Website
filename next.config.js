@@ -6,4 +6,12 @@ module.exports = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
+  images: {
+    domains: [
+      'project-images.gitconnectedcontent.com',
+      'res.cloudinary.com',
+      's3.us-west-2.amazonaws.com',
+      'cdn.hashnode.com',
+    ],
+  },
 };

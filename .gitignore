@@ -29,3 +29,6 @@ yarn-error.log*
 **/public/service-*.js*
 .vscode
 .vercel
+
+/public/sitemap*.xml
+/public/robots.txt
