@@ -1,10 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import CodeBlock from '../../blocks/code';
+import ImageComp from '../../components/Image';
 import { BlogLayout, PageLayout } from '../../layouts';
 import Notion from '../../services/notion';
 import { minutesToRead } from '../../services/read';
@@ -19,6 +21,7 @@ interface IBlog {
 const Blog = (props: IBlog) => {
   const [views, setViews] = React.useState<string | number>('--');
   const date = props.blogInfo?.properties?.published?.date?.start;
+  const [paddingTop, setPaddingTop] = React.useState('0');
 
   const mins = minutesToRead(props.md);
 
@@ -166,17 +169,7 @@ const Blog = (props: IBlog) => {
                   className="prose w-full max-w-none overflow-hidden text-white prose-headings:text-white prose-h1:text-4xl prose-h2:mx-0 prose-h2:mt-8 prose-h2:mb-0 prose-h2:text-3xl prose-h2:font-medium prose-p:my-5 prose-p:mx-0 prose-p:text-xl prose-p:font-light prose-a:text-indigo-500 prose-a:underline prose-a:hover:underline prose-blockquote:text-white prose-strong:text-white prose-code:rounded-md prose-code:bg-gray-800 prose-code:p-1 prose-code:font-normal prose-code:text-white prose-code:before:content-none prose-code:after:content-none prose-img:rounded-sm"
                   components={{
                     img: (props: any) => {
-                      return (
-                        <figure>
-                          <img
-                            src={props.src}
-                            alt={props.alt}
-                            className="my-0"
-                          />
-
-                          <figcaption>{props.alt}</figcaption>
-                        </figure>
-                      );
+                      return <ImageComp {...props} />;
                     },
                     pre: (props: any) => {
                       return <pre className="relative">{props.children}</pre>;

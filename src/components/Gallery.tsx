@@ -1,5 +1,6 @@
 import { useLoadMore } from '../hooks/useLoadMore';
 import { IProject } from '../types';
+import ImageComp from './Image';
 import LoadMoreButton from './LoadMoreButton';
 
 interface GalleryProps {
@@ -25,13 +26,13 @@ const Gallery = ({ projects: _projects }: GalleryProps) => {
           <div className="-mx-4 -mb-10 -mt-4 flex flex-wrap sm:-m-4">
             {projects?.map((project) => (
               <div className="mb-6 p-4 sm:mb-0 md:w-1/2 lg:w-1/3">
-                <div className="h-auto overflow-hidden rounded-lg">
+                <div className="overflow-hidden rounded-lg">
                   {project?.images?.length > 0 &&
                     project?.images?.map((image) => (
-                      <img
+                      <ImageComp
                         alt="content"
-                        className="h-full w-full object-cover object-center"
                         src={image?.resolutions?.desktop.url}
+                        hideCaption
                       />
                     ))}
                 </div>
