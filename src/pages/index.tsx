@@ -1,4 +1,7 @@
+import { Action, useKBar } from 'kbar';
 import Head from 'next/head';
+import router from 'next/router';
+import { useEffect } from 'react';
 import Blogs from '../components/Blogs';
 import Gallery from '../components/Gallery';
 import Hero from '../components/Hero';
@@ -15,6 +18,25 @@ interface HomeProps {
 }
 
 const Home = ({ portfolio, blogs, pullRequests }: HomeProps) => {
+  const kbar = useKBar();
+
+  useEffect(() => {
+    // @ts-ignore
+    const blogsBar = blogs.map((blog): Action => {
+      return {
+        id: blog.id,
+        name: blog.properties.name.title[0]?.plain_text,
+        perform: () => {
+          router.push(
+            `/blog/${blog.properties.slug?.rich_text?.[0].plain_text}`,
+          );
+        },
+      };
+    });
+
+    kbar.query.registerActions(blogsBar);
+  }, [blogs]);
+
   return (
     <PageLayout>
       <Head>

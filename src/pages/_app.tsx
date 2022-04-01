@@ -1,8 +1,84 @@
+import {
+  createAction,
+  KBarAnimator,
+  KBarPortal,
+  KBarPositioner,
+  KBarProvider,
+  KBarResults,
+  KBarSearch,
+  useMatches,
+} from 'kbar';
 import { AppProps } from 'next/app';
+import router from 'next/router';
+import React from 'react';
 import '../styles/global.css';
 import '../styles/tailwind.css';
-import React from 'react';
+
+const actions = [
+  {
+    id: 'blog',
+    name: 'Blog',
+    shortcut: ['b'],
+    keywords: 'writing words',
+    perform: () => router.push('/blog'),
+  },
+  {
+    id: 'home',
+    name: 'Home',
+    shortcut: ['g', 'h'],
+    keywords: 'home',
+    perform: () => router.push('/'),
+  },
+  createAction({
+    name: 'Twitter',
+    shortcut: ['g', 't'],
+    perform: () =>
+      window.open(
+        'https://twitter.com/verma__shubham',
+        '_blank',
+        'noopener noreferrer',
+      ),
+  }),
+];
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <KBarProvider actions={actions}>
+      <KBarPortal>
+        <KBarPositioner className="w-[900px] scrollbar-hide">
+          <KBarAnimator className="w-3/4 md:w-1/2 overflow-hidden rounded-xl scrollbar-hide">
+            <KBarSearch
+              className="w-full py-4 px-4 shadow-2xl ring-1 ring-black/5"
+              scrollbar-hide
+            />
+            <RenderResults />
+          </KBarAnimator>
+        </KBarPositioner>
+      </KBarPortal>
+
+      <Component {...pageProps} />
+    </KBarProvider>
+  );
+}
+
+function RenderResults() {
+  const { results } = useMatches();
+
+  return (
+    <KBarResults
+      items={results}
+      onRender={({ item, active }) =>
+        typeof item === 'string' ? (
+          <div className="space-x-1 bg-indigo-500 px-4 py-2"> {item}</div>
+        ) : (
+          <div
+            className={`${
+              active ? 'bg-indigo-500 text-white' : 'bg-indigo-100'
+            } space-x-1 px-4 py-2 `}>
+            <span className="font-medium">{item.name}</span>{' '}
+          </div>
+        )
+      }
+    />
+  );
 }
