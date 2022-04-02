@@ -1,4 +1,6 @@
+import { Action, useRegisterActions } from 'kbar';
 import Head from 'next/head';
+import router from 'next/router';
 import Blogs from '../components/Blogs';
 import Gallery from '../components/Gallery';
 import Hero from '../components/Hero';
@@ -15,6 +17,22 @@ interface HomeProps {
 }
 
 const Home = ({ portfolio, blogs, pullRequests }: HomeProps) => {
+  // @ts-ignore
+  const blogsBar = blogs?.map((blog): Action => {
+    return {
+      id: blog.id,
+      name: blog.properties.name.title[0]?.plain_text,
+      subtitle: blog.properties.subtitle?.rich_text[0]?.plain_text,
+      perform: () => {
+        router.push(`/blog/${blog.properties.slug?.rich_text?.[0].plain_text}`);
+      },
+      parent: 'search-blogs',
+      section: 'Blogs',
+    };
+  });
+
+  useRegisterActions(blogsBar);
+
   return (
     <PageLayout>
       <Head>
