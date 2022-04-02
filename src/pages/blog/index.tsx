@@ -3,6 +3,8 @@ import Head from 'next/head';
 import BlogsBlock from '../../blocks/blogs';
 import { PageLayout } from '../../layouts';
 import Notion from '../../services/notion';
+import router from 'next/router';
+import { useRegisterActions } from 'kbar';
 
 const notion = new Notion();
 
@@ -12,6 +14,22 @@ interface IBlog {
 }
 
 const Blog = (props: IBlog) => {
+  // @ts-ignore
+  const blogsBar = props?.database?.results?.map((blog): Action => {
+    return {
+      id: blog.id,
+      name: blog.properties.name.title[0]?.plain_text,
+      subtitle: blog.properties.subtitle?.rich_text[0]?.plain_text,
+      perform: () => {
+        router.push(`/blog/${blog.properties.slug?.rich_text?.[0].plain_text}`);
+      },
+      parent: 'search-blogs',
+      section: 'Blogs',
+    };
+  });
+
+  useRegisterActions(blogsBar);
+
   // @ts-ignore
   return (
     <PageLayout>
