@@ -32,6 +32,7 @@ const Gallery = ({ projects: _projects }: GalleryProps) => {
                         alt="content"
                         className="h-full w-full object-cover object-center"
                         src={image?.resolutions?.desktop.url}
+                        loading="lazy"
                       />
                     ))}
                 </div>
