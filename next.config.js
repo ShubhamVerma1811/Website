@@ -1,17 +1,18 @@
-module.exports = {
-  typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    ignoreBuildErrors: true,
-  },
+// @ts-check
+
+/**
+ * @type {import('next').NextConfig}
+ **/
+
+const nextConfig = {
   images: {
     domains: [
-      'project-images.gitconnectedcontent.com',
       'res.cloudinary.com',
-      's3.us-west-2.amazonaws.com',
       'cdn.hashnode.com',
+      'source.unsplash.com',
+      'images.unsplash.com',
     ],
   },
 };
+
+module.exports = nextConfig;
