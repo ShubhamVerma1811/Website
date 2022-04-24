@@ -1,4 +1,2 @@
-import BlogLayout from './BlogLayout';
-import PageLayout from './PageLayout';
-
-export { BlogLayout, PageLayout };
+export * from './BlogLayout';
+export * from './PageLayout';
