@@ -1,3 +1,6 @@
+import React from 'react';
+
+// TODO: add SVG types, I am too lazy to do this right now
 export const GithubIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -13,7 +16,7 @@ export const GithubIcon = () => (
   </svg>
 );
 
-export const SpotifyIcon = () => (
+export const SpotifyIcon = (props: any) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
@@ -21,6 +24,7 @@ export const SpotifyIcon = () => (
     width="20"
     height="20"
     preserveAspectRatio="xMidYMid meet"
+    {...props}
     viewBox="0 0 16 16">
     <path
       fill="currentColor"
@@ -71,5 +75,61 @@ export const SearchIcon = () => (
     <path
       fill="currentColor"
       d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0c.41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14z"></path>
+  </svg>
+);
+
+export const CommandIcon = () => (
+  <svg
+    width="1em"
+    height="1em"
+    viewBox="0 0 24 24"
+    className="text-skin-secondary">
+    <path
+      fill="currentColor"
+      d="M17.5 3C15.57 3 14 4.57 14 6.5V8h-4V6.5C10 4.57 8.43 3 6.5 3S3 4.57 3 6.5S4.57 10 6.5 10H8v4H6.5C4.57 14 3 15.57 3 17.5S4.57 21 6.5 21s3.5-1.57 3.5-3.5V16h4v1.5c0 1.93 1.57 3.5 3.5 3.5s3.5-1.57 3.5-3.5s-1.57-3.5-3.5-3.5H16v-4h1.5c1.93 0 3.5-1.57 3.5-3.5S19.43 3 17.5 3zM16 8V6.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5S18.33 8 17.5 8H16zM6.5 8C5.67 8 5 7.33 5 6.5S5.67 5 6.5 5S8 5.67 8 6.5V8H6.5zm3.5 6v-4h4v4h-4zm7.5 5c-.83 0-1.5-.67-1.5-1.5V16h1.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5zm-11 0c-.83 0-1.5-.67-1.5-1.5S5.67 16 6.5 16H8v1.5c0 .83-.67 1.5-1.5 1.5z"></path>
+  </svg>
+);
+
+export const Moon = () => (
+  <svg
+    width="1em"
+    height="1em"
+    viewBox="0 0 24 24"
+    className="text-skin-secondary">
+    <path
+      fill="currentColor"
+      d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142c3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+  </svg>
+);
+
+export const Sun = () => (
+  <svg
+    width="1em"
+    height="1em"
+    viewBox="0 0 24 24"
+    className="text-skin-secondary">
+    <path
+      fill="currentColor"
+      d="m6.76 4.84l-1.8-1.79l-1.41 1.41l1.79 1.79l1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41l-1.79 1.79l1.41 1.41l1.79-1.79zm-3.21 13.7l1.79 1.8l1.41-1.41l-1.8-1.79l-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6s6-2.69 6-6s-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41l1.79-1.8l-1.41-1.41l-1.79 1.8z"></path>
+  </svg>
+);
+
+export const DiagonalArrow = (props: any) => (
+  <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+    <path
+      fill="currentColor"
+      d="M18 7.05a1 1 0 0 0-1-1L9 6a1 1 0 0 0 0 2h5.56l-8.27 8.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0L16 9.42V15a1 1 0 0 0 1 1a1 1 0 0 0 1-1Z"></path>
+  </svg>
+);
+
+export const RightArrow = (props: any) => (
+  <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+    <path fill="currentColor" d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z"></path>
+  </svg>
+);
+
+export const PauseIcon = (props: any) => (
+  <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+    <path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
   </svg>
 );

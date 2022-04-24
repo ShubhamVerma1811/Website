@@ -10,18 +10,22 @@ const CodeBlock = (props: any) => {
     copy(code);
     setShowCopied(true);
 
-    setTimeout(() => setShowCopied(false), 2000);
+    setTimeout(() => setShowCopied(false), 1500);
   };
 
   const match = /language-(\w+)/.exec(props?.className || '');
   return !props?.inline && match ? (
-    <>
+    <div>
       <SyntaxHighlighter
         style={nord}
         language={match[1]}
         PreTag="div"
         showLineNumbers
         wrapLines
+        customStyle={{
+          margin: 0,
+          backgroundColor: 'initial',
+        }}
         {...props}>
         {String(props?.children).replace(/\n$/, '')}
       </SyntaxHighlighter>
@@ -30,7 +34,7 @@ const CodeBlock = (props: any) => {
         className="absolute top-6 right-6 rounded-md bg-gray-900 px-2 py-1 text-white">
         {showCopied ? 'Copied' : 'Copy'}
       </button>
-    </>
+    </div>
   ) : (
     <code className={props?.className} {...props}>
       {props?.children}

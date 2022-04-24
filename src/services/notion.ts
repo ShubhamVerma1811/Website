@@ -1,5 +1,6 @@
 import { Client } from '@notionhq/client';
 import { NotionToMarkdown } from 'notion-to-md';
+import { Blog, Blogs } from 'types';
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -8,8 +9,8 @@ const notion = new Client({
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
 class Notion {
-  async getPosts() {
-    return await notion.databases.query({
+  async getPosts(): Promise<Array<Blogs>> {
+    const posts = await notion.databases.query({
       database_id: process.env.NOTION_BLOG_DATABASE_ID as string,
       sorts: [
         {
@@ -34,11 +35,40 @@ class Notion {
         ],
       },
     });
+
+    // @ts-ignore
+    const blogs: Array<Blogs> = posts.results?.map((post: any) => {
+      return {
+        id: post.id,
+        title: post?.properties?.name?.title?.[0].plain_text,
+        description: post?.properties?.subtitle?.rich_text[0]?.plain_text || '',
+        slug: post?.properties?.slug?.rich_text[0]?.plain_text,
+        publishedAt: post?.properties?.published?.date?.start ?? '2020-09-14',
+        readTime: 2,
+        isPublication: Math.random() > 0.5,
+      };
+    });
+
+    return blogs;
   }
 
   // / Get a Notion database page info by ID
-  async getPageInfo(page_id: string) {
-    return await notion.pages.retrieve({ page_id });
+  async getPageInfo(page_id: string): Promise<Blog> {
+    // @ts-ignore
+    const page: any = await notion.pages.retrieve({ page_id });
+
+    const blog: Blog = {
+      id: page.id,
+      title: page?.properties?.name?.title?.[0].plain_text,
+      description: page?.properties?.subtitle?.rich_text[0]?.plain_text || '',
+      slug: page?.properties?.slug?.rich_text[0]?.plain_text,
+      publishedAt: page?.properties?.published?.date?.start ?? '2020-09-14',
+      readTime: 2,
+      views: page?.properties?.views?.number,
+      markdown: await this.getMakrkdown(page.id),
+    };
+
+    return blog;
   }
 
   async getPageContent(block_id: string) {

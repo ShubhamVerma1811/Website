@@ -1,36 +1,52 @@
 import Link from 'next/link';
-import BlogsBlock from '../blocks/blogs';
+import { Blogs as Blog } from 'types';
+import { RightArrow } from './Icons';
 
-interface IBlogsProps {
-  blogs: any;
+interface BlogsCompProps {
+  blogs: Array<Blog>;
 }
 
-const Blogs = ({ blogs }: IBlogsProps) => {
-  // const _posts = blogs?.data?.user?.publication?.posts;
-  // const { items: posts, hasMore, loadMore } = useLoadMore(_posts);
+export const Blogs = ({ blogs }: BlogsCompProps) => {
   return (
-    <section className="body-font bg-gray-900 text-gray-500">
-      <div className="mx-auto px-5 py-12">
-        <div className="mb-12 flex w-full flex-col text-center">
-          <h1 className="title-font text-2xl font-medium text-white sm:text-3xl">
-            Blogs
-          </h1>
-        </div>
-        <div className="container mx-auto px-5">
-          <div className="-m-4">
-            {blogs.slice(0, 3).map((blog: any, index: number) => (
-              <BlogsBlock {...blog} key={index} />
-            ))}
-          </div>
-        </div>
-        <Link href="/blog">
-          <a className="text-xl text-indigo-400 underline">View All Blogs</a>
-        </Link>
-      </div>
+    <section className="my-24">
+      <p className="text-4xl font-bold text-skin-secondary">Recent Blogs</p>
+      {blogs?.map((blog, index) => {
+        return (
+          <Link href={`/blog/${blog.slug}`} passHref>
+            <a>
+              <div
+                key={index}
+                className="my-4 cursor-pointer rounded-md p-3 transition-all hover:scale-[1.02]">
+                <div className="flex items-center">
+                  <p className="text-xl text-skin-secondary">{blog.title}</p>
+                </div>
 
-      {/* <LoadMoreButton hasMore={hasMore} loadMore={loadMore} /> */}
+                <p className="my-1 text-skin-primary-muted">
+                  2 months ago <span className="mx-3">•</span>
+                  {blog.readTime} min(s) read
+                  {blog.isPublication && blog.publicationUrl && (
+                    <Link href={blog.publicationUrl}>
+                      <span className="text-md">
+                        <span className="mx-3">•</span>
+                        Publication
+                      </span>
+                    </Link>
+                  )}
+                </p>
+                <p className="text-md truncate rounded-md text-skin-primary-muted">
+                  {blog.description}
+                </p>
+              </div>
+            </a>
+          </Link>
+        );
+      })}
+      <Link href="/blog">
+        <a className="cursor-pointer pb-1 font-bold text-skin-secondary hover:border-b">
+          Read all posts
+          <RightArrow className="ml-2 inline-block" />
+        </a>
+      </Link>
     </section>
   );
 };
-
-export default Blogs;
