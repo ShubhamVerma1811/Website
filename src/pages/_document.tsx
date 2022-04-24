@@ -30,7 +30,7 @@ class MyDocument extends Document {
           data-website-id={process.env.NEXT_PUBLIC_UMAMI_UUID}
           src={process.env.NEXT_PUBLIC_UMAMI_URI}></script>
         <Head />
-        <body className="bg-gray-900">
+        <body className="dark bg-skin-primary">
           <Main />
           <NextScript />
         </body>

@@ -1,4 +1,10 @@
 import {
+  GithubIcon,
+  LinkedInIcon,
+  SpotifyIcon,
+  TwitterIcon,
+} from 'components/Icons';
+import {
   createAction,
   KBarAnimator,
   KBarPortal,
@@ -9,14 +15,9 @@ import {
   useMatches,
 } from 'kbar';
 import { AppProps } from 'next/app';
+import Head from 'next/head';
 import router from 'next/router';
 import React from 'react';
-import {
-  GithubIcon,
-  LinkedInIcon,
-  SpotifyIcon,
-  TwitterIcon,
-} from '../components/Icons';
 import '../styles/global.css';
 import '../styles/tailwind.css';
 
@@ -102,28 +103,36 @@ const actions = [
     shortcut: ['s', 'b'],
   },
   createAction({
-    name: 'Reload',
-    shortcut: ['r'],
-    keywords: 'reload',
-    perform: () => window.location.reload(),
-    section: 'Misc',
+    name: 'Toogle theme',
+    shortcut: ['t'],
+    keywords: 'theme',
+    perform: () => {
+      const body = document.querySelector('body');
+      body?.classList.toggle('dark');
+    },
   }),
 ];
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <KBarProvider actions={actions}>
-      <KBarPortal>
-        <KBarPositioner className="w-[900px]">
-          <KBarAnimator className="w-3/4 overflow-hidden rounded-xl md:w-1/2">
-            <KBarSearch className="w-full py-4 px-4 shadow-2xl ring-1 ring-black/5" />
-            <RenderResults />
-          </KBarAnimator>
-        </KBarPositioner>
-      </KBarPortal>
-
-      <Component {...pageProps} />
-    </KBarProvider>
+    <React.Fragment>
+      <Head>
+        <link rel="shortcut icon" href="/favicon.ico" />
+      </Head>
+      <KBarProvider actions={actions}>
+        <KBarPortal>
+          <KBarPositioner className="w-[900px]">
+            <KBarAnimator className="w-3/4 overflow-hidden rounded-xl md:w-1/2">
+              <KBarSearch className="w-full py-4 px-4 shadow-2xl ring-1 ring-black/5" />
+              <RenderResults />
+            </KBarAnimator>
+          </KBarPositioner>
+        </KBarPortal>
+        {/* TODO: Componet cannot be used a JSX fix */}
+        {/* @ts-ignore */}
+        <Component {...pageProps} />
+      </KBarProvider>
+    </React.Fragment>
   );
 }
 
