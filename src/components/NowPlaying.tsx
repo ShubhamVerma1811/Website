@@ -60,7 +60,7 @@ export const NowPlaying = () => {
       </div>
       <div
         onClick={handlePlay}
-        className='mr-3 inline cursor-pointer text-skin-primary-muted underline-offset-4 hover:underline'>
+        className='mr-3 ml-8 inline cursor-pointer text-skin-primary-muted underline-offset-4 hover:underline'>
         {isPlaying
           ? 'Stop preview'
           : track?.title
