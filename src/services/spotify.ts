@@ -26,14 +26,19 @@ export const getAccessToken = async () => {
 };
 
 export const getNowPlaying = async () => {
-  // @ts-ignore
-  const { access_token } = await getAccessToken();
+  try {
+    // @ts-ignore
+    const { access_token } = await getAccessToken();
 
-  return fetch(NOW_PLAYING_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
+    return fetch(NOW_PLAYING_ENDPOINT, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    return { status: 500 };
+  }
 };
 
 export const getTopTracks = async () => {

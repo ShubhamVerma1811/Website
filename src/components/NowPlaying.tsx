@@ -36,12 +36,17 @@ export const NowPlaying = () => {
 
         <a
           href={track?.songUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="ml-2 truncate text-skin-secondary underline-offset-4 hover:underline">
-          {' '}
           {track?.title || 'Not Playing'}{' '}
-          <span className="text-skin-primary-muted"> by </span>{' '}
-          {track?.artist || 'Unknown'}
-          {track?.title && <DiagonalArrow className="inline" />}
+          {track?.title && (
+            <React.Fragment>
+              <span className="text-skin-primary-muted"> by </span>{' '}
+              {track?.artist || 'Unknown'}
+              {track?.title && <DiagonalArrow className="inline" />}
+            </React.Fragment>
+          )}
         </a>
 
         <audio
