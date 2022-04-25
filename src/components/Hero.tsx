@@ -29,7 +29,7 @@ export const Hero = () => {
           <a
             target="_blank"
             href="https://shbm.fyi/tw"
-            className=" mt-3 mr-5 w-max pb-1 text-lg text-[#1DA1F2] hover:border-b"
+            className=" mt-3 mr-5 w-max rounded-md p-2 text-lg text-[#1DA1F2] hover:bg-skin-secondary-muted"
             rel="noopener noreferrer">
             <strong>Twitter</strong>
             <DiagonalArrow className="inline text-xl" />
@@ -37,7 +37,7 @@ export const Hero = () => {
           <a
             target="_blank"
             href="https://shbm.fyi/gh"
-            className="mt-3 mr-5 w-max pb-1 text-lg text-skin-secondary hover:border-b"
+            className="mt-3 mr-5 w-max rounded-md p-2 text-lg text-skin-secondary hover:bg-skin-secondary-muted"
             rel="noopener noreferrer">
             <strong>GitHub</strong>
             <DiagonalArrow className="inline text-xl" />
@@ -45,7 +45,7 @@ export const Hero = () => {
           <a
             target="_blank"
             href="https://shbm.fyi/gh"
-            className="mt-3 w-max pb-1 text-lg text-[#0a66c2] hover:border-b dark:text-[#e9e9ea]"
+            className="mt-3 w-max rounded-md p-2 text-lg text-[#0a66c2] hover:bg-skin-secondary-muted dark:text-[#e9e9ea]"
             rel="noopener noreferrer">
             <strong>LinkedIn</strong>
             <DiagonalArrow className="inline text-xl" />
@@ -54,7 +54,7 @@ export const Hero = () => {
       </div>
       <div className="w-max overflow-clip grayscale hover:grayscale-0 md:mr-0 md:ml-auto">
         <Image
-          src="https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=879&q=80"
+          src="https://avatars.githubusercontent.com/u/25576658"
           alt="Shubham Verma"
           width={120}
           height={120}

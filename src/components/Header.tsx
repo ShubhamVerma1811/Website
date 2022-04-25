@@ -39,7 +39,7 @@ export const Header = () => {
           {headerLinks.map((link, index) => {
             return (
               <Link key={index} href={link.href} passHref>
-                <a className="mr-2 cursor-pointer rounded-md bg-skin-primary p-2 text-xl text-skin-secondary transition-all hover:bg-skin-primary-muted">
+                <a className="mr-2 cursor-pointer rounded-md bg-skin-primary p-2 text-xl text-skin-secondary transition-all hover:bg-skin-secondary-muted">
                   {link.name}
                 </a>
               </Link>

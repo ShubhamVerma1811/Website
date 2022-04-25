@@ -16,7 +16,7 @@ export const Blogs = ({ blogs }: BlogsCompProps) => {
             <a>
               <div
                 key={index}
-                className="my-4 cursor-pointer rounded-md p-3 transition-all hover:scale-[1.02]">
+                className="my-4 cursor-pointer rounded-md p-3 transition-all hover:scale-[1.02] bg-skin-secondary-muted">
                 <div className="flex items-center">
                   <p className="text-xl text-skin-secondary">{blog.title}</p>
                 </div>

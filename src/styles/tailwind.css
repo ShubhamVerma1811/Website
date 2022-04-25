@@ -11,15 +11,15 @@
     --color-primary: #f9fafb;
     --color-secondary: #111827;
     --color-primary-muted: #a3a3a3;
-    --color-secondary-muted: #333;
-    --color-accent: #6366f1;
+    --color-secondary-muted: #9ca3af1a;
+    --color-accent: #60a5fa;
   }
 
   .dark {
     --color-primary: #111;
     --color-secondary: #f9fafb;
     --color-primary-muted: #6b7280;
-    --color-secondary-muted: #9ca3af;
+    --color-secondary-muted: #9ca3af1a;
     --color-accent: #60a5fa;
   }
 }
