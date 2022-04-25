@@ -16,7 +16,7 @@ export const Hero = () => {
             href='https://geekyants.com'
             rel='noopener noreferrer'
             className='pb-1 hover:border-b'>
-            <strong className='text-[#ca0000] dark:text-skin-secondary'>
+            <strong className='text-[#ca0000]'>
               GeekyAnts
               <DiagonalArrow className='inline text-xl' />
             </strong>
@@ -45,7 +45,7 @@ export const Hero = () => {
           <a
             target='_blank'
             href='https://shbm.fyi/gh'
-            className='mt-3 w-max rounded-md p-2 text-lg text-[#0a66c2] hover:bg-skin-secondary-muted dark:text-[#e9e9ea]'
+            className='mt-3 w-max rounded-md p-2 text-lg text-[#0a66c2] hover:bg-skin-secondary-muted'
             rel='noopener noreferrer'>
             <strong>LinkedIn</strong>
             <DiagonalArrow className='inline text-xl' />
