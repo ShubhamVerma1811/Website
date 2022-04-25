@@ -49,20 +49,20 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="body-font mt-auto bg-skin-primary">
-      <hr className="my-4 border-skin-primary-muted" />
+    <footer className='body-font mt-auto bg-skin-primary'>
+      <hr className='my-4 border-skin-primary-muted' />
 
       <NowPlaying />
 
-      <hr className="my-4 border-skin-primary-muted" />
+      <hr className='my-4 border-skin-primary-muted' />
 
-      <div className="flex flex-col md:flex-row md:justify-between">
+      <div className='flex flex-col md:flex-row md:justify-between'>
         <div>
           {footerLinks.site.map((link, index) => {
             return (
               <Link href={link.href} key={index} passHref>
                 <a>
-                  <li className="my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4">
+                  <li className='my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4'>
                     {link.name}
                   </li>
                 </a>
@@ -74,8 +74,8 @@ export const Footer = () => {
           {footerLinks.social.map((link, index) => {
             return (
               <Link href={link.href} key={index} passHref>
-                <a target="_blank" rel="noopener noreferrer">
-                  <li className="my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4">
+                <a target='_blank' rel='noopener noreferrer'>
+                  <li className='my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4'>
                     {link.name}
                   </li>
                 </a>
@@ -88,7 +88,7 @@ export const Footer = () => {
             return (
               <Link href={link.href} key={index} passHref>
                 <a>
-                  <li className="my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4">
+                  <li className='my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4'>
                     {link.name}
                   </li>
                 </a>
@@ -97,9 +97,9 @@ export const Footer = () => {
           })}
         </div>
       </div>
-      <div className="container mx-auto flex flex-col items-center py-8 sm:flex-row">
+      <div className='container mx-auto flex flex-col items-center py-8 sm:flex-row'>
         <span
-          className="title-font umami--click--footer-logo flex cursor-pointer items-center justify-center text-xl font-medium text-skin-secondary md:justify-start"
+          className='title-font umami--click--footer-logo flex cursor-pointer items-center justify-center text-xl font-medium text-skin-secondary md:justify-start'
           onClick={() => {
             window?.scrollTo({
               top: 0,
@@ -108,9 +108,9 @@ export const Footer = () => {
           }}>
           Shubham Verma
         </span>
-        <p className="mt-4 text-sm text-skin-secondary sm:ml-4 sm:mt-0 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:pl-4">
+        <p className='mt-4 text-sm text-skin-secondary sm:ml-4 sm:mt-0 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:pl-4'>
           Made with{' '}
-          <span role="img" aria-label="img">
+          <span role='img' aria-label='img'>
             💖
           </span>{' '}
           and NextJS © {new Date().getFullYear()}

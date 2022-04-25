@@ -8,8 +8,8 @@ interface BlogsCompProps {
 
 export const Blogs = ({ blogs }: BlogsCompProps) => {
   return (
-    <section className="my-24">
-      <p className="text-4xl font-bold text-skin-secondary">Recent Blogs</p>
+    <section className='my-24'>
+      <p className='text-4xl font-bold text-skin-secondary'>Recent Blogs</p>
       {blogs?.map((blog, index) => {
         return (
           <Link
@@ -22,25 +22,25 @@ export const Blogs = ({ blogs }: BlogsCompProps) => {
             <a>
               <div
                 key={index}
-                className="my-4 cursor-pointer rounded-md bg-skin-secondary-muted p-3 transition-all hover:scale-[1.02]">
-                <div className="flex items-center">
-                  <p className="text-xl text-skin-secondary">{blog.title}</p>
+                className='my-4 cursor-pointer rounded-md bg-skin-secondary-muted p-3 transition-all hover:scale-[1.02]'>
+                <div className='flex items-center'>
+                  <p className='text-xl text-skin-secondary'>{blog.title}</p>
                 </div>
 
-                <p className="my-1 text-skin-primary-muted">
+                <p className='my-1 text-skin-primary-muted'>
                   2 months ago
                   {/* <span className="mx-3">•</span>
                   {blog.readTime} min(s) read */}
                   {blog.publicationUrl && (
                     <Link href={blog.publicationUrl}>
-                      <span className="text-md text-skin-secondary">
-                        <span className="mx-3">•</span>
+                      <span className='text-md text-skin-secondary'>
+                        <span className='mx-3'>•</span>
                         Publication
                       </span>
                     </Link>
                   )}
                 </p>
-                <p className="text-md truncate rounded-md text-skin-primary-muted">
+                <p className='text-md truncate rounded-md text-skin-primary-muted'>
                   {blog.description}
                 </p>
               </div>
@@ -48,10 +48,10 @@ export const Blogs = ({ blogs }: BlogsCompProps) => {
           </Link>
         );
       })}
-      <Link href="/blog">
-        <a className="cursor-pointer pb-1 font-bold text-skin-secondary hover:border-b">
+      <Link href='/blog'>
+        <a className='cursor-pointer pb-1 font-bold text-skin-secondary hover:border-b'>
           Read all posts
-          <RightArrow className="ml-2 inline-block" />
+          <RightArrow className='ml-2 inline-block' />
         </a>
       </Link>
     </section>

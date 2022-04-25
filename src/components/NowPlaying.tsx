@@ -23,34 +23,34 @@ export const NowPlaying = () => {
 
   return (
     <div>
-      <div className="flex items-center text-lg">
-        <div className="flex items-center">
+      <div className='flex items-center text-lg'>
+        <div className='flex items-center'>
           {!isPlaying ? (
-            <SpotifyIcon className="inline h-6 w-6 text-[#1DB954]" />
+            <SpotifyIcon className='inline h-6 w-6 text-[#1DB954]' />
           ) : (
             <div>
-              <PauseIcon className="text-2xl text-skin-primary-muted" />
+              <PauseIcon className='text-2xl text-skin-primary-muted' />
             </div>
           )}
         </div>
 
         <a
           href={track?.songUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ml-2 truncate text-skin-secondary underline-offset-4 hover:underline">
+          target='_blank'
+          rel='noopener noreferrer'
+          className='ml-2 truncate text-skin-secondary underline-offset-4 hover:underline'>
           {track?.title || 'Not Playing'}{' '}
           {track?.title && (
             <React.Fragment>
-              <span className="text-skin-primary-muted"> by </span>{' '}
+              <span className='text-skin-primary-muted'> by </span>{' '}
               {track?.artist || 'Unknown'}
-              {track?.title && <DiagonalArrow className="inline" />}
+              {track?.title && <DiagonalArrow className='inline' />}
             </React.Fragment>
           )}
         </a>
 
         <audio
-          className="hidden"
+          className='hidden'
           src={track?.previewUrl}
           onEnded={() => setIsPlaying(false)}
           // check if is playing
@@ -60,20 +60,20 @@ export const NowPlaying = () => {
       </div>
       <div
         onClick={handlePlay}
-        className="mr-3 inline cursor-pointer text-skin-primary-muted underline-offset-4 hover:underline">
+        className='mr-3 inline cursor-pointer text-skin-primary-muted underline-offset-4 hover:underline'>
         {isPlaying
           ? 'Stop preview'
           : track?.title
           ? 'Listen to Preview'
           : 'No preview available'}
       </div>
-      <Link href="https://shbm.fyi/sp" passHref>
+      <Link href='https://shbm.fyi/sp' passHref>
         <a
-          className="inline text-skin-primary-muted underline-offset-4 hover:underline"
-          target="_blank"
-          rel="noopener noreferrer">
+          className='inline text-skin-primary-muted underline-offset-4 hover:underline'
+          target='_blank'
+          rel='noopener noreferrer'>
           View Profile
-          <DiagonalArrow className="inline" />
+          <DiagonalArrow className='inline' />
         </a>
       </Link>
     </div>

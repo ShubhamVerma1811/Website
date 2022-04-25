@@ -19,7 +19,7 @@ const CodeBlock = (props: any) => {
       <SyntaxHighlighter
         style={nord}
         language={match[1]}
-        PreTag="div"
+        PreTag='div'
         showLineNumbers
         wrapLines
         customStyle={{
@@ -31,7 +31,7 @@ const CodeBlock = (props: any) => {
       </SyntaxHighlighter>
       <button
         onClick={() => handleCopyCode(props?.children[0])}
-        className="absolute top-6 right-6 rounded-md bg-gray-900 px-2 py-1 text-white">
+        className='absolute top-6 right-6 rounded-md bg-gray-900 px-2 py-1 text-white'>
         {showCopied ? 'Copied' : 'Copy'}
       </button>
     </div>

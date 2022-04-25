@@ -11,6 +11,7 @@ export default async function handler(
     return res.status(200).json({ isPlaying: false });
   }
 
+  // @ts-ignore
   const song = await response.json();
 
   if (song.item === null) {

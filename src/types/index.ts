@@ -1,2 +1,2 @@
 export * from './blogs.types';
-export * from "./books.types"
+export * from './books.types';

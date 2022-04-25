@@ -21,35 +21,35 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <PageLayout>
       <BlogLayout>
-        <p className="text-3xl text-skin-secondary">{blog?.title}</p>
+        <p className='text-3xl text-skin-secondary'>{blog?.title}</p>
 
-        <p className="my-1 text-gray-400">
-          {blog?.publishedAt} <span className="mx-3">•</span> {views} views{' '}
-          <span className="mx-3">•</span>
+        <p className='my-1 text-gray-400'>
+          {blog?.publishedAt} <span className='mx-3'>•</span> {views} views{' '}
+          <span className='mx-3'>•</span>
           {blog?.readTime} min read
           {blog?.canonicalUrl && (
             <React.Fragment>
-              <span className="mx-3">•</span> Originally published on{' '}
-              <a className="text-skin-accent" href={blog?.canonicalUrl}>
+              <span className='mx-3'>•</span> Originally published on{' '}
+              <a className='text-skin-accent' href={blog?.canonicalUrl}>
                 {new URL(blog.canonicalUrl).hostname}
-                <DiagonalArrow className="inline" />
+                <DiagonalArrow className='inline' />
               </a>
             </React.Fragment>
           )}
         </p>
-        <hr className="my-4 border-skin-primary-muted" />
+        <hr className='my-4 border-skin-primary-muted' />
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeSlug, rehypeAutolinkHeadings, rehypeCodeTitles]}
-          className="prose max-w-none text-lg text-skin-secondary prose-headings:text-skin-secondary prose-a:text-skin-accent prose-strong:text-skin-secondary prose-em:text-skin-secondary prose-code:rounded-sm prose-code:text-skin-secondary prose-li:text-skin-secondary"
+          className='prose max-w-none text-lg text-skin-secondary prose-headings:text-skin-secondary prose-a:text-skin-accent prose-strong:text-skin-secondary prose-em:text-skin-secondary prose-code:rounded-sm prose-code:text-skin-secondary prose-li:text-skin-secondary'
           components={{
             blockquote: (props) => (
-              <blockquote className="prose text-skin-secondary">
+              <blockquote className='prose text-skin-secondary'>
                 {props.children}
               </blockquote>
             ),
             pre: (props: any) => {
-              return <pre className="relative p-0">{props.children}</pre>;
+              return <pre className='relative p-0'>{props.children}</pre>;
             },
             code(props) {
               return <CodeBlock {...props} />;
