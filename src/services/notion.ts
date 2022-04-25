@@ -10,46 +10,52 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
 
 class Notion {
   async getPosts(): Promise<Array<Blogs>> {
-    const posts = await notion.databases.query({
-      database_id: process.env.NOTION_BLOG_DATABASE_ID as string,
-      sorts: [
-        {
-          property: 'published',
-          direction: 'descending',
-        },
-      ],
-      filter: {
-        and: [
+    try {
+      const posts = await notion.databases.query({
+        database_id: process.env.NOTION_BLOG_DATABASE_ID as string,
+        sorts: [
           {
-            property: 'active',
-            checkbox: {
-              equals: true,
-            },
-          },
-          {
-            property: 'environment',
-            multi_select: {
-              contains: process.env.NOTION_ENVIRONMENT as string,
-            },
+            property: 'published',
+            direction: 'descending',
           },
         ],
-      },
-    });
+        filter: {
+          and: [
+            {
+              property: 'active',
+              checkbox: {
+                equals: true,
+              },
+            },
+            {
+              property: 'environment',
+              multi_select: {
+                contains: process.env.NOTION_ENVIRONMENT as string,
+              },
+            },
+          ],
+        },
+      });
 
-    // @ts-ignore
-    const blogs: Array<Blogs> = posts.results?.map((post: any) => {
-      return {
-        id: post.id,
-        title: post?.properties?.name?.title?.[0].plain_text,
-        description: post?.properties?.subtitle?.rich_text[0]?.plain_text || '',
-        slug: post?.properties?.slug?.rich_text[0]?.plain_text,
-        publishedAt: post?.properties?.published?.date?.start ?? '2020-09-14',
-        readTime: 2,
-        isPublication: Math.random() > 0.5,
-      };
-    });
+      // @ts-ignore
+      const blogs: Array<Blogs> = posts.results?.map((post: any) => {
+        return {
+          id: post.id,
+          title: post?.properties?.name?.title?.[0].plain_text,
+          description:
+            post?.properties?.subtitle?.rich_text[0]?.plain_text || '',
+          slug: post?.properties?.slug?.rich_text[0]?.plain_text,
+          publishedAt: post?.properties?.published?.date?.start ?? '2020-09-14',
+          readTime: 2,
+          publicationUrl: post?.properties?.publicationUrl?.url?.trim() || null,
+        };
+      });
 
-    return blogs;
+      return blogs;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 
   // / Get a Notion database page info by ID
@@ -66,6 +72,8 @@ class Notion {
       readTime: 2,
       views: page?.properties?.views?.number,
       markdown: await this.getMakrkdown(page.id),
+      canonicalUrl: page?.properties?.canonicalUrl?.url?.trim() || null,
+      publicationUrl: page?.properties?.publicationUrl?.url?.trim() || null,
     };
 
     return blog;

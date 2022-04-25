@@ -1,4 +1,5 @@
 import CodeBlock from 'blocks/code';
+import { DiagonalArrow } from 'components';
 import { BlogLayout, PageLayout } from 'layouts';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import React, { memo, useEffect } from 'react';
@@ -26,7 +27,17 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
           {blog?.publishedAt} <span className="mx-3">•</span> {views} views{' '}
           <span className="mx-3">•</span>
           {blog?.readTime} min read
+          {blog?.canonicalUrl && (
+            <React.Fragment>
+              <span className="mx-3">•</span> Originally published on{' '}
+              <a className="text-skin-accent" href={blog?.canonicalUrl}>
+                {new URL(blog.canonicalUrl).hostname}
+                <DiagonalArrow className="inline" />
+              </a>
+            </React.Fragment>
+          )}
         </p>
+        <hr className="my-4 border-skin-primary-muted" />
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeSlug, rehypeAutolinkHeadings, rehypeCodeTitles]}

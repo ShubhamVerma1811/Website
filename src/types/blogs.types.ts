@@ -4,9 +4,7 @@ export type Blogs = {
   description: string;
   slug: string;
   publishedAt: Date;
-  isPublication?: boolean;
   publicationUrl?: string;
-  isCanonical?: boolean;
   canonicalUrl?: string;
   readTime: number;
 };

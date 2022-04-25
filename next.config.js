@@ -11,6 +11,7 @@ const nextConfig = {
       'cdn.hashnode.com',
       'source.unsplash.com',
       'images.unsplash.com',
+      'avatars.githubusercontent.com',
     ],
   },
 };

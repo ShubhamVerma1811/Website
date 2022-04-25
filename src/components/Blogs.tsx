@@ -12,21 +12,28 @@ export const Blogs = ({ blogs }: BlogsCompProps) => {
       <p className="text-4xl font-bold text-skin-secondary">Recent Blogs</p>
       {blogs?.map((blog, index) => {
         return (
-          <Link href={`/blog/${blog.slug}`} passHref>
+          <Link
+            href={
+              blog?.publicationUrl
+                ? blog?.publicationUrl
+                : `/blog/${blog?.slug}`
+            }
+            passHref>
             <a>
               <div
                 key={index}
-                className="my-4 cursor-pointer rounded-md p-3 transition-all hover:scale-[1.02] bg-skin-secondary-muted">
+                className="my-4 cursor-pointer rounded-md bg-skin-secondary-muted p-3 transition-all hover:scale-[1.02]">
                 <div className="flex items-center">
                   <p className="text-xl text-skin-secondary">{blog.title}</p>
                 </div>
 
                 <p className="my-1 text-skin-primary-muted">
-                  2 months ago <span className="mx-3">•</span>
-                  {blog.readTime} min(s) read
-                  {blog.isPublication && blog.publicationUrl && (
+                  2 months ago
+                  {/* <span className="mx-3">•</span>
+                  {blog.readTime} min(s) read */}
+                  {blog.publicationUrl && (
                     <Link href={blog.publicationUrl}>
-                      <span className="text-md">
+                      <span className="text-md text-skin-secondary">
                         <span className="mx-3">•</span>
                         Publication
                       </span>
