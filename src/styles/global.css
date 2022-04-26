@@ -1,5 +1,6 @@
 @font-face {
   font-family: Karla;
+  font-display: 'swap';
   src: local('Karla'),
     url('../../public/assets/fonts/Karla/Karla.woff') format('woff');
 }

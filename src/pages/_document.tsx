@@ -17,7 +17,6 @@ class MyDocument extends Document {
     return (
       <Html lang='en'>
         <title>Frontend Developer | Shubham Verma</title>
-        <link rel='manifest' href='manifest.json'></link>
         <meta
           name='viewport'
           content='width=device-width, initial-scale=1, viewport-fit=cover'
