@@ -1,4 +1,4 @@
-import { Blogs, Hero } from 'components';
+import { Hero, RecentBlogSection } from 'components';
 import { PageLayout } from 'layouts';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { memo } from 'react';
@@ -8,7 +8,7 @@ const Home = ({ blogs }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <PageLayout>
       <Hero />
-      <Blogs blogs={blogs.slice(0, 3)} />
+      <RecentBlogSection blogs={blogs.slice(0, 3)} />
     </PageLayout>
   );
 };

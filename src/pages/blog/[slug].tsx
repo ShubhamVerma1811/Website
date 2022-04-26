@@ -21,7 +21,9 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <PageLayout>
       <BlogLayout>
-        <p className='text-3xl text-skin-secondary'>{blog?.title}</p>
+        <p className='mb-3 text-4xl font-bold text-skin-secondary'>
+          {blog?.title}
+        </p>
 
         <p className='my-1 text-gray-400'>
           {blog?.publishedAt} <span className='mx-3'>•</span> {views} views{' '}

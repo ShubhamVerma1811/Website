@@ -1,4 +1,4 @@
-import { Blogs } from 'components';
+import { BlogCard } from 'components';
 import { PageLayout } from 'layouts';
 import { InferGetStaticPropsType } from 'next';
 import { memo } from 'react';
@@ -7,7 +7,11 @@ import Notion from 'services/notion';
 const Blog = ({ blogs }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <PageLayout>
-      <Blogs blogs={blogs} />
+      <p className='mb-6 text-4xl font-bold text-skin-secondary'>Blogs</p>
+
+      {blogs?.map((blog, index) => {
+        return <BlogCard key={index} blog={blog} />;
+      })}
     </PageLayout>
   );
 };
