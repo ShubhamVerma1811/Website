@@ -5,6 +5,7 @@
  **/
 
 const nextConfig = {
+  productionBrowserSourceMaps: true,
   images: {
     domains: [
       'res.cloudinary.com',

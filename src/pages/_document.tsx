@@ -16,7 +16,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang='en'>
-        <title>Frontend Developer | Shubham Verma</title>
+        <title>Shubham Verma | Frontend Developer</title>
         <meta
           name='viewport'
           content='width=device-width, initial-scale=1, viewport-fit=cover'

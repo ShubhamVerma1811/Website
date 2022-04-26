@@ -117,6 +117,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <React.Fragment>
       <Head>
+        <title>Shubham Verma | Frontend Developer</title>
         <link rel='shortcut icon' href='/favicon.ico' />
       </Head>
       <KBarProvider actions={actions}>
