@@ -18,6 +18,19 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
     setViews(blog?.views);
   }, [blog?.views]);
 
+  useEffect(() => {
+    async function views() {
+      await fetch('/api/views', {
+        method: 'POST',
+        body: JSON.stringify({
+          page_id: blog?.id,
+        }),
+      });
+    }
+
+    process.env.NODE_ENV === 'production' && views();
+  }, []);
+
   return (
     <PageLayout>
       <BlogLayout>

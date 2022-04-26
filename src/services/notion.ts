@@ -45,8 +45,9 @@ class Notion {
           description:
             post?.properties?.subtitle?.rich_text[0]?.plain_text || '',
           slug: post?.properties?.slug?.rich_text[0]?.plain_text,
-          publishedAt: post?.properties?.published?.date?.start ?? '2020-09-14',
-          readTime: 2,
+          publishedAt:
+            post?.properties?.published?.date?.start ?? 'unknown-date',
+          views: post?.properties?.views?.number,
           publicationUrl: post?.properties?.publicationUrl?.url?.trim() || null,
         };
       });
@@ -62,16 +63,17 @@ class Notion {
   async getPageInfo(page_id: string): Promise<Blog> {
     // @ts-ignore
     const page: any = await notion.pages.retrieve({ page_id });
+    const markdown = await this.getMakrkdown(page_id);
 
     const blog: Blog = {
       id: page.id,
       title: page?.properties?.name?.title?.[0].plain_text,
       description: page?.properties?.subtitle?.rich_text[0]?.plain_text || '',
       slug: page?.properties?.slug?.rich_text[0]?.plain_text,
-      publishedAt: page?.properties?.published?.date?.start ?? '2020-09-14',
+      publishedAt: page?.properties?.published?.date?.start ?? 'unknown-date',
       readTime: 2,
       views: page?.properties?.views?.number,
-      markdown: await this.getMakrkdown(page.id),
+      markdown: markdown,
       canonicalUrl: page?.properties?.canonicalUrl?.url?.trim() || null,
       publicationUrl: page?.properties?.publicationUrl?.url?.trim() || null,
     };
@@ -132,10 +134,7 @@ class Notion {
   }
 
   async updateViews(page_id: string) {
-    const view =
-      // @ts-ignore
-
-      (await this.getPageInfo(page_id))?.properties?.views?.number ?? 0;
+    const view = (await this.getPageInfo(page_id)).views ?? 0;
 
     const page = await notion.pages.update({
       page_id,

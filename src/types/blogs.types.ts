@@ -7,9 +7,9 @@ export type Blogs = {
   publicationUrl?: string;
   canonicalUrl?: string;
   readTime: number;
+  views: number;
 };
 
 export type Blog = Blogs & {
   markdown: string;
-  views: number;
 };

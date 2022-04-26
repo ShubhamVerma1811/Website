@@ -22,8 +22,8 @@ export const BlogCard = ({ blog }: BlogsCompProps) => {
 
             <p className='my-1 text-skin-primary-muted'>
               {blog.publishedAt}
-              {/* <span className="mx-3">•</span>
-                  {blog.readTime} min(s) read */}
+              <span className='mx-3'>•</span>
+              {blog.views} views
               {blog.publicationUrl && (
                 <Link href={blog.publicationUrl}>
                   <span className='text-md text-skin-secondary'>

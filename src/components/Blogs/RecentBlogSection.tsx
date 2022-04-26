@@ -10,10 +10,7 @@ interface BlogsCompProps {
 export const RecentBlogSection = ({ blogs }: BlogsCompProps) => {
   return (
     <section className='my-24'>
-      <p className='mb-3 text-4xl font-bold text-skin-secondary'>
-        Recent Blogs
-      </p>
-
+      <p className='mb-3 text-4xl font-bold text-skin-secondary'>Top Blogs</p>
       {blogs?.map((blog, index) => {
         return <BlogCard key={index} blog={blog} />;
       })}
