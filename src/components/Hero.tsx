@@ -6,7 +6,7 @@ export const Hero = () => {
   return (
     <div className='flex flex-col-reverse md:flex-row'>
       <div>
-        <p className='text-2xl font-medium text-skin-secondary md:text-3xl'>
+        <p className='text-4xl font-bold text-skin-secondary'>
           Hey, I am Shubham Verma!
         </p>
         <p className='text-md mt-2 text-skin-secondary'>
@@ -44,7 +44,7 @@ export const Hero = () => {
           </a>
           <a
             target='_blank'
-            href='https://shbm.fyi/gh'
+            href='https://shbm.fyi/li'
             className='mt-3 w-max rounded-md p-2 text-lg text-[#0a66c2] hover:bg-skin-secondary-muted'
             rel='noopener noreferrer'>
             <strong>LinkedIn</strong>

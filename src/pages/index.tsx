@@ -8,7 +8,9 @@ const Home = ({ blogs }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <PageLayout>
       <Hero />
-      <RecentBlogSection blogs={blogs.slice(0, 3)} />
+      <RecentBlogSection
+        blogs={blogs.sort((a, b) => b.views - a.views).slice(0, 3)}
+      />
     </PageLayout>
   );
 };
@@ -16,53 +18,12 @@ const Home = ({ blogs }: InferGetStaticPropsType<typeof getStaticProps>) => {
 export default memo(Home);
 
 export const getStaticProps = async (ctx: GetStaticPropsContext) => {
-  const portfolioResponse = await fetch(process.env.PORTFOLIO_API_URI!);
-  const GITHUB_GRAPHQL_ENDPOINT = process.env.GITHUB_GRAPHQL_ENDPOINT;
-  const githubUsername = process.env.GITHUB_USERNAME;
-  const bearerToken = process.env.GITHUB_TOKEN;
-
-  const pullRequestsRes = await fetch(GITHUB_GRAPHQL_ENDPOINT!, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${bearerToken}`,
-    },
-    body: JSON.stringify({
-      query: `
-        {
-      user(login: "${githubUsername}") {
-        pullRequests(first: 100, orderBy: {field: CREATED_AT, direction: DESC}) {
-          nodes {
-            title
-            body
-            authorAssociation
-            state
-            url
-            id
-            repository{
-              name
-              url
-            }
-          }
-          totalCount
-        }
-      }
-    }
-      `,
-    }),
-  });
-
-  const portfolio = await portfolioResponse.json();
-  const pullRequests = await pullRequestsRes.json();
-
   const notion = new Notion();
   const blogs = await notion.getPosts();
 
   return {
     props: {
-      portfolio,
       blogs,
-      pullRequests,
     },
     revalidate: 120,
   };
