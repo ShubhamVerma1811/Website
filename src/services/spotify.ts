@@ -3,14 +3,14 @@ const client_secret = process.env.SPOTIFY_CLIENT_SECRET!;
 const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN!;
 const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
 
-const NOW_PLAYING_ENDPOINT = process.env.NOW_PLAYING_ENDPOINT!;
-const TOKEN_ENDPOINT = process.env.TOKEN_ENDPOINT!;
+const SPOTIFY_NOW_PLAYING_ENDPOINT = process.env.SPOTIFY_NOW_PLAYING_ENDPOINT!;
+const SPOTIFY_TOKEN_ENDPOINT = process.env.SPOTIFY_TOKEN_ENDPOINT!;
 const TOP_TRACKS_ENDPOINT = process.env.TOP_TRACKS_ENDPOINT!;
 const TOP_ARTISTS_ENDPOINT = process.env.TOP_ARTISTS_ENDPOINT!;
 const AUDIO_ANALYSIS_ENDPOINT = process.env.AUDIO_ANALYSIS_ENDPOINT!;
 
 export const getAccessToken = async () => {
-  const response = await fetch(TOKEN_ENDPOINT, {
+  const response = await fetch(SPOTIFY_TOKEN_ENDPOINT, {
     method: 'POST',
     headers: {
       Authorization: `Basic ${basic}`,
@@ -30,7 +30,7 @@ export const getNowPlaying = async () => {
     // @ts-ignore
     const { access_token } = await getAccessToken();
 
-    return fetch(NOW_PLAYING_ENDPOINT, {
+    return fetch(SPOTIFY_NOW_PLAYING_ENDPOINT, {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },

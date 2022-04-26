@@ -102,6 +102,7 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   const slug = typeof params.slug === 'string' ? params.slug : params.slug[0];
   const blogs = await notion.getPosts();
   const matchedPost = blogs?.filter((blog) => {
+    if (blog.publicationUrl) return;
     if (blog?.slug) {
       return blog.slug === slug;
     }
