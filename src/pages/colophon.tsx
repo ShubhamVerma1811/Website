@@ -22,6 +22,12 @@ const Colophon = () => {
       url: 'https://dpnkr.in',
       twitter: 'https://twitter.com/DeepankarBhade',
     },
+    {
+      site: 'nirmalyaghosh.com',
+      by: 'NirmalyaGhosh_',
+      url: 'https://nirmalyaghosh.com',
+      twitter: 'https://twitter.com/NirmalyaGhosh_',
+    },
   ];
 
   return (
