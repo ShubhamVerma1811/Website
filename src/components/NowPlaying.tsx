@@ -2,16 +2,20 @@ import Link from 'next/link';
 import React, { useRef, useState } from 'react';
 import { fetcher } from 'services/fetcher';
 import useSWR from 'swr';
+import { NowPlaying as INowPlaying } from 'types/spotify.types';
 import { DiagonalArrow, PauseIcon, SpotifyIcon } from './Icons';
 
 export const NowPlaying = () => {
-  const { data: track } = useSWR('/api/spotify/nowPlaying', fetcher);
+  const { data: track } = useSWR<INowPlaying>(
+    '/api/spotify/nowPlaying',
+    fetcher,
+  );
   const [isPlaying, setIsPlaying] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const handlePlay = () => {
-    if (!track.songUrl || !track?.title) return;
+    if (!track?.previewUrl) return;
     if (audioRef.current?.paused) {
       audioRef.current?.play();
       setIsPlaying(true);
@@ -63,7 +67,7 @@ export const NowPlaying = () => {
         className='mr-3 ml-8 inline cursor-pointer text-skin-primary-muted underline-offset-4 hover:underline'>
         {isPlaying
           ? 'Stop preview'
-          : track?.title
+          : track?.previewUrl
           ? 'Listen to Preview'
           : 'No preview available'}
       </div>
