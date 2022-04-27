@@ -2,6 +2,7 @@ import CodeBlock from 'blocks/code';
 import { DiagonalArrow } from 'components';
 import { BlogLayout, PageLayout } from 'layouts';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
+import Head from 'next/head';
 import React, { memo, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -34,6 +35,35 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <PageLayout>
       <BlogLayout>
+        <Head>
+          <title>{blog?.title} | Shubham Verma</title>
+          <meta name='description' content={blog?.description} />
+
+          {blog?.canonicalUrl && (
+            <link rel='canonical' href={blog?.canonicalUrl} />
+          )}
+          <meta name='author' content='Shubham Verma' />
+
+          {/* <!-- Twitter Card data --> */}
+          <meta name='twitter:card' content='summary_large_image' />
+          <meta name='twitter:site' content='@verma__shubham' />
+          <meta name='twitter:title' content={blog?.title} />
+          <meta name='twitter:description' content={blog?.description} />
+          <meta name='twitter:creator' content='@verma__shubham' />
+          {blog?.thumbnail && (
+            <meta name='twitter:image' content={blog?.thumbnail} />
+          )}
+          <meta name='twitter:image:alt' content={blog?.description} />
+          {/* <!-- Open Graph data --> */}
+          <meta property='og:title' content={blog?.title} />
+          <meta property='og:type' content='article' />
+          {blog?.thumbnail && (
+            <meta property='og:image' content={blog?.thumbnail} />
+          )}
+          <meta property='og:image:alt' content={blog?.description} />
+          <meta property='og:description' content={blog?.description} />
+        </Head>
+
         <p className='mb-3 text-4xl font-bold text-skin-secondary'>
           {blog?.title}
         </p>

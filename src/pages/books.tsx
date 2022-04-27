@@ -1,5 +1,6 @@
 import { PageLayout } from 'layouts';
 import { InferGetStaticPropsType } from 'next';
+import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -8,6 +9,9 @@ import Notion from 'services/notion';
 const Books = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <PageLayout>
+      <Head>
+        <title>Books | Shubham Verma</title>
+      </Head>
       <p className='text-4xl font-bold text-skin-secondary'>Books</p>
       {props.categories?.map((cat) => {
         if (!cat.books.length) return null;

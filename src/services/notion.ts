@@ -76,6 +76,7 @@ class Notion {
       markdown: markdown,
       canonicalUrl: page?.properties?.canonicalUrl?.url?.trim() || null,
       publicationUrl: page?.properties?.publicationUrl?.url?.trim() || null,
+      thumbnail: page?.properties?.thumbnail?.files[0]?.file?.url || null,
     };
 
     return blog;

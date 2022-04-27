@@ -8,6 +8,7 @@ export type Blogs = {
   canonicalUrl?: string;
   readTime: number;
   views: number;
+  thumbnail?: string;
 };
 
 export type Blog = Blogs & {

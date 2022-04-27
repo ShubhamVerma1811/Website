@@ -1,5 +1,6 @@
 import { DiagonalArrow } from 'components';
 import { PageLayout } from 'layouts';
+import Head from 'next/head';
 import React from 'react';
 
 const Colophon = () => {
@@ -32,6 +33,9 @@ const Colophon = () => {
 
   return (
     <PageLayout>
+      <Head>
+        <title>Colophon | Shubham Verma</title>
+      </Head>
       <p className='mb-6 text-4xl font-bold text-skin-secondary'>Colophon</p>
       <p className='mb-4 text-lg text-skin-secondary'>
         This website is developed by{' '}
