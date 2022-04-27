@@ -52,7 +52,7 @@ export const Hero = () => {
           </a>
         </div>
       </div>
-      <div className='h-[120px] w-[120px] overflow-clip grayscale hover:grayscale-0 md:mr-0 md:ml-auto'>
+      <div className='overflow-clip grayscale hover:grayscale-0 md:mr-0 md:ml-auto'>
         <Image
           src='https://avatars.githubusercontent.com/u/25576658'
           alt='Shubham Verma'

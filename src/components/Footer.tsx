@@ -40,6 +40,7 @@ export const Footer = () => {
       {
         name: 'Uses',
         href: '/uses',
+        soon: true,
       },
       {
         name: 'Books',
@@ -90,7 +91,11 @@ export const Footer = () => {
                 <a>
                   <li className='my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4'>
                     {link.name}{' '}
-                    <span className='text-sm text-skin-primary-muted'>(soon)</span>
+                    {link?.soon && (
+                      <span className='text-sm text-skin-primary-muted'>
+                        (soon)
+                      </span>
+                    )}
                   </li>
                 </a>
               </Link>

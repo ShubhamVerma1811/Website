@@ -8,8 +8,7 @@ interface BlogsCompProps {
 }
 
 export const RecentBlogSection = ({ blogs }: BlogsCompProps) => {
-
-  if(!blogs.length) return null;
+  if (!blogs.length) return null;
 
   return (
     <section className='my-24'>

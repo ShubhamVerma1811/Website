@@ -1,12 +1,16 @@
 import { useAtom } from 'jotai';
 import { useKBar } from 'kbar';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { isDarkModeAtom } from 'store/atoms/theme';
 import { CommandIcon, Moon, Sun } from './Icons';
 
 export const Header = () => {
   const [isDarkMode, setIsDarkMode] = useAtom(isDarkModeAtom);
+
+  const router = useRouter();
+  const activeLink = router.pathname;
 
   const headerLinks = [
     {
@@ -17,10 +21,14 @@ export const Header = () => {
       name: 'Blog',
       href: '/blog',
     },
-    {
-      name: 'More',
-      href: '/more',
-    },
+    // {
+    //   name: 'Exp',
+    //   href: '/exp',
+    // },
+    // {
+    //   name: 'More',
+    //   href: '/more',
+    // },
   ];
 
   const kbar = useKBar();
@@ -39,7 +47,10 @@ export const Header = () => {
           {headerLinks.map((link, index) => {
             return (
               <Link key={index} href={link.href} passHref>
-                <a className='mr-2 cursor-pointer rounded-md bg-skin-primary p-2 text-xl text-skin-secondary transition-all hover:bg-skin-secondary-muted'>
+                <a
+                  className={`text-md mr-2 cursor-pointer rounded-md bg-skin-primary p-2 text-skin-secondary transition-all hover:bg-skin-secondary-muted md:text-xl ${
+                    activeLink === link.href ? 'bg-skin-secondary-muted' : ''
+                  } `}>
                   {link.name}
                 </a>
               </Link>
