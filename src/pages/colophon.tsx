@@ -109,7 +109,7 @@ const Colophon = () => {
         </a>
       </p>
 
-      <p className='mb-1 text-skin-primary-muted md:text-xl'>
+      <p className='mb-1 text-skin-primary-muted'>
         This website is built by talking the following sites as references. Do
         check them out.
       </p>

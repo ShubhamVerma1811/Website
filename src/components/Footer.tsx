@@ -89,7 +89,8 @@ export const Footer = () => {
               <Link href={link.href} key={index} passHref>
                 <a>
                   <li className='my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4'>
-                    {link.name}
+                    {link.name}{' '}
+                    <span className='text-sm text-skin-primary-muted'>(soon)</span>
                   </li>
                 </a>
               </Link>
