@@ -1,5 +1,7 @@
 export type Book = {
   title: string;
   author: string;
-  tags: Array<'read' | 'reading' | 'wishlist' | 'favorite'>;
+  progress: 'read' | 'reading' | 'wishlist' | 'favorite';
+  url: string;
+  image: string;
 };

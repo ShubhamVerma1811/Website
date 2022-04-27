@@ -13,6 +13,7 @@ const nextConfig = {
       'source.unsplash.com',
       'images.unsplash.com',
       'avatars.githubusercontent.com',
+      'i.gr-assets.com',
     ],
   },
 };

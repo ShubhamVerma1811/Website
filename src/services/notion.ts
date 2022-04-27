@@ -1,6 +1,6 @@
 import { Client } from '@notionhq/client';
 import { NotionToMarkdown } from 'notion-to-md';
-import { Blog, Blogs } from 'types';
+import { Blog, Blogs, Book } from 'types';
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -147,6 +147,28 @@ class Notion {
 
     // @ts-ignore
     return page?.properties?.views?.number;
+  }
+
+  async getBooks(): Promise<Array<Book>> {
+    try {
+      const db = await notion.databases.query({
+        database_id: process.env.NOTION_BOOKS_DATABASE_ID!,
+      });
+
+      const books: Array<Book> = db.results?.map((book: any) => {
+        return {
+          title: book?.properties?.name?.title?.[0].plain_text,
+          author: book?.properties?.author?.rich_text?.[0].plain_text,
+          progress: book?.properties?.progress?.select?.name,
+          url: book?.properties?.url?.url?.trim() || null,
+          image: book?.properties?.image?.url?.trim() || null,
+        };
+      });
+      return books;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 }
 
