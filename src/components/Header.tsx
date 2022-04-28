@@ -1,45 +1,83 @@
+import { useAtom } from 'jotai';
 import { useKBar } from 'kbar';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
-import { IProfile } from '../types';
+import { isDarkModeAtom } from 'store/atoms/theme';
+import { CommandIcon, Moon, Sun } from './Icons';
 
-interface HeaderProps {
-  profiles: IProfile[];
-}
+export const Header = () => {
+  const [isDarkMode, setIsDarkMode] = useAtom(isDarkModeAtom);
 
-const Header = ({ profiles }: HeaderProps) => {
-  const kBar = useKBar();
+  const router = useRouter();
+  const activeLink = router.pathname;
+
+  const headerLinks = [
+    {
+      name: 'Home',
+      href: '/',
+    },
+    {
+      name: 'Blog',
+      href: '/blog',
+    },
+    // {
+    //   name: 'Exp',
+    //   href: '/exp',
+    // },
+    // {
+    //   name: 'More',
+    //   href: '/more',
+    // },
+  ];
+
+  const kbar = useKBar();
+
+  const toggleDarkMode = () => {
+    const body = document.querySelector('body');
+    body?.classList.toggle('dark');
+    setIsDarkMode(!isDarkMode);
+    localStorage.setItem('isDarkMode', isDarkMode.toString());
+  };
+
   return (
-    <header className="body-font bg-gray-900 text-gray-500" id="header">
-      <div className="container mx-auto flex cursor-pointer flex-col flex-wrap items-center p-5 md:flex-row">
-        <Link href="/">
-          <span
-            className="title-font umami--click--nav-logo mb-4 ml-3 flex items-center text-xl font-medium text-white md:mb-0"
+    <header className='my-4 mb-12 rounded-md bg-skin-primary' id='header'>
+      <nav className='flex'>
+        <div>
+          {headerLinks.map((link, index) => {
+            return (
+              <Link key={index} href={link.href} passHref>
+                <a
+                  className={`text-md mr-2 cursor-pointer rounded-md bg-skin-primary p-2 text-skin-secondary transition-all hover:bg-skin-secondary-muted md:text-xl ${
+                    activeLink === link.href ? 'bg-skin-secondary-muted' : ''
+                  } `}>
+                  {link.name}
+                </a>
+              </Link>
+            );
+          })}
+        </div>
+        <div className='ml-auto'>
+          <button
+            role='button'
+            aria-label='Toggle Command Bar'
+            className='mr-2 rounded-md border-2 border-skin-secondary bg-skin-primary p-2 hover:transition-all'
             onClick={() => {
-              if (isMobile()) {
-                kBar.query.toggle();
-              }
+              kbar.query.toggle();
             }}>
-            Shubham Verma
-          </span>
-        </Link>
-        <nav className="flex flex-wrap items-center justify-center text-base md:ml-auto">
-          {profiles?.map((profile, index) => (
-            <Link href={profile.url} key={index}>
-              <a
-                className={`mr-5 cursor-pointer capitalize  umami--click--nav-${profile.network}-link text-white`}>
-                {profile.network}
-              </a>
-            </Link>
-          ))}
-        </nav>
-      </div>
+            <CommandIcon />
+          </button>
+          <button
+            role='button'
+            aria-label='Toggle dark mode'
+            className='rounded-md border-2 border-skin-secondary bg-skin-primary p-2 hover:transition-all'
+            onClick={() => {
+              toggleDarkMode();
+            }}>
+            {isDarkMode ? <Moon /> : <Sun />}
+          </button>
+        </div>
+      </nav>
     </header>
   );
-};
-
-export default Header;
-
-const isMobile = () => {
-  return window.innerWidth < 768;
 };

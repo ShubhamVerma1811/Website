@@ -15,22 +15,20 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="en">
-        <title>Frontend Developer | Shubham Verma</title>
-        <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-        <link rel="manifest" href="manifest.json"></link>
+      <Html lang='en'>
+        <title>Shubham Verma | Frontend Developer</title>
         <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, viewport-fit=cover"
+          name='viewport'
+          content='width=device-width, initial-scale=1, viewport-fit=cover'
         />
-        <meta name="monetization" content="$ilp.uphold.com/RpM3whjzmfzH" />
+        <meta name='monetization' content='$ilp.uphold.com/RpM3whjzmfzH' />
         <script
           async
           defer
           data-website-id={process.env.NEXT_PUBLIC_UMAMI_UUID}
           src={process.env.NEXT_PUBLIC_UMAMI_URI}></script>
         <Head />
-        <body className="bg-gray-900">
+        <body className='dark bg-skin-primary'>
           <Main />
           <NextScript />
         </body>

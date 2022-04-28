@@ -1,26 +1,16 @@
-export interface IBlogs {
-  error: any;
-  data: Data;
-}
-
-export interface Data {
-  user: IUser;
-}
-
-export interface IUser {
-  publication: IPublication;
-}
-
-export interface IPublication {
-  posts: IPost[];
-}
-
-export interface IPost {
-  _id: string;
+export type Blogs = {
+  id: string;
   title: string;
-  brief: string;
+  description: string;
   slug: string;
-  totalReactions: number;
-  replyCount: number;
-  coverImage: string;
-}
+  publishedAt: Date;
+  publicationUrl?: string;
+  canonicalUrl?: string;
+  readTime: number;
+  views: number;
+  thumbnail?: string;
+};
+
+export type Blog = Blogs & {
+  markdown: string;
+};

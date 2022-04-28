@@ -1,5 +1,7 @@
 import { Client } from '@notionhq/client';
 import { NotionToMarkdown } from 'notion-to-md';
+import { Blog, Blogs, Book } from 'types';
+import { minutesToRead } from './read';
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -8,37 +10,77 @@ const notion = new Client({
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
 class Notion {
-  async getPosts() {
-    return await notion.databases.query({
-      database_id: process.env.NOTION_BLOG_DATABASE_ID as string,
-      sorts: [
-        {
-          property: 'published',
-          direction: 'descending',
-        },
-      ],
-      filter: {
-        and: [
+  async getPosts(): Promise<Array<Blogs>> {
+    try {
+      const posts = await notion.databases.query({
+        database_id: process.env.NOTION_BLOG_DATABASE_ID as string,
+        sorts: [
           {
-            property: 'active',
-            checkbox: {
-              equals: true,
-            },
-          },
-          {
-            property: 'environment',
-            multi_select: {
-              contains: process.env.NOTION_ENVIRONMENT as string,
-            },
+            property: 'published',
+            direction: 'descending',
           },
         ],
-      },
-    });
+        filter: {
+          and: [
+            {
+              property: 'active',
+              checkbox: {
+                equals: true,
+              },
+            },
+            {
+              property: 'environment',
+              multi_select: {
+                contains: process.env.NOTION_ENVIRONMENT as string,
+              },
+            },
+          ],
+        },
+      });
+
+      // @ts-ignore
+      const blogs: Array<Blogs> = posts.results?.map((post: any) => {
+        return {
+          id: post.id,
+          title: post?.properties?.name?.title?.[0].plain_text,
+          description:
+            post?.properties?.subtitle?.rich_text[0]?.plain_text || '',
+          slug: post?.properties?.slug?.rich_text[0]?.plain_text,
+          publishedAt:
+            post?.properties?.published?.date?.start ?? 'unknown-date',
+          views: post?.properties?.views?.number,
+          publicationUrl: post?.properties?.publicationUrl?.url?.trim() || null,
+        };
+      });
+
+      return blogs;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 
   // / Get a Notion database page info by ID
-  async getPageInfo(page_id: string) {
-    return await notion.pages.retrieve({ page_id });
+  async getPageInfo(page_id: string): Promise<Blog> {
+    // @ts-ignore
+    const page: any = await notion.pages.retrieve({ page_id });
+    const markdown = await this.getMakrkdown(page_id);
+
+    const blog: Blog = {
+      id: page.id,
+      title: page?.properties?.name?.title?.[0].plain_text,
+      description: page?.properties?.subtitle?.rich_text[0]?.plain_text || '',
+      slug: page?.properties?.slug?.rich_text[0]?.plain_text,
+      publishedAt: page?.properties?.published?.date?.start ?? 'unknown-date',
+      readTime: minutesToRead(markdown),
+      views: page?.properties?.views?.number,
+      markdown: markdown,
+      canonicalUrl: page?.properties?.canonicalUrl?.url?.trim() || null,
+      publicationUrl: page?.properties?.publicationUrl?.url?.trim() || null,
+      thumbnail: page?.properties?.thumbnail?.files[0]?.file?.url || null,
+    };
+
+    return blog;
   }
 
   async getPageContent(block_id: string) {
@@ -94,10 +136,7 @@ class Notion {
   }
 
   async updateViews(page_id: string) {
-    const view =
-      // @ts-ignore
-
-      (await this.getPageInfo(page_id))?.properties?.views?.number ?? 0;
+    const view = (await this.getPageInfo(page_id)).views ?? 0;
 
     const page = await notion.pages.update({
       page_id,
@@ -111,6 +150,77 @@ class Notion {
     // @ts-ignore
     return page?.properties?.views?.number;
   }
+
+  async getBooks(): Promise<Array<Book>> {
+    try {
+      const db = await notion.databases.query({
+        database_id: process.env.NOTION_BOOKS_DATABASE_ID!,
+      });
+
+      const books: Array<Book> = db.results?.map((book: any) => {
+        return {
+          title: book?.properties?.name?.title?.[0].plain_text,
+          author: book?.properties?.author?.rich_text?.[0].plain_text,
+          progress: book?.properties?.progress?.select?.name,
+          url: book?.properties?.url?.url?.trim() || null,
+          image: book?.properties?.image?.url?.trim() || null,
+        };
+      });
+      return books;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+  createBookSuggestion = async (
+    title: string,
+    authors: string,
+    reason: string,
+  ) => {
+    const page = await notion.pages.create({
+      parent: {
+        database_id: process.env.NOTION_BOOKS_DATABASE_ID!,
+      },
+
+      properties: {
+        name: {
+          title: [
+            {
+              text: {
+                content: title,
+              },
+            },
+          ],
+        },
+        progress: {
+          select: {
+            name: 'suggested',
+            color: 'blue',
+          },
+        },
+        author: {
+          rich_text: [
+            {
+              text: {
+                content: authors,
+              },
+            },
+          ],
+        },
+        reason: {
+          rich_text: [
+            {
+              text: {
+                content: reason,
+              },
+            },
+          ],
+        },
+      },
+    });
+
+    return page;
+  };
 }
 
 export default Notion;
