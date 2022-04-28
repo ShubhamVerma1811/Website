@@ -177,7 +177,6 @@ class Notion {
     authors: string,
     reason: string,
   ) => {
-    console.log(title, authors, reason);
     const page = await notion.pages.create({
       parent: {
         database_id: process.env.NOTION_BOOKS_DATABASE_ID!,
