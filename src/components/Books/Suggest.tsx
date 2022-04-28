@@ -2,6 +2,35 @@ import React, { useState } from 'react';
 
 export const Suggest = () => {
   const [showForm, setShowForm] = useState(false);
+
+  const [title, setTitle] = useState('');
+  const [authors, setAuthors] = useState('');
+  const [reason, setReason] = useState('');
+
+  const handleBookSubmit = () => {
+    fetch('/api/books/suggest', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title,
+        authors,
+        reason,
+      }),
+    })
+      .then(() => {
+        setTitle('');
+        setAuthors('');
+        setReason('');
+        setShowForm(false);
+        alert('Thanks for your suggestion!');
+      })
+      .catch((err) => {
+        alert('Something went wrong, please try again later');
+      });
+  };
+
   return (
     <div>
       <p
@@ -15,35 +44,11 @@ export const Suggest = () => {
           className='my-4'
           onSubmit={(e) => {
             e.preventDefault();
-            // @ts-ignore
-            const title = e.target[0].value;
-            // @ts-ignore
-            const authors = e.target[1].value;
-            // @ts-ignore
-            const reason = e.target[2].value;
-
             if (!title || !authors || !reason) {
               alert('Please fill in all the fields');
               return;
             }
-
-            fetch('/api/books/suggest', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                title,
-                authors,
-                reason,
-              }),
-            })
-              .then(() => {
-                alert('Thanks for your suggestion!');
-              })
-              .catch((err) => {
-                alert('Something went wrong, please try again later');
-              });
+            handleBookSubmit();
           }}>
           <div className='grid grid-cols-1 gap-3 lg:grid-cols-2'>
             <div className='relative'>
@@ -54,6 +59,8 @@ export const Suggest = () => {
                 name='title'
                 id='title'
                 placeholder='Title'
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
               />
               <label
                 className='absolute left-4 -top-3 text-skin-secondary transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-skin-primary-muted peer-focus:-top-3 peer-focus:text-skin-secondary'
@@ -69,6 +76,8 @@ export const Suggest = () => {
                 name='authors'
                 id='authors'
                 placeholder='Author'
+                value={authors}
+                onChange={(e) => setAuthors(e.target.value)}
               />
               <label
                 className='absolute left-4 -top-3 text-skin-secondary transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-skin-primary-muted peer-focus:-top-3 peer-focus:text-skin-secondary'
@@ -80,10 +89,11 @@ export const Suggest = () => {
           <div className='relative my-4'>
             <textarea
               className='peer w-full rounded-md bg-skin-secondary-muted p-4 text-skin-secondary placeholder-transparent focus-within:outline-none'
-              // type='text'
               name='why'
               id='why'
               placeholder='why'
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
             />
             <label
               className='absolute left-4 -top-3 text-skin-secondary transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-skin-primary-muted peer-focus:-top-3 peer-focus:text-skin-secondary'
