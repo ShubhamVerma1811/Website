@@ -102,7 +102,6 @@ export async function getStaticProps() {
       blogs,
       pullRequests,
     },
-    revalidate: 120,
   };
 }
 

@@ -54,19 +54,7 @@ const Blog = (props: IBlog) => {
   useEffect(() => {
     setViews(props.blogInfo?.properties?.views?.number);
   }, [props.blogInfo?.properties?.views?.number]);
-
-  useEffect(() => {
-    async function views() {
-      await fetch('/api/views', {
-        method: 'POST',
-        body: JSON.stringify({
-          page_id: props?.blogInfo?.id,
-        }),
-      });
-    }
-
-    process.env.NODE_ENV === 'production' && views();
-  }, []);
+ 
 
   return (
     <PageLayout>
@@ -232,7 +220,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (!matchedPost) {
     return {
       notFound: true,
-      revalidate: 10,
     };
   }
 
@@ -246,6 +233,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       blogInfo,
       md,
     },
-    revalidate: 10,
   };
 };

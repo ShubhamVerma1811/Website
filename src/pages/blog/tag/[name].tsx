@@ -50,7 +50,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (!posts.results.length) {
     return {
       notFound: true,
-      revalidate: 10,
     };
   }
 
@@ -58,7 +57,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       posts,
       tag: params.name,
-      revalidaion: 10,
     },
   };
 };
