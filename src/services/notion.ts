@@ -1,6 +1,7 @@
 import { Client } from '@notionhq/client';
 import { NotionToMarkdown } from 'notion-to-md';
 import { Blog, Blogs, Book } from 'types';
+import { minutesToRead } from './read';
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -71,7 +72,7 @@ class Notion {
       description: page?.properties?.subtitle?.rich_text[0]?.plain_text || '',
       slug: page?.properties?.slug?.rich_text[0]?.plain_text,
       publishedAt: page?.properties?.published?.date?.start ?? 'unknown-date',
-      readTime: 2,
+      readTime: minutesToRead(markdown),
       views: page?.properties?.views?.number,
       markdown: markdown,
       canonicalUrl: page?.properties?.canonicalUrl?.url?.trim() || null,
@@ -171,6 +172,56 @@ class Notion {
       return [];
     }
   }
+  createBookSuggestion = async (
+    title: string,
+    authors: string,
+    reason: string,
+  ) => {
+    console.log(title, authors, reason);
+    const page = await notion.pages.create({
+      parent: {
+        database_id: process.env.NOTION_BOOKS_DATABASE_ID!,
+      },
+
+      properties: {
+        name: {
+          title: [
+            {
+              text: {
+                content: title,
+              },
+            },
+          ],
+        },
+        progress: {
+          select: {
+            name: 'suggested',
+            color: 'blue',
+          },
+        },
+        author: {
+          rich_text: [
+            {
+              text: {
+                content: authors,
+              },
+            },
+          ],
+        },
+        reason: {
+          rich_text: [
+            {
+              text: {
+                content: reason,
+              },
+            },
+          ],
+        },
+      },
+    });
+
+    return page;
+  };
 }
 
 export default Notion;

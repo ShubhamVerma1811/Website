@@ -1,3 +1,4 @@
+import { Suggest } from 'components/Books';
 import { PageLayout } from 'layouts';
 import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
@@ -13,19 +14,20 @@ const Books = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
         <title>Books | Shubham Verma</title>
       </Head>
       <p className='text-4xl font-bold text-skin-secondary'>Books</p>
+      <Suggest />
       {props.categories?.map((cat) => {
         if (!cat.books.length) return null;
         return (
           <div>
             <p className='my-4 text-xl text-skin-secondary'>{cat.name}</p>
-            <div className='flex flex-col gap-3 lg:flex-row'>
+            <div className='grid grid-cols-1 gap-3 lg:grid-cols-2'>
               {cat?.books?.map((book) => (
                 <Link href={book.url} passHref>
                   <a
                     target='_blank'
                     rel='noopener noreferrer'
                     className='flex-[0.5]'>
-                    <div className='flex w-full cursor-pointer rounded-md bg-skin-secondary-muted p-4 transition-all hover:scale-[1.02]'>
+                    <div className='flex cursor-pointer rounded-md bg-skin-secondary-muted p-4 transition-all hover:scale-[1.02]'>
                       <Image
                         src={book.image}
                         className='rounded-md'
@@ -79,5 +81,5 @@ export const getStaticProps = async () => {
 
   const categories = [read, reading, wishlist, favorite];
 
-  return { props: { categories } };
+  return { props: { categories }, revalidate: 100 };
 };
