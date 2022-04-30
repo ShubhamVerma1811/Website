@@ -26,7 +26,7 @@ export const NowPlaying = () => {
   };
 
   return (
-    <div>
+    <div className='truncate'>
       <div className='flex text-lg'>
         <div className=''>
           {!isPlaying ? (

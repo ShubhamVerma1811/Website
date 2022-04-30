@@ -97,13 +97,13 @@ const actions = [
       ),
     section: 'Socials',
   }),
-  {
-    id: 'search-blogs',
-    name: 'Search Blogs',
-    shortcut: ['s', 'b'],
-  },
+  // {
+  //   id: 'search-blogs',
+  //   name: 'Search Blogs',
+  //   shortcut: ['s', 'b'],
+  // },
   createAction({
-    name: 'Toogle theme',
+    name: 'Toggle theme',
     shortcut: ['t'],
     keywords: 'theme',
     perform: () => {
