@@ -44,11 +44,11 @@ export const NowPlaying = () => {
               target='_blank'
               rel='noopener noreferrer'
               className='truncate text-skin-secondary underline-offset-4 hover:underline'>
-              {track?.title || 'Not Playing'}{' '}
+              {track?.isPlaying ? track.title : 'Not Playing'}{' '}
               {track?.title && (
                 <React.Fragment>
                   <span className='text-skin-primary-muted'> by </span>{' '}
-                  {track?.artist || 'Unknown'}
+                  {track.isPlaying ? track?.artist : 'Unknown'}
                   {track?.title && <DiagonalArrow className='inline' />}
                 </React.Fragment>
               )}
@@ -68,7 +68,7 @@ export const NowPlaying = () => {
             className='mr-3 inline cursor-pointer text-skin-primary-muted underline-offset-4 hover:underline'>
             {isPlaying
               ? 'Stop preview'
-              : track?.previewUrl
+              : track?.isPlaying && track?.previewUrl
               ? 'Listen to Preview'
               : 'No preview available'}
           </div>
