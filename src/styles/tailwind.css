@@ -11,7 +11,7 @@
     --color-primary: #f9fafb;
     --color-secondary: #111827;
     --color-primary-muted: #a3a3a3;
-    --color-secondary-muted: #9ca3af1a;
+    --color-secondary-muted: #f0f2f4;
     --color-accent: #60a5fa;
   }
 
@@ -19,7 +19,7 @@
     --color-primary: #111;
     --color-secondary: #f9fafb;
     --color-primary-muted: #6b7280;
-    --color-secondary-muted: #9ca3af1a;
+    --color-secondary-muted: #1f2021;
     --color-accent: #60a5fa;
   }
 }
