@@ -46,6 +46,10 @@ export const Footer = () => {
         name: 'Books',
         href: '/books',
       },
+      {
+        name: 'RSS',
+        href: '/rss.xml',
+      },
     ],
   };
 

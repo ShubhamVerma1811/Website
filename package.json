@@ -6,6 +6,7 @@
   "dependencies": {
     "@notionhq/client": "^0.4.13",
     "copy-text-to-clipboard": "^3.0.1",
+    "feed": "^4.2.2",
     "jotai": "^1.6.4",
     "kbar": "^0.1.0-beta.33",
     "next": "^12.0.10",
