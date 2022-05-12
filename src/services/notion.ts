@@ -45,13 +45,14 @@ class Notion {
           title: post?.properties?.name?.title?.[0].plain_text,
           description:
             post?.properties?.subtitle?.rich_text[0]?.plain_text || '',
-          slug: post?.properties?.slug?.rich_text[0]?.plain_text,
+          slug: post?.properties?.slug?.rich_text[0]?.plain_text || '',
           publishedAt:
             post?.properties?.published?.date?.start ?? 'unknown-date',
           views: post?.properties?.views?.number,
           publicationUrl: post?.properties?.publicationUrl?.url?.trim() || null,
         };
       });
+
 
       return blogs;
     } catch (error) {

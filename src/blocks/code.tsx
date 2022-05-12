@@ -9,7 +9,6 @@ const CodeBlock = (props: any) => {
   const handleCopyCode = (code: string) => {
     copy(code);
     setShowCopied(true);
-
     setTimeout(() => setShowCopied(false), 1500);
   };
 
@@ -31,7 +30,7 @@ const CodeBlock = (props: any) => {
       </SyntaxHighlighter>
       <button
         onClick={() => handleCopyCode(props?.children[0])}
-        className='absolute top-6 right-6 rounded-md bg-gray-900 px-2 py-1 text-white'>
+        className='absolute top-3 right-3 rounded-md bg-gray-900 px-2 py-1 text-white'>
         {showCopied ? 'Copied' : 'Copy'}
       </button>
     </div>
