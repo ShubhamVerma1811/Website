@@ -53,7 +53,6 @@ class Notion {
         };
       });
 
-
       return blogs;
     } catch (error) {
       console.error(error);
@@ -110,30 +109,6 @@ class Notion {
     const mdString = n2m.toMarkdownString(mdblocks);
 
     return mdString;
-  }
-
-  async getPostsByTagName(tagName: string) {
-    const posts = await notion.databases.query({
-      database_id: '914232ab-7e40-448b-bfc4-ddade4d4ccde',
-      filter: {
-        and: [
-          {
-            property: 'tags',
-            multi_select: {
-              contains: tagName,
-            },
-          },
-          {
-            property: 'environment',
-            multi_select: {
-              contains: process.env.NOTION_ENVIRONMENT as string,
-            },
-          },
-        ],
-      },
-    });
-
-    return posts;
   }
 
   async updateViews(page_id: string) {
