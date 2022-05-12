@@ -119,7 +119,7 @@ const Colophon = () => {
       </p>
 
       <ul>
-        {refs.map(({ site, by, url, twitter }, index) => (
+        {refs.map(({ site, by, twitter }, index) => (
           <li className='text-lg text-skin-secondary' key={index}>
             {site} <span className='text-skin-primary-muted'>by</span>{' '}
             <a

@@ -1,8 +1,9 @@
 import { Hero, RecentBlogSection } from 'components';
 import { PageLayout } from 'layouts';
-import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import { memo } from 'react';
 import Notion from 'services/notion';
+import { generateRSSFeed } from 'services/rss';
 
 const Home = ({ blogs }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -17,9 +18,10 @@ const Home = ({ blogs }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export default memo(Home);
 
-export const getStaticProps = async (ctx: GetStaticPropsContext) => {
+export const getStaticProps = async () => {
   const notion = new Notion();
   const blogs = await notion.getPosts();
+  generateRSSFeed(blogs);
 
   return {
     props: {

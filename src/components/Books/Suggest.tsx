@@ -26,7 +26,7 @@ export const Suggest = () => {
         setShowForm(false);
         alert('Thanks for your suggestion!');
       })
-      .catch((err) => {
+      .catch(() => {
         alert('Something went wrong, please try again later');
       });
   };
