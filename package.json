@@ -46,13 +46,13 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && yarn sitemap",
     "start": "next start",
-    "deploy": "npm run export",
+    "deploy": "yarn export",
     "export": "next export",
     "format": "prettier --write .  --ignore-path .gitignore",
     "lint": "eslint --fix ./src/**/*",
-    "postbuild": "next-sitemap --config sitemap.js"
+    "sitemap": "next-sitemap --config next-sitemap.config.js"
   },
   "keywords": [],
   "author": "Shubham Verma",
