@@ -1,6 +1,6 @@
 import { Client } from '@notionhq/client';
 import { NotionToMarkdown } from 'notion-to-md';
-import { Blog, Blogs, Book } from 'types';
+import { Blog, Blogs, Book, Project } from 'types';
 import { minutesToRead } from './read';
 
 const notion = new Client({
@@ -148,11 +148,8 @@ class Notion {
       return [];
     }
   }
-  createBookSuggestion = async (
-    title: string,
-    authors: string,
-    reason: string,
-  ) => {
+
+  async createBookSuggestion(title: string, authors: string, reason: string) {
     const page = await notion.pages.create({
       parent: {
         database_id: process.env.NOTION_BOOKS_DATABASE_ID!,
@@ -196,7 +193,40 @@ class Notion {
     });
 
     return page;
-  };
+  }
+
+  async getProjects(): Promise<Array<Project>> {
+    try {
+      const db = await notion.databases.query({
+        database_id: process.env.NOTION_PROJECTS_DATABASE_ID!,
+        filter: {
+          and: [
+            {
+              property: 'active',
+              checkbox: {
+                equals: true,
+              },
+            },
+          ],
+        },
+      });
+
+      const projects: Array<Project> = db.results?.map((project: any) => {
+        return {
+          title: project?.properties?.Name?.title?.[0]?.plain_text,
+          description:
+            project?.properties?.description?.rich_text[0]?.plain_text || '',
+          live: project?.properties?.live_link?.url?.trim() || null,
+          repo: project?.properties?.repo_link?.url?.trim() || null,
+        };
+      });
+
+      return projects;
+    } catch (e) {
+      console.error(e);
+      return [];
+    }
+  }
 }
 
 export default Notion;
