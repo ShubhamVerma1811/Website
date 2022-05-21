@@ -25,14 +25,14 @@ export default memo(Home);
 export const getStaticProps = async () => {
   const notion = new Notion();
   const blogs = await notion.getPosts();
-  generateRSSFeed(blogs);
   const projects = await notion.getProjects();
+  generateRSSFeed(blogs);
 
   return {
     props: {
       blogs,
       projects,
     },
-    revalidate: 120,
+    revalidate: 100,
   };
 };
