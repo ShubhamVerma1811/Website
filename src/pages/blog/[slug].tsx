@@ -99,6 +99,18 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
             code(props) {
               return <CodeBlock {...props} />;
             },
+            img: (props) => {
+              return (
+                <figure>
+                  <img
+                    src={props.src}
+                    alt={props.alt}
+                    className='my-0 rounded-md'
+                  />
+                  <figcaption>{props.alt}</figcaption>
+                </figure>
+              );
+            },
           }}>
           {/* @ts-ignore */}
           {blog?.markdown}
