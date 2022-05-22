@@ -3,7 +3,6 @@ import { PageLayout } from 'layouts';
 import { InferGetStaticPropsType } from 'next';
 import { memo } from 'react';
 import Notion from 'services/notion';
-import { generateRSSFeed } from 'services/rss';
 
 const Home = ({
   blogs,
@@ -26,7 +25,6 @@ export const getStaticProps = async () => {
   const notion = new Notion();
   const blogs = await notion.getPosts();
   const projects = await notion.getProjects();
-  generateRSSFeed(blogs);
 
   return {
     props: {

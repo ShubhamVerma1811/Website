@@ -13,6 +13,7 @@ const generate = async () => {
     '!src/pages/404',
     '!src/pages/404.tsx',
     '!src/pages/sitemap.xml.tsx',
+    '!src/pages/rss.xml.tsx',
   ]);
 
   const notion = new Notion();

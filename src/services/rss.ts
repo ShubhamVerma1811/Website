@@ -1,5 +1,4 @@
 import { Feed } from 'feed';
-import { writeFileSync } from 'fs';
 import { Blogs } from 'types';
 
 export const generateRSSFeed = (blogs: Array<Blogs>) => {
@@ -37,5 +36,5 @@ export const generateRSSFeed = (blogs: Array<Blogs>) => {
     });
   });
 
-  writeFileSync('public/rss.xml', feed.rss2());
+  return feed.rss2();
 };
