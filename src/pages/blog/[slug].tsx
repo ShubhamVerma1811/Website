@@ -32,9 +32,11 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
     process.env.NODE_ENV === 'production' && views();
   }, []);
 
+  if (!blog) return null;
+
   return (
     <PageLayout>
-      <BlogLayout>
+      <BlogLayout blog={blog}>
         <Head>
           <title>{blog?.title} | Shubham Verma</title>
           <meta name='description' content={blog?.description} />
