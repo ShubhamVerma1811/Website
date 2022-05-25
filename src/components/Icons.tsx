@@ -32,8 +32,9 @@ export const SpotifyIcon = (props: any) => (
   </svg>
 );
 
-export const LinkedInIcon = () => (
+export const LinkedInIcon = (props: any) => (
   <svg
+    {...props}
     xmlns='http://www.w3.org/2000/svg'
     aria-hidden='true'
     role='img'
@@ -47,8 +48,9 @@ export const LinkedInIcon = () => (
   </svg>
 );
 
-export const TwitterIcon = () => (
+export const TwitterIcon = (props: any) => (
   <svg
+    {...props}
     xmlns='http://www.w3.org/2000/svg'
     aria-hidden='true'
     role='img'
