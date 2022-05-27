@@ -54,7 +54,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className='body-font mt-12 bg-skin-primary'>
+    <footer className='body-font mt-4 bg-skin-primary'>
       <hr className='my-4 border-skin-primary-muted' />
 
       <NowPlaying />

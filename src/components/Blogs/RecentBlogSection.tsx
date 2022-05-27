@@ -11,7 +11,7 @@ export const RecentBlogSection = ({ blogs }: BlogsCompProps) => {
   if (!blogs.length) return null;
 
   return (
-    <section className='my-24'>
+    <section className='my-12'>
       <p className='mb-3 text-4xl font-bold text-skin-secondary'>Top Blogs</p>
       {blogs?.map((blog, index) => {
         return <BlogCard key={index} blog={blog} />;
