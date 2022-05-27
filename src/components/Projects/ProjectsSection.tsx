@@ -10,7 +10,7 @@ export const ProjectsSection = ({ projects }: ProjectCompProps) => {
   if (!projects.length) return null;
 
   return (
-    <section className='my-24'>
+    <section className='my-12'>
       <p className='mb-3 text-4xl font-bold text-skin-secondary'>
         Featured Projects
       </p>
