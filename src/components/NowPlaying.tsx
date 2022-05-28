@@ -65,13 +65,18 @@ export const NowPlaying = () => {
           </div>
           <div
             onClick={handlePlay}
-            className='mr-3 inline cursor-pointer text-skin-primary-muted underline-offset-4 hover:underline'>
+            className='inline cursor-pointer text-skin-primary-muted underline-offset-4 hover:underline'>
             {isPlaying
               ? 'Stop preview'
               : track?.isPlaying && track?.previewUrl
               ? 'Listen to Preview'
               : 'No preview available'}
           </div>
+          <Link href='/spotify' passHref>
+            <a className='mx-3 inline text-skin-primary-muted underline-offset-4 hover:underline'>
+              Top Tracks
+            </a>
+          </Link>
           <Link href='https://shbm.fyi/sp' passHref>
             <a
               className='inline text-skin-primary-muted underline-offset-4 hover:underline'
