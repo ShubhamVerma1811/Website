@@ -8,7 +8,6 @@ const Home = ({
   blogs,
   projects,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log('client', { projects });
   return (
     <PageLayout>
       <Hero />
@@ -26,8 +25,6 @@ export const getStaticProps = async () => {
   const notion = new Notion();
   const blogs = await notion.getPosts();
   const projects = await notion.getProjects();
-
-  console.log('server', { projects });
 
   return {
     props: {

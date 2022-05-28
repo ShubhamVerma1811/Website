@@ -7,7 +7,6 @@ interface ProjectCompProps {
 }
 
 export const ProjectsSection = ({ projects }: ProjectCompProps) => {
-  console.log('comp', { projects });
   if (!projects.length) return null;
 
   return (
