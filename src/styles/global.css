@@ -8,3 +8,7 @@
 :root {
   font-family: 'Karla';
 }
+
+html {
+  scroll-behavior: smooth;
+}
