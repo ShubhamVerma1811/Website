@@ -69,21 +69,12 @@ export const NowPlaying = () => {
             {isPlaying
               ? 'Stop preview'
               : track?.isPlaying && track?.previewUrl
-              ? 'Listen to Preview'
-              : 'No preview available'}
+              ? 'Listen preview'
+              : 'No preview'}
           </div>
           <Link href='/spotify' passHref>
             <a className='mx-3 inline text-skin-primary-muted underline-offset-4 hover:underline'>
-              Top Tracks
-            </a>
-          </Link>
-          <Link href='https://shbm.fyi/sp' passHref>
-            <a
-              className='inline text-skin-primary-muted underline-offset-4 hover:underline'
-              target='_blank'
-              rel='noopener noreferrer'>
-              View Profile
-              <DiagonalArrow className='inline' />
+              Check Stats
             </a>
           </Link>
         </div>

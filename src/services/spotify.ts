@@ -6,6 +6,7 @@ const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
 const SPOTIFY_NOW_PLAYING_ENDPOINT = process.env.SPOTIFY_NOW_PLAYING_ENDPOINT!;
 const SPOTIFY_TOKEN_ENDPOINT = process.env.SPOTIFY_TOKEN_ENDPOINT!;
 const SPOTIFY_TOP_TRACKS_ENDPOINT = process.env.SPOTIFY_TOP_TRACKS_ENDPOINT!;
+const SPOTIFY_TOP_ARTISTS_ENDPOINT = process.env.SPOTIFY_TOP_ARTISTS_ENDPOINT!;
 
 export const getAccessToken = async () => {
   const response = await fetch(SPOTIFY_TOKEN_ENDPOINT, {
@@ -43,6 +44,19 @@ export const getTopTracks = async () => {
 
   return fetch(
     SPOTIFY_TOP_TRACKS_ENDPOINT + '?limit=10&time_range=short_term',
+    {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    },
+  );
+};
+
+export const getTopArtists = async () => {
+  const { access_token } = await getAccessToken();
+
+  return fetch(
+    SPOTIFY_TOP_ARTISTS_ENDPOINT + '?limit=10&time_range=short_term',
     {
       headers: {
         Authorization: `Bearer ${access_token}`,
