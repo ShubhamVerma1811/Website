@@ -23,3 +23,13 @@
     --color-accent: #60a5fa;
   }
 }
+
+.anchor {
+  color: var(--color-secondary) !important;
+  text-decoration: none;
+}
+
+.anchor:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

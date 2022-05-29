@@ -87,8 +87,20 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
         <hr className='my-4 border-skin-primary-muted' />
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeSlug, rehypeAutolinkHeadings, rehypeCodeTitles]}
-          className='prose max-w-none text-lg text-skin-secondary prose-headings:text-skin-secondary prose-a:text-skin-accent prose-strong:text-skin-secondary prose-em:text-skin-secondary prose-code:rounded-sm prose-code:text-skin-secondary prose-li:text-skin-secondary'
+          rehypePlugins={[
+            rehypeSlug,
+            [
+              rehypeAutolinkHeadings,
+              {
+                behavior: 'wrap',
+                properties: {
+                  className: 'anchor',
+                },
+              },
+            ],
+            rehypeCodeTitles,
+          ]}
+          className='prose max-w-none text-lg text-skin-secondary prose-headings:scroll-m-20 prose-headings:text-skin-secondary prose-a:text-skin-accent prose-strong:text-skin-secondary prose-em:text-skin-secondary prose-code:rounded-sm prose-code:text-skin-secondary prose-li:text-skin-secondary'
           components={{
             blockquote: (props) => (
               <blockquote className='prose text-skin-secondary'>
