@@ -13,8 +13,8 @@ const Spotify = ({
   return (
     <PageLayout>
       <p className='text-lg text-skin-primary-muted'>
-        These are the top Spotify tracks and artists that I&apos; been listening
-        to this month!
+        These are the top Spotify tracks and artists that I&apos;ve been
+        listening to this month!
       </p>
       <Link href='https://shbm.fyi/sp' passHref>
         <a
