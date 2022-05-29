@@ -25,74 +25,70 @@ const Spotify = ({
           <DiagonalArrow className='inline' />
         </a>
       </Link>
-      <a href='#top-tracks'>
-        <section className='my-12' id='top-tracks'>
+      <section className='my-12' id='top-tracks'>
+        <a href='#top-tracks'>
           <p className='mb-3 text-4xl font-bold text-skin-secondary'>
             Top Tracks
             <span className='mx-3 text-base font-light'>(This Month)</span>
           </p>
-          <div className='my-12'>
-            {tracks?.map((song, index) => (
-              <ol key={index}>
-                <li>
-                  <div className='flex flex-row items-start'>
-                    <span className='text-skin-primary-muted'>
-                      {index + 1}.
-                    </span>
-                    <div className='ml-3 w-full'>
-                      <a
-                        href={song?.songUrl}
-                        target='_blank'
-                        rel='noopener noreferrer'>
-                        <p className='text-xl text-skin-secondary underline-offset-4 hover:underline'>
-                          {song?.title}
-                        </p>
-                      </a>
-                      <p className='text-md text-skin-primary-muted'>
-                        {song?.artist}
+        </a>
+        <div className='my-12'>
+          {tracks?.map((song, index) => (
+            <ol key={index}>
+              <li>
+                <div className='flex flex-row items-start'>
+                  <span className='text-skin-primary-muted'>{index + 1}.</span>
+                  <div className='ml-3 w-full'>
+                    <a
+                      href={song?.songUrl}
+                      target='_blank'
+                      rel='noopener noreferrer'>
+                      <p className='text-xl text-skin-secondary underline-offset-4 hover:underline'>
+                        {song?.title}
                       </p>
-                      <hr className='my-4 border-skin-primary-muted' />
-                    </div>
+                    </a>
+                    <p className='text-md text-skin-primary-muted'>
+                      {song?.artist}
+                    </p>
+                    <hr className='my-4 border-skin-primary-muted' />
                   </div>
-                </li>
-              </ol>
-            ))}
-          </div>
-        </section>
-      </a>
-      <a href='#top-artists'>
-        <section className='my-12' id='top-artists'>
+                </div>
+              </li>
+            </ol>
+          ))}
+        </div>
+      </section>
+      <section className='my-12' id='top-artists'>
+        <a href='#top-artists'>
           <p className='mb-3 text-4xl font-bold text-skin-secondary'>
             Top Artists
             <span className='mx-3 text-base font-light'>(This Month)</span>
           </p>
-          <div className='my-12'>
-            {artists?.map((artist, index) => (
-              <ol key={index}>
-                <li>
-                  <div className='flex flex-row items-start'>
-                    <span className='text-skin-primary-muted'>
-                      {index + 1}.
-                    </span>
-                    <div className='ml-3 w-full'>
-                      <a
-                        href={artist?.artistUrl}
-                        target='_blank'
-                        rel='noopener noreferrer'>
-                        <p className='text-xl text-skin-secondary underline-offset-4 hover:underline'>
-                          {artist?.name}
-                        </p>
-                      </a>
+        </a>
+        <div className='my-12'>
+          {artists?.map((artist, index) => (
+            <ol key={index}>
+              <li>
+                <div className='flex flex-row items-start'>
+                  <span className='text-skin-primary-muted'>{index + 1}.</span>
+                  <div className='ml-3 w-full'>
+                    <a
+                      href={artist?.artistUrl}
+                      target='_blank'
+                      rel='noopener noreferrer'>
+                      <p className='text-xl text-skin-secondary underline-offset-4 hover:underline'>
+                        {artist?.name}
+                      </p>
+                    </a>
 
-                      <hr className='my-4 border-skin-primary-muted' />
-                    </div>
+                    <hr className='my-4 border-skin-primary-muted' />
                   </div>
-                </li>
-              </ol>
-            ))}
-          </div>
-        </section>
-      </a>
+                </div>
+              </li>
+            </ol>
+          ))}
+        </div>
+      </section>
     </PageLayout>
   );
 };
