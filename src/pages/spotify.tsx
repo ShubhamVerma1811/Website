@@ -25,7 +25,7 @@ const Spotify = ({
           <DiagonalArrow className='inline' />
         </a>
       </Link>
-      <section className='my-12' id='top-tracks'>
+      <section className='my-12 scroll-m-20' id='top-tracks'>
         <a href='#top-tracks'>
           <p className='mb-3 text-4xl font-bold text-skin-secondary'>
             Top Tracks
@@ -58,7 +58,7 @@ const Spotify = ({
           ))}
         </div>
       </section>
-      <section className='my-12' id='top-artists'>
+      <section className='my-12 scroll-m-20' id='top-artists'>
         <a href='#top-artists'>
           <p className='mb-3 text-4xl font-bold text-skin-secondary'>
             Top Artists
