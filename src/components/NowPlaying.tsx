@@ -45,7 +45,7 @@ export const NowPlaying = () => {
               rel='noopener noreferrer'
               className='truncate text-skin-secondary underline-offset-4 hover:underline'>
               {track?.isPlaying ? track.title : 'Not Playing'}{' '}
-              {track?.title && (
+              {track?.isPlaying && track?.artist && (
                 <React.Fragment>
                   <span className='text-skin-primary-muted'> by </span>{' '}
                   {track.isPlaying ? track?.artist : 'Unknown'}
