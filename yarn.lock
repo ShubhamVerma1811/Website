@@ -1764,6 +1764,13 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
+markdown-table@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-2.0.0.tgz#194a90ced26d31fe753d8b9434430214c011865b"
+  integrity sha512-Ezda85ToJUBhM6WGaG6veasyym+Tbs3cMAw/ZhOPqXiYsr0jgocBV3j3nx+4lk47plLlIqjwuTm/ywVI+zjJ/A==
+  dependencies:
+    repeat-string "^1.0.0"
+
 markdown-table@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-3.0.2.tgz#9b59eb2c1b22fe71954a65ff512887065a7bb57c"
@@ -2306,10 +2313,12 @@ normalize-range@^0.1.2:
   resolved "https://registry.yarnpkg.com/normalize-range/-/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
   integrity sha1-LRDAa9/TEuqXd2laTShDlFa3WUI=
 
-notion-to-md@^2.3.0:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/notion-to-md/-/notion-to-md-2.3.2.tgz#e048f01f4bbd7c6bb878a71a8bd59e20a3163b94"
-  integrity sha512-KKCueAqUvuqTl2y/c5uGzwjGG1a+7Yt6XMrk2jDf/M7v3i3U4YVBpEpWxHIvq8TdRSaLmXxpyoalovtymY2dBg==
+notion-to-md@^2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/notion-to-md/-/notion-to-md-2.5.2.tgz#adcd8d6ac3f2980bc24f052c3f815e1449430041"
+  integrity sha512-SqooTi0667D1d1EvNdtHdaV/A3kKdW0Fq/rswWHtmA8gSuTdE/qJQF8HDwy2Zs3p62Wxb46cYXQJlyEcdv8QjA==
+  dependencies:
+    markdown-table "^2.0.0"
 
 npmlog@^4.0.1:
   version "4.1.2"
@@ -2804,6 +2813,11 @@ remark-rehype@^10.0.0:
     "@types/mdast" "^3.0.0"
     mdast-util-to-hast "^12.1.0"
     unified "^10.0.0"
+
+repeat-string@^1.0.0:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/repeat-string/-/repeat-string-1.6.1.tgz#8dcae470e1c88abc2d600fff4a776286da75e637"
+  integrity sha512-PV0dzCYDNfRi1jCDbJzpW7jNNDRuCOG/jI5ctQcGKt/clZD+YcPS3yIlWuTJMmESC8aevCFmWJy5wjAFgNqN6w==
 
 resolve-from@^4.0.0:
   version "4.0.0"
