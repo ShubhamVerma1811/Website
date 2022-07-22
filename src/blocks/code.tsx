@@ -1,6 +1,6 @@
 import copy from 'copy-text-to-clipboard';
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { PrismAsync as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 const CodeBlock = (props: any) => {

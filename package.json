@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@next/bundle-analyzer": "^12.2.2",
     "@notionhq/client": "^0.4.13",
     "copy-text-to-clipboard": "^3.0.1",
     "feed": "^4.2.2",
@@ -36,6 +37,7 @@
     "@typescript-eslint/eslint-plugin": "^5.10.2",
     "@typescript-eslint/parser": "^5.10.2",
     "autoprefixer": "^10.4.2",
+    "cross-env": "^7.0.3",
     "eslint": "^8.8.0",
     "eslint-plugin-react": "^7.26.1",
     "postcss": "^8.4.6",
@@ -51,7 +53,8 @@
     "deploy": "yarn export",
     "export": "next export",
     "format": "prettier --write .  --ignore-path .gitignore",
-    "lint": "eslint --fix ./src/**/*"
+    "lint": "eslint --fix ./src/**/*",
+    "analyze": "cross-env ANALYZE=true yarn build"
   },
   "keywords": [],
   "author": "Shubham Verma",
