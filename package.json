@@ -25,6 +25,7 @@
     "swr": "^1.3.0"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^12.2.3",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.1",
     "@types/eslint": "^8.4.1",
@@ -53,7 +54,7 @@
     "deploy": "yarn export",
     "export": "next export",
     "format": "prettier --write .  --ignore-path .gitignore",
-    "lint": "eslint --fix ./src/**/*",
+    "lint": "next lint",
     "analyze": "cross-env ANALYZE=true yarn build"
   },
   "keywords": [],

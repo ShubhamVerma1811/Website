@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import React from 'react';
 import { NowPlaying } from './NowPlaying';
 
 export const Footer = () => {
@@ -63,48 +62,58 @@ export const Footer = () => {
 
       <div className='flex flex-col md:flex-row md:justify-between'>
         <div>
-          {footerLinks.site.map((link, index) => {
-            return (
-              <Link href={link.href} key={index} passHref>
-                <a>
-                  <li className='my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4'>
-                    {link.name}
-                  </li>
-                </a>
-              </Link>
-            );
-          })}
+          <ul>
+            {footerLinks.site.map((link, index) => {
+              return (
+                <li
+                  key={index}
+                  className='my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4'>
+                  <Link href={link.href} passHref>
+                    <a>{link.name}</a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
         <div>
-          {footerLinks.social.map((link, index) => {
-            return (
-              <Link href={link.href} key={index} passHref>
-                <a target='_blank' rel='noopener noreferrer'>
-                  <li className='my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4'>
-                    {link.name}
-                  </li>
-                </a>
-              </Link>
-            );
-          })}
+          <ul>
+            {footerLinks.social.map((link, index) => {
+              return (
+                <li
+                  key={index}
+                  className='my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4'>
+                  <Link href={link.href} passHref>
+                    <a target='_blank' rel='noopener noreferrer'>
+                      {link.name}
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
         <div>
-          {footerLinks.misc.map((link, index) => {
-            return (
-              <Link href={link.href} key={index} passHref>
-                <a>
-                  <li className='my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4'>
-                    {link.name}{' '}
-                    {link?.soon && (
-                      <span className='text-sm text-skin-primary-muted'>
-                        (soon)
-                      </span>
-                    )}
-                  </li>
-                </a>
-              </Link>
-            );
-          })}
+          <ul>
+            {footerLinks.misc.map((link, index) => {
+              return (
+                <li
+                  key={index}
+                  className='my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4'>
+                  <Link href={link.href} passHref>
+                    <a>
+                      {link.name}{' '}
+                      {link?.soon && (
+                        <span className='text-sm text-skin-primary-muted'>
+                          (soon)
+                        </span>
+                      )}
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
       <div className='container mx-auto flex flex-col items-center py-8 sm:flex-row'>

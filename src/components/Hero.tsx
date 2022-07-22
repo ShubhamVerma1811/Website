@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import React from 'react';
 import { DiagonalArrow } from './Icons';
 
 export const Hero = () => {
@@ -9,7 +8,7 @@ export const Hero = () => {
         <p className='text-4xl font-bold text-skin-secondary'>
           Hey, I am Shubham Verma!
         </p>
-        <p className='text-md mt-2 text-skin-secondary'>
+        <p className='mt-2 text-lg text-skin-secondary'>
           Software Engineer at{' '}
           <a
             target='_blank'
@@ -45,7 +44,7 @@ export const Hero = () => {
           <a
             target='_blank'
             href='https://shbm.fyi/li'
-            className='mt-3 w-max rounded-md p-2 text-lg text-[#0a66c2] hover:bg-skin-secondary-muted'
+            className='mt-3 w-max rounded-md p-2 text-lg text-[#0a66c2] hover:bg-skin-secondary-muted dark:text-[#ffffffe6]'
             rel='noopener noreferrer'>
             <strong>LinkedIn</strong>
             <DiagonalArrow className='inline text-xl' />
