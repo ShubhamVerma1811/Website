@@ -12,7 +12,7 @@
     "jotai": "^1.6.4",
     "kbar": "^0.1.0-beta.33",
     "next": "^12.0.10",
-    "notion-to-md": "^2.3.0",
+    "notion-to-md": "^2.5.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-markdown": "^8.0.0",
