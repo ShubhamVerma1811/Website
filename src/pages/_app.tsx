@@ -4,6 +4,7 @@ import {
   SpotifyIcon,
   TwitterIcon,
 } from 'components/Icons';
+import { useAtom } from 'jotai';
 import {
   createAction,
   KBarAnimator,
@@ -17,7 +18,8 @@ import {
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import router from 'next/router';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { isDarkModeAtom } from 'store/atoms/theme';
 import '../styles/global.css';
 import '../styles/tailwind.css';
 
@@ -109,11 +111,36 @@ const actions = [
     perform: () => {
       const body = document.querySelector('body');
       body?.classList.toggle('dark');
+      localStorage.setItem(
+        'theme',
+        body?.classList.contains('dark') ? 'dark' : 'light',
+      );
     },
   }),
 ];
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [isDarkMode, setIsDarkMode] = useAtom(isDarkModeAtom);
+
+  useEffect(() => {
+    const body = document.querySelector('body');
+    const isDark = body?.classList.contains('dark') ?? false;
+    setIsDarkMode(isDark);
+  }, []);
+
+  useEffect(() => {
+    const body = document.querySelector('body');
+    if (isDarkMode !== undefined) {
+      if (isDarkMode) {
+        body?.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body?.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+  }, [isDarkMode]);
+
   return (
     <React.Fragment>
       <Head>
