@@ -6,6 +6,37 @@ import Document, {
   NextScript,
 } from 'next/document';
 
+function setInitialColorMode() {
+  function getInitialColorMode() {
+    const preference = window.localStorage.getItem('theme');
+    const hasExplicitPreference = typeof preference === 'string';
+
+    if (hasExplicitPreference) {
+      return preference;
+    }
+
+    // If there is no saved preference, use a media query
+    const mediaQuery = '(prefers-color-scheme: light)';
+    const mql = window.matchMedia(mediaQuery);
+    const hasImplicitPreference = typeof mql.matches === 'boolean';
+
+    if (hasImplicitPreference) {
+      return mql.matches ? 'light' : 'dark';
+    }
+    return 'dark';
+  }
+
+  const colorMode = getInitialColorMode();
+  const body = document.querySelector('body');
+  body?.classList.toggle('dark', colorMode === 'dark');
+}
+
+const blockingSetInitialColorMode = `(function() {
+    ${setInitialColorMode.toString()}
+    setInitialColorMode();
+})()
+`;
+
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);
@@ -33,7 +64,11 @@ class MyDocument extends Document {
               src={process.env.NEXT_PUBLIC_UMAMI_URI}></script>
           )}
         <Head />
-        <body className='dark bg-skin-primary'>
+        <body className='bg-skin-primary'>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: blockingSetInitialColorMode,
+            }}></script>
           <Main />
           <NextScript />
         </body>
