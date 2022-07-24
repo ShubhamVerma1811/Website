@@ -20,6 +20,9 @@ const nextConfig = {
       'i.gr-assets.com',
     ],
   },
+  experimental: {
+    optimizeCss: true,
+  },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
