@@ -22,6 +22,15 @@ const generate = async () => {
   const sitemap = `
     <?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        ${blogs
+          .map((blog) => {
+            return `
+              <url>
+                  <loc>${`https://shubhamverma.me/blog/${blog.slug}`}</loc>
+              </url>
+            `;
+          })
+          .join('')}
         ${pages
           .map((page) => {
             const path = page
@@ -44,15 +53,6 @@ const generate = async () => {
           })
           .join('')}
 
-        ${blogs
-          .map((blog) => {
-            return `
-              <url>
-                  <loc>${`https://shubhamverma.me/blog/${blog.slug}`}</loc>
-              </url>
-            `;
-          })
-          .join('')}
 
     </urlset>
     `;
