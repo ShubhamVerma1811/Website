@@ -3,7 +3,7 @@ import prettier from 'prettier';
 import Notion from 'services/notion';
 
 const generate = async () => {
-  const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
+  const prettierConfig = await prettier.resolveConfig('../../.prettierrc');
   const pages = ['/', '/blog', '/books', '/colophon', '/spotify', '/uses'];
 
   const notion = new Notion();
