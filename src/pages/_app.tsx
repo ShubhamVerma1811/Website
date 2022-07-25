@@ -2,7 +2,7 @@ import {
   GithubIcon,
   LinkedInIcon,
   SpotifyIcon,
-  TwitterIcon,
+  TwitterIcon
 } from 'components/Icons';
 import { useAtom } from 'jotai';
 import {
@@ -13,7 +13,7 @@ import {
   KBarProvider,
   KBarResults,
   KBarSearch,
-  useMatches,
+  useMatches
 } from 'kbar';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -28,13 +28,13 @@ const actions = [
     name: 'Home',
     shortcut: ['h'],
     keywords: 'home',
-    perform: () => router.push('/'),
+    perform: () => router.push('/')
   }),
   createAction({
     name: 'Blog',
     shortcut: ['g', 'b'],
     keywords: 'writing words',
-    perform: () => router.push('/blog'),
+    perform: () => router.push('/blog')
   }),
   createAction({
     icon: <TwitterIcon />,
@@ -44,9 +44,9 @@ const actions = [
       window.open(
         'https://twitter.com/verma__shubham',
         '_blank',
-        'noopener noreferrer',
+        'noopener noreferrer'
       ),
-    section: 'Socials',
+    section: 'Socials'
   }),
   createAction({
     icon: <GithubIcon />,
@@ -57,9 +57,9 @@ const actions = [
       window.open(
         'https://github.com/ShubhamVerma1811',
         '_blank',
-        'noopener noreferrer',
+        'noopener noreferrer'
       ),
-    section: 'Socials',
+    section: 'Socials'
   }),
   createAction({
     icon: <LinkedInIcon />,
@@ -70,9 +70,9 @@ const actions = [
       window.open(
         'https://linkedin.com/in/ShubhamVerma1811',
         '_blank',
-        'noopener noreferrer',
+        'noopener noreferrer'
       ),
-    section: 'Socials',
+    section: 'Socials'
   }),
   createAction({
     icon: <SpotifyIcon />,
@@ -83,9 +83,9 @@ const actions = [
       window.open(
         'https://open.spotify.com/user/shubhamverma1811',
         '_blank',
-        'noopener noreferrer',
+        'noopener noreferrer'
       ),
-    section: 'Socials',
+    section: 'Socials'
   }),
   createAction({
     icon: <SpotifyIcon />,
@@ -95,9 +95,9 @@ const actions = [
       window.open(
         'https://spotify-top.com/user/shubhamverma1811',
         '_blank',
-        'noopener noreferrer',
+        'noopener noreferrer'
       ),
-    section: 'Socials',
+    section: 'Socials'
   }),
   // {
   //   id: 'search-blogs',
@@ -113,10 +113,10 @@ const actions = [
       body?.classList.toggle('dark');
       localStorage.setItem(
         'theme',
-        body?.classList.contains('dark') ? 'dark' : 'light',
+        body?.classList.contains('dark') ? 'dark' : 'light'
       );
-    },
-  }),
+    }
+  })
 ];
 
 export default function App({ Component, pageProps }: AppProps) {

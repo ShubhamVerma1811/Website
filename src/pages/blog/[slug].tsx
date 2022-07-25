@@ -24,8 +24,8 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
       await fetch('/api/views', {
         method: 'POST',
         body: JSON.stringify({
-          page_id: blog?.id,
-        }),
+          page_id: blog?.id
+        })
       });
     }
 
@@ -94,11 +94,11 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
               {
                 behavior: 'wrap',
                 properties: {
-                  className: 'anchor',
-                },
-              },
+                  className: 'anchor'
+                }
+              }
             ],
-            rehypeCodeTitles,
+            rehypeCodeTitles
           ]}
           className='prose max-w-none text-lg text-skin-secondary prose-headings:scroll-m-20 prose-headings:text-skin-secondary prose-a:text-skin-accent prose-strong:text-skin-secondary prose-em:text-skin-secondary prose-code:rounded-sm prose-code:text-skin-secondary prose-li:text-skin-secondary'
           components={{
@@ -124,7 +124,7 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
                   <figcaption>{props.alt}</figcaption>
                 </figure>
               );
-            },
+            }
           }}>
           {/* @ts-ignore */}
           {blog?.markdown}
@@ -141,13 +141,13 @@ export const getStaticPaths = async () => {
   const blogs = await notion.getPosts();
   const paths = blogs?.map((blog) => {
     return {
-      params: { slug: blog.slug },
+      params: { slug: blog.slug }
     };
   });
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: 'blocking'
   };
 };
 
@@ -168,7 +168,7 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
     return {
       props: { blog: null },
       notFound: true,
-      revalidate: 10,
+      revalidate: 10
     };
   }
 
@@ -176,9 +176,9 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
 
   return {
     props: {
-      blog,
+      blog
     },
     notFound: false,
-    revalidate: 10,
+    revalidate: 10
   };
 };

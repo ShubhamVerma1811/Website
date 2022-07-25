@@ -25,7 +25,7 @@ export const BackToTop = () => {
       onClick={() => {
         window.scrollTo({
           top: 0,
-          behavior: 'smooth',
+          behavior: 'smooth'
         });
       }}>
       <svg width='1em' height='1em' viewBox='0 0 24 24' className='m-auto'>

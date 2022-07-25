@@ -6,50 +6,50 @@ export const Footer = () => {
     site: [
       {
         name: 'Home',
-        href: '/',
+        href: '/'
       },
       {
         name: 'Blog',
-        href: '/blog',
+        href: '/blog'
       },
       {
         name: 'Colophon',
-        href: '/colophon',
-      },
+        href: '/colophon'
+      }
     ],
     social: [
       {
         name: 'GitHub',
-        href: 'https://shbm.fyi/gh',
+        href: 'https://shbm.fyi/gh'
       },
       {
         name: 'Twitter',
-        href: 'https://shbm.fyi/tw',
+        href: 'https://shbm.fyi/tw'
       },
       {
         name: 'LinkedIn',
-        href: 'https://shbm.fyi/li',
+        href: 'https://shbm.fyi/li'
       },
       {
         name: 'Spotify',
-        href: 'https://shbm.fyi/sp',
-      },
+        href: 'https://shbm.fyi/sp'
+      }
     ],
     misc: [
       {
         name: 'Uses',
         href: '/uses',
-        soon: true,
+        soon: true
       },
       {
         name: 'Books',
-        href: '/books',
+        href: '/books'
       },
       {
         name: 'RSS',
-        href: '/rss.xml',
-      },
-    ],
+        href: '/rss.xml'
+      }
+    ]
   };
 
   return (
@@ -122,7 +122,7 @@ export const Footer = () => {
           onClick={() => {
             window?.scrollTo({
               top: 0,
-              behavior: 'smooth',
+              behavior: 'smooth'
             });
           }}>
           Shubham Verma

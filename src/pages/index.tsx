@@ -6,7 +6,7 @@ import Notion from 'services/notion';
 
 const Home = ({
   blogs,
-  projects,
+  projects
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <PageLayout>
@@ -29,8 +29,8 @@ export const getStaticProps = async () => {
   return {
     props: {
       blogs,
-      projects,
+      projects
     },
-    revalidate: 120,
+    revalidate: 120
   };
 };

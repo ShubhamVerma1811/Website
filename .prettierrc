@@ -2,6 +2,7 @@
   "bracketSameLine": true,
   "endOfLine": "lf",
   "jsxSingleQuote": true,
+  "proseWrap": "always",
   "singleQuote": true,
-  "trailingComma": "all"
+  "trailingComma": "none"
 }

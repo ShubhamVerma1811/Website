@@ -3,7 +3,7 @@ import Notion from 'services/notion';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   try {
     const { title, authors, reason } = req.body;

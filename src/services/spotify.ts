@@ -13,12 +13,12 @@ export const getAccessToken = async () => {
     method: 'POST',
     headers: {
       Authorization: `Basic ${basic}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
     body: new URLSearchParams({
       grant_type: 'refresh_token',
-      refresh_token,
-    }),
+      refresh_token
+    })
   });
 
   return response.json();
@@ -30,8 +30,8 @@ export const getNowPlaying = async () => {
 
     return fetch(SPOTIFY_NOW_PLAYING_ENDPOINT, {
       headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
+        Authorization: `Bearer ${access_token}`
+      }
     });
   } catch (error) {
     console.error(error);
@@ -46,9 +46,9 @@ export const getTopTracks = async () => {
     SPOTIFY_TOP_TRACKS_ENDPOINT + '?limit=10&time_range=short_term',
     {
       headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    },
+        Authorization: `Bearer ${access_token}`
+      }
+    }
   );
 };
 
@@ -59,8 +59,8 @@ export const getTopArtists = async () => {
     SPOTIFY_TOP_ARTISTS_ENDPOINT + '?limit=10&time_range=short_term',
     {
       headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    },
+        Authorization: `Bearer ${access_token}`
+      }
+    }
   );
 };

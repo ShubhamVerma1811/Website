@@ -4,7 +4,7 @@ import { Blog, Blogs, Book, Project } from 'types';
 import { minutesToRead } from './read';
 
 const notion = new Client({
-  auth: process.env.NOTION_TOKEN,
+  auth: process.env.NOTION_TOKEN
 });
 
 const n2m = new NotionToMarkdown({ notionClient: notion });
@@ -17,25 +17,25 @@ class Notion {
         sorts: [
           {
             property: 'published',
-            direction: 'descending',
-          },
+            direction: 'descending'
+          }
         ],
         filter: {
           and: [
             {
               property: 'active',
               checkbox: {
-                equals: true,
-              },
+                equals: true
+              }
             },
             {
               property: 'environment',
               multi_select: {
-                contains: process.env.NOTION_ENVIRONMENT as string,
-              },
-            },
-          ],
-        },
+                contains: process.env.NOTION_ENVIRONMENT as string
+              }
+            }
+          ]
+        }
       });
 
       // @ts-ignore
@@ -49,7 +49,7 @@ class Notion {
           publishedAt:
             post?.properties?.published?.date?.start ?? 'unknown-date',
           views: post?.properties?.views?.number,
-          publicationUrl: post?.properties?.publicationUrl?.url?.trim() || null,
+          publicationUrl: post?.properties?.publicationUrl?.url?.trim() || null
         };
       });
 
@@ -77,7 +77,7 @@ class Notion {
       markdown: markdown,
       canonicalUrl: page?.properties?.canonicalUrl?.url?.trim() || null,
       publicationUrl: page?.properties?.publicationUrl?.url?.trim() || null,
-      thumbnail: page?.properties?.thumbnail?.files[0]?.file?.url || null,
+      thumbnail: page?.properties?.thumbnail?.files[0]?.file?.url || null
     };
 
     return blog;
@@ -86,7 +86,7 @@ class Notion {
   async getPageContent(block_id: string) {
     const baseQuery = {
       block_id: block_id,
-      page_size: 100,
+      page_size: 100
     };
     let results = [];
     let postContent = await notion.blocks.children.list(baseQuery);
@@ -96,7 +96,7 @@ class Notion {
     while (postContent.has_more && postContent.next_cursor) {
       postContent = await notion.blocks.children.list({
         ...baseQuery,
-        start_cursor: postContent.next_cursor,
+        start_cursor: postContent.next_cursor
       });
       results = [...results, ...postContent.results];
     }
@@ -118,9 +118,9 @@ class Notion {
       page_id,
       properties: {
         views: {
-          number: view + 1,
-        },
-      },
+          number: view + 1
+        }
+      }
     });
 
     // @ts-ignore
@@ -130,7 +130,7 @@ class Notion {
   async getBooks(): Promise<Array<Book>> {
     try {
       const db = await notion.databases.query({
-        database_id: process.env.NOTION_BOOKS_DATABASE_ID!,
+        database_id: process.env.NOTION_BOOKS_DATABASE_ID!
       });
 
       const books: Array<Book> = db.results?.map((book: any) => {
@@ -139,7 +139,7 @@ class Notion {
           author: book?.properties?.author?.rich_text?.[0].plain_text,
           progress: book?.properties?.progress?.select?.name,
           url: book?.properties?.url?.url?.trim() || null,
-          image: book?.properties?.image?.url?.trim() || null,
+          image: book?.properties?.image?.url?.trim() || null
         };
       });
       return books;
@@ -152,7 +152,7 @@ class Notion {
   async createBookSuggestion(title: string, authors: string, reason: string) {
     const page = await notion.pages.create({
       parent: {
-        database_id: process.env.NOTION_BOOKS_DATABASE_ID!,
+        database_id: process.env.NOTION_BOOKS_DATABASE_ID!
       },
 
       properties: {
@@ -160,36 +160,36 @@ class Notion {
           title: [
             {
               text: {
-                content: title,
-              },
-            },
-          ],
+                content: title
+              }
+            }
+          ]
         },
         progress: {
           select: {
             name: 'suggested',
-            color: 'blue',
-          },
+            color: 'blue'
+          }
         },
         author: {
           rich_text: [
             {
               text: {
-                content: authors,
-              },
-            },
-          ],
+                content: authors
+              }
+            }
+          ]
         },
         reason: {
           rich_text: [
             {
               text: {
-                content: reason,
-              },
-            },
-          ],
-        },
-      },
+                content: reason
+              }
+            }
+          ]
+        }
+      }
     });
 
     return page;
@@ -204,11 +204,11 @@ class Notion {
             {
               property: 'active',
               checkbox: {
-                equals: true,
-              },
-            },
-          ],
-        },
+                equals: true
+              }
+            }
+          ]
+        }
       });
 
       const projects: Array<Project> = db.results?.map((project: any) => {
@@ -217,7 +217,7 @@ class Notion {
           description:
             project?.properties?.description?.rich_text[0]?.plain_text || '',
           live: project?.properties?.live_link?.url?.trim() || null,
-          repo: project?.properties?.repo_link?.url?.trim() || null,
+          repo: project?.properties?.repo_link?.url?.trim() || null
         };
       });
 

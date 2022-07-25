@@ -37,7 +37,7 @@ const generate = async () => {
 
   const formatted = prettier.format(sitemap, {
     ...prettierConfig,
-    parser: 'html',
+    parser: 'html'
   });
 
   // eslint-disable-next-line no-sync

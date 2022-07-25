@@ -11,13 +11,13 @@ export const Suggest = () => {
     fetch('/api/books/suggest', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         title,
         authors,
-        reason,
-      }),
+        reason
+      })
     })
       .then(() => {
         setTitle('');

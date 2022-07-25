@@ -12,8 +12,8 @@ module.exports = {
           secondary: 'var(--color-secondary)',
           accent: 'var(--color-accent)',
           'primary-muted': 'var(--color-primary-muted)',
-          'secondary-muted': 'var(--color-secondary-muted)',
-        },
+          'secondary-muted': 'var(--color-secondary-muted)'
+        }
       },
       backgroundColor: (theme) => {
         return {
@@ -24,8 +24,8 @@ module.exports = {
             'primary-muted': (props) => {
               return 'var(--color-primary-muted)';
             },
-            'secondary-muted': 'var(--color-secondary-muted)',
-          },
+            'secondary-muted': 'var(--color-secondary-muted)'
+          }
         };
       },
       borderColor: (theme) => {
@@ -37,15 +37,15 @@ module.exports = {
             'primary-muted': (props) => {
               return 'var(--color-primary-muted)';
             },
-            'secondary-muted': 'var(--color-secondary-muted)',
-          },
+            'secondary-muted': 'var(--color-secondary-muted)'
+          }
         };
-      },
-    },
+      }
+    }
   },
 
   plugins: [
     require('@tailwindcss/typography'),
-    require('@tailwindcss/line-clamp'),
-  ],
+    require('@tailwindcss/line-clamp')
+  ]
 };

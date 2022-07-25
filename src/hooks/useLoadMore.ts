@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export const useLoadMore = <T extends Array<any>>(
   arr: T,
-  limit = 3,
+  limit = 3
 ): {
   items: T;
   index: number;
@@ -27,6 +27,6 @@ export const useLoadMore = <T extends Array<any>>(
     items,
     hasMore,
     index,
-    loadMore,
+    loadMore
   };
 };

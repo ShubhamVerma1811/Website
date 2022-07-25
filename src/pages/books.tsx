@@ -64,19 +64,19 @@ export const getStaticProps = async () => {
 
   const read = {
     name: 'Read',
-    books: books.filter((book) => book.progress === 'read'),
+    books: books.filter((book) => book.progress === 'read')
   };
   const reading = {
     name: 'Reading',
-    books: books.filter((book) => book.progress === 'reading'),
+    books: books.filter((book) => book.progress === 'reading')
   };
   const wishlist = {
     name: 'Wishlist',
-    books: books.filter((book) => book.progress === 'wishlist'),
+    books: books.filter((book) => book.progress === 'wishlist')
   };
   const favorite = {
     name: 'Favorite',
-    books: books.filter((book) => book.progress === 'favorite'),
+    books: books.filter((book) => book.progress === 'favorite')
   };
 
   const categories = [read, reading, wishlist, favorite];

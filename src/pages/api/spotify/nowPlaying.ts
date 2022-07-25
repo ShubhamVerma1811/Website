@@ -3,7 +3,7 @@ import { getNowPlaying } from 'services/spotify';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   const response = await getNowPlaying();
 
@@ -35,6 +35,6 @@ export default async function handler(
     isPlaying,
     songUrl,
     title,
-    previewUrl,
+    previewUrl
   });
 }

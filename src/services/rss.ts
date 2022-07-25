@@ -7,7 +7,7 @@ export const generateRSSFeed = (blogs: Array<Blogs>) => {
   const author = {
     name: 'Shubham Verma',
     link: 'https://twitter.com/verma__shubham',
-    email: 'hi@shubhamverma.me',
+    email: 'hi@shubhamverma.me'
   };
 
   const feed = new Feed({
@@ -20,8 +20,8 @@ export const generateRSSFeed = (blogs: Array<Blogs>) => {
     author,
     copyright: `Copyright © ${new Date().getFullYear()} Shubham Verma`,
     feedLinks: {
-      rss2: 'https://shubhamverma.me/rss.xml',
-    },
+      rss2: 'https://shubhamverma.me/rss.xml'
+    }
   });
 
   blogs?.forEach((blog) => {
@@ -32,7 +32,7 @@ export const generateRSSFeed = (blogs: Array<Blogs>) => {
       link: `${baseURL}blog/${blog.slug}`,
       author: [{ ...author }],
       description: blog.description,
-      image: blog.thumbnail,
+      image: blog.thumbnail
     });
   });
 

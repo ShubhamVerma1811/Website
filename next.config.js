@@ -2,7 +2,7 @@
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+  enabled: process.env.ANALYZE === 'true'
 });
 
 /**
@@ -19,12 +19,12 @@ const nextConfig = {
       'source.unsplash.com',
       'images.unsplash.com',
       'avatars.githubusercontent.com',
-      'i.gr-assets.com',
-    ],
+      'i.gr-assets.com'
+    ]
   },
   experimental: {
-    optimizeCss: true,
-  },
+    optimizeCss: true
+  }
 };
 
 module.exports = withBundleAnalyzer(nextConfig);

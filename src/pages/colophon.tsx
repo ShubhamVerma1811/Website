@@ -9,26 +9,26 @@ const Colophon = () => {
       site: 'Leerob.io',
       by: 'Lee',
       url: 'https://leerob.io',
-      twitter: 'https://twitter.com/leeerob/',
+      twitter: 'https://twitter.com/leeerob/'
     },
     {
       site: 'nikolovlazar.com',
       by: 'Lazar',
       url: 'https://nikolovlazar.com',
-      twitter: 'https://twitter.com/nikolovlazar',
+      twitter: 'https://twitter.com/nikolovlazar'
     },
     {
       site: 'dpnkr.in',
       by: 'Deepankar',
       url: 'https://dpnkr.in',
-      twitter: 'https://twitter.com/DeepankarBhade',
+      twitter: 'https://twitter.com/DeepankarBhade'
     },
     {
       site: 'nirmalyaghosh.com',
       by: 'NirmalyaGhosh_',
       url: 'https://nirmalyaghosh.com',
-      twitter: 'https://twitter.com/NirmalyaGhosh_',
-    },
+      twitter: 'https://twitter.com/NirmalyaGhosh_'
+    }
   ];
 
   return (

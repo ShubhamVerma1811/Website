@@ -14,12 +14,12 @@ export const Header = () => {
   const headerLinks = [
     {
       name: 'Home',
-      href: '/',
+      href: '/'
     },
     {
       name: 'Blog',
-      href: '/blog',
-    },
+      href: '/blog'
+    }
     // {
     //   name: 'Exp',
     //   href: '/exp',

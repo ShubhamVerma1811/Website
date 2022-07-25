@@ -8,7 +8,7 @@ import { NowPlaying as INowPlaying } from 'types/spotify.types';
 
 const Spotify = ({
   tracks,
-  artists,
+  artists
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <PageLayout>
@@ -112,7 +112,7 @@ export const getStaticProps = async () => {
       title,
       artist,
       songUrl,
-      id,
+      id
     };
   });
 
@@ -125,16 +125,16 @@ export const getStaticProps = async () => {
     return {
       name: artist?.name,
       id: artist?.id,
-      artistUrl: artist?.external_urls?.spotify,
+      artistUrl: artist?.external_urls?.spotify
     };
   });
 
   return {
     props: {
       tracks,
-      artists,
+      artists
     },
     // every 6 hours
-    revalidate: 60 * 60 * 6,
+    revalidate: 60 * 60 * 6
   };
 };

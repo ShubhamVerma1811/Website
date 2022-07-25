@@ -23,7 +23,7 @@ const CodeBlock = (props: any) => {
         wrapLines
         customStyle={{
           margin: 0,
-          backgroundColor: 'initial',
+          backgroundColor: 'initial'
         }}
         {...props}>
         {String(props?.children).replace(/\n$/, '')}

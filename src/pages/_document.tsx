@@ -3,7 +3,7 @@ import Document, {
   Head,
   Html,
   Main,
-  NextScript,
+  NextScript
 } from 'next/document';
 
 function setInitialColorMode() {
@@ -67,7 +67,7 @@ class MyDocument extends Document {
         <body className='bg-skin-primary'>
           <script
             dangerouslySetInnerHTML={{
-              __html: blockingSetInitialColorMode,
+              __html: blockingSetInitialColorMode
             }}></script>
           <Main />
           <NextScript />

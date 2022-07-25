@@ -8,7 +8,7 @@ import { DiagonalArrow, PauseIcon, SpotifyIcon } from './Icons';
 export const NowPlaying = () => {
   const { data: track } = useSWR<INowPlaying>(
     '/api/spotify/nowPlaying',
-    fetcher,
+    fetcher
   );
   const [isPlaying, setIsPlaying] = useState(false);
 
