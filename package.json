@@ -1,8 +1,20 @@
 {
   "name": "website",
   "version": "1.0.0",
+  "private": true,
+  "author": "Shubham Verma",
+  "license": "MIT",
   "description": "",
-  "main": "index.js",
+  "keywords": [],
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "format": "prettier --write .  --ignore-path .gitignore",
+    "lint": "next lint",
+    "analyze": "cross-env ANALYZE=true yarn build"
+  },
   "dependencies": {
     "@next/bundle-analyzer": "^12.2.2",
     "@notionhq/client": "^0.4.13",
@@ -46,18 +58,5 @@
     "prettier-plugin-tailwindcss": "^0.1.4",
     "tailwindcss": "^3.0.18",
     "typescript": "^4.4.3"
-  },
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "deploy": "yarn export",
-    "export": "next export",
-    "format": "prettier --write .  --ignore-path .gitignore",
-    "lint": "next lint",
-    "analyze": "cross-env ANALYZE=true yarn build"
-  },
-  "keywords": [],
-  "author": "Shubham Verma",
-  "license": "ISC"
+  }
 }
