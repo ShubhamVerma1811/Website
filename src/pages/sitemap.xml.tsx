@@ -1,13 +1,15 @@
-import { GetServerSideProps } from 'next';
+import type { GetServerSideProps } from 'next';
 import prettier from 'prettier';
-import Notion from 'services/notion';
+import { getClient } from 'services/sanity-server';
+import type { Blog } from 'types';
 
 const generate = async () => {
   const prettierConfig = await prettier.resolveConfig('../../.prettierrc');
   const pages = ['/', '/blog', '/books', '/colophon', '/spotify', '/uses'];
 
-  const notion = new Notion();
-  const blogs = await notion.getPosts();
+  const blogs: Array<Blog> = await getClient(false).fetch(
+    `*[_type == "post"] | order(date desc) {...,"slug": slug.current}`
+  );
 
   const sitemap = `
     <?xml version="1.0" encoding="UTF-8"?>

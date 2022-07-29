@@ -1,6 +1,5 @@
 import { DiagonalArrow } from 'components/Icons';
-import React from 'react';
-import { Project } from 'types';
+import type { Project } from 'types';
 
 interface ProjectCompProps {
   project: Project;
@@ -14,7 +13,7 @@ export const ProjectsCard = ({ project }: ProjectCompProps) => {
       </div>
 
       <p className='text-md my-2 rounded-md text-skin-primary-muted line-clamp-2'>
-        {project.description}
+        {project.summary}
       </p>
       <div className='mt-3'>
         <a

@@ -1,12 +1,15 @@
 import Link from 'next/link';
 import React from 'react';
-import { Blogs as Blog } from 'types';
+import type { Blog } from 'types';
 
 interface BlogsCompProps {
   blog: Blog;
 }
 
 export const BlogCard = ({ blog }: BlogsCompProps) => {
+  const d = new Date(blog.date);
+  const date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+
   return (
     <React.Fragment>
       <Link
@@ -21,7 +24,7 @@ export const BlogCard = ({ blog }: BlogsCompProps) => {
             </div>
 
             <p className='my-1 text-skin-primary-muted'>
-              {blog.publishedAt}
+              {date}
               <span className='mx-3'>•</span>
               {blog.views} views
               {blog.publicationUrl && (
@@ -34,7 +37,7 @@ export const BlogCard = ({ blog }: BlogsCompProps) => {
               )}
             </p>
             <p className='text-md truncate rounded-md text-skin-primary-muted'>
-              {blog.description}
+              {blog.summary}
             </p>
           </div>
         </a>

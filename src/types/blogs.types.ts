@@ -1,16 +1,13 @@
-export type Blogs = {
+export type Blog = {
   id: string;
   title: string;
-  description: string;
+  summary: string;
   slug: string;
-  publishedAt: Date;
+  date: Date;
   publicationUrl?: string;
   canonicalUrl?: string;
   readTime: number;
   views: number;
-  thumbnail?: string;
-};
-
-export type Blog = Blogs & {
-  markdown: string;
+  coverImage?: string;
+  body: string;
 };

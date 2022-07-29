@@ -1,9 +1,10 @@
 import { BlogCard } from 'components';
 import { PageLayout } from 'layouts';
-import { InferGetStaticPropsType } from 'next';
+import type { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import { memo } from 'react';
-import Notion from 'services/notion';
+import { getClient } from 'services/sanity-server';
+import type { Blog } from 'types';
 
 const Blog = ({ blogs }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -24,8 +25,9 @@ const Blog = ({ blogs }: InferGetStaticPropsType<typeof getStaticProps>) => {
 export default memo(Blog);
 
 export const getStaticProps = async () => {
-  const notion = new Notion();
-  const blogs = await notion.getPosts();
+  const blogs: Array<Blog> = await getClient(false).fetch(
+    `*[_type == "post"] | order(date desc) {...,"slug": slug.current}`
+  );
 
   return {
     props: {

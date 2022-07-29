@@ -1,6 +1,6 @@
 export type Project = {
   title: string;
-  description: string;
+  summary: string;
   live: string;
   repo: string;
 };

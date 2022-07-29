@@ -1,7 +1,7 @@
 import { Feed } from 'feed';
-import { Blogs } from 'types';
+import type { Blog } from 'types';
 
-export const generateRSSFeed = (blogs: Array<Blogs>) => {
+export const generateRSSFeed = (blogs: Array<Blog>) => {
   const baseURL = 'https://shubhamverma.me/';
 
   const author = {
@@ -28,11 +28,11 @@ export const generateRSSFeed = (blogs: Array<Blogs>) => {
     feed.addItem({
       title: blog.title,
       id: blog.id,
-      date: new Date(blog.publishedAt),
+      date: new Date(blog.date),
       link: `${baseURL}blog/${blog.slug}`,
       author: [{ ...author }],
-      description: blog.description,
-      image: blog.thumbnail
+      description: blog.summary,
+      image: blog.coverImage
     });
   });
 

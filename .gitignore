@@ -28,9 +28,9 @@ yarn-error.log*
 **/public/sw.js
 **/public/service-*.js*
 .vscode
-.vercel
 
 /public/sitemap*.xml
 /public/rss.xml
 .vercel
 .lighthouseci/*
+.sanity
