@@ -1,6 +1,6 @@
 import { RightArrow } from 'components/Icons';
 import Link from 'next/link';
-import { Blogs as Blog } from 'types';
+import type { Blog } from 'types';
 import { BlogCard } from './BlogCard';
 
 interface BlogsCompProps {

@@ -1,11 +1,11 @@
 import { Suggest } from 'components/Books';
 import { PageLayout } from 'layouts';
-import { InferGetStaticPropsType } from 'next';
+import type { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
-import Notion from 'services/notion';
+import { getClient } from 'services/sanity-server';
+import type { Book } from 'types';
 
 const Books = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -15,21 +15,21 @@ const Books = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
       </Head>
       <p className='text-4xl font-bold text-skin-secondary'>Books</p>
       <Suggest />
-      {props.categories?.map((cat) => {
+      {props.categories?.map((cat, idx) => {
         if (!cat.books.length) return null;
         return (
-          <div>
+          <div key={idx}>
             <p className='my-4 text-xl text-skin-secondary'>{cat.name}</p>
             <div className='grid grid-cols-1 gap-3 lg:grid-cols-2'>
-              {cat?.books?.map((book) => (
-                <Link href={book.url} passHref>
+              {cat?.books?.map((book, idx) => (
+                <Link key={idx} href={book.link} passHref>
                   <a
                     target='_blank'
                     rel='noopener noreferrer'
                     className='flex-[0.5]'>
                     <div className='flex cursor-pointer rounded-md bg-skin-secondary-muted p-4 transition-all hover:scale-[1.02]'>
                       <Image
-                        src={book.image}
+                        src={book.cover}
                         className='rounded-md'
                         width={100}
                         height={120}
@@ -58,9 +58,9 @@ const Books = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 export default Books;
 
 export const getStaticProps = async () => {
-  const notion = new Notion();
-
-  const books = await notion.getBooks();
+  const books: Array<Book> = await getClient(false).fetch(
+    `*[_type == "book"] {..., "progress": progress.value}`
+  );
 
   const read = {
     name: 'Read',

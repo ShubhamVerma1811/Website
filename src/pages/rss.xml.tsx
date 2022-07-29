@@ -1,6 +1,7 @@
-import { GetServerSideProps } from 'next';
-import Notion from 'services/notion';
+import type { GetServerSideProps } from 'next';
 import { generateRSSFeed } from 'services/rss';
+import { getClient } from 'services/sanity-server';
+import type { Blog } from 'types';
 
 const RSS = () => {
   return null;
@@ -9,8 +10,9 @@ const RSS = () => {
 export default RSS;
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const notion = new Notion();
-  const blogs = await notion.getPosts();
+  const blogs: Array<Blog> = await getClient(false).fetch(
+    `*[_type == "post"] | order(date desc) {...,"slug": slug.current}`
+  );
   const rss = generateRSSFeed(blogs);
   res.setHeader('Content-Type', 'text/xml');
   res.write(rss);

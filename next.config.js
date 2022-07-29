@@ -20,9 +20,6 @@ const nextConfig = {
       'avatars.githubusercontent.com',
       'i.gr-assets.com'
     ]
-  },
-  experimental: {
-    optimizeCss: true
   }
 };
 

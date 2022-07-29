@@ -1,8 +1,9 @@
 import { Hero, ProjectsSection, RecentBlogSection } from 'components';
 import { PageLayout } from 'layouts';
-import { InferGetStaticPropsType } from 'next';
+import type { InferGetStaticPropsType } from 'next';
 import { memo } from 'react';
-import Notion from 'services/notion';
+import { getClient } from 'services/sanity-server';
+import type { Blog, Project } from 'types';
 
 const Home = ({
   blogs,
@@ -11,9 +12,7 @@ const Home = ({
   return (
     <PageLayout>
       <Hero />
-      <RecentBlogSection
-        blogs={blogs.sort((a, b) => b.views - a.views).slice(0, 3)}
-      />
+      <RecentBlogSection blogs={blogs} />
       <ProjectsSection projects={projects} />
     </PageLayout>
   );
@@ -22,9 +21,13 @@ const Home = ({
 export default memo(Home);
 
 export const getStaticProps = async () => {
-  const notion = new Notion();
-  const blogs = await notion.getPosts();
-  const projects = await notion.getProjects();
+  const blogs: Array<Blog> = await getClient(false).fetch(
+    `*[_type == "post" && defined(views)] | order(views desc) [0...3] {..., "slug": slug.current}`
+  );
+
+  const projects: Array<Project> = await getClient(false).fetch(
+    `*[_type == "project"]`
+  );
 
   return {
     props: {

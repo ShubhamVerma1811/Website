@@ -9,7 +9,8 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
-import Notion from 'services/notion';
+import { getClient } from 'services/sanity-server';
+import type { Blog } from 'types';
 
 const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [views, setViews] = React.useState<string | number>('--');
@@ -34,12 +35,15 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
   if (!blog) return null;
 
+  const d = new Date(blog.date);
+  const date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+
   return (
     <PageLayout>
       <BlogLayout blog={blog}>
         <Head>
           <title>{blog?.title} | Shubham Verma</title>
-          <meta name='description' content={blog?.description} />
+          <meta name='description' content={blog?.summary} />
 
           {blog?.canonicalUrl && (
             <link rel='canonical' href={blog?.canonicalUrl} />
@@ -50,20 +54,20 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <meta name='twitter:card' content='summary_large_image' />
           <meta name='twitter:site' content='@verma__shubham' />
           <meta name='twitter:title' content={blog?.title} />
-          <meta name='twitter:description' content={blog?.description} />
+          <meta name='twitter:description' content={blog?.summary} />
           <meta name='twitter:creator' content='@verma__shubham' />
-          {blog?.thumbnail && (
-            <meta name='twitter:image' content={blog?.thumbnail} />
+          {blog?.coverImage && (
+            <meta name='twitter:image' content={blog?.coverImage} />
           )}
-          <meta name='twitter:image:alt' content={blog?.description} />
+          <meta name='twitter:image:alt' content={blog?.summary} />
           {/* <!-- Open Graph data --> */}
           <meta property='og:title' content={blog?.title} />
           <meta property='og:type' content='article' />
-          {blog?.thumbnail && (
-            <meta property='og:image' content={blog?.thumbnail} />
+          {blog?.coverImage && (
+            <meta property='og:image' content={blog?.coverImage} />
           )}
-          <meta property='og:image:alt' content={blog?.description} />
-          <meta property='og:description' content={blog?.description} />
+          <meta property='og:image:alt' content={blog?.summary} />
+          <meta property='og:description' content={blog?.summary} />
         </Head>
 
         <p className='mb-3 text-4xl font-bold text-skin-secondary'>
@@ -71,7 +75,7 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
         </p>
 
         <p className='my-1 text-gray-400'>
-          {blog?.publishedAt} <span className='mx-3'>•</span> {views} views{' '}
+          {date} <span className='mx-3'>•</span> {views} views{' '}
           <span className='mx-3'>•</span>
           {blog?.readTime} min read
           {blog?.canonicalUrl && (
@@ -127,7 +131,7 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
             }
           }}>
           {/* @ts-ignore */}
-          {blog?.markdown}
+          {blog?.body}
         </ReactMarkdown>
       </BlogLayout>
     </PageLayout>
@@ -137,11 +141,13 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
 export default memo(Blog);
 
 export const getStaticPaths = async () => {
-  const notion = new Notion();
-  const blogs = await notion.getPosts();
-  const paths = blogs?.map((blog) => {
+  const blogs: Array<Blog> = await getClient(false).fetch(
+    `*[_type == "post"] | order(date desc) {"slug":slug.current}`
+  );
+
+  const paths = blogs?.map(({ slug }) => {
     return {
-      params: { slug: blog.slug }
+      params: { slug }
     };
   });
 
@@ -153,26 +159,19 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   if (!params || !params.slug) throw new Error('No slug found in params');
-  const notion = new Notion();
 
   const slug = typeof params.slug === 'string' ? params.slug : params.slug[0];
-  const blogs = await notion.getPosts();
-  const matchedPost = blogs?.filter((blog) => {
-    if (blog.publicationUrl) return;
-    if (blog?.slug) {
-      return blog.slug === slug;
-    }
-  })[0];
+  const blog: Blog = await getClient(false).fetch(
+    `*[_type == "post" && !defined(publicationUrl) && slug.current == "${slug}"][0] {...,"id": _id}`
+  );
 
-  if (!matchedPost) {
+  if (!blog) {
     return {
       props: { blog: null },
       notFound: true,
       revalidate: 10
     };
   }
-
-  const blog = await notion.getPageInfo(matchedPost.id);
 
   return {
     props: {
