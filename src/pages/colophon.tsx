@@ -75,11 +75,11 @@ const Colophon = () => {
         </a>
         , and{' '}
         <a
-          href='https://notion.com'
+          href='https://sanity.io'
           className='text-skin-accent underline-offset-4 hover:underline'
           target='_blank'
           rel='noopener noreferrer'>
-          Notion
+          Sanity
         </a>{' '}
         as CMS, and it&apos;s hosted on{' '}
         <a
