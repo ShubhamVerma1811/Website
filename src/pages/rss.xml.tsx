@@ -15,6 +15,10 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   );
   const rss = generateRSSFeed(blogs);
   res.setHeader('Content-Type', 'text/xml');
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=1200, stale-while-revalidate=600'
+  );
   res.write(rss);
   res.end();
 
