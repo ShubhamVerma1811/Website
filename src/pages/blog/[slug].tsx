@@ -168,8 +168,7 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   if (!blog) {
     return {
       props: { blog: null },
-      notFound: true,
-      revalidate: 10
+      notFound: true
     };
   }
 
@@ -177,7 +176,6 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
     props: {
       blog
     },
-    notFound: false,
-    revalidate: 10
+    notFound: false
   };
 };
