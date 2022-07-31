@@ -6,6 +6,9 @@
   "license": "MIT",
   "description": "",
   "keywords": [],
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
