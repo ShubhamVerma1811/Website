@@ -172,9 +172,12 @@ function RenderResults() {
       items={results}
       onRender={({ item, active }) =>
         typeof item === 'string' ? (
-          <div className='space-x-1 bg-white px-4 py-2'> {item}</div>
+          <div key={item} className='space-x-1 bg-white px-4 py-2'>
+            {item}
+          </div>
         ) : (
           <div
+            key={item.id}
             className={`${
               active ? 'bg-indigo-500 text-white' : 'bg-indigo-100'
             } space-x-1 px-4 py-2 text-lg`}>
@@ -182,9 +185,11 @@ function RenderResults() {
               <span className='m-1 text-sm'>{item?.icon}</span>
               <span className='font-medium'>{item?.name}</span>
               <span className='mr-0 ml-auto'>
-                {item?.shortcut?.map((shortcut) => {
+                {item?.shortcut?.map((shortcut, idx) => {
                   return (
-                    <kbd className='m-0.5 rounded bg-gray-300 p-1 font-medium text-black'>
+                    <kbd
+                      key={idx}
+                      className='m-0.5 rounded bg-gray-300 p-1 font-medium text-black'>
                       {shortcut}
                     </kbd>
                   );

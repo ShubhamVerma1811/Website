@@ -9,9 +9,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(401).json({ message: 'Unauthorized' });
       }
       await Promise.all([
-        res.unstable_revalidate('/'),
-        res.unstable_revalidate('/blog'),
-        res.unstable_revalidate(`/blog/${slug}`)
+        res.revalidate('/'),
+        res.revalidate('/blog'),
+        res.revalidate(`/blog/${slug}`)
       ]);
       return res.status(200).json({ message: `Updated ${slug}` });
     } catch (error) {

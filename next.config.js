@@ -1,5 +1,3 @@
-// @ts-check
-
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true'
@@ -20,6 +18,11 @@ const nextConfig = {
       'avatars.githubusercontent.com',
       'i.gr-assets.com'
     ]
+  },
+  experimental: {
+    images: {
+      allowFutureImage: true
+    }
   }
 };
 
