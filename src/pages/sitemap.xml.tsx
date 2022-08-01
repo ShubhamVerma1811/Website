@@ -3,11 +3,11 @@ import prettier from 'prettier';
 import { getClient } from 'services/sanity-server';
 import type { Blog } from 'types';
 
-const generate = async () => {
+const generate = async (preview: boolean) => {
   const prettierConfig = await prettier.resolveConfig('../../.prettierrc');
   const pages = ['/', '/blog', '/books', '/colophon', '/spotify', '/uses'];
 
-  const blogs: Array<Blog> = await getClient(false).fetch(
+  const blogs: Array<Blog> = await getClient(preview).fetch(
     `*[_type == "post"] | order(date desc) {...,"slug": slug.current}`
   );
 
@@ -52,9 +52,12 @@ const Sitemap = () => {
 
 export default Sitemap;
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  res,
+  preview = false
+}) => {
   res.setHeader('Content-Type', 'text/xml');
-  const posts = await generate();
+  const posts = await generate(preview);
   res.setHeader(
     'Cache-Control',
     'public, s-maxage=1200, stale-while-revalidate=600'
