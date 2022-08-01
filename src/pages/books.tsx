@@ -1,6 +1,6 @@
 import { Suggest } from 'components/Books';
 import { PageLayout } from 'layouts';
-import type { InferGetStaticPropsType } from 'next';
+import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -57,8 +57,10 @@ const Books = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export default Books;
 
-export const getStaticProps = async () => {
-  const books: Array<Book> = await getClient(false).fetch(
+export const getStaticProps = async ({
+  preview = false
+}: GetStaticPropsContext) => {
+  const books: Array<Book> = await getClient(preview).fetch(
     `*[_type == "book"] {..., "progress": progress.value}`
   );
 

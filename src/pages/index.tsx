@@ -1,6 +1,6 @@
 import { Hero, ProjectsSection, RecentBlogSection } from 'components';
 import { PageLayout } from 'layouts';
-import type { InferGetStaticPropsType } from 'next';
+import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { memo } from 'react';
 import { getClient } from 'services/sanity-server';
 import type { Blog, Project } from 'types';
@@ -20,12 +20,14 @@ const Home = ({
 
 export default memo(Home);
 
-export const getStaticProps = async () => {
-  const blogs: Array<Blog> = await getClient(false).fetch(
+export const getStaticProps = async ({
+  preview = false
+}: GetStaticPropsContext) => {
+  const blogs: Array<Blog> = await getClient(preview).fetch(
     `*[_type == "post" && defined(views)] | order(views desc) [0...3] {..., "slug": slug.current}`
   );
 
-  const projects: Array<Project> = await getClient(false).fetch(
+  const projects: Array<Project> = await getClient(preview).fetch(
     `*[_type == "project"]`
   );
 

@@ -4,6 +4,11 @@ import { getClient } from 'services/sanity-server';
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     try {
+      if (req.preview) {
+        res.status(403).send('Forbidden for Preview Mode');
+        return;
+      }
+
       const { page_id } = JSON.parse(req.body);
       const doc = await getClient(false).mutate([
         {

@@ -140,8 +140,10 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export default memo(Blog);
 
-export const getStaticPaths = async () => {
-  const blogs: Array<Blog> = await getClient(false).fetch(
+export const getStaticPaths = async ({
+  preview = false
+}: GetStaticPropsContext) => {
+  const blogs: Array<Blog> = await getClient(preview).fetch(
     `*[_type == "post"] | order(date desc) {"slug":slug.current}`
   );
 
@@ -157,11 +159,14 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
+export const getStaticProps = async ({
+  params,
+  preview = false
+}: GetStaticPropsContext) => {
   if (!params || !params.slug) throw new Error('No slug found in params');
 
   const slug = typeof params.slug === 'string' ? params.slug : params.slug[0];
-  const blog: Blog = await getClient(false).fetch(
+  const blog: Blog = await getClient(preview).fetch(
     `*[_type == "post" && !defined(publicationUrl) && slug.current == "${slug}"][0] {...,"id": _id}`
   );
 

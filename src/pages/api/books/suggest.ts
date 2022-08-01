@@ -8,6 +8,11 @@ export default async function handler(
   try {
     const { title, authors, reason } = req.body;
 
+    if (req.preview) {
+      res.status(403).send('Forbidden for Preview Mode');
+      return;
+    }
+
     const doc = await getClient(false).mutate([
       {
         create: {
