@@ -2,17 +2,21 @@ import CodeBlock from 'blocks/code';
 import { DiagonalArrow } from 'components';
 import { BlogLayout, PageLayout } from 'layouts';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
+import { MDXRemote } from 'next-mdx-remote';
+import { serialize } from 'next-mdx-remote/serialize';
 import Head from 'next/head';
 import React, { memo, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { getClient } from 'services/sanity-server';
-import type { Blog } from 'types';
+import type { Blog as IBlog } from 'types';
 
-const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Blog = ({
+  blog,
+  mdxSource
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [views, setViews] = React.useState<string | number>('--');
 
   useEffect(() => {
@@ -89,50 +93,36 @@ const Blog = ({ blog }: InferGetStaticPropsType<typeof getStaticProps>) => {
           )}
         </p>
         <hr className='my-4 border-skin-primary-muted' />
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          rehypePlugins={[
-            rehypeSlug,
-            [
-              rehypeAutolinkHeadings,
-              {
-                behavior: 'wrap',
-                properties: {
-                  className: 'anchor'
-                }
+        <div className='prose max-w-none text-lg text-skin-secondary prose-headings:scroll-m-20 prose-headings:text-skin-secondary prose-a:text-skin-accent prose-strong:text-skin-secondary prose-em:text-skin-secondary prose-code:rounded-sm prose-code:text-skin-secondary prose-li:text-skin-secondary'>
+          <MDXRemote
+            {...mdxSource}
+            components={{
+              blockquote: (props) => (
+                <blockquote className='prose text-skin-secondary'>
+                  {props.children}
+                </blockquote>
+              ),
+              pre: (props: any) => {
+                return <pre className='relative p-0'>{props.children}</pre>;
+              },
+              code(props) {
+                return <CodeBlock {...props} />;
+              },
+              img: (props) => {
+                return (
+                  <figure>
+                    <img
+                      src={props.src}
+                      alt={props.alt}
+                      className='my-0 rounded-md'
+                    />
+                    <figcaption>{props.alt}</figcaption>
+                  </figure>
+                );
               }
-            ],
-            rehypeCodeTitles
-          ]}
-          className='prose max-w-none text-lg text-skin-secondary prose-headings:scroll-m-20 prose-headings:text-skin-secondary prose-a:text-skin-accent prose-strong:text-skin-secondary prose-em:text-skin-secondary prose-code:rounded-sm prose-code:text-skin-secondary prose-li:text-skin-secondary'
-          components={{
-            blockquote: (props) => (
-              <blockquote className='prose text-skin-secondary'>
-                {props.children}
-              </blockquote>
-            ),
-            pre: (props: any) => {
-              return <pre className='relative p-0'>{props.children}</pre>;
-            },
-            code(props) {
-              return <CodeBlock {...props} />;
-            },
-            img: (props) => {
-              return (
-                <figure>
-                  <img
-                    src={props.src}
-                    alt={props.alt}
-                    className='my-0 rounded-md'
-                  />
-                  <figcaption>{props.alt}</figcaption>
-                </figure>
-              );
-            }
-          }}>
-          {/* @ts-ignore */}
-          {blog?.body}
-        </ReactMarkdown>
+            }}
+          />
+        </div>
       </BlogLayout>
     </PageLayout>
   );
@@ -143,7 +133,7 @@ export default memo(Blog);
 export const getStaticPaths = async ({
   preview = false
 }: GetStaticPropsContext) => {
-  const blogs: Array<Blog> = await getClient(preview).fetch(
+  const blogs: Array<IBlog> = await getClient(preview).fetch(
     `*[_type == "post"] | order(date desc) {"slug":slug.current}`
   );
 
@@ -166,7 +156,7 @@ export const getStaticProps = async ({
   if (!params || !params.slug) throw new Error('No slug found in params');
 
   const slug = typeof params.slug === 'string' ? params.slug : params.slug[0];
-  const blog: Blog = await getClient(preview).fetch(
+  const blog: IBlog = await getClient(preview).fetch(
     `*[_type == "post" && !defined(publicationUrl) && slug.current == "${slug}"][0] {...,"id": _id}`
   );
 
@@ -177,9 +167,29 @@ export const getStaticProps = async ({
     };
   }
 
+  const mdxSource = await serialize(blog.body, {
+    mdxOptions: {
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [
+        rehypeSlug,
+        [
+          rehypeAutolinkHeadings,
+          {
+            behavior: 'wrap',
+            properties: {
+              className: 'anchor'
+            }
+          }
+        ],
+        rehypeCodeTitles
+      ]
+    }
+  });
+
   return {
     props: {
-      blog
+      blog,
+      mdxSource
     },
     notFound: false
   };

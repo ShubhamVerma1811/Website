@@ -59,11 +59,11 @@ const Colophon = () => {
         </a>{' '}
         (SSG for all and ISR for blogs),{' '}
         <a
-          href='https://github.com/remarkjs/react-markdown'
+          href='https://github.com/hashicorp/next-mdx-remote'
           className='text-skin-accent underline-offset-4 hover:underline'
           target='_blank'
           rel='noopener noreferrer'>
-          React Markdown
+          MDX(Next MDX Remote)
         </a>
         ,{' '}
         <a
