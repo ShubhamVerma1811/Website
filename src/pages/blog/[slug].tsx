@@ -191,6 +191,7 @@ export const getStaticProps = async ({
       blog,
       mdxSource
     },
-    notFound: false
+    notFound: false,
+    revalidate: 60 * 60 * 24
   };
 };

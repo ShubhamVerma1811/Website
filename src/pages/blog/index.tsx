@@ -34,6 +34,7 @@ export const getStaticProps = async ({
   return {
     props: {
       blogs
-    }
+    },
+    revalidate: 60 * 60 * 24
   };
 };
