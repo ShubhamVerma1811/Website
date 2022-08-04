@@ -1,4 +1,5 @@
 import { BackToTop, LinkedInIcon, TwitterIcon } from 'components';
+import Head from 'next/head';
 import React from 'react';
 import { DOMAIN, TWITTER_HANDLE } from 'services/constants';
 import { Blog } from 'types';
@@ -7,17 +8,19 @@ interface IBlogLayoutProps {
   blog: Blog;
 }
 
-export const BlogLayout: React.FC<IBlogLayoutProps> = (props) => {
-  const url = encodeURIComponent(`${DOMAIN}/blog/${props.blog.slug}`);
+export const BlogLayout: React.FC<IBlogLayoutProps> = ({ blog, children }) => {
+  const url = encodeURIComponent(`${DOMAIN}/blog/${blog.slug}`);
 
   return (
-    <main className='mb-0'>
-      {props.children}
-      <hr className='my-4 border-skin-primary-muted' />
-
-      <ShareIntents title={props.blog?.title} url={url} />
-      <BackToTop />
-    </main>
+    <React.Fragment>
+      <MetaTags blog={blog} />
+      <main className='mb-0'>
+        {children}
+        <hr className='my-4 border-skin-primary-muted' />
+        <ShareIntents title={blog?.title} url={url} />
+        <BackToTop />
+      </main>
+    </React.Fragment>
   );
 };
 
@@ -54,5 +57,36 @@ const ShareIntents = ({ title, url }: { title: string; url: string }) => {
         </div>
       </div>
     </div>
+  );
+};
+
+const MetaTags = ({ blog }: IBlogLayoutProps) => {
+  return (
+    <Head>
+      <title>{blog?.title} | Shubham Verma</title>
+      <meta name='description' content={blog?.summary} />
+
+      {blog?.canonicalUrl && <link rel='canonical' href={blog?.canonicalUrl} />}
+      <meta name='author' content='Shubham Verma' />
+
+      {/* <!-- Twitter Card data --> */}
+      <meta name='twitter:card' content='summary_large_image' />
+      <meta name='twitter:site' content={TWITTER_HANDLE} />
+      <meta name='twitter:title' content={blog?.title} />
+      <meta name='twitter:description' content={blog?.summary} />
+      <meta name='twitter:creator' content={TWITTER_HANDLE} />
+      {blog?.coverImage && (
+        <meta name='twitter:image' content={blog?.coverImage} />
+      )}
+      <meta name='twitter:image:alt' content={blog?.summary} />
+      {/* <!-- Open Graph data --> */}
+      <meta property='og:title' content={blog?.title} />
+      <meta property='og:type' content='article' />
+      {blog?.coverImage && (
+        <meta property='og:image' content={blog?.coverImage} />
+      )}
+      <meta property='og:image:alt' content={blog?.summary} />
+      <meta property='og:description' content={blog?.summary} />
+    </Head>
   );
 };

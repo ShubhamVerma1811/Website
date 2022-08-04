@@ -4,7 +4,6 @@ import { BlogLayout, PageLayout } from 'layouts';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
-import Head from 'next/head';
 import React, { memo, useEffect } from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
@@ -20,8 +19,7 @@ const Blog = ({
   const [views, setViews] = React.useState<string | number>('--');
 
   useEffect(() => {
-    // @ts-ignore
-    setViews(blog?.views);
+    blog && setViews(blog?.views);
   }, [blog?.views]);
 
   useEffect(() => {
@@ -45,35 +43,6 @@ const Blog = ({
   return (
     <PageLayout>
       <BlogLayout blog={blog}>
-        <Head>
-          <title>{blog?.title} | Shubham Verma</title>
-          <meta name='description' content={blog?.summary} />
-
-          {blog?.canonicalUrl && (
-            <link rel='canonical' href={blog?.canonicalUrl} />
-          )}
-          <meta name='author' content='Shubham Verma' />
-
-          {/* <!-- Twitter Card data --> */}
-          <meta name='twitter:card' content='summary_large_image' />
-          <meta name='twitter:site' content='@verma__shubham' />
-          <meta name='twitter:title' content={blog?.title} />
-          <meta name='twitter:description' content={blog?.summary} />
-          <meta name='twitter:creator' content='@verma__shubham' />
-          {blog?.coverImage && (
-            <meta name='twitter:image' content={blog?.coverImage} />
-          )}
-          <meta name='twitter:image:alt' content={blog?.summary} />
-          {/* <!-- Open Graph data --> */}
-          <meta property='og:title' content={blog?.title} />
-          <meta property='og:type' content='article' />
-          {blog?.coverImage && (
-            <meta property='og:image' content={blog?.coverImage} />
-          )}
-          <meta property='og:image:alt' content={blog?.summary} />
-          <meta property='og:description' content={blog?.summary} />
-        </Head>
-
         <p className='mb-3 text-4xl font-bold text-skin-secondary'>
           {blog?.title}
         </p>
