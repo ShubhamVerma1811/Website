@@ -2,6 +2,9 @@ import { PageLayout } from 'layouts';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 import { getClient } from 'services/sanity-server';
 
 const Uses = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -30,7 +33,23 @@ export const getStaticProps = async ({
     };
   }
 
-  const md = await serialize(uses[0]?.body || '');
+  const md = await serialize(uses[0]?.body, {
+    mdxOptions: {
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [
+        rehypeSlug,
+        [
+          rehypeAutolinkHeadings,
+          {
+            behavior: 'wrap',
+            properties: {
+              className: 'anchor'
+            }
+          }
+        ]
+      ]
+    }
+  });
 
   return {
     props: {

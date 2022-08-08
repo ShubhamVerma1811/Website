@@ -38,8 +38,7 @@ export const Footer = () => {
     misc: [
       {
         name: 'Uses',
-        href: '/uses',
-        soon: true
+        href: '/uses'
       },
       {
         name: 'Books',
@@ -101,14 +100,7 @@ export const Footer = () => {
                   key={index}
                   className='my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4'>
                   <Link href={link.href} passHref>
-                    <a>
-                      {link.name}{' '}
-                      {link?.soon && (
-                        <span className='text-sm text-skin-primary-muted'>
-                          (soon)
-                        </span>
-                      )}
-                    </a>
+                    <a>{link.name} </a>
                   </Link>
                 </li>
               );
