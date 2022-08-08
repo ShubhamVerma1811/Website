@@ -31,6 +31,10 @@ export const Footer = () => {
         href: 'https://shbm.fyi/li'
       },
       {
+        name: 'Instagram',
+        href: 'https://shbm.fyi/ig'
+      },
+      {
         name: 'Spotify',
         href: 'https://shbm.fyi/sp'
       }
