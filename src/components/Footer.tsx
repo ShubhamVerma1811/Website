@@ -33,10 +33,6 @@ export const Footer = () => {
       {
         name: 'Instagram',
         href: 'https://shbm.fyi/ig'
-      },
-      {
-        name: 'Spotify',
-        href: 'https://shbm.fyi/sp'
       }
     ],
     misc: [
@@ -51,6 +47,10 @@ export const Footer = () => {
       {
         name: 'RSS',
         href: '/rss.xml'
+      },
+      {
+        name: 'Sitemap',
+        href: '/sitemap.xml'
       }
     ]
   };
