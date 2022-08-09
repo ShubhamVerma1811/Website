@@ -1,7 +1,8 @@
 import { Hero, ProjectsSection, RecentBlogSection } from 'components';
 import { PageLayout } from 'layouts';
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import { memo } from 'react';
+import Head from 'next/head';
+import React, { memo } from 'react';
 import { getClient } from 'services/sanity-server';
 import type { Blog, Project } from 'types';
 
@@ -10,11 +11,17 @@ const Home = ({
   projects
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <PageLayout>
-      <Hero />
-      <RecentBlogSection blogs={blogs} />
-      <ProjectsSection projects={projects} />
-    </PageLayout>
+    <React.Fragment>
+      <Head>
+        <title>Shubham Verma | Frontend Developer</title>
+        <link rel='shortcut icon' href='/favicon.ico' />
+      </Head>
+      <PageLayout>
+        <Hero />
+        <RecentBlogSection blogs={blogs} />
+        <ProjectsSection projects={projects} />
+      </PageLayout>
+    </React.Fragment>
   );
 };
 
