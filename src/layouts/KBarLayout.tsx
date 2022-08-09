@@ -52,7 +52,7 @@ const actions = [
     perform: () => router.push('/rss.xml')
   }),
   createAction({
-    name: 'Sitempa',
+    name: 'Sitemap',
     keywords: 'sitemap',
     perform: () => router.push('/sitemap.xml')
   }),
