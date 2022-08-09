@@ -1,7 +1,6 @@
 import { useAtom } from 'jotai';
 import { KBarLayout } from 'layouts';
 import { AppProps } from 'next/app';
-import Head from 'next/head';
 import React, { useEffect } from 'react';
 import { isDarkModeAtom } from 'store/atoms/theme';
 import '../styles/global.css';
