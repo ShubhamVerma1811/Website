@@ -1,96 +1,96 @@
 {
   "redirects": [
     {
-      "source": "/Tweeter",
-      "destination": "https://tweeter-eight.vercel.app/"
+      "destination": "https://tweeter-eight.vercel.app/",
+      "source": "/Tweeter"
     },
     {
-      "source": "/MoviesAppReact",
-      "destination": "https://shubhamverma1811.github.io/MoviesAppReact"
-    },
-
-    {
-      "source": "/Unsplash-React",
-      "destination": "https://shubhamverma1811.github.io/Unsplash-React"
-    },
-
-    {
-      "source": "/7D7W",
-      "destination": "https://shubhamverma1811.github.io/7D7W"
-    },
-
-    {
-      "source": "/Insure",
-      "destination": "https://shubhamverma1811.github.io/Insure"
-    },
-
-    {
-      "source": "/QuizAppReact",
-      "destination": "https://shubhamverma1811.github.io/QuizAppReact"
+      "destination": "https://shubhamverma1811.github.io/MoviesAppReact",
+      "source": "/MoviesAppReact"
     },
     {
-      "source": "/Weathery",
-      "destination": "https://shubhamverma1811.github.io/Weathery"
+      "destination": "https://shubhamverma1811.github.io/Unsplash-React",
+      "source": "/Unsplash-React"
     },
     {
-      "source": "/BaseApparel",
-      "destination": "https://shubhamverma1811.github.io/BaseApparel"
+      "destination": "https://shubhamverma1811.github.io/7D7W",
+      "source": "/7D7W"
     },
     {
-      "source": "/LCO",
-      "destination": "https://shubhamverma1811.github.io/LCO"
+      "destination": "https://shubhamverma1811.github.io/Insure",
+      "source": "/Insure"
     },
     {
-      "source": "/Fylo",
-      "destination": "https://shubhamverma1811.github.io/Fylo"
+      "destination": "https://shubhamverma1811.github.io/QuizAppReact",
+      "source": "/QuizAppReact"
     },
     {
-      "source": "/Manage",
-      "destination": "https://shubhamverma1811.github.io/Manage"
+      "destination": "https://shubhamverma1811.github.io/Weathery",
+      "source": "/Weathery"
     },
     {
-      "source": "/Shortly",
-      "destination": "https://shubhamverma1811.github.io/Shortly"
+      "destination": "https://shubhamverma1811.github.io/BaseApparel",
+      "source": "/BaseApparel"
     },
     {
-      "source": "/EasyBank",
-      "destination": "https://shubhamverma1811.github.io/EasyBank"
+      "destination": "https://shubhamverma1811.github.io/LCO",
+      "source": "/LCO"
     },
     {
-      "source": "/PTracking",
-      "destination": "https://shubhamverma1811.github.io/PTracking"
+      "destination": "https://shubhamverma1811.github.io/Fylo",
+      "source": "/Fylo"
     },
     {
-      "source": "/Huddle",
-      "destination": "https://shubhamverma1811.github.io/Huddle"
+      "destination": "https://shubhamverma1811.github.io/Manage",
+      "source": "/Manage"
     },
     {
-      "source": "/rgbgame2",
-      "destination": "https://shubhamverma1811.github.io/rgbgame2"
+      "destination": "https://shubhamverma1811.github.io/Shortly",
+      "source": "/Shortly"
     },
     {
-      "source": "/patatapClone",
-      "destination": "https://shubhamverma1811.github.io/patatapClone"
+      "destination": "https://shubhamverma1811.github.io/EasyBank",
+      "source": "/EasyBank"
     },
     {
-      "source": "/rgbgame",
-      "destination": "https://shubhamverma1811.github.io/rgbgame"
+      "destination": "https://shubhamverma1811.github.io/PTracking",
+      "source": "/PTracking"
     },
     {
-      "source": "/pernTodo",
-      "destination": "https://pern-todo-list.herokuapp.com"
+      "destination": "https://shubhamverma1811.github.io/Huddle",
+      "source": "/Huddle"
     },
     {
-      "source": "/react-ecommerce",
-      "destination": "https://react-ecommerce1.vercel.app"
+      "destination": "https://shubhamverma1811.github.io/rgbgame2",
+      "source": "/rgbgame2"
     },
     {
-      "source": "/ninjaChat",
-      "destination": "https://udemy-ninja-chat-3d84b.web.app/"
+      "destination": "https://shubhamverma1811.github.io/patatapClone",
+      "source": "/patatapClone"
     },
     {
-      "source": "/ninjaSmoothies",
-      "destination": "https://udemy-ninja-smoothies-c59b7.web.app/"
+      "destination": "https://shubhamverma1811.github.io/rgbgame",
+      "source": "/rgbgame"
+    },
+    {
+      "destination": "https://pern-todo-list.herokuapp.com",
+      "source": "/pernTodo"
+    },
+    {
+      "destination": "https://react-ecommerce1.vercel.app",
+      "source": "/react-ecommerce"
+    },
+    {
+      "destination": "https://udemy-ninja-chat-3d84b.web.app/",
+      "source": "/ninjaChat"
+    },
+    {
+      "destination": "https://udemy-ninja-smoothies-c59b7.web.app/",
+      "source": "/ninjaSmoothies"
+    },
+    {
+      "destination": "/socials",
+      "source": "/social"
     }
   ]
 }
