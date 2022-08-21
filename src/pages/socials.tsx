@@ -3,7 +3,7 @@ import { PageLayout } from 'layouts';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import { getClient } from 'services/sanity-server';
-import { Social } from 'types/socials.type';
+import { Social } from 'types';
 
 const Socials = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
