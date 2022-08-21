@@ -1,14 +1,16 @@
 import { Hero, ProjectsSection, RecentBlogSection } from 'components';
+import { TalksSection } from 'components/Talks';
 import { PageLayout } from 'layouts';
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import React, { memo } from 'react';
 import { getClient } from 'services/sanity-server';
-import type { Blog, Project } from 'types';
+import { Blog, Project, Talk } from 'types';
 
 const Home = ({
   blogs,
-  projects
+  projects,
+  talks
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <React.Fragment>
@@ -20,6 +22,7 @@ const Home = ({
         <Hero />
         <RecentBlogSection blogs={blogs} />
         <ProjectsSection projects={projects} />
+        <TalksSection talks={talks} />
       </PageLayout>
     </React.Fragment>
   );
@@ -38,10 +41,15 @@ export const getStaticProps = async ({
     `*[_type == "project"]`
   );
 
+  const talks: Array<Talk> = await getClient(preview).fetch(
+    `*[_type == "talk"] {..., "id": _id}`
+  );
+
   return {
     props: {
       blogs,
-      projects
+      projects,
+      talks
     },
     revalidate: 60 * 60 * 24
   };
