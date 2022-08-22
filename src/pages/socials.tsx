@@ -10,10 +10,14 @@ const Socials = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
     <PageLayout>
       <Head>
         <title>Socials | Shubham Verma</title>
+        <meta
+          name='description'
+          content='All my socials, available at once place.'
+        />
       </Head>
       <p className='mb-3 text-4xl font-bold text-skin-secondary'>Socials</p>
       <p className='text-lg text-skin-primary-muted'>
-        All my socials available at once place :)
+        All my socials, available at once place :)
       </p>
       <div className='my-5'>
         <ul className='flex flex-wrap'>

@@ -8,6 +8,6 @@ export type Blog = {
   canonicalUrl?: string;
   readTime: number;
   views: number;
-  coverImage?: string;
+  cover?: string;
   body: string;
 };

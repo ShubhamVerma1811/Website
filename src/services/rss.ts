@@ -32,7 +32,7 @@ export const generateRSSFeed = (blogs: Array<Blog>) => {
       link: `${baseURL}blog/${blog.slug}`,
       author: [{ ...author }],
       description: blog.summary,
-      image: blog.coverImage
+      image: blog.cover
     });
   });
 
