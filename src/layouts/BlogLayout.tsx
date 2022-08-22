@@ -75,16 +75,12 @@ const MetaTags = ({ blog }: IBlogLayoutProps) => {
       <meta name='twitter:title' content={blog?.title} />
       <meta name='twitter:description' content={blog?.summary} />
       <meta name='twitter:creator' content={TWITTER_HANDLE} />
-      {blog?.coverImage && (
-        <meta name='twitter:image' content={blog?.coverImage} />
-      )}
+      {blog?.cover && <meta name='twitter:image' content={blog?.cover} />}
       <meta name='twitter:image:alt' content={blog?.summary} />
       {/* <!-- Open Graph data --> */}
       <meta property='og:title' content={blog?.title} />
       <meta property='og:type' content='article' />
-      {blog?.coverImage && (
-        <meta property='og:image' content={blog?.coverImage} />
-      )}
+      {blog?.cover && <meta property='og:image' content={blog?.cover} />}
       <meta property='og:image:alt' content={blog?.summary} />
       <meta property='og:description' content={blog?.summary} />
     </Head>

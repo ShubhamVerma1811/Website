@@ -12,6 +12,10 @@ const Books = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
     <PageLayout>
       <Head>
         <title>Books | Shubham Verma</title>
+        <meta
+          name='description'
+          content='Collection of books that I am currently reading or is in my wishlist'
+        />
       </Head>
       <p className='text-4xl font-bold text-skin-secondary'>Books</p>
       <Suggest />

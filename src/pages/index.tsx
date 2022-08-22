@@ -16,7 +16,14 @@ const Home = ({
     <React.Fragment>
       <Head>
         <title>Shubham Verma | Frontend Developer</title>
+        <meta
+          name='description'
+          content='Frontend Developer, Likes to build open source tools and write articles. '
+        />
         <link rel='shortcut icon' href='/favicon.ico' />
+        <meta name='og:image' content='/banner.png' />
+        <meta name='twitter:image' content='/banner.png' />
+        <meta name='twitter:card' content='/banner.png' />
       </Head>
       <PageLayout>
         <Hero />
