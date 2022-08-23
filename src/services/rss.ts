@@ -24,6 +24,7 @@ export const generateRSSFeed = (blogs: Array<Blog>) => {
     }
   });
 
+  // TODO: fix cover images
   blogs?.forEach((blog) => {
     feed.addItem({
       title: blog.title,
@@ -31,8 +32,7 @@ export const generateRSSFeed = (blogs: Array<Blog>) => {
       date: new Date(blog.date),
       link: `${baseURL}blog/${blog.slug}`,
       author: [{ ...author }],
-      description: blog.summary,
-      image: blog.cover
+      description: blog.summary
     });
   });
 
