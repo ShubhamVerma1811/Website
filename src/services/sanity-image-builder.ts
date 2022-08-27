@@ -1,11 +1,11 @@
 import createImageUrlBuilder from '@sanity/image-url';
 import { sanityConfig } from './sanity-config';
 
-export const imageBuilder = createImageUrlBuilder({
-  ...sanityConfig,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!
-});
+const config = {
+  ...sanityConfig
+};
+
+export const imageBuilder = createImageUrlBuilder(config);
 
 // @ts-ignore
 export const urlForImage = (source) =>
