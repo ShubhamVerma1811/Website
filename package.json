@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@next/bundle-analyzer": "^12.2.2",
+    "@sanity/image-url": "^1.0.1",
     "copy-text-to-clipboard": "^3.0.1",
     "feed": "^4.2.2",
     "jotai": "^1.6.4",

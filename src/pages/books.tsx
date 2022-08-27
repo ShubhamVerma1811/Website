@@ -1,9 +1,10 @@
 import { Suggest } from 'components/Books';
 import { PageLayout } from 'layouts';
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
+import Image from 'next/future/image';
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
+import { urlForImage } from 'services/sanity-image-builder';
 import { getClient } from 'services/sanity-server';
 import type { Book } from 'types';
 
@@ -32,14 +33,15 @@ const Books = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     rel='noopener noreferrer'
                     className='flex-[0.5]'>
                     <div className='flex cursor-pointer rounded-md bg-skin-secondary-muted p-4 transition-all hover:scale-[1.02]'>
-                      <Image
-                        src={book.cover}
-                        className='rounded-md'
-                        width={100}
-                        height={120}
-                        objectFit='cover'
-                      />
-                      <div className='mx-6'>
+                      {book.cover && (
+                        <Image
+                          src={urlForImage(book.cover).url()}
+                          className='mr-6 rounded-md'
+                          width={100}
+                          height={120}
+                        />
+                      )}
+                      <div>
                         <p className='h-12 text-lg font-bold text-skin-secondary'>
                           {book.title}
                         </p>

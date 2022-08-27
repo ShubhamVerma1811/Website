@@ -10,14 +10,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [
-      'res.cloudinary.com',
-      'cdn.hashnode.com',
-      'source.unsplash.com',
-      'images.unsplash.com',
-      'avatars.githubusercontent.com',
-      'i.gr-assets.com'
-    ]
+    domains: ['avatars.githubusercontent.com', 'cdn.sanity.io']
   },
   experimental: {
     images: {
