@@ -1,4 +1,3 @@
-import React from 'react';
 import { Project } from 'types';
 import { ProjectsCard } from '.';
 
@@ -10,10 +9,12 @@ export const ProjectsSection = ({ projects }: ProjectCompProps) => {
   if (!projects.length) return null;
 
   return (
-    <section className='my-12'>
-      <p className='mb-3 text-4xl font-bold text-skin-secondary'>
-        Featured Projects
-      </p>
+    <section className='my-12 scroll-m-20' id='top-projects'>
+      <a href='#top-projects'>
+        <p className='mb-3 text-4xl font-bold text-skin-secondary'>
+          Featured Projects
+        </p>
+      </a>
       {projects?.map((project, index) => {
         return <ProjectsCard key={index} project={project} />;
       })}
