@@ -6,7 +6,7 @@ export const TalkCard = ({ talk }: { talk: ITalk }) => {
   return (
     <React.Fragment>
       <Link href={talk.url} passHref>
-        <a>
+        <a target='_blank' rel='noopener noreferrer'>
           <div className='my-4 cursor-pointer rounded-md bg-skin-secondary-muted p-3 transition-all hover:scale-[1.02]'>
             <div className='flex items-center justify-between'>
               <p className='text-xl text-skin-secondary'>{talk.title}</p>
