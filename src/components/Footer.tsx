@@ -133,6 +133,7 @@ export const Footer = () => {
             className='mx-1 inline'
             src={`/assets/logos/next/${isDarkMode ? 'dark.svg' : 'light.svg'}`}
             alt='Next.js Logo'
+            title='Next.js'
             width={20}
             height={20}
           />
@@ -140,6 +141,7 @@ export const Footer = () => {
             className='mx-1 inline'
             src={`/assets/logos/tailwind/logo.svg`}
             alt='Tailwind CSS Logo'
+            title='Tailwind CSS'
             width={20}
             height={20}
           />
@@ -147,6 +149,7 @@ export const Footer = () => {
             className='mx-1 inline'
             src={`/assets/logos/sanity/logo.svg`}
             alt='Sanity Logo'
+            title='Sanity'
             width={20}
             height={20}
           />
@@ -156,6 +159,7 @@ export const Footer = () => {
               isDarkMode ? 'light.svg' : 'dark.svg'
             }`}
             alt='Vercel Logo'
+            title='Vercel'
             width={20}
             height={20}
           />
