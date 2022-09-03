@@ -1,7 +1,11 @@
+import { useAtom } from 'jotai';
+import Image from 'next/future/image';
 import Link from 'next/link';
+import { isDarkModeAtom } from 'store/atoms/theme';
 import { NowPlaying } from './NowPlaying';
 
 export const Footer = () => {
+  const [isDarkMode] = useAtom(isDarkModeAtom);
   const footerLinks = {
     site: [
       {
@@ -123,12 +127,42 @@ export const Footer = () => {
           }}>
           Shubham Verma
         </span>
-        <p className='mt-4 text-sm text-skin-secondary sm:ml-4 sm:mt-0 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:pl-4'>
-          Made with{' '}
+        <p className='text-md mt-4 text-skin-secondary sm:ml-4 sm:mt-0 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:pl-4'>
+          Built with{' '}
+          <Image
+            className='mx-1 inline'
+            src={`/assets/logos/next/${isDarkMode ? 'dark.svg' : 'light.svg'}`}
+            alt='Next.js Logo'
+            width={20}
+            height={20}
+          />
+          <Image
+            className='mx-1 inline'
+            src={`/assets/logos/tailwind/logo.svg`}
+            alt='Tailwind CSS Logo'
+            width={20}
+            height={20}
+          />
+          <Image
+            className='mx-1 inline'
+            src={`/assets/logos/sanity/logo.svg`}
+            alt='Sanity Logo'
+            width={20}
+            height={20}
+          />
+          <Image
+            className='mx-1 inline'
+            src={`/assets/logos/vercel/${
+              isDarkMode ? 'light.svg' : 'dark.svg'
+            }`}
+            alt='Vercel Logo'
+            width={20}
+            height={20}
+          />
+          and{' '}
           <span role='img' aria-label='img'>
-            💖
-          </span>{' '}
-          and NextJS © {new Date().getFullYear()}
+            💛
+          </span>
         </p>
       </div>
     </footer>
