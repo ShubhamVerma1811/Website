@@ -91,6 +91,10 @@
     {
       "destination": "/socials",
       "source": "/social"
+    },
+    {
+      "destination": "/resume",
+      "source": "/(exp|experience|cv)"
     }
   ]
 }

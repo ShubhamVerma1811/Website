@@ -19,11 +19,11 @@ export const Header = () => {
     {
       name: 'Blog',
       href: '/blog'
+    },
+    {
+      name: 'Exp',
+      href: '/exp'
     }
-    // {
-    //   name: 'Exp',
-    //   href: '/exp',
-    // },
     // {
     //   name: 'More',
     //   href: '/more',

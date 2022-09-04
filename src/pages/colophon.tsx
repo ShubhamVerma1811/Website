@@ -32,11 +32,10 @@ const Colophon = () => {
   ];
 
   return (
-    <PageLayout>
+    <PageLayout title='Colophon'>
       <Head>
         <title>Colophon | Shubham Verma</title>
       </Head>
-      <p className='mb-6 text-4xl font-bold text-skin-secondary'>Colophon</p>
       <p className='mb-4 text-lg text-skin-secondary'>
         This website is developed by{' '}
         <a
