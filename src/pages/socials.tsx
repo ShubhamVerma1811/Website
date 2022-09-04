@@ -7,7 +7,7 @@ import { Social } from 'types';
 
 const Socials = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <PageLayout>
+    <PageLayout title='Socials'>
       <Head>
         <title>Socials | Shubham Verma</title>
         <meta
@@ -15,7 +15,6 @@ const Socials = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
           content='All my socials, available at once place.'
         />
       </Head>
-      <p className='mb-3 text-4xl font-bold text-skin-secondary'>Socials</p>
       <p className='text-lg text-skin-primary-muted'>
         All my socials, available at once place :)
       </p>

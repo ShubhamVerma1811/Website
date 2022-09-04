@@ -1,5 +1,3 @@
-import React from 'react';
-
 // TODO: add SVG types, I am too lazy to do this right now
 export const GithubIcon = () => (
   <svg

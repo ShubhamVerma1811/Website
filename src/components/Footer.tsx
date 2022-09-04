@@ -17,6 +17,10 @@ export const Footer = () => {
         href: '/blog'
       },
       {
+        name: 'Resume',
+        href: '/resume'
+      },
+      {
         name: 'Colophon',
         href: '/colophon'
       }

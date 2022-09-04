@@ -12,7 +12,8 @@ const generate = async (preview: boolean) => {
     '/colophon',
     '/spotify',
     '/uses',
-    '/socials'
+    '/socials',
+    '/resume'
   ];
 
   const blogs: Array<Blog> = await getClient(preview).fetch(

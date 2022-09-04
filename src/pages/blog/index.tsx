@@ -8,12 +8,11 @@ import type { Blog } from 'types';
 
 const Blog = ({ blogs }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <PageLayout>
+    <PageLayout title='Blogs'>
       <Head>
         <title>Blogs | Shubham Verma</title>
         <meta name='description' content='Blogs by Shubham Verma' />
       </Head>
-      <p className='mb-6 text-4xl font-bold text-skin-secondary'>Blogs</p>
 
       {blogs?.map((blog, index) => {
         return <BlogCard key={index} blog={blog} />;
