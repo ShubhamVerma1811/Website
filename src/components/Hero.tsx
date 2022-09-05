@@ -25,14 +25,12 @@ export const Hero = () => {
         <p className='text-md mt-3 text-skin-secondary md:text-lg'>
           I like to build open source tools and write articles.
         </p>
-        <p className='text-md mt-3 text-skin-secondary md:text-lg'>
+        <div className='flex items-center'>
           <Link href='/resume'>
-            <a className='mt-3 mr-5 w-max rounded-md border-2 border-skin-primary-muted bg-skin-secondary-muted p-2 text-lg hover:bg-skin-secondary-muted'>
-              <strong>View Resume</strong>
+            <a className=' mt-3 mr-5 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted'>
+              <strong>Resume</strong>
             </a>
           </Link>
-        </p>
-        <div className='flex items-center'>
           <a
             target='_blank'
             href='https://shbm.fyi/tw'
