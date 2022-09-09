@@ -33,7 +33,12 @@ const Resume = () => {
               } my-2 flex flex-row border-skin-secondary-muted px-4`}
               key={index}>
               <div className='mr-4'>
-                <Image src={item.iconPath} width={40} height={40} />
+                <Image
+                  src={item.iconPath}
+                  width={40}
+                  height={40}
+                  alt={`${item.company}-logo`}
+                />
               </div>
               <div>
                 <p className='mb-2 text-xl font-bold text-skin-secondary'>
