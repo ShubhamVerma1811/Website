@@ -35,6 +35,7 @@ const Books = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                       {book.cover && (
                         <Image
                           src={urlForImage(book.cover).url()}
+                          alt={book.title}
                           className='mr-6 rounded-md'
                           width={100}
                           height={120}
