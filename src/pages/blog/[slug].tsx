@@ -4,11 +4,14 @@ import { BlogLayout, PageLayout } from 'layouts';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
+import Image from 'next/future/image';
 import React, { memo, useEffect } from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
+import rehypeResizeImage from 'rehype-image-resize';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import { transformer } from 'services/image-transformer';
 import { getClient } from 'services/sanity-server';
 import type { Blog as IBlog } from 'types';
 
@@ -78,12 +81,29 @@ const Blog = ({
                 return <CodeBlock {...props} />;
               },
               img: (props) => {
+                if (!props.src) return null;
+                if (!props.width || !props.height) {
+                  // Fallback until I migrate all images to new syntax in the markdown.
+                  return (
+                    <figure>
+                      <img
+                        src={props.src}
+                        alt={props.alt}
+                        className='my-0 rounded-md'
+                      />
+                      <figcaption>{props.alt}</figcaption>
+                    </figure>
+                  );
+                }
                 return (
                   <figure>
-                    <img
+                    <Image
+                      className='rounded-sm'
                       src={props.src}
-                      alt={props.alt}
-                      className='my-0 rounded-md'
+                      alt={props.alt || ''}
+                      title={props.alt || ''}
+                      width={props.width}
+                      height={props.height}
                     />
                     <figcaption>{props.alt}</figcaption>
                   </figure>
@@ -150,7 +170,8 @@ export const getStaticProps = async ({
             }
           }
         ],
-        rehypeCodeTitles
+        rehypeCodeTitles,
+        [rehypeResizeImage, { transformer }]
       ]
     }
   });
