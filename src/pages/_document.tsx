@@ -56,7 +56,8 @@ class MyDocument extends Document {
               async
               defer
               data-website-id={process.env.NEXT_PUBLIC_UMAMI_UUID}
-              src={process.env.NEXT_PUBLIC_UMAMI_URI}></script>
+              src={process.env.NEXT_PUBLIC_UMAMI_URI}
+              data-do-not-track='true'></script>
           )}
         <Head />
         <body className='bg-skin-primary'>
