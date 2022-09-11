@@ -19,7 +19,8 @@ const Resume = () => {
         <a
           href='https://drive.google.com/file/d/1WL5bIjipkpulVW6a3gcwHgMGpvvU6IFq/view?usp=sharing'
           target='_blank'
-          rel='noopener noreferrer'>
+          rel='noopener noreferrer'
+          className='umami--click--view-resume'>
           View PDF version of the resume.
         </a>
       </p>
