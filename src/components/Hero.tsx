@@ -27,14 +27,14 @@ export const Hero = () => {
         </p>
         <div className='flex flex-wrap items-center'>
           <Link href='/resume'>
-            <a className=' umami--click--hero-github mt-3 mr-5 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted'>
+            <a className=' umami--click--hero-resume mt-3 mr-5 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted'>
               <strong>Resume</strong>
             </a>
           </Link>
           <a
             target='_blank'
             href='https://shbm.fyi/tw'
-            className=' umami--click--hero-github mt-3 mr-5 w-max rounded-md p-2 text-lg text-[#1DA1F2] hover:bg-skin-secondary-muted'
+            className=' umami--click--hero-twitter mt-3 mr-5 w-max rounded-md p-2 text-lg text-[#1DA1F2] hover:bg-skin-secondary-muted'
             rel='noopener noreferrer'>
             <strong>Twitter</strong>
             <DiagonalArrow className='inline text-xl' />
@@ -50,7 +50,7 @@ export const Hero = () => {
           <a
             target='_blank'
             href='https://shbm.fyi/li'
-            className='umami--click--hero-github mt-3 w-max rounded-md p-2 text-lg text-[#0a66c2] hover:bg-skin-secondary-muted dark:text-[#ffffffe6]'
+            className='umami--click--hero-linkedin mt-3 w-max rounded-md p-2 text-lg text-[#0a66c2] hover:bg-skin-secondary-muted dark:text-[#ffffffe6]'
             rel='noopener noreferrer'>
             <strong>LinkedIn</strong>
             <DiagonalArrow className='inline text-xl' />

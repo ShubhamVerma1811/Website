@@ -17,7 +17,7 @@ export const BlogCard = ({ blog }: BlogsCompProps) => {
           blog?.publicationUrl ? blog?.publicationUrl : `/blog/${blog?.slug}`
         }
         passHref>
-        <a className={`umami--click--blog-${blog.title}`}>
+        <a className={`umami--click--blog-${blog.slug}`}>
           <div className='my-4 cursor-pointer rounded-md bg-skin-secondary-muted p-3 transition-all hover:scale-[1.02]'>
             <div className='flex items-center'>
               <p className='text-xl text-skin-secondary'>{blog.title}</p>
