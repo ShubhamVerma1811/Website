@@ -14,7 +14,7 @@ const CodeBlock = (props: any) => {
 
   const match = /language-(\w+)/.exec(props?.className || '');
   return !props?.inline && match ? (
-    <div>
+    <React.Fragment>
       <SyntaxHighlighter
         style={nord}
         language={match[1]}
@@ -23,17 +23,19 @@ const CodeBlock = (props: any) => {
         wrapLines
         customStyle={{
           margin: 0,
-          backgroundColor: 'initial'
+          backgroundColor: 'initial',
+          borderTopLeftRadius: '0',
+          borderTopRightRadius: '0'
         }}
         {...props}>
         {String(props?.children).replace(/\n$/, '')}
       </SyntaxHighlighter>
       <button
-        onClick={() => handleCopyCode(props?.children[0])}
+        onClick={() => handleCopyCode(props?.children)}
         className='absolute top-3 right-3 rounded-md bg-gray-900 px-2 py-1 text-white'>
         {showCopied ? 'Copied' : 'Copy'}
       </button>
-    </div>
+    </React.Fragment>
   ) : (
     <code className={props?.className} {...props}>
       {props?.children}

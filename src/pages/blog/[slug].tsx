@@ -75,7 +75,11 @@ const Blog = ({
                 </blockquote>
               ),
               pre: (props: any) => {
-                return <pre className='relative p-0'>{props.children}</pre>;
+                return (
+                  <pre className='relative m-0 rounded-t-none p-0'>
+                    {props.children}
+                  </pre>
+                );
               },
               code(props) {
                 return <CodeBlock {...props} />;
@@ -108,6 +112,27 @@ const Blog = ({
                     <figcaption>{props.alt}</figcaption>
                   </figure>
                 );
+              },
+              div: (props) => {
+                if (props.className === 'rehype-code-title') {
+                  // @ts-ignore
+                  const lang = props.children?.split('.').pop();
+                  if (!lang) return null;
+                  return (
+                    <div className='mt-2 flex items-center rounded-t-lg bg-[#1f2937] px-1 py-2'>
+                      <Image
+                        className='my-0 mx-2 inline'
+                        src={`/assets/logos/${lang}.svg`}
+                        alt={lang}
+                        width={16}
+                        height={16}
+                      />
+                      <div className='text-white'>{props.children}</div>
+                    </div>
+                  );
+                }
+
+                return <div {...props} />;
               }
             }}
           />
