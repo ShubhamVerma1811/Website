@@ -8,5 +8,10 @@ const config = {
 export const imageBuilder = createImageUrlBuilder(config);
 
 // @ts-ignore
-export const urlForImage = (source) =>
-  imageBuilder.image(source).auto('format').fit('max');
+export const urlForImage = (source, rss = false) => {
+  if (rss) {
+    return imageBuilder.image(source);
+  }
+
+  return imageBuilder.image(source).auto('format').fit('max');
+};

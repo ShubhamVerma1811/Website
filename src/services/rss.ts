@@ -1,5 +1,6 @@
-import { Feed } from 'feed';
+import { Feed, Item } from 'feed';
 import type { Blog } from 'types';
+import { urlForImage } from './sanity-image-builder';
 
 export const generateRSSFeed = (blogs: Array<Blog>) => {
   const baseURL = 'https://shubhamverma.me/';
@@ -24,16 +25,22 @@ export const generateRSSFeed = (blogs: Array<Blog>) => {
     }
   });
 
-  // TODO: fix cover images
   blogs?.forEach((blog) => {
-    feed.addItem({
+    const item: Item = {
       title: blog.title,
       id: blog.id,
       date: new Date(blog.date),
       link: `${baseURL}blog/${blog.slug}`,
       author: [{ ...author }],
       description: blog.summary
-    });
+    };
+
+    if (blog.cover) {
+      const image = urlForImage(blog.cover, true).url();
+      item.image = image;
+    }
+
+    feed.addItem(item);
   });
 
   return feed.rss2();

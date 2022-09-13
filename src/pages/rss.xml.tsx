@@ -14,7 +14,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   preview = false
 }) => {
   const blogs: Array<Blog> = await getClient(preview).fetch(
-    `*[_type == "post"] | order(date desc) {...,"slug": slug.current}`
+    `*[_type == "post"] | order(date desc) {...,"slug": slug.current, "id": _id}`
   );
   const rss = generateRSSFeed(blogs);
   res.setHeader('Content-Type', 'text/xml');
