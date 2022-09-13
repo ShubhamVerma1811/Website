@@ -2,6 +2,7 @@ import { BackToTop, LinkedInIcon, TwitterIcon } from 'components';
 import Head from 'next/head';
 import React from 'react';
 import { DOMAIN, TWITTER_HANDLE } from 'services/constants';
+import { urlForImage } from 'services/sanity-image-builder';
 import { Blog } from 'types';
 
 interface IBlogLayoutProps {
@@ -61,6 +62,8 @@ const ShareIntents = ({ title, url }: { title: string; url: string }) => {
 };
 
 const MetaTags = ({ blog }: IBlogLayoutProps) => {
+  const cover = urlForImage(blog.cover).url();
+
   return (
     <Head>
       <title>{blog?.title} | Shubham Verma</title>
@@ -75,12 +78,12 @@ const MetaTags = ({ blog }: IBlogLayoutProps) => {
       <meta name='twitter:title' content={blog?.title} />
       <meta name='twitter:description' content={blog?.summary} />
       <meta name='twitter:creator' content={TWITTER_HANDLE} />
-      {blog?.cover && <meta name='twitter:image' content={blog?.cover} />}
+      {cover && <meta name='twitter:image' content={cover} />}
       <meta name='twitter:image:alt' content={blog?.summary} />
       {/* <!-- Open Graph data --> */}
       <meta property='og:title' content={blog?.title} />
       <meta property='og:type' content='article' />
-      {blog?.cover && <meta property='og:image' content={blog?.cover} />}
+      {cover && <meta property='og:image' content={cover} />}
       <meta property='og:image:alt' content={blog?.summary} />
       <meta property='og:description' content={blog?.summary} />
     </Head>
