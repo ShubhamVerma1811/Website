@@ -62,7 +62,7 @@ const ShareIntents = ({ title, url }: { title: string; url: string }) => {
 };
 
 const MetaTags = ({ blog }: IBlogLayoutProps) => {
-  const cover = urlForImage(blog.cover).url();
+  const cover = blog.cover && urlForImage(blog.cover).url();
 
   return (
     <Head>
