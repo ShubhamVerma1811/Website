@@ -178,7 +178,7 @@ export const getStaticProps = async ({
 
   const slug = typeof params.slug === 'string' ? params.slug : params.slug[0];
   const blog: IBlog = await getClient(preview).fetch(
-    `*[_type == "post" && !defined(publicationUrl) && slug.current == "${slug}"][0] {...,"id": _id, "slug": slug.current}`
+    `*[_type == "post" && !defined(publicationUrl) && slug.current == "${slug}"][0] {...,"id": _id, "slug": slug.current, "readTime": round(length(body) / 5 / 180 )}`
   );
 
   if (!blog) {

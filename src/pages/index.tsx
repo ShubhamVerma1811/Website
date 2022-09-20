@@ -41,7 +41,7 @@ export const getStaticProps = async ({
   preview = false
 }: GetStaticPropsContext) => {
   const blogs: Array<Blog> = await getClient(preview).fetch(
-    `*[_type == "post" && defined(views)] | order(views desc) [0...3] {..., "slug": slug.current}`
+    `*[_type == "post" && defined(views)] | order(views desc) [0...3] {..., "slug": slug.current,"readTime": round(length(body) / 5 / 180 )}`
   );
 
   const projects: Array<Project> = await getClient(preview).fetch(

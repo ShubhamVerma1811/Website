@@ -25,8 +25,12 @@ export const BlogCard = ({ blog }: BlogsCompProps) => {
 
             <p className='my-1 text-skin-primary-muted'>
               {date}
-              <span className='mx-3'>•</span>
-              {blog.views} views
+              {blog.views && (
+                <React.Fragment>
+                  <span className='mx-3'>•</span>
+                  {blog.views} views
+                </React.Fragment>
+              )}
               {blog.publicationUrl && (
                 <Link href={blog.publicationUrl}>
                   <span className='text-md text-skin-secondary'>
@@ -34,6 +38,12 @@ export const BlogCard = ({ blog }: BlogsCompProps) => {
                     Publication
                   </span>
                 </Link>
+              )}
+              {blog.readTime && (
+                <React.Fragment>
+                  <span className='mx-3'>•</span>
+                  {blog.readTime} min read
+                </React.Fragment>
               )}
             </p>
             <p className='text-md truncate rounded-md text-skin-primary-muted'>
