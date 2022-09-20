@@ -12,6 +12,7 @@ import rehypeResizeImage from 'rehype-image-resize';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { transformer } from 'services/image-transformer';
+import rehypeImageBlur from 'services/rehype-image-blur';
 import { getClient } from 'services/sanity-server';
 import type { Blog as IBlog } from 'types';
 
@@ -86,7 +87,9 @@ const Blog = ({
               },
               img: (props) => {
                 if (!props.src) return null;
-                if (!props.width || !props.height) {
+                // TODO:: fix types
+                // @ts-ignore
+                if (!props.width || !props.height || !props.hash) {
                   // Fallback until I migrate all images to new syntax in the markdown.
                   return (
                     <figure>
@@ -108,6 +111,10 @@ const Blog = ({
                       title={props.alt || ''}
                       width={props.width}
                       height={props.height}
+                      placeholder='blur'
+                      // TODO:: fix types
+                      // @ts-ignore
+                      blurDataURL={props.hash}
                     />
                     <figcaption>{props.alt}</figcaption>
                   </figure>
@@ -196,7 +203,8 @@ export const getStaticProps = async ({
           }
         ],
         rehypeCodeTitles,
-        [rehypeResizeImage, { transformer }]
+        [rehypeResizeImage, { transformer }],
+        rehypeImageBlur
       ]
     }
   });
