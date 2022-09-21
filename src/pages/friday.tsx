@@ -27,7 +27,7 @@ const Friday = (
 export default Friday;
 
 export const getServerSideProps = async () => {
-  const AAJ_FRIDAY_HAI = new Date().getDay() !== 5;
+  const AAJ_FRIDAY_HAI = new Date().getDay() === 5;
 
   return {
     props: {
