@@ -4,7 +4,7 @@ import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import Image from 'next/future/image';
 import Head from 'next/head';
 import Link from 'next/link';
-import { urlForImage } from 'services/sanity-image-builder';
+import { urlForImage } from 'services';
 import { getClient } from 'services/sanity-server';
 import type { Book } from 'types';
 

@@ -1,5 +1,5 @@
 import type { GetServerSideProps } from 'next';
-import { generateRSSFeed } from 'services/rss';
+import { generateRSSFeed } from 'services';
 import { getClient } from 'services/sanity-server';
 import type { Blog } from 'types';
 

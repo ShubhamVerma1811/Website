@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { useRef, useState } from 'react';
-import { fetcher } from 'services/fetcher';
+import { fetcher } from 'services';
 import useSWR from 'swr';
 import { NowPlaying as INowPlaying } from 'types/spotify.types';
 import { DiagonalArrow, PauseIcon, SpotifyIcon } from './Icons';
