@@ -11,7 +11,7 @@ import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeResizeImage from 'rehype-image-resize';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
-import { transformer } from 'services';
+import { transformer } from 'services/image-transformer';
 import rehypeImageBlur from 'services/rehype-image-blur';
 import { getClient } from 'services/sanity-server';
 import type { Blog as IBlog } from 'types';

@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getNowPlaying } from 'services';
+import { getNowPlaying } from 'services/spotify';
 
 export default async function handler(
   req: NextApiRequest,

@@ -3,8 +3,7 @@ import type { Blog } from 'types';
 import { urlForImage } from './sanity-image-builder';
 
 export const generateRSSFeed = (blogs: Array<Blog>) => {
-  const baseURL = 'https://shubhamverma.me';
-  const;
+  const baseURL = 'https://shubhamverma.me/';
 
   const author = {
     name: 'Shubham Verma',
