@@ -1,4 +1,5 @@
 import { PageLayout } from 'layouts';
+import React from 'react';
 import Image from 'next/future/image';
 
 const exps = [
@@ -7,8 +8,18 @@ const exps = [
     company: 'GeekyAnts',
     date: 'Jul 2021 - Present',
     iconPath: '/assets/logos/ga/logo.svg',
-    // TODO: Add description
-    points: []
+    roles: [
+      {
+        title: 'Software Engineer - III',
+        date: 'Jul 2022 - Present',
+        points: []
+      },
+      {
+        title: 'Software Engineer',
+        date: 'Jul 2021 - Present',
+        points: []
+      }
+    ]
   }
 ];
 
@@ -42,21 +53,25 @@ const Resume = () => {
                 />
               </div>
               <div>
-                <p className='mb-2 text-xl font-bold text-skin-secondary'>
-                  {item.title}
-                </p>
                 <p className='mb-2 text-lg font-medium text-skin-secondary'>
                   {item.company}
                 </p>
-                <p className='text-md mb-2 font-medium text-skin-primary-muted'>
-                  {item.date}
-                </p>
-                {item.points?.map((point, index) => (
-                  <ul key={index} className='mx-8'>
-                    <li className='list-disc text-skin-secondary'>
-                      <p className='mb-2 text-sm font-medium '>{point}</p>
-                    </li>
-                  </ul>
+                {item?.roles?.map((role) => (
+                  <React.Fragment>
+                    <p className='mb-2 text-xl font-bold text-skin-secondary'>
+                      {role?.title}
+                    </p>
+                    <p className='text-md mb-2 font-medium text-skin-primary-muted'>
+                      {role?.date}
+                    </p>
+                    {role.points?.map((point, index) => (
+                      <ul key={index} className='mx-8'>
+                        <li className='list-disc text-skin-secondary'>
+                          <p className='mb-2 text-s m font-medium '>{point}</p>
+                        </li>
+                      </ul>
+                    ))}
+                  </React.Fragment>
                 ))}
               </div>
             </div>
