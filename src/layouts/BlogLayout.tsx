@@ -2,7 +2,6 @@ import { BackToTop, LinkedInIcon, TwitterIcon } from 'components';
 import Head from 'next/head';
 import React from 'react';
 import { DOMAIN, TWITTER_HANDLE } from 'services/constants';
-import { urlForImage } from 'services/sanity-image-builder';
 import { Blog } from 'types';
 
 interface IBlogLayoutProps {
