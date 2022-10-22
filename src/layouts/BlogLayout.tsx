@@ -63,7 +63,7 @@ const ShareIntents = ({ title, url }: { title: string; url: string }) => {
 const MetaTags = ({ blog }: IBlogLayoutProps) => {
   const d = new Date(blog.date);
   const date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
-  const cover = `/api/og?title=${blog.title}&readTime=${blog.readTime}&date=${date}`;
+  const cover = `https://shubhamverma.me/api/og?title=${blog.title}&readTime=${blog.readTime}&date=${date}`;
 
   return (
     <Head>
