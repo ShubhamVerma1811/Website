@@ -7,3 +7,4 @@ export * from './Icons';
 export * from './LoadMoreButton';
 export * from './NowPlaying';
 export * from './Projects';
+export * from './Comments';
