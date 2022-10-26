@@ -67,7 +67,7 @@ const Resume = () => {
                     {role.points?.map((point, index) => (
                       <ul key={index} className='mx-8'>
                         <li className='list-disc text-skin-secondary'>
-                          <p className='mb-2 text-s m font-medium '>{point}</p>
+                          <p className='text-s m mb-2 font-medium '>{point}</p>
                         </li>
                       </ul>
                     ))}
