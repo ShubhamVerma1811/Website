@@ -9,10 +9,7 @@ const Monday = () => {
     <React.Fragment>
       <Head>
         <title>Monday ki BT HO GAYI</title>
-        <meta
-          name='description'
-          content='Abey yaar! BT ho gayi'
-        />
+        <meta name='description' content='Abey yaar! BT ho gayi' />
       </Head>
       <PageLayout>
         <div className='flex-row items-center justify-center'>
@@ -21,9 +18,7 @@ const Monday = () => {
               <h1 className='text-3xl font-bold text-skin-secondary md:text-8xl'>
                 AAJ MONDAY NAHI HAI
               </h1>
-              <p className='text-skin-secondary'>
-                Come back on Monday for BT.
-              </p>
+              <p className='text-skin-secondary'>Come back on Monday for BT.</p>
             </div>
           ) : (
             <iframe
