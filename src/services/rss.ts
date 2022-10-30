@@ -1,9 +1,8 @@
 import { Feed, Item } from 'feed';
 import type { Blog } from 'types';
-import { urlForImage } from './sanity-image-builder';
 
 export const generateRSSFeed = (blogs: Array<Blog>) => {
-  const baseURL = 'https://shubhamverma.me/';
+  const baseURL = 'https://shubhamverma.me';
 
   const author = {
     name: 'Shubham Verma',
@@ -21,24 +20,24 @@ export const generateRSSFeed = (blogs: Array<Blog>) => {
     author,
     copyright: `Copyright © ${new Date().getFullYear()} Shubham Verma`,
     feedLinks: {
-      rss2: 'https://shubhamverma.me/rss.xml'
+      rss2: `${baseURL}/rss.xml`
     }
   });
 
   blogs?.forEach((blog) => {
+    const d = new Date(blog.date);
+    const date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+    const cover = `${baseURL}/api/og?title=${blog.title}&amp;readTime=${blog.readTime}&amp;date=${date}`;
+
     const item: Item = {
       title: blog.title,
       id: blog.id,
       date: new Date(blog.date),
-      link: `${baseURL}blog/${blog.slug}`,
+      link: `${baseURL}/blog/${blog.slug}`,
       author: [{ ...author }],
-      description: blog.summary
+      description: blog.summary,
+      image: cover
     };
-
-    if (blog.cover) {
-      const image = urlForImage(blog.cover, true).url();
-      item.image = image;
-    }
 
     feed.addItem(item);
   });

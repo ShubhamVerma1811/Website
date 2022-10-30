@@ -12,7 +12,7 @@ const font = fetch(
 export default async function handler(req: NextRequest) {
   const fontData = await font;
 
-  const { searchParams } = new URL(req.url);
+  const { searchParams } = new URL(req.url.replaceAll('&amp%3B', '&'));
 
   const title = searchParams.has('title')
     ? searchParams.get('title')

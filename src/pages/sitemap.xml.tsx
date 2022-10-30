@@ -67,10 +67,6 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   res.setHeader('Content-Type', 'text/xml');
   const posts = await generate(preview);
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=1200, stale-while-revalidate=600'
-  );
   res.write(posts);
   res.end();
 
