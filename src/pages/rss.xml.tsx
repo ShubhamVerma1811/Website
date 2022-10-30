@@ -14,14 +14,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   preview = false
 }) => {
   const blogs: Array<Blog> = await getClient(preview).fetch(
-    `*[_type == "post"] | order(date desc) {...,"slug": slug.current, "id": _id}`
+    `*[_type == "post"] | order(date desc) {...,"slug": slug.current, "id": _id, "readTime": round(length(body) / 5 / 180 )}`
   );
   const rss = generateRSSFeed(blogs);
   res.setHeader('Content-Type', 'text/xml');
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=1200, stale-while-revalidate=600'
-  );
   res.write(rss);
   res.end();
 
