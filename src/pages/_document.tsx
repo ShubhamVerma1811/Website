@@ -50,7 +50,7 @@ class MyDocument extends Document {
           name='viewport'
           content='width=device-width, initial-scale=1, viewport-fit=cover'
         />
-        {/* {process.env.NEXT_PUBLIC_UMAMI_UUID &&
+        {process.env.NEXT_PUBLIC_UMAMI_UUID &&
           process.env.NEXT_PUBLIC_UMAMI_URI && (
             <script
               async
@@ -58,7 +58,7 @@ class MyDocument extends Document {
               data-website-id={process.env.NEXT_PUBLIC_UMAMI_UUID}
               src={process.env.NEXT_PUBLIC_UMAMI_URI}
               data-do-not-track='true'></script>
-          )} */}
+          )}
         <Head />
         <body className='bg-skin-primary'>
           <script
