@@ -63,10 +63,8 @@ const Books = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export default Books;
 
-export const getStaticProps = async ({
-  preview = false
-}: GetStaticPropsContext) => {
-  const books: Array<Book> = await getClient(preview).fetch(
+export const getStaticProps = async ({}: GetStaticPropsContext) => {
+  const books: Array<Book> = await getClient().fetch(
     `*[_type == "book"] {..., "progress": progress.value}`
   );
 

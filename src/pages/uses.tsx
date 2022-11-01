@@ -32,10 +32,8 @@ const Uses = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export default Uses;
 
-export const getStaticProps = async ({
-  preview = false
-}: GetStaticPropsContext) => {
-  const uses = await getClient(preview).fetch(`*[_type == "uses"]`);
+export const getStaticProps = async ({}: GetStaticPropsContext) => {
+  const uses = await getClient().fetch(`*[_type == "uses"]`);
 
   if (!uses) {
     return {

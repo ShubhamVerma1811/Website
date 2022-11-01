@@ -45,10 +45,8 @@ const Socials = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export default Socials;
 
-export const getStaticProps = async ({
-  preview = false
-}: GetStaticPropsContext) => {
-  const socials: Array<Social> = await getClient(preview).fetch(
+export const getStaticProps = async ({}: GetStaticPropsContext) => {
+  const socials: Array<Social> = await getClient().fetch(
     `*[_type == "social"] | order(_createdAt asc) {..., "id": _id}`
   );
 

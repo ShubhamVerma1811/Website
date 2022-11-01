@@ -9,11 +9,8 @@ const RSS = () => {
 
 export default RSS;
 
-export const getServerSideProps: GetServerSideProps = async ({
-  res,
-  preview = false
-}) => {
-  const blogs: Array<Blog> = await getClient(preview).fetch(
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+  const blogs: Array<Blog> = await getClient().fetch(
     `*[_type == "post"] | order(date desc) {...,"slug": slug.current, "id": _id, "readTime": round(length(body) / 5 / 180 )}`
   );
   const rss = generateRSSFeed(blogs);

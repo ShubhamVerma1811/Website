@@ -151,10 +151,8 @@ const Blog = ({
 
 export default memo(Blog);
 
-export const getStaticPaths = async ({
-  preview = false
-}: GetStaticPropsContext) => {
-  const blogs: Array<IBlog> = await getClient(preview).fetch(
+export const getStaticPaths = async ({}: GetStaticPropsContext) => {
+  const blogs: Array<IBlog> = await getClient().fetch(
     `*[_type == "post"] | order(date desc) {"slug":slug.current}`
   );
 
@@ -170,14 +168,11 @@ export const getStaticPaths = async ({
   };
 };
 
-export const getStaticProps = async ({
-  params,
-  preview = false
-}: GetStaticPropsContext) => {
+export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   if (!params || !params.slug) throw new Error('No slug found in params');
 
   const slug = typeof params.slug === 'string' ? params.slug : params.slug[0];
-  const blog: IBlog = await getClient(preview).fetch(
+  const blog: IBlog = await getClient().fetch(
     `*[_type == "post" && !defined(publicationUrl) && slug.current == "${slug}"][0] {...,"id": _id, "slug": slug.current, "readTime": round(length(body) / 5 / 180 )}`
   );
 

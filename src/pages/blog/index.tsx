@@ -23,10 +23,8 @@ const Blog = ({ blogs }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export default memo(Blog);
 
-export const getStaticProps = async ({
-  preview = false
-}: GetStaticPropsContext) => {
-  const blogs: Array<Blog> = await getClient(preview).fetch(
+export const getStaticProps = async ({}: GetStaticPropsContext) => {
+  const blogs: Array<Blog> = await getClient().fetch(
     `*[_type == "post"] | order(date desc) {...,"slug": slug.current, "readTime": round(length(body) / 5 / 180 )}`
   );
 

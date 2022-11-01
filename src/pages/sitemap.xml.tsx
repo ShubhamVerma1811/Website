@@ -16,7 +16,7 @@ const generate = async (preview: boolean) => {
     '/resume'
   ];
 
-  const blogs: Array<Blog> = await getClient(preview).fetch(
+  const blogs: Array<Blog> = await getClient().fetch(
     `*[_type == "post"] | order(date desc) {...,"slug": slug.current}`
   );
 
@@ -61,10 +61,7 @@ const Sitemap = () => {
 
 export default Sitemap;
 
-export const getServerSideProps: GetServerSideProps = async ({
-  res,
-  preview = false
-}) => {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   res.setHeader('Content-Type', 'text/xml');
   const posts = await generate(preview);
   res.write(posts);
