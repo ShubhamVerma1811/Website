@@ -3,7 +3,7 @@ import prettier from 'prettier';
 import { getClient } from 'services/sanity-server';
 import type { Blog } from 'types';
 
-const generate = async (preview: boolean) => {
+const generate = async () => {
   const prettierConfig = await prettier.resolveConfig('../../.prettierrc');
   const pages = [
     '/',
@@ -63,7 +63,7 @@ export default Sitemap;
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   res.setHeader('Content-Type', 'text/xml');
-  const posts = await generate(preview);
+  const posts = await generate();
   res.write(posts);
   res.end();
 
