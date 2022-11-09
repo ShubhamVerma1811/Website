@@ -23,8 +23,7 @@ const Monday = () => {
           ) : (
             <iframe
               className='h-[703px] w-full'
-              src='https://www.youtube-nocookie.com/embed/ybRYNRcIuA4?controls=0&amp;start=76&end=79'
-              title='BT Ho Gayi | Hustle 2.0'
+              src='https://www.youtube-nocookie.com/embed/ZiBF_U_iroA?controls=0&amp;end=3'
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'></iframe>
           )}
         </div>
