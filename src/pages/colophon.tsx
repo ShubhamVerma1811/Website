@@ -2,6 +2,7 @@ import { DiagonalArrow } from 'components';
 import { PageLayout } from 'layouts';
 import Head from 'next/head';
 import React from 'react';
+import { TWITTER_URL } from 'services/constants';
 
 const Colophon = () => {
   const refs = [
@@ -39,7 +40,7 @@ const Colophon = () => {
       <p className='mb-4 text-lg text-skin-secondary'>
         This website is developed by{' '}
         <a
-          href='https://shbm.fyi/tw'
+          href={TWITTER_URL}
           target='_blank'
           rel='noopener noreferrer'
           className='inline text-skin-accent underline-offset-4 hover:underline'>
