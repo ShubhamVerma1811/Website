@@ -17,6 +17,10 @@ export default async function handler(req: NextRequest) {
   const title = searchParams.has('title')
     ? searchParams.get('title')
     : 'My default title';
+
+  const desc = searchParams.has('desc') ? searchParams.get('desc') : null;
+  const img = searchParams.has('img') ? searchParams.get('img') : null;
+
   const readTime = searchParams.has('readTime')
     ? searchParams.get('readTime')
     : null;
@@ -24,18 +28,25 @@ export default async function handler(req: NextRequest) {
 
   return new ImageResponse(
     (
-      <div tw='flex flex-col bg-black font-bold w-full h-screen p-12'>
-        <p tw='text-gray-300'>
-          {date && date}
-          {readTime && ` • ${readTime} min read`}
+      <div tw='h-full w-full flex flex-col bg-gray-200 items-center relative'>
+        <h1 tw='text-7xl font-bold mt-20 mx-20 text-center'>{title}</h1>
+        {desc && <p tw='text-3xl font-normal mt-8 mx-20 text-center'>{desc}</p>}
+        <p tw='text-xl font-medium mt-6 mx-20 text-center'>
+          Shubham Verma {date && `• ${date}`}{' '}
+          {readTime && `• ${readTime} min read`}
         </p>
-        <h1 tw='m-0 my-auto text-gray-300 font-bold text-4xl'>{title}</h1>
-        <p tw='text-gray-300'>shbm.fyi</p>
+        <div tw='shadow-2xl bg-gray-300 flex absolute bottom-0 rounded-t-3xl w-[900px] h-[400px] overflow-hidden'>
+          <img
+            tw='overflow-hidden w-[900px] h-[400px]'
+            src={img ?? 'https://source.unsplash.com/random'}
+            alt={'og-image'}
+          />
+        </div>
       </div>
     ),
     {
-      width: 800,
-      height: 400,
+      width: 1600,
+      height: 840,
       fonts: [
         {
           name: 'Karla',
