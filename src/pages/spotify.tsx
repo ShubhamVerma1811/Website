@@ -4,6 +4,7 @@ import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
+import { SPOTIFY_URL } from 'services/constants';
 import { getTopArtists, getTopTracks } from 'services/spotify';
 import { NowPlaying as INowPlaying } from 'types/spotify.types';
 
@@ -25,7 +26,7 @@ const Spotify = ({
           These are the top Spotify tracks and artists that I&apos;ve been
           listening to this month!
         </p>
-        <Link href='https://shbm.fyi/sp' passHref>
+        <Link href={SPOTIFY_URL} passHref>
           <a
             className='inline text-skin-primary-muted underline-offset-4 hover:underline'
             target='_blank'
