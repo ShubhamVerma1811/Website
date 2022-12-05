@@ -38,7 +38,10 @@ export default async function handler(req: NextRequest) {
         <div tw='shadow-2xl bg-gray-300 flex absolute bottom-0 rounded-t-3xl w-[900px] h-[400px] overflow-hidden'>
           <img
             tw='overflow-hidden w-[900px] h-[400px]'
-            src={img ?? 'https://images.unsplash.com/photo-1589405858862-2ac9cbb41321?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80'}
+            src={
+              img ??
+              'https://images.unsplash.com/photo-1444065707204-12decac917e8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixid=MnwxfDB8MXxyYW5kb218MHx8bW91bnRhaW5zfHx8fHx8MTY3MDIxNzYyMg&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900'
+            }
             alt={'og-image'}
           />
         </div>
