@@ -1,6 +1,7 @@
 import CodeBlock from 'blocks/code';
 import { DiagonalArrow } from 'components';
 import { BlogLayout, PageLayout } from 'layouts';
+import { MetaLayout } from 'layouts/MetaLayout';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
@@ -46,6 +47,11 @@ const Blog = ({
 
   return (
     <PageLayout>
+      <MetaLayout
+        title={blog.title}
+        description={blog.summary ?? ''}
+        image_url={`${process.env.DOMAIN}/api/og?title=${blog.title}&date=${date}&readTime=${blog.readTime}&author=Shubham Verma&desc=${blog.summary}`}
+      />
       <BlogLayout blog={blog}>
         <p className='mb-3 text-4xl font-bold text-skin-secondary'>
           {blog?.title}

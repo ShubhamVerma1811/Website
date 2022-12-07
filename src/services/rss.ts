@@ -1,12 +1,13 @@
 import { Feed, Item } from 'feed';
 import type { Blog } from 'types';
+import { TWITTER_URL } from './constants';
 
 export const generateRSSFeed = (blogs: Array<Blog>) => {
-  const baseURL = 'https://shubhamverma.me';
+  const baseURL = process.env.DOMAIN!;
 
   const author = {
     name: 'Shubham Verma',
-    link: 'https://twitter.com/verma__shubham',
+    link: TWITTER_URL,
     email: 'hi@shubhamverma.me'
   };
 

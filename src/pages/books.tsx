@@ -1,8 +1,8 @@
 import { Suggest } from 'components/Books';
 import { PageLayout } from 'layouts';
+import { MetaLayout } from 'layouts/MetaLayout';
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import Image from 'next/future/image';
-import Head from 'next/head';
 import Link from 'next/link';
 import { urlForImage } from 'services/sanity-image-builder';
 import { getClient } from 'services/sanity-server';
@@ -11,13 +11,11 @@ import type { Book } from 'types';
 const Books = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <PageLayout title='Books'>
-      <Head>
-        <title>Books | Shubham Verma</title>
-        <meta
-          name='description'
-          content='Collection of books that I am currently reading or is in my wishlist'
-        />
-      </Head>
+      <MetaLayout
+        title='Books | Shubham Verma'
+        description='Collection of books that I am currently reading or is in my wishlist'
+        image_url={`${process.env.DOMAIN}/api/og?title=Books | Shubham Verma`}
+      />
       <Suggest />
       {props.categories?.map((cat, idx) => {
         if (!cat.books.length) return null;

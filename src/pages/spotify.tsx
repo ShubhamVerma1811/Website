@@ -1,7 +1,7 @@
 import { DiagonalArrow } from 'components';
 import { PageLayout } from 'layouts';
+import { MetaLayout } from 'layouts/MetaLayout';
 import { InferGetStaticPropsType } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 import { SPOTIFY_URL } from 'services/constants';
@@ -14,14 +14,12 @@ const Spotify = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <React.Fragment>
-      <Head>
-        <title>Spotify | Shubham Verma</title>
-        <meta
-          name='description'
-          content='Top artists and top tracks from Spotify.'
-        />
-      </Head>
       <PageLayout>
+        <MetaLayout
+          title='Spotify | Shubham Verma'
+          image_url={`${process.env.DOMAIN}/api/og?title=Spotify | Shubham Verma`}
+          description='Top artists and top tracks from Spotify.'
+        />
         <p className='text-lg text-skin-primary-muted'>
           These are the top Spotify tracks and artists that I&apos;ve been
           listening to this month!

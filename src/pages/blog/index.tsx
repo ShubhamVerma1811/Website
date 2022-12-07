@@ -1,7 +1,7 @@
 import { BlogCard } from 'components';
 import { PageLayout } from 'layouts';
+import { MetaLayout } from 'layouts/MetaLayout';
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import Head from 'next/head';
 import { memo } from 'react';
 import { getClient } from 'services/sanity-server';
 import type { Blog } from 'types';
@@ -9,11 +9,10 @@ import type { Blog } from 'types';
 const Blog = ({ blogs }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <PageLayout title='Blogs'>
-      <Head>
-        <title>Blogs | Shubham Verma</title>
-        <meta name='description' content='Blogs by Shubham Verma' />
-      </Head>
-
+      <MetaLayout
+        title='Blogs | Shubham Verma'
+        image_url={`${process.env.DOMAIN}/api/og?title=Blogs | Shubham Verma`}
+      />
       {blogs?.map((blog, index) => {
         return <BlogCard key={index} blog={blog} />;
       })}
