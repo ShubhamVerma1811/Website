@@ -1,8 +1,8 @@
 import { Hero, ProjectsSection, RecentBlogSection } from 'components';
 import { TalksSection } from 'components/Talks';
 import { PageLayout } from 'layouts';
+import { MetaLayout } from 'layouts/MetaLayout';
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import Head from 'next/head';
 import React, { memo } from 'react';
 import { getClient } from 'services/sanity-server';
 import { Blog, Project, Talk } from 'types';
@@ -14,18 +14,12 @@ const Home = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <React.Fragment>
-      <Head>
-        <title>Shubham Verma | Frontend Developer</title>
-        <meta
-          name='description'
-          content='Frontend Developer, Likes to build open source tools and write articles. '
-        />
-        <link rel='shortcut icon' href='/favicon.ico' />
-        <meta name='og:image' content='/banner.png' />
-        <meta name='twitter:image' content='/banner.png' />
-        <meta name='twitter:card' content='/banner.png' />
-      </Head>
       <PageLayout>
+        <MetaLayout
+          title='Shubham Verma | Frontend Developer'
+          description='Frontend Developer, Likes to build open source tools and write articles. '
+          image_url={`${process.env.DOMAIN}/api/og?title=Shubham Verma&desc=Builder, Writer, Learner.`}
+        />
         <Hero />
         <RecentBlogSection blogs={blogs} />
         <ProjectsSection projects={projects} />

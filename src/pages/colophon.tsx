@@ -1,7 +1,6 @@
 import { DiagonalArrow } from 'components';
 import { PageLayout } from 'layouts';
-import Head from 'next/head';
-import React from 'react';
+import { MetaLayout } from 'layouts/MetaLayout';
 import { TWITTER_URL } from 'services/constants';
 
 const Colophon = () => {
@@ -34,9 +33,7 @@ const Colophon = () => {
 
   return (
     <PageLayout title='Colophon'>
-      <Head>
-        <title>Colophon | Shubham Verma</title>
-      </Head>
+      <MetaLayout title='Colophon | Shubham Verma' />
       <p className='mb-4 text-lg text-skin-secondary'>
         This website is developed by{' '}
         <a

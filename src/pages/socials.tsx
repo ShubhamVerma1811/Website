@@ -1,5 +1,6 @@
 import { DiagonalArrow } from 'components';
 import { PageLayout } from 'layouts';
+import { MetaLayout } from 'layouts/MetaLayout';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import { getClient } from 'services/sanity-server';
@@ -8,6 +9,10 @@ import { Social } from 'types';
 const Socials = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <PageLayout title='Socials'>
+      <MetaLayout
+        title='Socials | Shubham Verma'
+        image_url={`${process.env.DOMAIN}/api/og?title=Socials | Shubham Verma`}
+      />
       <Head>
         <title>Socials | Shubham Verma</title>
         <meta

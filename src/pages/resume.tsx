@@ -1,6 +1,7 @@
 import { PageLayout } from 'layouts';
-import React from 'react';
+import { MetaLayout } from 'layouts/MetaLayout';
 import Image from 'next/future/image';
+import React from 'react';
 
 const exps = [
   {
@@ -26,6 +27,10 @@ const exps = [
 const Resume = () => {
   return (
     <PageLayout title='Experience'>
+      <MetaLayout
+        title='Experience | Shubham Verma'
+        image_url={`${process.env.DOMAIN}/api/og?title=Experience | Shubham Verma`}
+      />
       <p className='-mt-3 mb-6 text-lg text-skin-secondary underline underline-offset-4'>
         <a
           href='https://drive.google.com/file/d/1WL5bIjipkpulVW6a3gcwHgMGpvvU6IFq/view?usp=sharing'

@@ -1,8 +1,8 @@
 import { PageLayout } from 'layouts';
+import { MetaLayout } from 'layouts/MetaLayout';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
-import Head from 'next/head';
 import React from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
@@ -11,22 +11,18 @@ import { getClient } from 'services/sanity-server';
 
 const Uses = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <React.Fragment>
-      <Head>
-        <title>Uses | Shubham Verma</title>
-        <meta
-          name='description'
-          content='Tools and Softwares I use on daily basis.'
-        />
-      </Head>
-      <PageLayout>
-        {props.md && (
-          <div className='prose max-w-none text-lg text-skin-secondary prose-headings:scroll-m-20 prose-headings:text-skin-secondary prose-a:text-skin-accent prose-strong:text-skin-secondary prose-em:text-skin-secondary prose-code:rounded-sm prose-code:text-skin-secondary [&>ul>li>p]:my-0'>
-            <MDXRemote {...props.md} />
-          </div>
-        )}
-      </PageLayout>
-    </React.Fragment>
+    <PageLayout>
+      <MetaLayout
+        title='Uses | Shubham Verma'
+        description='Tools and Softwares I use on daily basis.'
+        image_url={`${process.env.DOMAIN}/api/og?title=Uses | Shubham Verma`}
+      />
+      {props.md && (
+        <div className='prose max-w-none text-lg text-skin-secondary prose-headings:scroll-m-20 prose-headings:text-skin-secondary prose-a:text-skin-accent prose-strong:text-skin-secondary prose-em:text-skin-secondary prose-code:rounded-sm prose-code:text-skin-secondary [&>ul>li>p]:my-0'>
+          <MDXRemote {...props.md} />
+        </div>
+      )}
+    </PageLayout>
   );
 };
 

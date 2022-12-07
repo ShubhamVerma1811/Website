@@ -26,13 +26,15 @@ export default async function handler(req: NextRequest) {
     : null;
   const date = searchParams.has('date') ? searchParams.get('date') : null;
 
+  const author = searchParams.has('author') ? searchParams.get('author') : null;
+
   return new ImageResponse(
     (
       <div tw='h-full w-full flex flex-col bg-gray-200 items-center relative'>
         <h1 tw='text-7xl font-bold mt-20 mx-20 text-center'>{title}</h1>
         {desc && <p tw='text-3xl font-normal mt-8 mx-20 text-center'>{desc}</p>}
         <p tw='text-xl font-medium mt-6 mx-20 text-center'>
-          Shubham Verma {date && `• ${date}`}{' '}
+          {author && `By ${author}`} {date && `• ${date}`}{' '}
           {readTime && `• ${readTime} min read`}
         </p>
         <div tw='shadow-2xl bg-gray-300 flex absolute bottom-0 rounded-t-3xl w-[900px] h-[400px] overflow-hidden'>
