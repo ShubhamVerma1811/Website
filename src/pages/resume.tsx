@@ -2,6 +2,7 @@ import { PageLayout } from 'layouts';
 import { MetaLayout } from 'layouts/MetaLayout';
 import Image from 'next/future/image';
 import React from 'react';
+import { RESUME_URL } from 'services/constants';
 
 const exps = [
   {
@@ -33,7 +34,7 @@ const Resume = () => {
       />
       <p className='-mt-3 mb-6 text-lg text-skin-secondary underline underline-offset-4'>
         <a
-          href='https://drive.google.com/file/d/1WL5bIjipkpulVW6a3gcwHgMGpvvU6IFq/view?usp=sharing'
+          href={RESUME_URL}
           target='_blank'
           rel='noopener noreferrer'
           className='umami--click--view-resume'>

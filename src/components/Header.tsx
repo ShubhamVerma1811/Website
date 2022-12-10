@@ -22,12 +22,8 @@ export const Header = () => {
     },
     {
       name: 'Exp',
-      href: '/exp'
+      href: '/resume'
     }
-    // {
-    //   name: 'More',
-    //   href: '/more',
-    // },
   ];
 
   const kbar = useKBar();
