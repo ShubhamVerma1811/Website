@@ -12,4 +12,4 @@ export const SPOTIFY_URL = 'https://shbm.fyi/sp';
 export const CAL_URL = 'https://shbm.fyi/cal';
 export const CURRENT_ORGANIZATION = 'GeekyAnts';
 export const CURRENT_TITLE = 'Software Engineer - III';
-export const RESUME_URL = 'https://shbm.fyi/resume'
+export const RESUME_URL = 'https://shbm.fyi/resume';

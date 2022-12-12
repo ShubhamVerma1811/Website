@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-*:focus-visible {
-  outline: 3px solid var(--color-accent);
-}
-
 @layer base {
   :root {
     --color-primary: #f9fafb;
