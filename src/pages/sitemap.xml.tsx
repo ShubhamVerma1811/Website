@@ -17,7 +17,7 @@ const generate = async (preview: boolean) => {
   ];
 
   const blogs: Array<Blog> = await getClient(preview).fetch(
-    `*[_type == "post"] | order(date desc) {...,"slug": slug.current}`
+    `*[_type == "post"] | order(date desc) {"slug": slug.current}`
   );
 
   const sitemap = `

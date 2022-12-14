@@ -60,11 +60,13 @@ export const Footer = () => {
       },
       {
         name: 'RSS',
-        href: '/rss.xml'
+        href: '/rss.xml',
+        csr: true
       },
       {
         name: 'Sitemap',
-        href: '/sitemap.xml'
+        href: '/sitemap.xml',
+        csr: true
       }
     ]
   };
@@ -117,9 +119,18 @@ export const Footer = () => {
                 <li
                   key={index}
                   className={`my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4 umami--click--footer-${link.name}`}>
-                  <Link href={link.href} passHref>
-                    <a>{link.name} </a>
-                  </Link>
+                  {link.csr ? (
+                    <a
+                      href={link.href}
+                      target='_blank'
+                      rel='noopener noreferrer'>
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link href={link.href} passHref>
+                      <a>{link.name} </a>
+                    </Link>
+                  )}
                 </li>
               );
             })}

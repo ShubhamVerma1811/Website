@@ -1,6 +1,8 @@
 import { Feed, Item } from 'feed';
 import type { Blog } from 'types';
 import { TWITTER_URL } from './constants';
+import { remark } from 'remark';
+import remarkHTML from 'remark-html';
 
 export const generateRSSFeed = (blogs: Array<Blog>) => {
   const baseURL = process.env.DOMAIN!;
@@ -30,6 +32,11 @@ export const generateRSSFeed = (blogs: Array<Blog>) => {
     const date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
     const cover = `${baseURL}/api/og?title=${blog.title}&amp;readTime=${blog.readTime}&amp;date=${date}`;
 
+    const html = remark()
+      .use(remarkHTML)
+      .processSync(blog.body ?? '')
+      .toString();
+
     const item: Item = {
       title: blog.title,
       id: blog.id,
@@ -38,8 +45,8 @@ export const generateRSSFeed = (blogs: Array<Blog>) => {
       author: [{ ...author }],
       description: blog.summary,
       image: cover,
-      content: blog.body,
-      published: new Date(blog.date),
+      content: html,
+      published: new Date(blog.date)
     };
 
     feed.addItem(item);
