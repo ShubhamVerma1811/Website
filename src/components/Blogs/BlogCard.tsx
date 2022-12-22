@@ -10,6 +10,11 @@ export const BlogCard = ({ blog }: BlogsCompProps) => {
   const d = new Date(blog.date);
   const date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
 
+  const formatter = new Intl.NumberFormat('en-US', {
+    notation: 'compact',
+    compactDisplay: 'short'
+  });
+
   return (
     <React.Fragment>
       <Link
@@ -28,7 +33,7 @@ export const BlogCard = ({ blog }: BlogsCompProps) => {
               {blog.views && (
                 <React.Fragment>
                   <span className='mx-3'>•</span>
-                  {blog.views} views
+                  {formatter.format(blog.views)} views
                 </React.Fragment>
               )}
               {blog.publicationUrl && (

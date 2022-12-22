@@ -21,12 +21,6 @@ const Blog = ({
   blog,
   mdxSource
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const [views, setViews] = React.useState<string | number>('--');
-
-  useEffect(() => {
-    blog && setViews(blog?.views);
-  }, [blog?.views]);
-
   useEffect(() => {
     async function views() {
       await fetch('/api/views', {
@@ -45,6 +39,11 @@ const Blog = ({
   const d = new Date(blog.date);
   const date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
 
+  const formatter = new Intl.NumberFormat('en-US', {
+    notation: 'compact',
+    compactDisplay: 'short'
+  });
+
   return (
     <PageLayout>
       <MetaLayout
@@ -58,8 +57,8 @@ const Blog = ({
         </p>
 
         <p className='my-1 text-gray-400'>
-          {date} <span className='mx-3'>•</span> {views} views{' '}
-          <span className='mx-3'>•</span>
+          {date} <span className='mx-3'>•</span>
+          {formatter.format(blog.views)} views <span className='mx-3'>•</span>
           {blog?.readTime} min read
           {blog?.canonicalUrl && (
             <React.Fragment>
@@ -132,7 +131,7 @@ const Blog = ({
                   const lang = props.children?.split('.').pop();
                   if (!lang) return null;
                   return (
-                    <div className='mt-2 flex items-center rounded-t-lg bg-[#1f2937] px-1 py-2'>
+                    <div className='mt-2 flex items-center  rounded-t-lg bg-[#1f2937] px-1 py-2'>
                       <Image
                         className='my-0 mx-2 inline'
                         src={`/assets/logos/${lang}.svg`}
@@ -140,7 +139,9 @@ const Blog = ({
                         width={16}
                         height={16}
                       />
-                      <div className='text-white'>{props.children}</div>
+                      <div className='overflow-scroll text-skin-primary-muted'>
+                        {props.children}
+                      </div>
                     </div>
                   );
                 }
