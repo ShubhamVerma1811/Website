@@ -1,9 +1,8 @@
 import { useAtom } from 'jotai';
-import { useKBar } from 'kbar';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { isDarkModeAtom } from 'store/atoms/theme';
-import { CommandIcon, Moon, Sun } from './Icons';
+import { Moon, Sun } from './Icons';
 
 export const Header = () => {
   const [isDarkMode, setIsDarkMode] = useAtom(isDarkModeAtom);
@@ -26,8 +25,6 @@ export const Header = () => {
     }
   ];
 
-  const kbar = useKBar();
-
   return (
     <header className='my-4 mb-12 rounded-md bg-skin-primary' id='header'>
       <nav className='flex'>
@@ -46,15 +43,6 @@ export const Header = () => {
           })}
         </div>
         <div className='ml-auto'>
-          <button
-            role='button'
-            aria-label='Toggle Command Bar'
-            className='mr-2 rounded-md border-2 border-skin-secondary bg-skin-primary p-2 hover:transition-all'
-            onClick={() => {
-              kbar.query.toggle();
-            }}>
-            <CommandIcon />
-          </button>
           <button
             role='button'
             aria-label='Toggle dark mode'

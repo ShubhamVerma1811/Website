@@ -1,5 +1,4 @@
 import { useAtom } from 'jotai';
-import { KBarLayout } from 'layouts';
 import { AppProps } from 'next/app';
 import React, { useEffect } from 'react';
 import { isDarkModeAtom } from 'store/atoms/theme';
@@ -30,10 +29,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <React.Fragment>
-      <KBarLayout>
-        {/* @ts-ignore */}
-        <Component {...pageProps} />
-      </KBarLayout>
+      {/* @ts-ignore */}
+      <Component {...pageProps} />
     </React.Fragment>
   );
 }
