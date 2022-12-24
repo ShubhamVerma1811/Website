@@ -11,7 +11,7 @@ export const Hero = () => {
   return (
     <div className='flex flex-col-reverse md:flex-row'>
       <div>
-        <p className='text-4xl font-bold text-skin-secondary'>Shubham Verma</p>
+        <p className='text-3xl font-bold text-skin-secondary'>Shubham Verma</p>
         <p className='mt-2 text-lg text-skin-primary-muted'>
           {CURRENT_TITLE} at <strong>{CURRENT_ORGANIZATION}</strong>
         </p>
@@ -21,7 +21,7 @@ export const Hero = () => {
 
         <div className='flex flex-wrap items-center'>
           <Link href='/resume'>
-            <a className=' umami--click--hero-resume mt-3 mr-2 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted'>
+            <a className='umami--click--hero-resume mt-3 mr-2 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted'>
               Resume
             </a>
           </Link>
@@ -30,7 +30,7 @@ export const Hero = () => {
             href={CAL_URL}
             className='umami--click--hero-calendar text-md mt-3 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted md:text-lg'
             rel='noopener noreferrer'>
-            Schedule a meet 🗓️
+            Schedule a meet
             <DiagonalArrow className='inline text-xl' />
           </a>
         </div>
