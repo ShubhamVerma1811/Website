@@ -29,6 +29,10 @@ export const Footer = () => {
       {
         name: 'Colophon',
         href: '/colophon'
+      },
+      {
+        name: 'Socials',
+        href: '/socials'
       }
     ],
     social: [
@@ -56,7 +60,8 @@ export const Footer = () => {
       },
       {
         name: 'Books',
-        href: '/books'
+        href: '/books',
+        csr: true
       },
       {
         name: 'RSS',
@@ -136,59 +141,6 @@ export const Footer = () => {
             })}
           </ul>
         </div>
-      </div>
-      <div className='container mx-auto flex flex-col items-center py-8 sm:flex-row'>
-        <span
-          className='title-font umami--click--footer-logo flex cursor-pointer items-center justify-center text-xl font-medium text-skin-secondary md:justify-start'
-          onClick={() => {
-            window?.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-            });
-          }}>
-          Shubham Verma
-        </span>
-        <p className='text-md mt-4 text-skin-secondary sm:ml-4 sm:mt-0 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:pl-4'>
-          Built with{' '}
-          <Image
-            className='mx-1 inline'
-            src={`/assets/logos/next/${isDarkMode ? 'dark.svg' : 'light.svg'}`}
-            alt='Next.js Logo'
-            title='Next.js'
-            width={20}
-            height={20}
-          />
-          <Image
-            className='mx-1 inline'
-            src={`/assets/logos/tailwind/logo.svg`}
-            alt='Tailwind CSS Logo'
-            title='Tailwind CSS'
-            width={20}
-            height={20}
-          />
-          <Image
-            className='mx-1 inline'
-            src={`/assets/logos/sanity/logo.svg`}
-            alt='Sanity Logo'
-            title='Sanity'
-            width={20}
-            height={20}
-          />
-          <Image
-            className='mx-1 inline'
-            src={`/assets/logos/vercel/${
-              isDarkMode ? 'light.svg' : 'dark.svg'
-            }`}
-            alt='Vercel Logo'
-            title='Vercel'
-            width={20}
-            height={20}
-          />
-          and{' '}
-          <span role='img' aria-label='img'>
-            💛
-          </span>
-        </p>
       </div>
     </footer>
   );
