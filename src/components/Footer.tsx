@@ -55,11 +55,6 @@ export const Footer = () => {
         href: '/uses'
       },
       {
-        name: 'Books',
-        href: '/books',
-        csr: true
-      },
-      {
         name: 'RSS',
         href: '/rss.xml',
         csr: true
