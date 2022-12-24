@@ -1,5 +1,3 @@
-import { useAtom } from 'jotai';
-import Image from 'next/future/image';
 import Link from 'next/link';
 import {
   GITHUB_URL,
@@ -7,11 +5,9 @@ import {
   LINKEDIN_URL,
   TWITTER_URL
 } from 'services/constants';
-import { isDarkModeAtom } from 'store/atoms/theme';
 import { NowPlaying } from './NowPlaying';
 
 export const Footer = () => {
-  const [isDarkMode] = useAtom(isDarkModeAtom);
   const footerLinks = {
     site: [
       {
