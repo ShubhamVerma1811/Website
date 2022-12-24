@@ -7,7 +7,7 @@ export const TalksSection = ({ talks }: { talks: Array<ITalks> }) => {
   return (
     <section className='my-12 scroll-m-20' id='talks'>
       <a href='#talks'>
-        <p className='mb-3 text-4xl font-bold text-skin-secondary'>Talks</p>
+        <p className='mb-3 text-3xl font-bold text-skin-secondary'>Talks</p>
       </a>
       {talks?.map((talk) => (
         <TalkCard talk={talk} key={talk.id} />

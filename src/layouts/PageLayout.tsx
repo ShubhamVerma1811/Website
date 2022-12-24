@@ -7,7 +7,7 @@ export const PageLayout: React.FC<{ title?: string }> = (props) => {
       <Header />
       <main>
         {props.title && (
-          <p className='mb-6 text-4xl font-extrabold text-skin-secondary'>
+          <p className='mb-6 text-3xl font-extrabold text-skin-secondary'>
             {props.title}
           </p>
         )}
