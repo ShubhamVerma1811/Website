@@ -23,7 +23,7 @@ export const ProjectsCard = ({ project }: ProjectCompProps) => {
             .split(' ')
             .join('-')}-live`}
           rel='noopener noreferrer'>
-          <strong>Live Demo</strong>
+          <strong>Live Link</strong>
           <DiagonalArrow className='inline' />
         </a>
 
