@@ -131,7 +131,7 @@ const Blog = ({
                   const lang = props.children?.split('.').pop();
                   if (!lang) return null;
                   return (
-                    <div className='mt-2 flex items-center  rounded-t-lg bg-[#1f2937] px-1 py-2'>
+                    <div className='mt-2 flex items-center rounded-t-lg bg-[#1f2937] px-1 py-2'>
                       <Image
                         className='my-0 mx-2 inline'
                         src={`/assets/logos/${lang}.svg`}
@@ -139,7 +139,7 @@ const Blog = ({
                         width={16}
                         height={16}
                       />
-                      <div className='overflow-scroll text-skin-primary-muted'>
+                      <div className='overflow-auto text-skin-primary-muted'>
                         {props.children}
                       </div>
                     </div>
