@@ -51,7 +51,7 @@ export const Header = () => {
               href={TWITTER_URL}
               className=' umami--click--hero-twitter mr-1 w-max rounded-md p-2 text-lg text-[#1DA1F2] hover:bg-skin-secondary-muted'
               rel='noopener noreferrer'>
-              <TwitterIcon className='inline' />
+              <TwitterIcon />
             </a>
             <a
               target='_blank'
