@@ -67,10 +67,10 @@ export const NowPlaying = () => {
             onClick={handlePlay}
             className='inline cursor-pointer text-skin-primary-muted underline-offset-4 hover:underline'>
             {isPlaying
-              ? 'Stop preview'
+              ? 'Pause'
               : track?.isPlaying && track?.previewUrl
-              ? 'Listen preview'
-              : 'No preview'}
+              ? 'Play'
+              : null}
           </div>
           <Link href='/spotify' passHref>
             <a className='mx-3 inline text-skin-primary-muted underline-offset-4 hover:underline'>
