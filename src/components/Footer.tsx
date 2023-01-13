@@ -25,6 +25,10 @@ export const Footer = () => {
       {
         name: 'Colophon',
         href: '/colophon'
+      },
+      {
+        name: 'Socials',
+        href: '/socials'
       }
     ],
     social: [
@@ -43,10 +47,6 @@ export const Footer = () => {
       {
         name: 'Instagram',
         href: INSTAGRAM_URL
-      },
-      {
-        name: 'Socials',
-        href: '/socials'
       }
     ],
     misc: [
