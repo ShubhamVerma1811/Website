@@ -34,7 +34,7 @@ const Socials = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                   }}
                   target='_blank'
                   href={social.url}
-                  className={`mt-3 mr-5 w-max rounded-md p-2 text-xl text-skin-secondary hover:bg-skin-secondary-muted`}
+                  className={`umami--click--socials-${social.name} mt-3 mr-5 w-max rounded-md p-2 text-xl text-skin-secondary hover:bg-skin-secondary-muted`}
                   rel='noopener noreferrer'>
                   <strong> {social.name}</strong>
                   <DiagonalArrow className='inline text-xl' />
