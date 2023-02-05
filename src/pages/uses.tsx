@@ -10,7 +10,7 @@ import { getClient } from 'services/sanity-server';
 
 const Uses = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <PageLayout>
+    <PageLayout title="Uses">
       <MetaLayout
         title='Uses | Shubham Verma'
         description='Tools and Softwares I use on daily basis.'
