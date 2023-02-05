@@ -13,7 +13,9 @@ export const RecentBlogSection = ({ blogs }: BlogsCompProps) => {
   return (
     <section className='my-12 scroll-m-20' id='top-blogs'>
       <a href='#top-blogs'>
-        <p className='mb-3 text-3xl font-bold text-skin-secondary'>Top Blogs</p>
+        <p className='mb-3 font-secondary text-3xl font-bold text-skin-secondary'>
+          Top Blogs
+        </p>
       </a>
       {blogs?.map((blog, index) => {
         return <BlogCard key={index} blog={blog} />;

@@ -40,6 +40,10 @@ module.exports = {
             'secondary-muted': 'var(--color-secondary-muted)'
           }
         };
+      },
+      fontFamily: {
+        primary: ['Karla'],
+        secondary: ['Mona-Sans']
       }
     }
   },

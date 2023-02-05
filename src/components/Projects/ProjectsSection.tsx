@@ -11,7 +11,7 @@ export const ProjectsSection = ({ projects }: ProjectCompProps) => {
   return (
     <section className='my-12 scroll-m-20' id='top-projects'>
       <a href='#top-projects'>
-        <p className='mb-3 text-3xl font-bold text-skin-secondary'>
+        <p className='mb-3 font-secondary text-3xl font-bold text-skin-secondary'>
           Featured Projects
         </p>
       </a>

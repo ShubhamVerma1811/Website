@@ -11,7 +11,9 @@ export const Hero = () => {
   return (
     <div className='flex flex-col-reverse md:flex-row'>
       <div>
-        <p className='text-3xl font-bold text-skin-secondary'>Shubham Verma</p>
+        <p className='font-secondary text-3xl font-bold text-skin-secondary'>
+          Shubham Verma
+        </p>
         <p className='mt-2 text-lg text-skin-primary-muted'>
           {CURRENT_TITLE} at <strong>{CURRENT_ORGANIZATION}</strong>
         </p>

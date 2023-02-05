@@ -35,7 +35,7 @@ const Spotify = ({
         </Link>
         <section className='my-12 scroll-m-20' id='top-tracks'>
           <a href='#top-tracks'>
-            <p className='mb-3 text-4xl font-bold text-skin-secondary'>
+            <p className='mb-3 font-secondary text-4xl font-bold text-skin-secondary'>
               Top Tracks
               <span className='mx-3 text-base font-light'>(This Month)</span>
             </p>
@@ -70,7 +70,7 @@ const Spotify = ({
         </section>
         <section className='my-12 scroll-m-20' id='top-artists'>
           <a href='#top-artists'>
-            <p className='mb-3 text-4xl font-bold text-skin-secondary'>
+            <p className='mb-3 font-secondary text-4xl font-bold text-skin-secondary'>
               Top Artists
               <span className='mx-3 text-base font-light'>(This Month)</span>
             </p>
