@@ -2,10 +2,11 @@ import { useAtom } from 'jotai';
 import { AppProps } from 'next/app';
 import React, { useEffect } from 'react';
 import { isDarkModeAtom } from 'store/atoms/theme';
+import { trpc } from 'utils/trpc';
 import '../styles/global.css';
 import '../styles/tailwind.css';
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   const [isDarkMode, setIsDarkMode] = useAtom(isDarkModeAtom);
 
   useEffect(() => {
@@ -34,3 +35,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </React.Fragment>
   );
 }
+
+export default trpc.withTRPC(App);

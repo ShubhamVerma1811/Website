@@ -6,12 +6,17 @@ import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import React, { memo } from 'react';
 import { getClient } from 'services/sanity-server';
 import { Blog, Project, Talk } from 'types';
+import { trpc } from 'utils/trpc';
 
 const Home = ({
   blogs,
   projects,
   talks
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { data } = trpc.blogs.useQuery();
+
+  console.log(data);
+
   return (
     <React.Fragment>
       <PageLayout>
