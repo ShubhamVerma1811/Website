@@ -14,12 +14,22 @@ const exps = [
       {
         title: 'Software Engineer - III',
         date: 'Jul 2022 - Present',
-        points: []
+        points: [
+          'Customized themes for multiple brands to maintain a consistent aesthetic.',
+          'Improved performance through efficient dynamic loading and server-side rendering, reducing bundle size by 26% and improving Lighthouse scores.',
+          'Conducted code reviews to maintain project quality and code standards.',
+          'Led three tracks under the project with a team of up to six developers, working closely with clients, the tech lead, and QA to deliver successful project outcomes.'
+        ]
       },
       {
         title: 'Software Engineer',
         date: 'Jul 2021 - Present',
-        points: []
+        points: [
+          'Developed UI components for web and mobile apps using Figma mockups and variant configurations.',
+          'Improved component performance through memoization and optimized loading using dynamic imports.',
+          'Achieved rapid career advancement from SE-1 to SE-3 within a year, showcasing exceptional performance and expertise.',
+          'Took on interim leadership role and successfully led the team and project in the absence of the designated tech lead.'
+        ]
       }
     ]
   }
@@ -38,7 +48,7 @@ const Resume = () => {
           target='_blank'
           rel='noopener noreferrer'
           className='umami--click--view-resume'>
-          View PDF version of the resume.
+          View Resume
         </a>
       </p>
 
@@ -59,12 +69,12 @@ const Resume = () => {
                 />
               </div>
               <div>
-                <p className='mb-2 text-lg font-medium text-skin-secondary'>
+                <p className='mb-2 font-secondary text-lg text-skin-secondary'>
                   {item.company}
                 </p>
                 {item?.roles?.map((role) => (
                   <React.Fragment>
-                    <p className='mb-2 text-xl font-bold text-skin-secondary'>
+                    <p className='mb-2 font-secondary text-xl font-bold text-skin-secondary'>
                       {role?.title}
                     </p>
                     <p className='text-md mb-2 font-medium text-skin-primary-muted'>
@@ -73,7 +83,7 @@ const Resume = () => {
                     {role.points?.map((point, index) => (
                       <ul key={index} className='mx-8'>
                         <li className='list-disc text-skin-secondary'>
-                          <p className='text-s m mb-2 font-medium '>{point}</p>
+                          <p className='mb-2'>{point}</p>
                         </li>
                       </ul>
                     ))}

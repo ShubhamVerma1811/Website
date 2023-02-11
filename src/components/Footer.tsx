@@ -19,8 +19,8 @@ export const Footer = () => {
         href: '/blog'
       },
       {
-        name: 'Resume',
-        href: '/resume'
+        name: 'Work',
+        href: '/work'
       },
       {
         name: 'Colophon',
