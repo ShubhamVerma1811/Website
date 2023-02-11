@@ -22,8 +22,8 @@ export const Header = () => {
       href: '/blog'
     },
     {
-      name: 'Exp',
-      href: '/resume'
+      name: 'Work',
+      href: '/work'
     }
   ];
 

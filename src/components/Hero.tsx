@@ -3,7 +3,8 @@ import Link from 'next/link';
 import {
   CAL_URL,
   CURRENT_ORGANIZATION,
-  CURRENT_TITLE
+  CURRENT_TITLE,
+  RESUME_URL
 } from 'services/constants';
 import { DiagonalArrow } from './Icons';
 
@@ -22,9 +23,13 @@ export const Hero = () => {
         </p> */}
 
         <div className='flex flex-wrap items-center'>
-          <Link href='/resume'>
-            <a className='umami--click--hero-resume mt-3 mr-2 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted'>
+          <Link href={RESUME_URL}>
+            <a
+              target='_blank'
+              rel='noopener noreferrer'
+              className='umami--click--hero-resume mt-3 mr-2 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted'>
               Resume
+              <DiagonalArrow className='inline text-xl' />
             </a>
           </Link>
           <a
