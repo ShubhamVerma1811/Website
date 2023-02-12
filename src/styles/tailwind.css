@@ -23,6 +23,7 @@
 .anchor {
   color: var(--color-secondary) !important;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .anchor:hover {

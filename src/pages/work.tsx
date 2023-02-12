@@ -22,7 +22,7 @@ const exps = [
         ]
       },
       {
-        title: 'Software Engineer',
+        title: 'Software Engineer - I',
         date: 'Jul 2021 - Present',
         points: [
           'Developed UI components for web and mobile apps using Figma mockups and variant configurations.',
@@ -58,7 +58,7 @@ const Resume = () => {
             <div
               className={`border-l-4 ${
                 index !== exps.length - 1 && 'border-b-4'
-              } my-2 flex flex-row border-skin-secondary-muted px-4`}
+              } my-2 flex flex-col border-skin-secondary-muted pl-2 md:px-4 lg:flex-row`}
               key={index}>
               <div className='mr-4'>
                 <Image
@@ -69,12 +69,12 @@ const Resume = () => {
                 />
               </div>
               <div>
-                <p className='mb-2 font-secondary text-lg text-skin-secondary'>
+                <p className='mb-2 text-lg text-skin-secondary'>
                   {item.company}
                 </p>
                 {item?.roles?.map((role) => (
                   <React.Fragment>
-                    <p className='mb-2 font-secondary text-xl font-bold text-skin-secondary'>
+                    <p className='font-secondary text-xl font-bold text-skin-secondary'>
                       {role?.title}
                     </p>
                     <p className='text-md mb-2 font-medium text-skin-primary-muted'>
