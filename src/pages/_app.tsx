@@ -9,6 +9,15 @@ export default function App({ Component, pageProps }: AppProps) {
   const [isDarkMode, setIsDarkMode] = useAtom(isDarkModeAtom);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (event: MediaQueryListEvent) => {
+      setIsDarkMode(event.matches);
+    };
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  useEffect(() => {
     const body = document.querySelector('body');
     const isDark = body?.classList.contains('dark') ?? false;
     setIsDarkMode(isDark);
