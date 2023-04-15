@@ -1,4 +1,5 @@
 import { PageLayout } from 'layouts';
+import { MetaLayout } from 'layouts/MetaLayout';
 import { useRef, useState } from 'react';
 
 const Card = () => {
@@ -86,6 +87,7 @@ const Card = () => {
 
   return (
     <PageLayout title={`Evervault's Encrypted Card`}>
+      <MetaLayout title={`Evervault's Encrypted Card | Craft`} />
       <div className='border rounded-md border-gray-700 flex flex-col p-4 w-[500px] h-[700px] mx-auto'>
         <div
           className='rounded-md h-[540px] overflow-clip relative'
