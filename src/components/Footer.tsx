@@ -23,6 +23,10 @@ export const Footer = () => {
         href: '/work'
       },
       {
+        name: 'Craft',
+        href: '/craft'
+      },
+      {
         name: 'Colophon',
         href: '/colophon'
       },
