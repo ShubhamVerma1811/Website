@@ -88,9 +88,9 @@ const Card = () => {
   return (
     <PageLayout title={`Evervault's Encrypted Card`}>
       <MetaLayout title={`Evervault's Encrypted Card | Craft`} />
-      <div className='border rounded-md border-gray-700 flex flex-col p-4 sm:w-[380px] md:w-[500px] h-[700px] mx-auto'>
+      <div className='border rounded-md border-gray-700 flex flex-col p-2  md:w-[350px] h-[500px] mx-auto'>
         <div
-          className='rounded-md h-[540px] overflow-clip relative'
+          className='rounded-md h-[300px] overflow-clip relative'
           onMouseMove={handleMoveMove}
           onMouseLeave={() => {
             if (!textRef.current) {
@@ -112,15 +112,15 @@ const Card = () => {
           </p>
 
           <div className='absolute pointer-events-none transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'>
-            <div className='flex items-center justify-center w-44 h-44 rounded-full m-auto bg-skin-primary opacity-90'>
-              <p className='text-skin-secondary text-5xl italic font-semibold select-none font-secondary'>
+            <div className='flex items-center justify-center w-36 h-36 rounded-full m-auto bg-skin-primary opacity-90'>
+              <p className='text-skin-secondary text-3xl italic font-semibold select-none font-secondary'>
                 Ness
               </p>
             </div>
           </div>
         </div>
 
-        <div className='mt-auto'>
+        <div className='mt-auto p-2'>
           <p className='text-md text-skin-secondary'>
             A points-based health and wellness credit card offering rewards and
             benefits with top brands to incentivize members to spend and live
