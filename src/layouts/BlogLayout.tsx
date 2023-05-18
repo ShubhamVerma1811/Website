@@ -38,7 +38,7 @@ const ShareIntents = ({ title, url }: { title: string; url: string }) => {
             href={`
               https://twitter.com/intent/tweet?text=Checkout this blog by ${TWITTER_HANDLE} on ${title}!&url=${url}
               `}
-            className=' mt-3 mr-5 w-max rounded-md border-2 border-transparent bg-skin-secondary-muted p-2 text-lg text-skin-secondary transition-all hover:border-white'
+            className=' mr-5 mt-3 w-max rounded-md border-2 border-transparent bg-skin-secondary-muted p-2 text-lg text-skin-secondary transition-all hover:border-white'
             rel='noopener noreferrer'>
             <strong className='flex items-center'>
               <TwitterIcon className='mr-2 text-[#1DA1F2]' />

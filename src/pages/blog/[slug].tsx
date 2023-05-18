@@ -133,7 +133,7 @@ const Blog = ({
                   return (
                     <div className='mt-2 flex items-center rounded-t-lg bg-[#1f2937] px-1 py-2'>
                       <Image
-                        className='my-0 mx-2 inline'
+                        className='mx-2 my-0 inline'
                         src={`/assets/logos/${lang}.svg`}
                         alt={lang}
                         width={16}

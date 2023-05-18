@@ -88,7 +88,7 @@ export const Footer = () => {
                   key={index}
                   className={`my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4 umami--click--footer-${link.name}`}>
                   <Link href={link.href} passHref>
-                    <a>{link.name}</a>
+                    {link.name}
                   </Link>
                 </li>
               );
@@ -102,10 +102,12 @@ export const Footer = () => {
                 <li
                   key={index}
                   className={`my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4 umami--click--footer-${link.name}`}>
-                  <Link href={link.href} passHref>
-                    <a target='_blank' rel='noopener noreferrer'>
-                      {link.name}
-                    </a>
+                  <Link
+                    href={link.href}
+                    passHref
+                    target='_blank'
+                    rel='noopener noreferrer'>
+                    {link.name}
                   </Link>
                 </li>
               );
@@ -128,7 +130,7 @@ export const Footer = () => {
                     </a>
                   ) : (
                     <Link href={link.href} passHref>
-                      <a>{link.name} </a>
+                      {link.name}
                     </Link>
                   )}
                 </li>

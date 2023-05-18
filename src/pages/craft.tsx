@@ -20,10 +20,10 @@ export default function Craft() {
         <ul>
           {crafts.map((craft) => (
             <li className='my-2 list-decimal text-skin-secondary'>
-              <Link href={`/craft/${craft.slug}`}>
-                <a className='text-xl font-secondary font-bold'>
-                  {craft.title}
-                </a>
+              <Link
+                href={`/craft/${craft.slug}`}
+                className='font-secondary text-xl font-bold'>
+                {craft.title}
               </Link>
             </li>
           ))}

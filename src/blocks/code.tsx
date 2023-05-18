@@ -32,7 +32,7 @@ const CodeBlock = (props: any) => {
       </SyntaxHighlighter>
       <button
         onClick={() => handleCopyCode(props?.children)}
-        className='absolute top-3 right-3 rounded-md bg-gray-900 px-2 py-1 text-white'>
+        className='absolute right-3 top-3 rounded-md bg-gray-900 px-2 py-1 text-white'>
         {showCopied ? 'Copied' : 'Copy'}
       </button>
     </React.Fragment>

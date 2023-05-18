@@ -24,14 +24,14 @@ const Spotify = ({
           These are the top Spotify tracks and artists that I&apos;ve been
           listening to this month!
         </p>
-        <Link href={SPOTIFY_URL} passHref>
-          <a
-            className='inline text-skin-primary-muted underline-offset-4 hover:underline'
-            target='_blank'
-            rel='noopener noreferrer'>
-            View Spotify Profile
-            <DiagonalArrow className='inline' />
-          </a>
+        <Link
+          href={SPOTIFY_URL}
+          passHref
+          className='inline text-skin-primary-muted underline-offset-4 hover:underline'
+          target='_blank'
+          rel='noopener noreferrer'>
+          View Spotify Profile
+          <DiagonalArrow className='inline' />
         </Link>
         <section className='my-12 scroll-m-20' id='top-tracks'>
           <a href='#top-tracks'>

@@ -63,7 +63,7 @@ export const Suggest = () => {
                 onChange={(e) => setTitle(e.target.value)}
               />
               <label
-                className='absolute left-4 -top-3 text-skin-secondary transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-skin-primary-muted peer-focus:-top-3 peer-focus:text-skin-secondary'
+                className='absolute -top-3 left-4 text-skin-secondary transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-skin-primary-muted peer-focus:-top-3 peer-focus:text-skin-secondary'
                 htmlFor='title'>
                 Title
               </label>
@@ -80,7 +80,7 @@ export const Suggest = () => {
                 onChange={(e) => setAuthors(e.target.value)}
               />
               <label
-                className='absolute left-4 -top-3 text-skin-secondary transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-skin-primary-muted peer-focus:-top-3 peer-focus:text-skin-secondary'
+                className='absolute -top-3 left-4 text-skin-secondary transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-skin-primary-muted peer-focus:-top-3 peer-focus:text-skin-secondary'
                 htmlFor='authors'>
                 Author(s)
               </label>
@@ -96,7 +96,7 @@ export const Suggest = () => {
               onChange={(e) => setReason(e.target.value)}
             />
             <label
-              className='absolute left-4 -top-3 text-skin-secondary transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-skin-primary-muted peer-focus:-top-3 peer-focus:text-skin-secondary'
+              className='absolute -top-3 left-4 text-skin-secondary transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-skin-primary-muted peer-focus:-top-3 peer-focus:text-skin-secondary'
               htmlFor='why'>
               Why should I read this?
             </label>
