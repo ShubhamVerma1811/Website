@@ -29,9 +29,7 @@ export const Header = () => {
                 key={index}
                 href={link.href}
                 passHref
-                className={`text-md mr-2 cursor-pointer rounded-md bg-skin-primary p-2 text-skin-secondary transition-all hover:bg-skin-secondary-muted md:text-xl ${
-                  true === link.href ? 'bg-skin-secondary-muted' : ''
-                } umami--click--header-${link.name} `}>
+                className={`text-md mr-2 cursor-pointer rounded-md bg-skin-primary p-2 text-skin-secondary transition-all hover:bg-skin-secondary-muted md:text-xl  umami--click--header-${link.name} `}>
                 {link.name}
               </Link>
             );

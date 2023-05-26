@@ -12,7 +12,7 @@ async function getData() {
   };
 }
 
-const Blog = async () => {
+export default async function Blog() {
   const { blogs } = await getData();
 
   return (
@@ -31,6 +31,5 @@ const Blog = async () => {
       )}
     </>
   );
-};
+}
 
-export default Blog;

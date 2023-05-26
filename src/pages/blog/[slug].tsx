@@ -114,11 +114,11 @@ const Blog = ({
                       src={props.src}
                       alt={props.alt || ''}
                       title={props.alt || ''}
-                      width={props.width}
-                      height={props.height}
+                      width={props.width as number}
+                      height={props.height as number}
                       placeholder='blur'
-                      // TODO:: fix types
                       // @ts-ignore
+                      // TODO:: fix types
                       blurDataURL={props.hash}
                     />
                     <figcaption>{props.alt}</figcaption>

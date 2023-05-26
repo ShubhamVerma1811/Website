@@ -6,7 +6,7 @@ import { isDarkModeAtom } from 'store/atoms/theme';
 import { Moon, Sun } from './Icons';
 
 const ThemeToggler = () => {
-  const [isDarkMode, setIsDarkMode] = useAtom(isDarkModeAtom);
+  const [isDarkMode] = useAtom(isDarkModeAtom);
 
   useEffect(() => {
     const body = document.querySelector('body');
@@ -27,7 +27,7 @@ const ThemeToggler = () => {
       aria-label='Toggle dark mode'
       className='ml-1 rounded-md p-2 hover:bg-skin-secondary-muted'
       onClick={() => {
-        alert('HEt');
+        // alert('HEt');
         // setIsDarkMode((prev) => {
         //   console.log(prev);
         //   return !prev;

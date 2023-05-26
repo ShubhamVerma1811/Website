@@ -1,4 +1,5 @@
 import { getPlaiceholder } from 'plaiceholder';
+// @ts-ignore
 import { visit } from 'unist-util-visit';
 
 // TODO:: fix types
@@ -8,6 +9,7 @@ export default function rehypeImageBlur() {
     // @ts-ignore
     const nodes = [];
 
+    // @ts-ignore
     visit(tree, (node) => {
       if (node.tagName === 'img') {
         nodes.push(node);
