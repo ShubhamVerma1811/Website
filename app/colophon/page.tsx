@@ -1,6 +1,4 @@
-import { DiagonalArrow } from 'components';
-import { PageLayout } from 'layouts';
-import { MetaLayout } from 'layouts/MetaLayout';
+import { DiagonalArrow } from 'components/Icons';
 import { TWITTER_URL } from 'services/constants';
 
 const Colophon = () => {
@@ -32,8 +30,10 @@ const Colophon = () => {
   ];
 
   return (
-    <PageLayout title='Colophon'>
-      <MetaLayout title='Colophon | Shubham Verma' />
+    <>
+      <p className='mb-6 font-secondary text-3xl font-extrabold text-skin-secondary'>
+        Colophon
+      </p>
       <p className='mb-4 text-lg text-skin-secondary'>
         This website is developed by{' '}
         <a
@@ -130,7 +130,7 @@ const Colophon = () => {
           </li>
         ))}
       </ul>
-    </PageLayout>
+    </>
   );
 };
 

@@ -1,25 +1,58 @@
 import { DiagonalArrow } from 'components';
-import { PageLayout } from 'layouts';
-import { MetaLayout } from 'layouts/MetaLayout';
-import { InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
 import React from 'react';
 import { SPOTIFY_URL } from 'services/constants';
 import { getTopArtists, getTopTracks } from 'services/spotify';
 import { NowPlaying as INowPlaying } from 'types/spotify.types';
 
-const Spotify = ({
-  tracks,
-  artists
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+async function getData() {
+  const response = await getTopTracks();
+  const resp = await getTopArtists().then((r) => r.json());
+
+  const data = await response.json();
+
+  // @ts-ignore
+  const tracks: Array<INowPlaying> = data?.items?.map((song) => {
+    const title = song?.name;
+    const artist = song?.artists.map((_artist: any) => _artist.name).join(', ');
+    const songUrl = song?.external_urls?.spotify;
+    const id = song?.id;
+
+    return {
+      title,
+      artist,
+      songUrl,
+      id
+    };
+  });
+
+  const artists: {
+    name: string;
+    id: string;
+    artistUrl: string;
+    // @ts-ignore
+  }[] = resp?.items?.map((artist) => {
+    return {
+      name: artist?.name,
+      id: artist?.id,
+      artistUrl: artist?.external_urls?.spotify
+    };
+  });
+
+  // revalidate: 60 * 60 * 6;
+
+  return {
+    tracks,
+    artists
+  };
+}
+
+const Spotify = async ({}) => {
+  const { artists, tracks } = await getData();
+
   return (
     <React.Fragment>
-      <PageLayout>
-        <MetaLayout
-          title='Spotify | Shubham Verma'
-          image_url={`${process.env.DOMAIN}/api/og?title=Spotify | Shubham Verma`}
-          description='Top artists and top tracks from Spotify.'
-        />
+      <>
         <p className='text-lg text-skin-primary-muted'>
           These are the top Spotify tracks and artists that I&apos;ve been
           listening to this month!
@@ -101,53 +134,9 @@ const Spotify = ({
             ))}
           </div>
         </section>
-      </PageLayout>
+      </>
     </React.Fragment>
   );
 };
 
 export default Spotify;
-
-export const getStaticProps = async () => {
-  const response = await getTopTracks();
-  const resp = await (await getTopArtists()).json();
-
-  const data = await response.json();
-
-  // @ts-ignore
-  const tracks: Array<INowPlaying> = data?.items?.map((song) => {
-    const title = song?.name;
-    const artist = song?.artists.map((_artist: any) => _artist.name).join(', ');
-    const songUrl = song?.external_urls?.spotify;
-    const id = song?.id;
-
-    return {
-      title,
-      artist,
-      songUrl,
-      id
-    };
-  });
-
-  const artists: {
-    name: string;
-    id: string;
-    artistUrl: string;
-    // @ts-ignore
-  }[] = resp?.items?.map((artist) => {
-    return {
-      name: artist?.name,
-      id: artist?.id,
-      artistUrl: artist?.external_urls?.spotify
-    };
-  });
-
-  return {
-    props: {
-      tracks,
-      artists
-    },
-    // every 6 hours
-    revalidate: 60 * 60 * 6
-  };
-};

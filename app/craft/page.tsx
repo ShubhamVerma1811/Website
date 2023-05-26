@@ -1,5 +1,3 @@
-import { PageLayout } from 'layouts';
-import { MetaLayout } from 'layouts/MetaLayout';
 import Link from 'next/link';
 
 const crafts = [
@@ -11,11 +9,7 @@ const crafts = [
 
 export default function Craft() {
   return (
-    <PageLayout title='Crafts'>
-      <MetaLayout
-        title='Craft | Shubham Verma'
-        image_url={`${process.env.DOMAIN}/api/og?title=Craft`}
-      />
+    <>
       <div>
         <ul>
           {crafts.map((craft) => (
@@ -29,6 +23,6 @@ export default function Craft() {
           ))}
         </ul>
       </div>
-    </PageLayout>
+    </>
   );
 }

@@ -1,17 +1,9 @@
 import { GithubIcon, LinkedInIcon, TwitterIcon } from 'components/Icons';
-import { useAtom } from 'jotai';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { GITHUB_URL, LINKEDIN_URL, TWITTER_URL } from 'services/constants';
-import { isDarkModeAtom } from 'store/atoms/theme';
-import { Moon, Sun } from './Icons';
+// import ThemeToggler from './ThemeToggler';
 
 export const Header = () => {
-  const [isDarkMode, setIsDarkMode] = useAtom(isDarkModeAtom);
-
-  const router = useRouter();
-  const activeLink = router.pathname;
-
   const headerLinks = [
     {
       name: 'Home',
@@ -38,7 +30,7 @@ export const Header = () => {
                 href={link.href}
                 passHref
                 className={`text-md mr-2 cursor-pointer rounded-md bg-skin-primary p-2 text-skin-secondary transition-all hover:bg-skin-secondary-muted md:text-xl ${
-                  activeLink === link.href ? 'bg-skin-secondary-muted' : ''
+                  true === link.href ? 'bg-skin-secondary-muted' : ''
                 } umami--click--header-${link.name} `}>
                 {link.name}
               </Link>
@@ -68,15 +60,7 @@ export const Header = () => {
               rel='noopener noreferrer'>
               <LinkedInIcon />
             </a>
-            <button
-              role='button'
-              aria-label='Toggle dark mode'
-              className='ml-1 rounded-md p-2 hover:bg-skin-secondary-muted'
-              onClick={() => {
-                setIsDarkMode((prev) => !prev);
-              }}>
-              {isDarkMode ? <Moon /> : <Sun />}
-            </button>
+            {/* <ThemeToggler /> */}
           </div>
         </div>
       </nav>

@@ -5,7 +5,7 @@ import { MetaLayout } from 'layouts/MetaLayout';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import React, { memo, useEffect } from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';

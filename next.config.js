@@ -13,6 +13,9 @@ const nextConfig = {
   env: {
     DOMAIN: process.env.DOMAIN
   },
+  experimental: {
+    appDir: true
+  },
   images: {
     domains: [
       'avatars.githubusercontent.com',
