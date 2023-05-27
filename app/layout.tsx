@@ -8,7 +8,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <html lang='en'>
       <head>
         <meta
           name='viewport'
@@ -24,6 +24,6 @@ export default function RootLayout({
       <body className='dark bg-skin-primary'>
         <PageLayout>{children}</PageLayout>
       </body>
-    </>
+    </html>
   );
 }

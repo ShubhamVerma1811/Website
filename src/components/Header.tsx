@@ -1,7 +1,7 @@
 import { GithubIcon, LinkedInIcon, TwitterIcon } from 'components/Icons';
 import Link from 'next/link';
 import { GITHUB_URL, LINKEDIN_URL, TWITTER_URL } from 'services/constants';
-// import ThemeToggler from './ThemeToggler';
+import ThemeToggler from './ThemeToggler';
 
 export const Header = () => {
   const headerLinks = [
@@ -58,7 +58,7 @@ export const Header = () => {
               rel='noopener noreferrer'>
               <LinkedInIcon />
             </a>
-            {/* <ThemeToggler /> */}
+            <ThemeToggler />
           </div>
         </div>
       </nav>
