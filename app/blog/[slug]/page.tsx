@@ -1,4 +1,5 @@
 import { DiagonalArrow } from 'components';
+import BlogViewIncrement from 'components/BlogViewIncrement';
 import { MDXClient } from 'components/MDXClient';
 import { BlogLayout } from 'layouts';
 import { Metadata, ResolvingMetadata } from 'next';
@@ -33,8 +34,7 @@ async function getData(params: { slug: string }) {
 
   if (!blog) {
     return {
-      props: { blog: null },
-      notFound: true
+      props: { blog: null }
     };
   }
 
@@ -63,9 +63,7 @@ async function getData(params: { slug: string }) {
     props: {
       blog,
       mdxSource
-    },
-    notFound: false,
-    revalidate: 60 * 60 * 24
+    }
   };
 }
 
@@ -105,19 +103,6 @@ async function Blog({ params }: { params: { slug: string } }) {
     props: { blog, mdxSource }
   } = await getData(params);
 
-  // useEffect(() => {
-  //   async function views() {
-  //     await fetch('/api/views', {
-  //       method: 'POST',
-  //       body: JSON.stringify({
-  //         page_id: blog?.id
-  //       })
-  //     });
-  //   }
-
-  //   process.env.NODE_ENV === 'production' && views();
-  // }, []);
-
   if (!blog) return null;
 
   const d = new Date(blog.date);
@@ -152,6 +137,8 @@ async function Blog({ params }: { params: { slug: string } }) {
       <div className='prose max-w-none text-lg text-skin-secondary prose-headings:scroll-m-20 prose-headings:font-secondary prose-headings:text-skin-secondary prose-a:text-skin-accent prose-strong:text-skin-secondary prose-em:text-skin-secondary prose-code:rounded-sm prose-code:text-skin-secondary prose-li:text-skin-secondary'>
         <MDXClient mdxSource={mdxSource} />
       </div>
+
+      <BlogViewIncrement id={blog?.id} />
     </BlogLayout>
   );
 }
