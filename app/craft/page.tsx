@@ -1,5 +1,16 @@
 import Link from 'next/link';
 
+export const metadata = {
+  title: 'Craft | Shubham Verma',
+  openGraph: {
+    images: [
+      {
+        url: `${process.env.DOMAIN}/api/og?title=Crafs | Shubham Verma.`
+      }
+    ]
+  }
+};
+
 const crafts = [
   {
     title: "Evervault's Encrypted Card",

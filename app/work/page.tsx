@@ -2,6 +2,17 @@ import Image from 'next/image';
 import React from 'react';
 import { RESUME_URL } from 'services/constants';
 
+export const metadata = {
+  title: 'Experience | Shubham Verma',
+  openGraph: {
+    images: [
+      {
+        url: `${process.env.DOMAIN}/api/og?title=Experience | Shubham Verma.`
+      }
+    ]
+  }
+};
+
 const exps = [
   {
     title: 'Software Engineer - III',

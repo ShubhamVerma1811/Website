@@ -1,6 +1,7 @@
 import { DiagonalArrow } from 'components';
 import { MDXClient } from 'components/MDXClient';
 import { BlogLayout } from 'layouts';
+import { Metadata, ResolvingMetadata } from 'next';
 import { serialize } from 'next-mdx-remote/serialize';
 import React from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -11,6 +12,8 @@ import remarkGfm from 'remark-gfm';
 import { transformer } from 'services/image-transformer';
 import { getClient } from 'services/sanity-server';
 import type { Blog as IBlog } from 'types';
+
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   const blogs: Array<IBlog> = await getClient().fetch(
@@ -63,6 +66,37 @@ async function getData(params: { slug: string }) {
     },
     notFound: false,
     revalidate: 60 * 60 * 24
+  };
+}
+
+type Props = {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const {
+    props: { blog }
+  } = await getData(params);
+
+  if (!blog) return {};
+
+  const d = new Date(blog.date);
+  const date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+
+  return {
+    title: blog?.title,
+    description: blog?.summary,
+    openGraph: {
+      title: blog?.title,
+      description: blog?.summary,
+      images: {
+        url: `${process.env.DOMAIN}api/og?title=${blog?.title}&date=${date}&readTime=${blog?.readTime}&author=Shubham Verma&desc=${blog?.summary}`
+      }
+    }
   };
 }
 

@@ -3,6 +3,17 @@ import { DiagonalArrow } from 'components/Icons';
 import { getClient } from 'services/sanity-server';
 import { Social } from 'types';
 
+export const metadata = {
+  title: 'Socials | Shubham Verma',
+  openGraph: {
+    images: [
+      {
+        url: `${process.env.DOMAIN}/api/og?title=Socials | Shubham Verma.`
+      }
+    ]
+  }
+};
+
 async function getData() {
   const socials: Array<Social> = await getClient().fetch(
     `*[_type == "social"] | order(_createdAt asc) {..., "id": _id}`

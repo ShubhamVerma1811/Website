@@ -5,6 +5,8 @@ import { SPOTIFY_URL } from 'services/constants';
 import { getTopArtists, getTopTracks } from 'services/spotify';
 import { NowPlaying as INowPlaying } from 'types/spotify.types';
 
+export const revalidate = 86400;
+
 export const metadata = {
   title: 'Spotify | Shubham Verma',
   description: 'Top artists and top tracks from Spotify.',

@@ -1,6 +1,17 @@
 import { DiagonalArrow } from 'components/Icons';
 import { TWITTER_URL } from 'services/constants';
 
+export const metadata = {
+  title: 'Colophon | Shubham Verma',
+  openGraph: {
+    images: [
+      {
+        url: `${process.env.DOMAIN}/api/og?title=Colophon | Shubham Verma.`
+      }
+    ]
+  }
+};
+
 const Colophon = () => {
   const refs = [
     {
