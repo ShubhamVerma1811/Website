@@ -131,7 +131,7 @@ async function Blog({ params }: { params: { slug: string } }) {
   return (
     <BlogLayout blog={blog}>
       <p className='mb-3 font-secondary text-4xl font-bold text-skin-secondary'>
-        {blog?.title} ME
+        {blog?.title}
       </p>
 
       <p className='my-1 text-gray-400'>

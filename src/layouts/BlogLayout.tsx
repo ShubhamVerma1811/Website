@@ -13,7 +13,6 @@ export const BlogLayout: React.FC<IBlogLayoutProps> = ({ blog, children }) => {
 
   return (
     <React.Fragment>
-      {/* <MetaTags blog={blog} /> */}
       {children}
       <hr className='my-4 border-skin-primary-muted' />
       <ShareIntents title={blog?.title} url={url} />
