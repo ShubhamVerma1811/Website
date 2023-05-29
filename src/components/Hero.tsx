@@ -23,14 +23,13 @@ export const Hero = () => {
         </p> */}
 
         <div className='flex flex-wrap items-center'>
-          <Link href={RESUME_URL}>
-            <a
-              target='_blank'
-              rel='noopener noreferrer'
-              className='umami--click--hero-resume mt-3 mr-2 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted'>
-              Resume
-              <DiagonalArrow className='inline text-xl' />
-            </a>
+          <Link
+            href={RESUME_URL}
+            target='_blank'
+            rel='noopener noreferrer'
+            className='umami--click--hero-resume mr-2 mt-3 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted'>
+            Resume
+            <DiagonalArrow className='inline text-xl' />
           </Link>
           <a
             target='_blank'
@@ -42,7 +41,7 @@ export const Hero = () => {
           </a>
         </div>
       </div>
-      <div className='overflow-clip md:mr-0 md:ml-auto'>
+      <div className='overflow-clip md:ml-auto md:mr-0'>
         <Image
           src='https://avatars.githubusercontent.com/u/25576658'
           alt='Shubham Verma'

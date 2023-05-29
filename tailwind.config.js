@@ -2,7 +2,7 @@
  * @type {import('tailwindcss/tailwind-config').TailwindConfig}
  */
 module.exports = {
-  content: ['./src/**/*.{ts,tsx,html}'],
+  content: ['./src/**/*.{ts,tsx,html}', './app/**/*.{ts,tsx,html}'],
   darkMode: 'class',
   theme: {
     extend: {
@@ -48,8 +48,5 @@ module.exports = {
     }
   },
 
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/line-clamp')
-  ]
+  plugins: [require('@tailwindcss/typography')]
 };

@@ -88,9 +88,9 @@ const Card = () => {
   return (
     <PageLayout title={`Evervault's Encrypted Card`}>
       <MetaLayout title={`Evervault's Encrypted Card | Craft`} />
-      <div className='border rounded-md border-gray-700 flex flex-col p-2  md:w-[350px] h-[500px] mx-auto'>
+      <div className='mx-auto flex h-[500px] flex-col rounded-md border  border-gray-700 p-2 md:w-[350px]'>
         <div
-          className='rounded-md h-[300px] overflow-clip relative'
+          className='relative h-[300px] overflow-clip rounded-md'
           onMouseMove={handleMoveMove}
           onMouseLeave={() => {
             if (!textRef.current) {
@@ -105,15 +105,15 @@ const Card = () => {
           }}>
           <p
             ref={textRef}
-            className='text-[10px] text-transparent select-none transition-all duration-500 ease-in-out
-              break-all
+            className='select-none break-all text-[10px] text-transparent transition-all duration-500
+              ease-in-out
             '>
             {text}
           </p>
 
-          <div className='absolute pointer-events-none transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'>
-            <div className='flex items-center justify-center w-36 h-36 rounded-full m-auto bg-skin-primary opacity-90'>
-              <p className='text-skin-secondary text-3xl italic font-semibold select-none font-secondary'>
+          <div className='pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform'>
+            <div className='m-auto flex h-36 w-36 items-center justify-center rounded-full bg-skin-primary opacity-90'>
+              <p className='select-none font-secondary text-3xl font-semibold italic text-skin-secondary'>
                 Ness
               </p>
             </div>
@@ -127,7 +127,7 @@ const Card = () => {
             healthily.
           </p>
 
-          <p className='text-md rounded-full border border-gray-500 p-2 my-2 w-max text-skin-secondary'>
+          <p className='text-md my-2 w-max rounded-full border border-gray-500 p-2 text-skin-secondary'>
             PCI Compliance
           </p>
         </div>

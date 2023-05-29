@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import React, { useRef, useState } from 'react';
 import { fetcher } from 'services/fetcher';
@@ -72,10 +74,11 @@ export const NowPlaying = () => {
               ? 'Play'
               : null}
           </div>
-          <Link href='/spotify' passHref>
-            <a className='mx-3 inline text-skin-primary-muted underline-offset-4 hover:underline'>
-              Check Stats
-            </a>
+          <Link
+            href='/spotify'
+            passHref
+            className='mx-3 inline text-skin-primary-muted underline-offset-4 hover:underline'>
+            Check Stats
           </Link>
         </div>
       </div>

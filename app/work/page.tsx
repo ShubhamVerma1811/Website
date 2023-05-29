@@ -1,8 +1,17 @@
-import { PageLayout } from 'layouts';
-import { MetaLayout } from 'layouts/MetaLayout';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import React from 'react';
 import { RESUME_URL } from 'services/constants';
+
+export const metadata = {
+  title: 'Experience | Shubham Verma',
+  openGraph: {
+    images: [
+      {
+        url: `${process.env.DOMAIN}/api/og?title=Experience | Shubham Verma.`
+      }
+    ]
+  }
+};
 
 const exps = [
   {
@@ -35,13 +44,9 @@ const exps = [
   }
 ];
 
-const Resume = () => {
+function Resume() {
   return (
-    <PageLayout title='Experience'>
-      <MetaLayout
-        title='Experience | Shubham Verma'
-        image_url={`${process.env.DOMAIN}/api/og?title=Experience | Shubham Verma`}
-      />
+    <>
       <p className='-mt-3 mb-6 text-lg text-skin-secondary underline underline-offset-4'>
         <a
           href={RESUME_URL}
@@ -94,8 +99,8 @@ const Resume = () => {
           );
         })}
       </div>
-    </PageLayout>
+    </>
   );
-};
+}
 
 export default Resume;

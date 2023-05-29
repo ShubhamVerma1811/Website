@@ -1,7 +1,11 @@
-import { Footer, Header } from 'components';
+import { Footer } from 'components/Footer';
+import { Header } from 'components/Header';
 import React from 'react';
 
-export const PageLayout: React.FC<{ title?: string }> = (props) => {
+export const PageLayout: React.FC<{
+  title?: string;
+  children: React.ReactNode;
+}> = (props) => {
   return (
     <div className='mx-6 my-5 max-w-4xl sm:mx-12 md:mx-32 lg:mx-auto'>
       <Header />

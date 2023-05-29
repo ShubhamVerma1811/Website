@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 export const BackToTop = () => {
@@ -21,7 +23,7 @@ export const BackToTop = () => {
 
   return showBackToTop ? (
     <button
-      className='fixed right-5 bottom-5 h-12 w-12 rounded-full border-2 border-skin-primary-muted bg-skin-primary text-2xl text-skin-secondary md:right-12 md:bottom-12'
+      className='fixed bottom-5 right-5 h-12 w-12 rounded-full border-2 border-skin-primary-muted bg-skin-primary text-2xl text-skin-secondary md:bottom-12 md:right-12'
       onClick={() => {
         window.scrollTo({
           top: 0,

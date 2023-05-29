@@ -20,11 +20,11 @@ export const RecentBlogSection = ({ blogs }: BlogsCompProps) => {
       {blogs?.map((blog, index) => {
         return <BlogCard key={index} blog={blog} />;
       })}
-      <Link href='/blog'>
-        <a className='cursor-pointer pb-1 font-bold text-skin-secondary hover:border-b'>
-          Read all posts
-          <RightArrow className='ml-2 inline-block' />
-        </a>
+      <Link
+        href='/blog'
+        className='cursor-pointer pb-1 font-bold text-skin-secondary hover:border-b'>
+        Read all posts
+        <RightArrow className='ml-2 inline-block' />
       </Link>
     </section>
   );

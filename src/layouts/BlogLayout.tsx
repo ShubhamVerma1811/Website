@@ -1,11 +1,11 @@
-import { BackToTop, LinkedInIcon, TwitterIcon, Comments } from 'components';
-import Head from 'next/head';
+import { BackToTop, LinkedInIcon, TwitterIcon } from 'components';
 import React from 'react';
 import { DOMAIN, TWITTER_HANDLE } from 'services/constants';
 import { Blog } from 'types';
 
 interface IBlogLayoutProps {
   blog: Blog;
+  children: React.ReactNode;
 }
 
 export const BlogLayout: React.FC<IBlogLayoutProps> = ({ blog, children }) => {
@@ -13,14 +13,10 @@ export const BlogLayout: React.FC<IBlogLayoutProps> = ({ blog, children }) => {
 
   return (
     <React.Fragment>
-      <MetaTags blog={blog} />
-      <main className='mb-0'>
-        {children}
-        <hr className='my-4 border-skin-primary-muted' />
-        <ShareIntents title={blog?.title} url={url} />
-        <Comments />
-        <BackToTop />
-      </main>
+      {children}
+      <hr className='my-4 border-skin-primary-muted' />
+      <ShareIntents title={blog?.title} url={url} />
+      <BackToTop />
     </React.Fragment>
   );
 };
@@ -38,7 +34,7 @@ const ShareIntents = ({ title, url }: { title: string; url: string }) => {
             href={`
               https://twitter.com/intent/tweet?text=Checkout this blog by ${TWITTER_HANDLE} on ${title}!&url=${url}
               `}
-            className=' mt-3 mr-5 w-max rounded-md border-2 border-transparent bg-skin-secondary-muted p-2 text-lg text-skin-secondary transition-all hover:border-white'
+            className=' mr-5 mt-3 w-max rounded-md border-2 border-transparent bg-skin-secondary-muted p-2 text-lg text-skin-secondary transition-all hover:border-white'
             rel='noopener noreferrer'>
             <strong className='flex items-center'>
               <TwitterIcon className='mr-2 text-[#1DA1F2]' />
@@ -58,36 +54,5 @@ const ShareIntents = ({ title, url }: { title: string; url: string }) => {
         </div>
       </div>
     </div>
-  );
-};
-
-const MetaTags = ({ blog }: IBlogLayoutProps) => {
-  const d = new Date(blog.date);
-  const date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
-  const cover = `${process.env.DOMAIN}/api/og?title=${blog.title}&readTime=${blog.readTime}&date=${date}`;
-
-  return (
-    <Head>
-      <title>{blog?.title} | Shubham Verma</title>
-      <meta name='description' content={blog?.summary} />
-
-      {blog?.canonicalUrl && <link rel='canonical' href={blog?.canonicalUrl} />}
-      <meta name='author' content='Shubham Verma' />
-
-      {/* <!-- Twitter Card data --> */}
-      <meta name='twitter:card' content='summary_large_image' />
-      <meta name='twitter:site' content={TWITTER_HANDLE} />
-      <meta name='twitter:title' content={blog?.title} />
-      <meta name='twitter:description' content={blog?.summary} />
-      <meta name='twitter:creator' content={TWITTER_HANDLE} />
-      {cover && <meta name='twitter:image' content={cover} />}
-      <meta name='twitter:image:alt' content={blog?.summary} />
-      {/* <!-- Open Graph data --> */}
-      <meta property='og:title' content={blog?.title} />
-      <meta property='og:type' content='article' />
-      {cover && <meta property='og:image' content={cover} />}
-      <meta property='og:image:alt' content={blog?.summary} />
-      <meta property='og:description' content={blog?.summary} />
-    </Head>
   );
 };
