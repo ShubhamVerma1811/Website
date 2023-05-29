@@ -1,4 +1,4 @@
-import { BackToTop, LinkedInIcon, TwitterIcon, Comments } from 'components';
+import { BackToTop, LinkedInIcon, TwitterIcon } from 'components';
 import Head from 'next/head';
 import React from 'react';
 import { DOMAIN, TWITTER_HANDLE } from 'services/constants';
@@ -15,13 +15,10 @@ export const BlogLayout: React.FC<IBlogLayoutProps> = ({ blog, children }) => {
   return (
     <React.Fragment>
       <MetaTags blog={blog} />
-      <main className='mb-0'>
-        {children}
-        <hr className='my-4 border-skin-primary-muted' />
-        <ShareIntents title={blog?.title} url={url} />
-        <Comments />
-        <BackToTop />
-      </main>
+      {children}
+      <hr className='my-4 border-skin-primary-muted' />
+      <ShareIntents title={blog?.title} url={url} />
+      <BackToTop />
     </React.Fragment>
   );
 };
