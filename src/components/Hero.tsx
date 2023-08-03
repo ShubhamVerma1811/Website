@@ -4,6 +4,7 @@ import {
   CAL_URL,
   CURRENT_ORGANIZATION,
   CURRENT_TITLE,
+  HIRE_MAIL,
   RESUME_URL
 } from 'services/constants';
 import { DiagonalArrow } from './Icons';
@@ -23,6 +24,14 @@ export const Hero = () => {
         </p> */}
 
         <div className='flex flex-wrap items-center'>
+          <a
+            target='_blank'
+            href={`mailto:${HIRE_MAIL}`}
+            className='umami--click--hero-calendar text-md mt-3 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted md:text-lg'
+            rel='noopener noreferrer'>
+            Hire Me
+            <DiagonalArrow className='inline text-xl' />
+          </a>
           <Link
             href={RESUME_URL}
             target='_blank'
@@ -31,14 +40,14 @@ export const Hero = () => {
             Resume
             <DiagonalArrow className='inline text-xl' />
           </Link>
-          <a
+          {/* <a
             target='_blank'
             href={CAL_URL}
             className='umami--click--hero-calendar text-md mt-3 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted md:text-lg'
             rel='noopener noreferrer'>
             Schedule a meet
             <DiagonalArrow className='inline text-xl' />
-          </a>
+          </a> */}
         </div>
       </div>
       <div className='overflow-clip md:ml-auto md:mr-0'>

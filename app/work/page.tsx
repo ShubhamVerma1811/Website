@@ -1,6 +1,8 @@
+import { DiagonalArrow } from 'components';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
-import { RESUME_URL } from 'services/constants';
+import { HIRE_MAIL, RESUME_URL } from 'services/constants';
 
 export const metadata = {
   title: 'Experience | Shubham Verma',
@@ -46,16 +48,25 @@ const exps = [
 
 function Resume() {
   return (
-    <>
-      <p className='-mt-3 mb-6 text-lg text-skin-secondary underline underline-offset-4'>
+    <React.Fragment>
+      <div className='-mt-3 mb-6 flex flex-wrap items-center'>
         <a
+          target='_blank'
+          href={`mailto:${HIRE_MAIL}`}
+          className='umami--click--hero-calendar text-md mt-3 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted md:text-lg'
+          rel='noopener noreferrer'>
+          Hire Me
+          <DiagonalArrow className='inline text-xl' />
+        </a>
+        <Link
           href={RESUME_URL}
           target='_blank'
           rel='noopener noreferrer'
-          className='umami--click--view-resume'>
-          View Resume
-        </a>
-      </p>
+          className='umami--click--hero-resume mr-2 mt-3 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted'>
+          Resume
+          <DiagonalArrow className='inline text-xl' />
+        </Link>
+      </div>
 
       <div>
         {exps?.map((item, index) => {
@@ -99,7 +110,7 @@ function Resume() {
           );
         })}
       </div>
-    </>
+    </React.Fragment>
   );
 }
 
