@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  CAL_URL,
   CURRENT_ORGANIZATION,
   CURRENT_TITLE,
   HIRE_MAIL,
