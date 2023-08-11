@@ -11,6 +11,6 @@ export const INSTAGRAM_URL = 'https://shbm.fyi/ig';
 export const SPOTIFY_URL = 'https://shbm.fyi/sp';
 export const CAL_URL = 'https://shbm.fyi/cal';
 export const CURRENT_ORGANIZATION = 'GeekyAnts';
-export const CURRENT_TITLE = 'Software Engineer - III';
+export const CURRENT_TITLE = 'Senior Software Engineer - I';
 export const RESUME_URL = 'https://shbm.fyi/resume';
 export const HIRE_MAIL = 'hire@shubhamverma.me';
