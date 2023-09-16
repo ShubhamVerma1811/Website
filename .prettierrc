@@ -2,6 +2,17 @@
   "bracketSameLine": true,
   "endOfLine": "lf",
   "jsxSingleQuote": true,
+  "overrides": [
+    {
+      "files": "*.svelte",
+      "options": {
+        "parser": "svelte"
+      }
+    }
+  ],
+  "pluginSearchDirs": ["."],
+  "plugins": ["prettier-plugin-svelte"],
+  "printWidth": 100,
   "proseWrap": "always",
   "singleQuote": true,
   "trailingComma": "none"

@@ -1,0 +1,10 @@
+---
+layout: MDXLayout
+---
+
+<script>
+  export let data;
+  const {blog}  = data
+</script>
+
+{blog?.body}
