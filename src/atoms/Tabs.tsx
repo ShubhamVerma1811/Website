@@ -6,11 +6,11 @@ import { usePathname } from 'next/navigation';
 const tabs = [
   {
     title: 'About',
-    href: '/'
+    href: '/about'
   },
   {
     title: 'Projects',
-    href: '/projects'
+    href: '/'
   },
   {
     title: 'Blogs',

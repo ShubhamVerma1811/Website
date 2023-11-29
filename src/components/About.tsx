@@ -7,7 +7,7 @@ export const About = () => {
       <p className='text-skin-secondary text-lg'>
         As a software engineer, I'm passionate about creating beautiful
         products. In my downtime, I love constructing{' '}
-        <Link href='/projects' className='inline underline underline-offset-4'>
+        <Link href='/' className='inline underline underline-offset-4'>
           projects
         </Link>{' '}
         and exploring the latest in tech.

@@ -6,7 +6,7 @@ import type { Blog } from 'types';
 
 const generate = async (preview: boolean) => {
   const prettierConfig = await prettier.resolveConfig('../../.prettierrc');
-  const pages = ['', 'blog', 'spotify', 'socials', 'work', 'craft'];
+  const pages = ['', 'blog', 'spotify', 'socials', 'work', 'craft', 'about'];
 
   const blogs: Array<Blog> = await getClient(preview).fetch(
     `*[_type == "post"] | order(date desc) {"slug": slug.current}`

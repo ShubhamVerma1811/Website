@@ -1,7 +1,9 @@
-import { About } from 'components/About';
+import { ProjectsCard } from 'components';
 import { PageLayout } from 'layouts';
 
 import { Metadata } from 'next';
+import { getClient } from 'services/sanity-server';
+import { Project } from 'types';
 
 export const revalidate = 86400;
 
@@ -21,10 +23,24 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Home() {
+async function getData() {
+  const projects: Array<Project> = await getClient().fetch(
+    `*[_type == "project"]`
+  );
+
+  return {
+    projects
+  };
+}
+
+export default async function Home() {
+  const { projects } = await getData();
+
   return (
     <PageLayout>
-      <About />
+      {projects?.map((project, index) => {
+        return <ProjectsCard key={index} project={project} />;
+      })}
     </PageLayout>
   );
 }
