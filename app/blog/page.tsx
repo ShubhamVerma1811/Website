@@ -1,4 +1,5 @@
 import { BlogCard } from 'components/Blogs/BlogCard';
+import { PageLayout } from 'layouts';
 import { getClient } from 'services/sanity-server';
 import type { Blog } from 'types';
 
@@ -30,19 +31,10 @@ export default async function Blog() {
   const { blogs } = await getData();
 
   return (
-    <>
-      <p className='mb-6 font-secondary text-3xl font-extrabold text-skin-secondary'>
-        Blogs
-      </p>
-      {blogs.length ? (
-        blogs.map((blog, index) => {
-          return <BlogCard key={index} blog={blog} />;
-        })
-      ) : (
-        <div className='my-4 text-lg text-skin-primary dark:text-skin-primary-muted'>
-          No blogs found.
-        </div>
-      )}
-    </>
+    <PageLayout>
+      {blogs.map((blog, index) => {
+        return <BlogCard key={index} blog={blog} />;
+      })}
+    </PageLayout>
   );
 }

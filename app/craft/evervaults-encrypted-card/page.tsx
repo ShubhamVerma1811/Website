@@ -1,4 +1,5 @@
-import { PageLayout } from 'layouts';
+'use client';
+
 import { MetaLayout } from 'layouts/MetaLayout';
 import { useRef, useState } from 'react';
 
@@ -86,7 +87,10 @@ const Card = () => {
   }
 
   return (
-    <PageLayout title={`Evervault's Encrypted Card`}>
+    <>
+      <p className='mb-6 font-secondary text-3xl font-extrabold text-skin-secondary'>
+        Evervault's Encrypted Card
+      </p>
       <MetaLayout title={`Evervault's Encrypted Card | Craft`} />
       <div className='mx-auto flex h-[500px] flex-col rounded-md border  border-gray-700 p-2 md:w-[350px]'>
         <div
@@ -132,7 +136,7 @@ const Card = () => {
           </p>
         </div>
       </div>
-    </PageLayout>
+    </>
   );
 };
 

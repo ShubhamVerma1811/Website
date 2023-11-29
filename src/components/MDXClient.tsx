@@ -1,6 +1,6 @@
 'use client';
 
-import CodeBlock from 'blocks/code';
+import CodeBlock from 'atoms/code';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import Image from 'next/image';
 

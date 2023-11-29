@@ -29,12 +29,6 @@ const Socials = async () => {
 
   return (
     <>
-      <p className='mb-6 font-secondary text-3xl font-extrabold text-skin-secondary'>
-        Socials
-      </p>
-      <p className='text-lg text-skin-primary-muted'>
-        All my socials, available at once place :)
-      </p>
       <div className='my-5'>
         <ul className='flex flex-wrap'>
           {socials?.map((social) => {

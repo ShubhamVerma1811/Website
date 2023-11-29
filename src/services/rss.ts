@@ -1,8 +1,8 @@
 import { Feed, Item } from 'feed';
-import type { Blog } from 'types';
-import { TWITTER_URL } from './constants';
 import { remark } from 'remark';
 import remarkHTML from 'remark-html';
+import type { Blog } from 'types';
+import { HIRE_MAIL, TWITTER_URL } from './constants';
 
 export const generateRSSFeed = (blogs: Array<Blog>) => {
   const baseURL = process.env.DOMAIN!;
@@ -10,7 +10,7 @@ export const generateRSSFeed = (blogs: Array<Blog>) => {
   const author = {
     name: 'Shubham Verma',
     link: TWITTER_URL,
-    email: 'hi@shubhamverma.me'
+    email: HIRE_MAIL
   };
 
   const feed = new Feed({

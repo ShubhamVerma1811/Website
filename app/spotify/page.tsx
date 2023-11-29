@@ -1,7 +1,4 @@
-import { DiagonalArrow } from 'components';
-import Link from 'next/link';
 import React from 'react';
-import { SPOTIFY_URL } from 'services/constants';
 import { getTopArtists, getTopTracks } from 'services/spotify';
 import { NowPlaying as INowPlaying } from 'types/spotify.types';
 
@@ -70,15 +67,6 @@ const Spotify = async ({}) => {
         These are the top Spotify tracks and artists that I&apos;ve been
         listening to this month!
       </p>
-      <Link
-        href={SPOTIFY_URL}
-        passHref
-        className='inline text-skin-primary-muted underline-offset-4 hover:underline'
-        target='_blank'
-        rel='noopener noreferrer'>
-        View Spotify Profile
-        <DiagonalArrow className='inline' />
-      </Link>
       <section className='my-12 scroll-m-20' id='top-tracks'>
         <a href='#top-tracks'>
           <p className='mb-3 font-secondary text-4xl font-bold text-skin-secondary'>

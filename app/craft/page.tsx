@@ -21,6 +21,9 @@ const crafts = [
 export default function Craft() {
   return (
     <>
+      <p className='mb-6 font-secondary text-3xl font-extrabold text-skin-secondary'>
+        Crafts
+      </p>
       <div>
         <ul>
           {crafts.map((craft) => (
