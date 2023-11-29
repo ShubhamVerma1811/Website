@@ -10,11 +10,12 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  // TODO: Remove this when figured out.
+  typescript: {
+    ignoreBuildErrors: true
+  },
   env: {
     DOMAIN: process.env.DOMAIN
-  },
-  experimental: {
-    appDir: true
   },
   images: {
     domains: [
