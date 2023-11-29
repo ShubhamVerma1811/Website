@@ -14,7 +14,7 @@ export const Hero = () => {
         {/* <p className='font-secondary text-3xl font-bold text-skin-secondary'>
           Shubham Verma
         </p> */}
-        <p className='mt-1 max-w-lg text-lg text-skin-primary-muted'>
+        <p className='mt-1 max-w-lg text-xl text-skin-primary-muted'>
           I'm <span className='text-skin-secondary'>Shubham Verma</span>, an
           engineer, learner and builder. <br />
           {CURRENT_TITLE} at <strong>{CURRENT_ORGANIZATION}</strong>

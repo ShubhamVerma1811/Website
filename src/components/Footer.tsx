@@ -1,34 +1,39 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { NowPlaying } from './NowPlaying';
 
+const footerLinks = {
+  site: [
+    {
+      name: 'Work',
+      href: '/work'
+    },
+    {
+      name: 'Craft',
+      href: '/craft'
+    },
+    {
+      name: 'Socials',
+      href: '/socials'
+    },
+    {
+      name: 'Spotify',
+      href: '/spotify'
+    },
+    {
+      name: 'RSS',
+      href: '/rss.xml'
+    }
+  ]
+};
+
 export const Footer = () => {
-  const footerLinks = {
-    site: [
-      {
-        name: 'Work',
-        href: '/work'
-      },
-      {
-        name: 'Craft',
-        href: '/craft'
-      },
-      {
-        name: 'Socials',
-        href: '/socials'
-      },
-      {
-        name: 'Spotify',
-        href: '/spotify'
-      },
-      {
-        name: 'RSS',
-        href: '/rss.xml'
-      }
-    ]
-  };
+  const path = usePathname();
 
   return (
-    <footer className='body-font mt-4 bg-skin-primary'>
+    <footer className='body-font bg-skin-primary mt-auto'>
       <hr className='my-4 border-skin-primary-muted' />
 
       <NowPlaying />
@@ -40,7 +45,15 @@ export const Footer = () => {
           return (
             <li
               key={index}
-              className={`my-2 w-max cursor-pointer list-none text-skin-secondary hover:underline hover:underline-offset-4 umami--click--footer-${link.name}`}>
+              className={`my-2 w-max cursor-pointer list-none hover:underline hover:underline-offset-4 umami--click--footer-${
+                link.name
+              }
+                 ${
+                   path === link.href
+                     ? 'text-skin-secondary'
+                     : 'text-skin-primary-muted'
+                 }
+              `}>
               <Link href={link.href} passHref>
                 {link.name}
               </Link>

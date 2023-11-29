@@ -22,12 +22,10 @@ export default function RootLayout({
           data-do-not-track='true'></script>
       </head>
       <body className='dark bg-skin-primary'>
-        <div className='mx-6 my-5 max-w-4xl sm:mx-12 md:mx-32 lg:mx-auto'>
-          <main>
-            <Header />
-            {children}
-            <Footer />
-          </main>
+        <div className='mx-5 flex h-[100dvh] max-w-4xl flex-col sm:mx-12 md:mx-32 lg:mx-auto '>
+          <Header />
+          <main>{children}</main>
+          <Footer />
         </div>
       </body>
     </html>

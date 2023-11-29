@@ -1,4 +1,5 @@
 import { DiagonalArrow } from 'components/Icons';
+import React from 'react';
 
 import { getClient } from 'services/sanity-server';
 import { Social } from 'types';
@@ -28,7 +29,10 @@ const Socials = async () => {
   const { socials } = await getData();
 
   return (
-    <>
+    <React.Fragment>
+      <p className='mb-6 font-secondary text-3xl font-extrabold text-skin-secondary'>
+        Socials
+      </p>
       <div className='my-5'>
         <ul className='flex flex-wrap'>
           {socials?.map((social) => {
@@ -50,7 +54,7 @@ const Socials = async () => {
           })}
         </ul>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 
