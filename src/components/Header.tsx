@@ -4,36 +4,13 @@ import { GITHUB_URL, LINKEDIN_URL, TWITTER_URL } from 'services/constants';
 import ThemeToggler from './ThemeToggler';
 
 export const Header = () => {
-  const headerLinks = [
-    {
-      name: 'Home',
-      href: '/'
-    },
-    {
-      name: 'Blog',
-      href: '/blog'
-    },
-    {
-      name: 'Work',
-      href: '/work'
-    }
-  ];
-
   return (
-    <header className='my-4 mb-12 rounded-md bg-skin-primary' id='header'>
+    <header className='my-5 rounded-md bg-skin-primary' id='header'>
       <nav className='flex items-center'>
-        <div>
-          {headerLinks.map((link, index) => {
-            return (
-              <Link
-                key={index}
-                href={link.href}
-                passHref
-                className={`text-md mr-2 cursor-pointer rounded-md bg-skin-primary p-2 text-skin-secondary transition-all hover:bg-skin-secondary-muted md:text-xl  umami--click--header-${link.name} `}>
-                {link.name}
-              </Link>
-            );
-          })}
+        <div className='ml-0'>
+          <Link className='text-2xl font-bold text-skin-secondary' href='/'>
+            <p className='font-bold'>🌱</p>
+          </Link>
         </div>
         <div className='ml-auto'>
           <div className='flex flex-wrap items-center'>

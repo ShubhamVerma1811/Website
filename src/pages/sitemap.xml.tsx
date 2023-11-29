@@ -1,21 +1,12 @@
 import type { GetServerSideProps } from 'next';
 import prettier from 'prettier';
+import { DOMAIN } from 'services/constants';
 import { getClient } from 'services/sanity-server';
 import type { Blog } from 'types';
 
 const generate = async (preview: boolean) => {
   const prettierConfig = await prettier.resolveConfig('../../.prettierrc');
-  const pages = [
-    '/',
-    '/blog',
-    '/books',
-    '/colophon',
-    '/spotify',
-    '/uses',
-    '/socials',
-    '/work',
-    '/craft'
-  ];
+  const pages = ['', 'blog', 'spotify', 'socials', 'work', 'craft'];
 
   const blogs: Array<Blog> = await getClient(preview).fetch(
     `*[_type == "post"] | order(date desc) {"slug": slug.current}`
@@ -28,7 +19,7 @@ const generate = async (preview: boolean) => {
           .map((blog) => {
             return `
               <url>
-                  <loc>${`https://shubhamverma.me/blog/${blog.slug}`}</loc>
+                  <loc>${`${DOMAIN}/blog/${blog.slug}`}</loc>
               </url>
             `;
           })
@@ -37,7 +28,7 @@ const generate = async (preview: boolean) => {
           .map((page) => {
             return `
               <url>
-                  <loc>${`https://shubhamverma.me${page}`}</loc>
+                  <loc>${`${DOMAIN}/${page}`}</loc>
               </url>
             `;
           })

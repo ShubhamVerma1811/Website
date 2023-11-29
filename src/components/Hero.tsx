@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import {
   CURRENT_ORGANIZATION,
@@ -10,12 +9,14 @@ import { DiagonalArrow } from './Icons';
 
 export const Hero = () => {
   return (
-    <div className='flex flex-col-reverse md:flex-row'>
+    <div className='flex flex-col bg-skin-primary'>
       <div>
-        <p className='font-secondary text-3xl font-bold text-skin-secondary'>
+        {/* <p className='font-secondary text-3xl font-bold text-skin-secondary'>
           Shubham Verma
-        </p>
-        <p className='mt-2 text-lg text-skin-primary-muted'>
+        </p> */}
+        <p className='mt-1 max-w-lg text-lg text-skin-primary-muted'>
+          I'm <span className='text-skin-secondary'>Shubham Verma</span>, an
+          engineer, learner and builder. <br />
           {CURRENT_TITLE} at <strong>{CURRENT_ORGANIZATION}</strong>
         </p>
         {/* <p className='text-md mt-3 text-skin-primary-muted md:text-lg'>
@@ -49,7 +50,7 @@ export const Hero = () => {
           </a> */}
         </div>
       </div>
-      <div className='overflow-clip md:ml-auto md:mr-0'>
+      {/* <div className='overflow-clip md:ml-auto md:mr-0'>
         <Image
           src='https://avatars.githubusercontent.com/u/25576658'
           alt='Shubham Verma'
@@ -58,7 +59,7 @@ export const Hero = () => {
           className='rounded-full'
           title='Shubham Verma'
         />
-      </div>
+      </div> */}
     </div>
   );
 };

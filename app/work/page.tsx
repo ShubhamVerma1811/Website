@@ -23,23 +23,28 @@ const exps = [
     iconPath: '/assets/logos/ga/logo.svg',
     roles: [
       {
+        title: 'Senior Software Engineer - I',
+        date: 'Jul 2023 - Present',
+        points: [
+          'Orchestrated the restructuring of API responses in collaboration with clients and the backend team, concurrently managing the smooth migration of the codebase.'
+        ]
+      },
+      {
         title: 'Software Engineer - III',
         date: 'Jul 2022 - Present',
         points: [
-          'Customized themes for multiple brands to maintain a consistent aesthetic.',
-          'Improved performance through efficient dynamic loading and server-side rendering, reducing bundle size by 26% and improving Lighthouse scores.',
-          'Conducted code reviews to maintain project quality and code standards.',
-          'Led three tracks under the project with a team of up to six developers, working closely with clients, the tech lead, and QA to deliver successful project outcomes.'
+          'Led multiple project modules with a team of six developers, ensuring seamless delivery from design to launch while closely collaborating with clients and tech leads.',
+          'Maintained code quality through thorough reviews and implemented advanced E2E tests using Cypress and Percy.',
+          'Achieved substantial project improvements, including dynamic component loading, a 26% reduction in bundle size, and boosted Lighthouse and SEO scores.'
         ]
       },
       {
         title: 'Software Engineer - I',
         date: 'Jul 2021 - Present',
         points: [
-          'Developed UI components for web and mobile apps using Figma mockups and variant configurations.',
-          'Improved component performance through memoization and optimized loading using dynamic imports.',
-          'Achieved rapid career advancement from SE-1 to SE-3 within a year, showcasing exceptional performance and expertise.',
-          'Took on interim leadership role and successfully led the team and project in the absence of the designated tech lead.'
+          'Created cross-platform UI components for web and mobile with multi-theme support.',
+          "Stepped into a leadership role during the tech lead's absence, successfully managing the team and project.",
+          'Improved component performance to enhance app functionality and achieved rapid career advancement from SE-I to SE-III within a year, reflecting exceptional performance and expertise.'
         ]
       }
     ]
@@ -49,6 +54,9 @@ const exps = [
 function Resume() {
   return (
     <React.Fragment>
+      <p className='mb-6 font-secondary text-3xl font-extrabold text-skin-secondary'>
+        Work
+      </p>
       <div className='-mt-3 mb-6 flex flex-wrap items-center'>
         <a
           target='_blank'

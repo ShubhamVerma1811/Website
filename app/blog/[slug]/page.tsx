@@ -1,5 +1,5 @@
 import { DiagonalArrow } from 'components';
-import BlogViewIncrement from 'components/BlogViewIncrement';
+import BlogViewIncrement from 'atoms/BlogViewIncrement';
 import { MDXClient } from 'components/MDXClient';
 import { BlogLayout } from 'layouts';
 import { Metadata, ResolvingMetadata } from 'next';
