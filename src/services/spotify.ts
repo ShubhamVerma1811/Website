@@ -47,7 +47,8 @@ export const getTopTracks = async () => {
     {
       headers: {
         Authorization: `Bearer ${access_token}`
-      }
+      },
+      cache: 'no-cache'
     }
   );
 };
@@ -60,7 +61,8 @@ export const getTopArtists = async () => {
     {
       headers: {
         Authorization: `Bearer ${access_token}`
-      }
+      },
+      cache: 'no-cache'
     }
   );
 };

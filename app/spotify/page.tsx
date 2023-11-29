@@ -17,13 +17,13 @@ export const metadata = {
 };
 
 async function getData() {
-  const response = await getTopTracks();
-  const resp = await getTopArtists().then((r) => r.json());
-
-  const data = await response.json();
+  const [tracksData, artistsData] = await Promise.all([
+    await getTopTracks().then((r) => r.json()),
+    await getTopArtists().then((r) => r.json())
+  ]);
 
   // @ts-ignore
-  const tracks: Array<INowPlaying> = data?.items?.map((song) => {
+  const tracks: Array<INowPlaying> = tracksData?.items?.map((song) => {
     const title = song?.name;
     const artist = song?.artists.map((_artist: any) => _artist.name).join(', ');
     const songUrl = song?.external_urls?.spotify;
@@ -37,12 +37,12 @@ async function getData() {
     };
   });
 
-  const artists: {
+  const artists: Array<{
     name: string;
     id: string;
     artistUrl: string;
     // @ts-ignore
-  }[] = resp?.items?.map((artist) => {
+  }> = artistsData?.items?.map((artist) => {
     return {
       name: artist?.name,
       id: artist?.id,
@@ -50,15 +50,13 @@ async function getData() {
     };
   });
 
-  // revalidate: 60 * 60 * 6;
-
   return {
     tracks,
     artists
   };
 }
 
-const Spotify = async ({}) => {
+export default async function Spotify() {
   const { artists, tracks } = await getData();
 
   return (
@@ -133,6 +131,4 @@ const Spotify = async ({}) => {
       </section>
     </React.Fragment>
   );
-};
-
-export default Spotify;
+}
