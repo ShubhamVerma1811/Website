@@ -44,7 +44,7 @@ export const generateRSSFeed = (blogs: Array<Blog>) => {
       link: `${baseURL}/blog/${blog.slug}`,
       author: [{ ...author }],
       description: blog.summary,
-      image: cover,
+      // image: cover,
       content: html,
       published: new Date(blog.date)
     };
