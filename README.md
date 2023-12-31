@@ -2,8 +2,9 @@
 
 ### Home Page
 
-![image](https://github.com/ShubhamVerma1811/Website/assets/25576658/bff1ae93-c2e7-4c9a-ba03-6243ee4ccf66#gh-dark-mode-only)
-![image](https://github.com/ShubhamVerma1811/Website/assets/25576658/772d8bc5-a98c-48dd-9723-c63d436a5b61#gh-light-mode-only)
+![image](https://github.com/ShubhamVerma1811/Website/assets/25576658/6258958b-81bd-420c-bbab-4115ac56a3ee#gh-dark-mode-only)
+![image](https://github.com/ShubhamVerma1811/Website/assets/25576658/55eab632-381f-4ee3-a332-d1d4c408a4b8#gh-light-mode-only)
+
 
 ### Lighthouse Metrics
 
