@@ -43,12 +43,11 @@ export const getTopTracks = async () => {
   const { access_token } = await getAccessToken();
 
   return fetch(
-    SPOTIFY_TOP_TRACKS_ENDPOINT + '?limit=10&time_range=short_term',
+    `${SPOTIFY_TOP_TRACKS_ENDPOINT}?limit=10&time_range=short_term`,
     {
       headers: {
         Authorization: `Bearer ${access_token}`
-      },
-      cache: 'no-cache'
+      }
     }
   );
 };
@@ -57,12 +56,11 @@ export const getTopArtists = async () => {
   const { access_token } = await getAccessToken();
 
   return fetch(
-    SPOTIFY_TOP_ARTISTS_ENDPOINT + '?limit=10&time_range=short_term',
+    `${SPOTIFY_TOP_ARTISTS_ENDPOINT}?limit=10&time_range=short_term`,
     {
       headers: {
         Authorization: `Bearer ${access_token}`
-      },
-      cache: 'no-cache'
+      }
     }
   );
 };
