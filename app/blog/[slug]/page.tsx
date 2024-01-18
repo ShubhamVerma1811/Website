@@ -92,7 +92,7 @@ export async function generateMetadata(
       title: blog?.title,
       description: blog?.summary,
       images: {
-        url: `${process.env.DOMAIN}api/og?title=${blog?.title}&date=${date}&readTime=${blog?.readTime}&author=Shubham Verma&desc=${blog?.summary}`
+        url: `${process.env.DOMAIN}/api/og?title=${blog?.title}&date=${date}&readTime=${blog?.readTime}&author=Shubham Verma&desc=${blog?.summary}`
       }
     }
   };
