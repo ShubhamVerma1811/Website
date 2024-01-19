@@ -15,6 +15,10 @@ const crafts = [
   {
     title: "Evervault's Encrypted Card",
     slug: 'evervaults-encrypted-card'
+  },
+  {
+    title: "Jhey's Book A Demo Button",
+    slug: 'jhey-book-a-demo-button'
   }
 ];
 
