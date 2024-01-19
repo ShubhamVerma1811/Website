@@ -34,7 +34,7 @@ const Page = () => {
         </Link>{' '}
         by Jhey. The source code can be viewed{' '}
         <Link
-          href='https://codepen.io/shubhamverma1811/pen/abJzRqj'
+          href='https://github.com/ShubhamVerma1811/Website/blob/main/app/craft/jhey-book-a-demo-button/README.md'
           target='_blank'
           rel='noopener noreferrer'
           className='inline underline underline-offset-4'>
