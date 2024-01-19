@@ -17,7 +17,7 @@ const Page = () => {
           className='select-none font-secondary font-bold cursor-pointer relative h-[70px] w-64 text-skin-primary text-2xl pl-[60px] rounded-[10px] border-4 border-solid border-black dark:border-white bg-skin-secondary'
           type='button'>
           <span className='select-none absolute w-[60px] h-[62px] bg-[#d2ff4d] shadow-[0_10px_10px_-5px_#00000033] transition-[width] duration-[0.2s] ease-[ease-in-out] bg-no-repeat bg-center rounded-md left-0 top-0 container'>
-            <span className='select-none animate-[fly_0.7s_infinite] l absolute left-1.5 top-1.5 inset-0 mask mask-[url(https://assets.codepen.io/605876/chev-mask.png)]' />
+            <span className='select-none animate-[fly_0.7s_infinite] l absolute left-1.5 top-1.5 inset-0 mask mask-url[/assets/images/chev.webp]' />
           </span>
           Book A Demo!
         </button>
@@ -46,7 +46,7 @@ const Page = () => {
 
       <style jsx>{`
         .mask {
-          mask: url('https://assets.codepen.io/605876/chev-mask.png');
+          mask: url('/assets/images/chev.webp');
           mask-repeat: no-repeat;
           background: radial-gradient(#000, transparent);
           background-size: 500px;
