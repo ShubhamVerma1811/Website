@@ -17,10 +17,8 @@ export const metadata = {
 };
 
 async function getData() {
-  const [tracksData, artistsData] = await Promise.all([
-    await getTopTracks().then((r) => r.json()),
-    await getTopArtists().then((r) => r.json())
-  ]);
+  const tracksData = await getTopTracks().then((r) => r.json());
+  const artistsData = await getTopArtists().then((r) => r.json());
 
   // @ts-ignore
   const tracks: Array<INowPlaying> = tracksData?.items?.map((song) => {

@@ -42,6 +42,8 @@ export const getNowPlaying = async () => {
 export const getTopTracks = async () => {
   const { access_token } = await getAccessToken();
 
+  console.log('LOG:', 'fetching top tracks');
+
   return fetch(
     `${SPOTIFY_TOP_TRACKS_ENDPOINT}?limit=10&time_range=short_term`,
     {
@@ -55,6 +57,8 @@ export const getTopTracks = async () => {
 
 export const getTopArtists = async () => {
   const { access_token } = await getAccessToken();
+
+  console.log('LOG:', 'fetching top artists');
 
   return fetch(
     `${SPOTIFY_TOP_ARTISTS_ENDPOINT}?limit=10&time_range=short_term`,
