@@ -7,7 +7,7 @@ import React from 'react';
 
 const Page = () => {
   return (
-    <div className='jhey-container'>
+    <div className=''>
       <p className='mb-6 font-secondary text-3xl font-extrabold text-skin-secondary'>
         Jhey's Book A Demo Button
       </p>
@@ -44,8 +44,7 @@ const Page = () => {
         .
       </p>
 
-      <style>{`
-      .jhey-container {
+      <style jsx>{`
         .mask {
           mask: url('/assets/images/chev.webp');
           mask-repeat: no-repeat;
@@ -75,7 +74,6 @@ const Page = () => {
             background-position-x: 0%;
           }
         }
-      }
       `}</style>
     </div>
   );
