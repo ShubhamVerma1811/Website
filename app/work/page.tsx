@@ -61,7 +61,8 @@ function Resume() {
         <a
           target='_blank'
           href={`mailto:${HIRE_MAIL}`}
-          className='umami--click--hero-calendar text-md mt-3 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted md:text-lg'
+          data-umami-event='hero-calendar'
+          className='text-md mt-3 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted md:text-lg'
           rel='noopener noreferrer'>
           Hire Me
           <DiagonalArrow className='inline text-xl' />
@@ -70,7 +71,8 @@ function Resume() {
           href={RESUME_URL}
           target='_blank'
           rel='noopener noreferrer'
-          className='umami--click--hero-resume mr-2 mt-3 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted'>
+          data-umami-event='hero-resume'
+          className='mr-2 mt-3 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted'>
           Resume
           <DiagonalArrow className='inline text-xl' />
         </Link>

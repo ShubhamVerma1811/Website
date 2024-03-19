@@ -17,21 +17,24 @@ export const Header = () => {
             <a
               target='_blank'
               href={TWITTER_URL}
-              className=' umami--click--hero-twitter mr-1 w-max rounded-md p-2 text-lg text-[#1DA1F2] hover:bg-skin-secondary-muted'
+              data-umami-event='hero-twitter'
+              className=' mr-1 w-max rounded-md p-2 text-lg text-[#1DA1F2] hover:bg-skin-secondary-muted'
               rel='noopener noreferrer'>
               <TwitterIcon />
             </a>
             <a
               target='_blank'
               href={GITHUB_URL}
-              className='umami--click--hero-github mr-1 w-max rounded-md p-2 text-lg text-skin-secondary hover:bg-skin-secondary-muted'
+              data-umami-event='hero-github'
+              className='mr-1 w-max rounded-md p-2 text-lg text-skin-secondary hover:bg-skin-secondary-muted'
               rel='noopener noreferrer'>
               <GithubIcon />
             </a>
             <a
               target='_blank'
               href={LINKEDIN_URL}
-              className='umami--click--hero-linkedin w-max rounded-md p-2 text-lg text-[#0a66c2] hover:bg-skin-secondary-muted dark:text-[#ffffffe6]'
+              data-umami-event='hero-linkedin'
+              className='w-max rounded-md p-2 text-lg text-[#0a66c2] hover:bg-skin-secondary-muted dark:text-[#ffffffe6]'
               rel='noopener noreferrer'>
               <LinkedInIcon />
             </a>

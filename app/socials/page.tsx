@@ -44,7 +44,8 @@ const Socials = async () => {
                   }}
                   target='_blank'
                   href={social.url}
-                  className={`umami--click--socials-${social.name} mr-5 mt-3 w-max rounded-md p-2 text-xl text-skin-secondary hover:bg-skin-secondary-muted`}
+                  data-umami-event={`socials-${social.name}`}
+                  className='mr-5 mt-3 w-max rounded-md p-2 text-xl text-skin-secondary hover:bg-skin-secondary-muted'
                   rel='noopener noreferrer'>
                   <strong> {social.name}</strong>
                   <DiagonalArrow className='inline text-xl' />

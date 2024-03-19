@@ -19,9 +19,10 @@ export const ProjectsCard = ({ project }: ProjectCompProps) => {
         <a
           target='_blank'
           href={project.live}
-          className={`text-lg text-skin-accent underline-offset-4 hover:underline umami--click--project-${project.title
+          data-umami-event={`project-${project.title
             .split(' ')
             .join('-')}-live`}
+          className='text-lg text-skin-accent underline-offset-4 hover:underline'
           rel='noopener noreferrer'>
           <strong>Live Link</strong>
           <DiagonalArrow className='inline' />
@@ -30,9 +31,10 @@ export const ProjectsCard = ({ project }: ProjectCompProps) => {
         <a
           target='_blank'
           href={project.repo}
-          className={`ml-3 text-lg text-skin-accent underline-offset-4 hover:underline umami--click--project-${project.title
+          data-umami-event={`project-${project.title
             .split(' ')
             .join('-')}-repo`}
+          className='ml-3 text-lg text-skin-accent underline-offset-4 hover:underline'
           rel='noopener noreferrer'>
           <strong>Repo Link</strong>
           <DiagonalArrow className='inline' />

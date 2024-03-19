@@ -45,9 +45,8 @@ export const Footer = () => {
           return (
             <li
               key={index}
-              className={`my-2 w-max cursor-pointer list-none hover:underline hover:underline-offset-4 umami--click--footer-${
-                link.name
-              }
+              data-umami-event={`footer-${link.name}`}
+              className={`my-2 w-max cursor-pointer list-none hover:underline hover:underline-offset-4
                  ${
                    path === link.href
                      ? 'text-skin-secondary'
