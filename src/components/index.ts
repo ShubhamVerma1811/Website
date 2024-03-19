@@ -6,3 +6,4 @@ export * from './Hero';
 export * from './Icons';
 export * from './NowPlaying';
 export * from './Projects';
+export * from './Banner';

@@ -15,7 +15,8 @@ const nextConfig = {
     ignoreBuildErrors: true
   },
   env: {
-    DOMAIN: process.env.DOMAIN
+    DOMAIN: process.env.DOMAIN,
+    SHOWBANNER: process.env.SHOWBANNER
   },
   images: {
     domains: [
