@@ -11,7 +11,7 @@ import rehypeResizeImage from 'rehype-image-resize';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { transformer } from 'services/image-transformer';
-import { getClient } from 'services/sanity-server';
+import { getClient, urlFor } from 'services/sanity-server';
 import type { Blog as IBlog } from 'types';
 
 export const revalidate = 86400;
@@ -92,7 +92,9 @@ export async function generateMetadata(
       title: blog?.title,
       description: blog?.summary,
       images: {
-        url: `${process.env.DOMAIN}/api/og?title=${blog?.title}&date=${date}&readTime=${blog?.readTime}&author=Shubham Verma&desc=${blog?.summary}`
+        url: blog?.cover
+          ? urlFor(blog?.cover).url()
+          : `${process.env.DOMAIN}/api/og?title=${blog?.title}&date=${date}&readTime=${blog?.readTime}&author=Shubham Verma&desc=${blog?.summary}`
       }
     }
   };

@@ -9,7 +9,7 @@ export const Banner = () => {
   return (
     <div className='bg-[#264e33] p-1 px-3'>
       <p className='font-bold text-md text-center text-[#ff0]'>
-        Hi, I am open to new opportunities. Know about
+        Hi, I am open to new collaboration/opportunities. Know about
         <Link href='/about'>
           <span
             data-umami-event='banner-work'
