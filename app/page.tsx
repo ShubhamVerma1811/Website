@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 async function getData() {
   const projects: Array<Project> = await getClient().fetch(
-    `*[_type == "project"]`
+    `*[_type == "project"] | order(rank)`
   );
 
   return {
