@@ -41,7 +41,7 @@
     "remark-html": "^15.0.2",
     "sharp": "^0.32.1",
     "swr": "^2.1.5",
-    "zod": "^3.21.4"
+    "zod": "^3.22.3"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.4.4",
