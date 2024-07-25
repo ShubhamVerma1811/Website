@@ -11,6 +11,6 @@ export const INSTAGRAM_URL = `${SHORT_DOMAIN}/ig`;
 export const SPOTIFY_URL = `${SHORT_DOMAIN}/sp`;
 export const CAL_URL = `${SHORT_DOMAIN}/cal`;
 export const CURRENT_ORGANIZATION = 'GeekyAnts';
-export const CURRENT_TITLE = 'Senior Software Engineer - I';
+export const CURRENT_TITLE = 'Senior Software Engineer - II';
 export const RESUME_URL = `${SHORT_DOMAIN}/resume`;
 export const HIRE_MAIL = `hi@shubhamverma.me`;
