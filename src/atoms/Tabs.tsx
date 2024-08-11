@@ -39,6 +39,7 @@ export const Tabs = () => {
         <Link
           key={idx}
           href={tab.href}
+          data-umami-event={`tab-${tab.title.toLowerCase()}`}
           className={`text-xl hover:text-skin-secondary ${
             path === tab.href
               ? 'text-skin-secondary'
