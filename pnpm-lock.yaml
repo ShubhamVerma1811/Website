@@ -8693,7 +8693,7 @@ snapshots:
   '@sanity/webhook@2.0.0':
     dependencies:
       base64url: 3.0.1
-      tslib: 2.5.2
+      tslib: 2.7.0
 
   '@shuding/opentype.js@1.4.0-beta.0':
     dependencies:
@@ -8702,7 +8702,7 @@ snapshots:
 
   '@swc/helpers@0.5.2':
     dependencies:
-      tslib: 2.5.2
+      tslib: 2.7.0
 
   '@tailwindcss/typography@0.5.9(tailwindcss@3.4.12)':
     dependencies:
@@ -12012,7 +12012,7 @@ snapshots:
 
   rxjs@7.8.1:
     dependencies:
-      tslib: 2.5.2
+      tslib: 2.7.0
 
   sade@1.8.1:
     dependencies:

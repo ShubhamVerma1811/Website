@@ -1,9 +1,8 @@
 'use client';
 
 import { DiagonalArrow } from 'components';
-import { MetaLayout } from 'layouts/MetaLayout';
+import { ClientMetaLayout } from 'layouts/ClientMetaLayout';
 import Link from 'next/link';
-import React from 'react';
 
 const Page = () => {
   return (
@@ -11,7 +10,7 @@ const Page = () => {
       <p className='mb-6 font-secondary text-3xl font-extrabold text-skin-secondary'>
         Jhey's Book A Demo Button
       </p>
-      <MetaLayout title={`Jhey's Book Me Button | Craft`} />
+      <ClientMetaLayout title={`Jhey's Book Me Button | Craft`} />
       <div className='mx-auto my-16 flex flex-row justify-center select-none'>
         <button
           className='select-none font-secondary font-bold cursor-pointer relative h-[70px] w-64 text-skin-primary text-2xl pl-[60px] rounded-[10px] border-4 border-solid border-black dark:border-white bg-skin-secondary'

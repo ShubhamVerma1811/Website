@@ -1,6 +1,6 @@
 'use client';
 
-import { MetaLayout } from 'layouts/MetaLayout';
+import { ClientMetaLayout } from 'layouts/ClientMetaLayout';
 import { useRef, useState } from 'react';
 
 function generateFakeEncryptedString(length: number) {
@@ -91,7 +91,7 @@ const Card = () => {
       <p className='mb-6 font-secondary text-3xl font-extrabold text-skin-secondary'>
         Evervault's Encrypted Card
       </p>
-      <MetaLayout title={`Evervault's Encrypted Card | Craft`} />
+      <ClientMetaLayout title={`Evervault's Encrypted Card | Craft`} />
       <div className='mx-auto flex h-[500px] flex-col rounded-md border  border-gray-700 p-2 md:w-[350px]'>
         <div
           className='relative h-[300px] overflow-clip rounded-md'

@@ -1,8 +1,10 @@
 'use client';
 
+import { DiagonalArrow } from 'components';
 import { AnimatePresence, motion } from 'framer-motion';
-import Head from 'next/head';
-import { useEffect, useRef, useState } from 'react';
+import { ClientMetaLayout } from 'layouts/ClientMetaLayout';
+import Link from 'next/link';
+import { useRef, useState } from 'react';
 
 function getVolumeIcon(vol: string, active = false) {
   switch (vol) {
@@ -59,45 +61,58 @@ export const AndroidVolumeBar = () => {
   const [activeVolState, setActiveVolState] = useState<VolumeStates>('ringer');
   const timer = useRef<number | null>(null);
 
-
-  if(typeof window === 'undefined') return null;
+  if (typeof window === 'undefined') return null;
 
   const containerRef = useRef(null);
-  useEffect(() => {
-    if (!open) return;
+  // useEffect(() => {
+  //   if (!open) return;
 
-    startTimer();
-    return () => stopTimer();
-  }, [open]);
+  //   startTimer();
+  //   return () => stopTimer();
+  // }, [open]);
 
   function setActiveVolume(vol: VolumeStates) {
     setActiveVolState(vol);
     //TODO:: HACK FOR THE ANIMATION, NEED TO FIX IT
     setTimeout(() => {
       setShowVolStates(false);
-      setIsOpen(false);
-    }, 120);
+      // setIsOpen(false);
+    }, 150);
   }
 
   function startTimer() {
     if (timer.current) return;
 
-    timer.current = setTimeout(() => {
+    timer.current = window.setTimeout(() => {
       setIsOpen((p) => !p);
       setShowVolStates(false);
     }, 1000);
   }
 
   function stopTimer() {
-    timer.current && clearTimeout(timer.current);
+    timer.current && window.clearTimeout(timer.current);
   }
 
   return (
     <div className='relative'>
-      <Head>
-        <title>Android Volume Control with Framer Motion</title>
-      </Head>
-      <div className='flex flex-row justify-center items-center my-4'>
+      <p className='mb-6 font-secondary text-3xl font-extrabold text-skin-secondary'>
+        Android's Volume Control
+      </p>
+      <ClientMetaLayout title={`Android's Volume Control with Framer Motion`} />
+      <div className='flex flex-col justify-center items-center my-4'>
+        <p className='text-skin-secondary text-xl text-center my-2'>
+          This is my first attempt at creating something with Framer Motion.{' '}
+          <br />
+          The code can been viewed{' '}
+          <Link
+            href='https://github.com/ShubhamVerma1811/Website/blob/main/app/craft/android-volume-control-with-framer-motion/page.tsx'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='inline underline underline-offset-4'>
+            here.
+            <DiagonalArrow className='inline' />
+          </Link>
+        </p>
         <button
           type='button'
           onClick={() => {
@@ -113,11 +128,14 @@ export const AndroidVolumeBar = () => {
             className='h-full my-10 absolute'
             style={{
               top: '50%',
-              left: '50%',
+              left: '47%',
               transform: 'translate(-50%, -50%)' // Center the element
             }}>
             <motion.div
-              initial={{ x: window?.innerWidth, y: 100 }}
+              transition={{
+                bounce: 0
+              }}
+              initial={{ x: window?.innerWidth, y: 160 }}
               animate={{
                 x: '40%'
               }}
@@ -134,7 +152,7 @@ export const AndroidVolumeBar = () => {
                 {showVolStates ? (
                   <motion.div
                     transition={{
-                      duration: 0.1
+                      duration: 0.05
                     }}
                     initial={{
                       y: 20,
@@ -145,7 +163,7 @@ export const AndroidVolumeBar = () => {
                       opacity: 1
                     }}
                     exit={{
-                      y: 40,
+                      y: 20,
                       opacity: 0
                     }}
                     className='bg-gray-800 p-1 h-36 rounded-full absolute inset-0 -top-20 -z-10'>

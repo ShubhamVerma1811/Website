@@ -1,12 +1,10 @@
-import Head from 'next/head';
-
 interface MetaLayoutProps {
   title?: string;
   description?: string;
   image_url?: string;
 }
 
-export const MetaLayout = (props: MetaLayoutProps) => {
+export const ClientMetaLayout = (props: MetaLayoutProps) => {
   const {
     title = 'Shubham Verma | Frontend Developer',
     description = 'Frontend Developer, Likes to build open source tools and write articles.',
@@ -16,7 +14,7 @@ export const MetaLayout = (props: MetaLayoutProps) => {
   const website = process.env.DOMAIN!;
 
   return (
-    <Head>
+    <head>
       <title>{title}</title>
       <meta name='title' content={title} />
       <meta property='twitter:title' content={title} />
@@ -36,6 +34,6 @@ export const MetaLayout = (props: MetaLayoutProps) => {
       <meta property='og:type' content='website' />
 
       <link rel='shortcut icon' href='/favicon.ico' />
-    </Head>
+    </head>
   );
 };
