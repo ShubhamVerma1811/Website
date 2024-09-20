@@ -3,7 +3,7 @@
 import React from 'react';
 import { fetcher } from 'services/fetcher';
 import useSWR from 'swr';
-import { NowPlaying as INowPlaying } from 'types/spotify.types';
+import type { NowPlaying as INowPlaying } from 'types/spotify.types';
 import { SpotifyIcon } from './Icons';
 
 export const NowPlaying = () => {

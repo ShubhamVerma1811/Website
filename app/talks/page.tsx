@@ -1,8 +1,7 @@
 import { TalkCard } from 'components/Talks';
 import { PageLayout } from 'layouts';
-import React from 'react';
 import { getClient } from 'services/sanity-server';
-import { Talk } from 'types';
+import type { Talk } from 'types';
 
 async function getData() {
   const talks: Array<Talk> = await getClient().fetch(
@@ -22,7 +21,7 @@ export default async function Talk() {
   return (
     <PageLayout>
       {talks?.map((talk, index) => {
-        return <TalkCard key={index} talk={talk} />;
+        return <TalkCard key={talk.id} talk={talk} />;
       })}
     </PageLayout>
   );

@@ -1,9 +1,9 @@
 import { ProjectsCard } from 'components';
 import { PageLayout } from 'layouts';
 
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { getClient } from 'services/sanity-server';
-import { Project } from 'types';
+import type { Project } from 'types';
 
 export const revalidate = 86400;
 
@@ -39,7 +39,7 @@ export default async function Home() {
   return (
     <PageLayout>
       {projects?.map((project, index) => {
-        return <ProjectsCard key={index} project={project} />;
+        return <ProjectsCard key={project.title} project={project} />;
       })}
     </PageLayout>
   );

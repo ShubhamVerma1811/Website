@@ -1,6 +1,6 @@
 import React from 'react';
 import { getTopArtists, getTopTracks } from 'services/spotify';
-import { NowPlaying as INowPlaying } from 'types/spotify.types';
+import type { NowPlaying as INowPlaying } from 'types/spotify.types';
 
 export const revalidate = 86400;
 
@@ -23,7 +23,9 @@ async function getData() {
   // @ts-ignore
   const tracks: Array<INowPlaying> = tracksData?.items?.map((song) => {
     const title = song?.name;
-    const artist = song?.artists.map((_artist: any) => _artist.name).join(', ');
+    const artist = song?.artists
+      .map((_artist: { name: string }) => _artist.name)
+      .join(', ');
     const songUrl = song?.external_urls?.spotify;
     const id = song?.id;
 
@@ -72,7 +74,7 @@ export default async function Spotify() {
         </a>
         <div className='my-12'>
           {tracks?.map((song, index) => (
-            <ol key={index}>
+            <ol key={song.id}>
               <li>
                 <div className='flex flex-row items-start'>
                   <span className='text-skin-primary-muted'>{index + 1}.</span>
@@ -105,7 +107,7 @@ export default async function Spotify() {
         </a>
         <div className='my-12'>
           {artists?.map((artist, index) => (
-            <ol key={index}>
+            <ol key={artist.id}>
               <li>
                 <div className='flex flex-row items-start'>
                   <span className='text-skin-primary-muted'>{index + 1}.</span>
