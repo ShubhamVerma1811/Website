@@ -3,17 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { HIRE_MAIL, RESUME_URL } from 'services/constants';
+import { generateMetaData } from 'services/util';
 
-export const metadata = {
-  title: 'Experience | Shubham Verma',
-  openGraph: {
-    images: [
-      {
-        url: `${process.env.DOMAIN}/api/og?title=Experience | Shubham Verma.`
-      }
-    ]
-  }
-};
+export const metadata = generateMetaData({
+  title: 'Experience | Shubham Verma'
+});
 
 const exps = [
   {
@@ -85,7 +79,7 @@ function Resume() {
               className={`border-l-4 ${
                 index !== exps.length - 1 && 'border-b-4'
               } my-2 flex flex-col border-skin-secondary-muted pl-2 md:px-4 lg:flex-row`}
-              key={index}>
+              key={item.title}>
               <div className='mr-4'>
                 <Image
                   src={item.iconPath}
@@ -99,7 +93,7 @@ function Resume() {
                   {item.company}
                 </p>
                 {item?.roles?.map((role) => (
-                  <React.Fragment>
+                  <React.Fragment key={role.title}>
                     <p className='font-secondary text-xl font-bold text-skin-secondary'>
                       {role?.title}
                     </p>
@@ -107,7 +101,7 @@ function Resume() {
                       {role?.date}
                     </p>
                     {role.points?.map((point, index) => (
-                      <ul key={index} className='mx-8'>
+                      <ul key={point} className='mx-8'>
                         <li className='list-disc text-skin-secondary'>
                           <p className='mb-2'>{point}</p>
                         </li>

@@ -1,20 +1,14 @@
 import React from 'react';
 import { getTopArtists, getTopTracks } from 'services/spotify';
+import { generateMetaData } from 'services/util';
 import type { NowPlaying as INowPlaying } from 'types/spotify.types';
 
 export const revalidate = 86400;
 
-export const metadata = {
+export const metadata = generateMetaData({
   title: 'Spotify | Shubham Verma',
-  description: 'Top artists and top tracks from Spotify.',
-  openGraph: {
-    images: [
-      {
-        url: `${process.env.DOMAIN}/api/og?title=Spotify | Shubham Verma`
-      }
-    ]
-  }
-};
+  description: 'Top artists and top tracks from Spotify.'
+});
 
 async function getData() {
   const tracksData = await getTopTracks().then((r) => r.json());

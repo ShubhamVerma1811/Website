@@ -1,17 +1,12 @@
 import Link from 'next/link';
 import fs from 'node:fs';
 import path from 'node:path';
+import { generateMetaData } from 'services/util';
 
-export const metadata = {
+export const metadata = generateMetaData({
   title: 'Craft | Shubham Verma',
-  openGraph: {
-    images: [
-      {
-        url: `${process.env.DOMAIN}/api/og?title=Crafts | Shubham Verma.`
-      }
-    ]
-  }
-};
+  description: 'Crafts/Experienents I have made.'
+});
 
 function getCrafts() {
   const craftDir = path.join(process.cwd(), 'app/craft');

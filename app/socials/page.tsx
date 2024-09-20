@@ -2,18 +2,13 @@ import { DiagonalArrow } from 'components/Icons';
 import React from 'react';
 
 import { getClient } from 'services/sanity-server';
-import { Social } from 'types';
+import { generateMetaData } from 'services/util';
+import type { Social } from 'types';
 
-export const metadata = {
+export const metadata = generateMetaData({
   title: 'Socials | Shubham Verma',
-  openGraph: {
-    images: [
-      {
-        url: `${process.env.DOMAIN}/api/og?title=Socials | Shubham Verma.`
-      }
-    ]
-  }
-};
+  description: 'Links to my socials.'
+});
 
 async function getData() {
   const socials: Array<Social> = await getClient().fetch(
