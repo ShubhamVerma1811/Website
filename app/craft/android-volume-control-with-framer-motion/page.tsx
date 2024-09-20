@@ -59,6 +59,9 @@ export const AndroidVolumeBar = () => {
   const [activeVolState, setActiveVolState] = useState<VolumeStates>('ringer');
   const timer = useRef<number | null>(null);
 
+
+  if(typeof window === 'undefined') return null;
+
   const containerRef = useRef(null);
   useEffect(() => {
     if (!open) return;
@@ -114,11 +117,11 @@ export const AndroidVolumeBar = () => {
               transform: 'translate(-50%, -50%)' // Center the element
             }}>
             <motion.div
-              initial={{ x: window.innerWidth, y: 100 }}
+              initial={{ x: window?.innerWidth, y: 100 }}
               animate={{
                 x: '40%'
               }}
-              exit={{ x: window.innerWidth }}
+              exit={{ x: window?.innerWidth }}
               ref={containerRef}
               onMouseOver={() => {
                 stopTimer();
