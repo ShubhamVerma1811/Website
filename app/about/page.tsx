@@ -8,6 +8,11 @@ import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { transformer } from 'services/image-transformer';
 import { getClient } from 'services/sanity-server';
+import { generateMetaData } from 'services/util';
+
+export const metadata = generateMetaData({
+  title: 'About | Shubham Verma'
+});
 
 async function getData() {
   const about = await getClient().fetch(`*[_type == "about"][0]`);
