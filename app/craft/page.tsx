@@ -19,6 +19,10 @@ const crafts = [
   {
     title: "Jhey's Book A Demo Button",
     slug: 'jhey-book-a-demo-button'
+  },
+  {
+    title: "Android's Volume Control with Framer Motion",
+    slug: 'android-volume-control-with-framer-motion'
   }
 ];
 
@@ -31,7 +35,9 @@ export default function Craft() {
       <div>
         <ul>
           {crafts.map((craft) => (
-            <li className='my-2 list-decimal text-skin-secondary'>
+            <li
+              key={craft.slug}
+              className='my-2 list-decimal text-skin-secondary'>
               <Link
                 href={`/craft/${craft.slug}`}
                 className='font-secondary text-xl font-bold'>
