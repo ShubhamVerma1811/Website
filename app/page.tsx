@@ -8,9 +8,9 @@ import type { Project } from 'types';
 export const revalidate = 86400;
 
 export const metadata = generateMetaData({
-  title: 'Shubham Verma | Frontend Developer',
+  title: 'Shubham Verma | Software Engineer',
   description:
-    'Frontend Developer, Likes to build open source tools and write articles. '
+    'Software Engineer, Likes to build open source tools and write articles.'
 });
 
 async function getData() {
