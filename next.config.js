@@ -23,7 +23,8 @@ const nextConfig = {
       'avatars.githubusercontent.com',
       'cdn.sanity.io',
       'source.unsplash.com',
-      'images.unsplash.com'
+      'images.unsplash.com',
+      'i.scdn.co'
     ]
   }
 };
