@@ -16,10 +16,10 @@ const tabs = [
     title: 'Blogs',
     href: '/blog'
   },
-  // {
-  //   title: 'Craft',
-  //   href: '/craft'
-  // },
+  {
+    title: 'Crafts',
+    href: '/craft'
+  },
   {
     title: 'Talks',
     href: '/talks'
@@ -37,7 +37,7 @@ export const Tabs = () => {
     <div className='my-6 border-b py-2 flex flex-row gap-6 overflow-auto'>
       {tabs.map((tab, idx) => (
         <Link
-          key={idx}
+          key={tab.href}
           href={tab.href}
           data-umami-event={`tab-${tab.title.toLowerCase()}`}
           className={`text-xl hover:text-skin-secondary ${

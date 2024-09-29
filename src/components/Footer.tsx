@@ -10,10 +10,10 @@ const footerLinks = {
       name: 'Work',
       href: '/work'
     },
-    {
-      name: 'Craft',
-      href: '/craft'
-    },
+    // {
+    //   name: 'Craft',
+    //   href: '/craft'
+    // },
     {
       name: 'Socials',
       href: '/socials'
