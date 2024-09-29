@@ -1,10 +1,11 @@
+import { PageLayout } from 'layouts';
 import Link from 'next/link';
 import fs from 'node:fs';
 import path from 'node:path';
 import { generateMetaData } from 'services/util';
 
 export const metadata = generateMetaData({
-  title: 'Craft | Shubham Verma',
+  title: 'Crafts | Shubham Verma',
   description: 'Crafts/Experienents I have made.'
 });
 
@@ -37,25 +38,20 @@ export default function Craft() {
   const crafts = getCrafts();
 
   return (
-    <>
-      <p className='mb-6 font-secondary text-3xl font-extrabold text-skin-secondary'>
-        Crafts
-      </p>
-      <div>
-        <ul>
-          {crafts.map((craft) => (
-            <li
-              key={craft.slug}
-              className='my-2 list-decimal text-skin-secondary'>
-              <Link
-                href={`/craft/${craft.slug}`}
-                className='font-secondary text-xl font-bold'>
-                {craft.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
+    <PageLayout>
+      <ul className='ml-4'>
+        {crafts.map((craft) => (
+          <li
+            key={craft.slug}
+            className='my-4 list-decimal text-skin-secondary'>
+            <Link
+              href={`/craft/${craft.slug}`}
+              className='font-secondary text-xl font-bold'>
+              {craft.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </PageLayout>
   );
 }
