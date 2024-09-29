@@ -1,9 +1,7 @@
 'use client';
 
-import { DiagonalArrow } from 'components';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ClientMetaLayout } from 'layouts/ClientMetaLayout';
-import Link from 'next/link';
 import { useRef, useState } from 'react';
 
 function getVolumeIcon(vol: string, active = false) {
@@ -59,7 +57,7 @@ export const AndroidVolumeBar = () => {
   const [open, setIsOpen] = useState(true);
   const [showVolStates, setShowVolStates] = useState(false);
   const [activeVolState, setActiveVolState] = useState<VolumeStates>('ringer');
-  const timer = useRef<number | null>(null);
+  // const timer = useRef<number | null>(null);
 
   if (typeof window === 'undefined') return null;
 
@@ -80,18 +78,18 @@ export const AndroidVolumeBar = () => {
     }, 150);
   }
 
-  function startTimer() {
-    if (timer.current) return;
+  // function startTimer() {
+  //   if (timer.current) return;
 
-    timer.current = window.setTimeout(() => {
-      setIsOpen((p) => !p);
-      setShowVolStates(false);
-    }, 1000);
-  }
+  //   timer.current = window.setTimeout(() => {
+  //     setIsOpen((p) => !p);
+  //     setShowVolStates(false);
+  //   }, 1000);
+  // }
 
-  function stopTimer() {
-    timer.current && window.clearTimeout(timer.current);
-  }
+  // function stopTimer() {
+  //   timer.current && window.clearTimeout(timer.current);
+  // }
 
   return (
     <div className='relative'>
@@ -100,19 +98,6 @@ export const AndroidVolumeBar = () => {
       </p>
       <ClientMetaLayout title={`Android's Volume Control with Framer Motion`} />
       <div className='flex flex-col justify-center items-center my-4'>
-        <p className='text-skin-secondary text-xl text-center my-2'>
-          This is my first attempt at creating something with Framer Motion.{' '}
-          <br />
-          The code can been viewed{' '}
-          <Link
-            href='https://github.com/ShubhamVerma1811/Website/blob/main/app/craft/android-volume-control-with-framer-motion/page.tsx'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='inline underline underline-offset-4'>
-            here.
-            <DiagonalArrow className='inline' />
-          </Link>
-        </p>
         <button
           type='button'
           onClick={() => {
@@ -135,18 +120,18 @@ export const AndroidVolumeBar = () => {
               transition={{
                 bounce: 0
               }}
-              initial={{ x: window?.innerWidth, y: 160 }}
+              initial={{ x: window?.innerWidth, y: 200 }}
               animate={{
                 x: '40%'
               }}
               exit={{ x: window?.innerWidth }}
               ref={containerRef}
-              onMouseOver={() => {
-                stopTimer();
-              }}
-              onMouseLeave={() => {
-                startTimer();
-              }}
+              // onMouseOver={() => {
+              //   stopTimer();
+              // }}
+              // onMouseLeave={() => {
+              //   startTimer();
+              // }}
               className='rounded-full p-1 h-64 w-14 bg-gray-800 flex flex-col relative'>
               <AnimatePresence>
                 {showVolStates ? (
