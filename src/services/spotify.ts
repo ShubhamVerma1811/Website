@@ -70,3 +70,12 @@ export const getTopArtists = async () => {
     }
   );
 };
+
+export type Song = {
+  idx: number;
+  id: string;
+  artist: string;
+  title: string;
+  imageUrl: string;
+  previewUrl: string;
+};
