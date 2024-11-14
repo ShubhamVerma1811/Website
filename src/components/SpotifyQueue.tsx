@@ -120,6 +120,7 @@ const SpotifyQueue = () => {
   const [songsList, setSongsList] = useState<Array<Song>>([]);
   const [activeSection, setActiveSection] = useState<Section>('queue');
   const audioRef = React.useRef<HTMLAudioElement>(null);
+  const [muted, setMuted] = useState(true);
 
   useEffect(() => {
     if (initialSongs && initialSongs.length > 0) {
@@ -157,13 +158,16 @@ const SpotifyQueue = () => {
         controls
         className='hidden'
         onEnded={handleEnd}
-        ref={audioRef}>
+        ref={audioRef}
+        muted={muted}>
         <track kind='captions' />
       </audio>
       <div className='p-4 bg-gray-950 lg:w-[600px] mx-auto'>
         <NavBar
           setActiveSection={setActiveSection}
           activeSection={activeSection}
+          setMuted={setMuted}
+          muted={muted}
         />
 
         <AnimatePresence initial={false}>
@@ -196,10 +200,14 @@ const SpotifyQueue = () => {
 
 function NavBar({
   setActiveSection,
-  activeSection
+  activeSection,
+  setMuted,
+  muted
 }: {
   setActiveSection: (section: Section) => void;
   activeSection: Section;
+  setMuted: (muted: boolean) => void;
+  muted: boolean;
 }) {
   return (
     <div className='flex flex-row items-center gap-4'>
@@ -223,6 +231,45 @@ function NavBar({
           Recently Played
         </p>
       </motion.button>
+      <div className='ml-auto'>
+        {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+        <div
+          className='cursor-pointer w-10 h-10 rounded-full bg-gray-950 flex items-center justify-center'
+          // @ts-ignore
+          onClick={() => setMuted((p) => !p)}>
+          {muted ? (
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              // width='32'
+              // height='32'
+              className='size-6 text-white'
+              viewBox='0 0 24 24'>
+              <title>Mute</title>
+              <path
+                fill='#888888'
+                d='M4.34 2.93L2.93 4.34L7.29 8.7L7 9H3v6h4l5 5v-6.59l4.18 4.18c-.65.49-1.38.88-2.18 1.11v2.06a8.94 8.94 0 0 0 3.61-1.75l2.05 2.05l1.41-1.41zM19 12c0 .82-.15 1.61-.41 2.34l1.53 1.53c.56-1.17.88-2.48.88-3.87c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71m-7-8l-1.88 1.88L12 7.76zm4.5 8A4.5 4.5 0 0 0 14 7.97v1.79l2.48 2.48c.01-.08.02-.16.02-.24'
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              // width='32'
+              // height='32'
+              className='size-6 text-white'
+              viewBox='0 0 24 24'>
+              <title>Unmute</title>
+              <path
+                fill='#888888'
+                d='M11.553 3.064A.75.75 0 0 1 12 3.75v16.5a.75.75 0 0 1-1.255.555L5.46 16H2.75A1.75 1.75 0 0 1 1 14.25v-4.5C1 8.784 1.784 8 2.75 8h2.71l5.285-4.805a.75.75 0 0 1 .808-.13ZM10.5 5.445l-4.245 3.86a.75.75 0 0 1-.505.195h-3a.25.25 0 0 0-.25.25v4.5c0 .138.112.25.25.25h3c.187 0 .367.069.505.195l4.245 3.86Zm8.218-1.223a.75.75 0 0 1 1.06 0c4.296 4.296 4.296 11.26 0 15.556a.75.75 0 0 1-1.06-1.06a9.5 9.5 0 0 0 0-13.436a.75.75 0 0 1 0-1.06'
+              />
+              <path
+                fill='#888888'
+                d='M16.243 7.757a.75.75 0 1 0-1.061 1.061a4.5 4.5 0 0 1 0 6.364a.75.75 0 0 0 1.06 1.06a6 6 0 0 0 0-8.485Z'
+              />
+            </svg>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
