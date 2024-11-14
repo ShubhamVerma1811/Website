@@ -34,41 +34,44 @@ export const getNowPlaying = async () => {
       }
     });
   } catch (error) {
-    console.error(error);
     return { status: 500 };
   }
 };
 
 export const getTopTracks = async () => {
-  const { access_token } = await getAccessToken();
+  try {
+    const { access_token } = await getAccessToken();
 
-  console.log('LOG:', 'fetching top tracks');
-
-  return fetch(
-    `${SPOTIFY_TOP_TRACKS_ENDPOINT}?limit=10&time_range=short_term`,
-    {
-      headers: {
-        Authorization: `Bearer ${access_token}`
-      },
-      cache: 'no-cache'
-    }
-  );
+    return fetch(
+      `${SPOTIFY_TOP_TRACKS_ENDPOINT}?limit=10&time_range=short_term`,
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`
+        },
+        cache: 'no-store'
+      }
+    );
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getTopArtists = async () => {
-  const { access_token } = await getAccessToken();
+  try {
+    const { access_token } = await getAccessToken();
 
-  console.log('LOG:', 'fetching top artists');
-
-  return fetch(
-    `${SPOTIFY_TOP_ARTISTS_ENDPOINT}?limit=10&time_range=short_term`,
-    {
-      headers: {
-        Authorization: `Bearer ${access_token}`
-      },
-      cache: 'no-cache'
-    }
-  );
+    return fetch(
+      `${SPOTIFY_TOP_ARTISTS_ENDPOINT}?limit=10&time_range=short_term`,
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`
+        },
+        cache: 'no-store'
+      }
+    );
+  } catch (error) {
+    throw error;
+  }
 };
 
 export type Song = {
