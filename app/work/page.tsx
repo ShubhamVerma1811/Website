@@ -11,34 +11,41 @@ export const metadata = generateMetaData({
 
 const exps = [
   {
-    title: 'Software Engineer - III',
+    title: 'Senior Software Engineer - II',
     company: 'GeekyAnts',
     date: 'Jul 2021 - Present',
     iconPath: '/assets/logos/ga/logo.svg',
     roles: [
       {
-        title: 'Senior Software Engineer - I',
-        date: 'Jul 2023 - Present',
+        title: 'Senior Software Engineer - II',
+        date: 'Jul 2024 - Present',
         points: [
-          'Orchestrated the restructuring of API responses in collaboration with clients and the backend team, concurrently managing the smooth migration of the codebase.'
+          "Developed key modules/features of the website that resulted in significant increase in the customer's stock price by 10% after its announcement and release."
+        ]
+      },
+      {
+        title: 'Senior Software Engineer - I',
+        date: 'Jul 2023 - Jun 2024',
+        points: [
+          'Successfully optimized frontend network performance by restructuring API responses and implementing caching strategies, resulting in accelerated API calls and reduced latency.',
+          'Mentored new team members within the organization.'
         ]
       },
       {
         title: 'Software Engineer - III',
-        date: 'Jul 2022 - Present',
+        date: 'Jul 2022 - Jun 2023',
         points: [
-          'Led multiple project modules with a team of six developers, ensuring seamless delivery from design to launch while closely collaborating with clients and tech leads.',
-          'Maintained code quality through thorough reviews and implemented advanced E2E tests using Cypress and Percy.',
-          'Achieved substantial project improvements, including dynamic component loading, a 26% reduction in bundle size, and boosted Lighthouse and SEO scores.'
+          'Led the team into multiple project tracks, ensuring seamless delivery from design to launch while collaborating with the stakeholders.',
+          'Achieved substantial project improvements, leading to 26% reduction in bundle size, and improved Lighthouse scores and faster loading of the project.',
+          'Integrated E2E tests using Cypress in the project significantly improving bugs detection and reducing developer time spent on debugging.'
         ]
       },
       {
         title: 'Software Engineer - I',
-        date: 'Jul 2021 - Present',
+        date: 'Jul 2021 - Jun 2022',
         points: [
-          'Created cross-platform UI components for web and mobile with multi-theme support.',
-          "Stepped into a leadership role during the tech lead's absence, successfully managing the team and project.",
-          'Improved component performance to enhance app functionality and achieved rapid career advancement from SE-I to SE-III within a year, reflecting exceptional performance and expertise.'
+          'Developed and Integrated cross-platform, multi-themed UI components into React, Next.JS and React Native projects.',
+          "Stepped into the responsibilities during the tech lead's absence, efficiently managing the team and project, leading to rapid career advancement."
         ]
       }
     ]
