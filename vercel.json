@@ -2,8 +2,96 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
-      "destination": "https://shbm.fyi/:path*",
-      "source": "/:path*"
+      "destination": "https://tweeter-eight.vercel.app/",
+      "source": "/Tweeter"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/MoviesAppReact",
+      "source": "/MoviesAppReact"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/Unsplash-React",
+      "source": "/Unsplash-React"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/7D7W",
+      "source": "/7D7W"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/Insure",
+      "source": "/Insure"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/QuizAppReact",
+      "source": "/QuizAppReact"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/Weathery",
+      "source": "/Weathery"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/BaseApparel",
+      "source": "/BaseApparel"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/LCO",
+      "source": "/LCO"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/Fylo",
+      "source": "/Fylo"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/Manage",
+      "source": "/Manage"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/Shortly",
+      "source": "/Shortly"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/EasyBank",
+      "source": "/EasyBank"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/PTracking",
+      "source": "/PTracking"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/Huddle",
+      "source": "/Huddle"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/rgbgame2",
+      "source": "/rgbgame2"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/patatapClone",
+      "source": "/patatapClone"
+    },
+    {
+      "destination": "https://shubhamverma1811.github.io/rgbgame",
+      "source": "/rgbgame"
+    },
+    {
+      "destination": "https://pern-todo-list.herokuapp.com",
+      "source": "/pernTodo"
+    },
+    {
+      "destination": "https://react-ecommerce1.vercel.app",
+      "source": "/react-ecommerce"
+    },
+    {
+      "destination": "https://udemy-ninja-chat-3d84b.web.app/",
+      "source": "/ninjaChat"
+    },
+    {
+      "destination": "https://udemy-ninja-smoothies-c59b7.web.app/",
+      "source": "/ninjaSmoothies"
+    },
+    {
+      "destination": "/socials",
+      "source": "/social"
     }
   ]
 }
