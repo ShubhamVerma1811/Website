@@ -2026,15 +2026,6 @@ packages:
     resolution: {integrity: sha512-QFaHbhv9WPUeLYBDe/PAuLKJ4Dd9OPvKs9xZBr3yLXnUrDNaVXKu2baDBXe3naPY30hgHYSsf2JW4jzas2mDEQ==}
     engines: {node: '>=10'}
 
-  follow-redirects@1.15.2:
-    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-
   follow-redirects@1.15.9:
     resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
     engines: {node: '>=4.0'}
@@ -5096,6 +5087,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@sanity/client@6.21.3':
+    dependencies:
+      '@sanity/eventsource': 5.0.2
+      get-it: 8.6.5
+      rxjs: 7.8.1
+    transitivePeerDependencies:
+      - debug
+
   '@sanity/client@6.21.3(debug@3.2.7)':
     dependencies:
       '@sanity/eventsource': 5.0.2
@@ -5241,7 +5240,7 @@ snapshots:
 
   '@sanity/presentation@1.11.6(@sanity/client@6.21.3(debug@4.3.7))(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0)(styled-components@5.3.11(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))':
     dependencies:
-      '@sanity/client': 6.21.3(debug@3.2.7)
+      '@sanity/client': 6.21.3
       '@sanity/icons': 2.11.2(react@18.2.0)
       '@sanity/preview-url-secret': 1.6.21(@sanity/client@6.21.3(debug@4.3.7))
       '@sanity/ui': 2.0.10(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0)(styled-components@5.3.11(@babel/core@7.25.2)(react-dom@18.2.0(react@18.2.0))(react-is@18.3.1)(react@18.2.0))
@@ -5275,7 +5274,7 @@ snapshots:
 
   '@sanity/preview-url-secret@1.6.21(@sanity/client@6.21.3(debug@4.3.7))':
     dependencies:
-      '@sanity/client': 6.21.3(debug@3.2.7)
+      '@sanity/client': 6.21.3
       '@sanity/uuid': 3.0.2
 
   '@sanity/schema@3.34.0(debug@3.2.7)':
@@ -5322,7 +5321,7 @@ snapshots:
 
   '@sanity/types@3.34.0':
     dependencies:
-      '@sanity/client': 6.21.3(debug@3.2.7)
+      '@sanity/client': 6.21.3
       '@types/react': 18.3.8
     transitivePeerDependencies:
       - debug
@@ -6650,13 +6649,13 @@ snapshots:
     dependencies:
       tslib: 2.7.0
 
-  follow-redirects@1.15.2(debug@4.3.4):
-    optionalDependencies:
-      debug: 4.3.4
-
   follow-redirects@1.15.9(debug@3.2.7):
     optionalDependencies:
       debug: 3.2.7
+
+  follow-redirects@1.15.9(debug@4.3.4):
+    optionalDependencies:
+      debug: 4.3.4
 
   follow-redirects@1.15.9(debug@4.3.7):
     optionalDependencies:
@@ -6742,7 +6741,7 @@ snapshots:
     dependencies:
       debug: 4.3.4
       decompress-response: 7.0.0
-      follow-redirects: 1.15.2(debug@4.3.4)
+      follow-redirects: 1.15.9(debug@4.3.4)
       into-stream: 6.0.0
       is-plain-object: 5.0.0
       is-retry-allowed: 2.2.0
@@ -6752,6 +6751,18 @@ snapshots:
       tunnel-agent: 0.6.0
     transitivePeerDependencies:
       - supports-color
+
+  get-it@8.6.5:
+    dependencies:
+      '@types/follow-redirects': 1.14.4
+      '@types/progress-stream': 2.0.5
+      decompress-response: 7.0.0
+      follow-redirects: 1.15.9(debug@4.3.4)
+      is-retry-allowed: 2.2.0
+      progress-stream: 2.0.0
+      tunnel-agent: 0.6.0
+    transitivePeerDependencies:
+      - debug
 
   get-it@8.6.5(debug@3.2.7):
     dependencies:
@@ -8733,7 +8744,7 @@ snapshots:
       '@sanity/bifur-client': 0.3.1
       '@sanity/block-tools': 3.34.0
       '@sanity/cli': 3.34.0(debug@4.3.7)(react@18.2.0)
-      '@sanity/client': 6.21.3(debug@3.2.7)
+      '@sanity/client': 6.21.3
       '@sanity/color': 3.0.6
       '@sanity/diff': 3.34.0
       '@sanity/diff-match-patch': 3.1.1
