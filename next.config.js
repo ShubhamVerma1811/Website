@@ -19,12 +19,12 @@ const nextConfig = {
     SHOWBANNER: process.env.SHOWBANNER
   },
   images: {
-    domains: [
-      'avatars.githubusercontent.com',
-      'cdn.sanity.io',
-      'source.unsplash.com',
-      'images.unsplash.com',
-      'i.scdn.co'
+    remotePatterns: [
+      { hostname: 'https', hostname: 'avatars.githubusercontent.com' },
+      { hostname: 'https', hostname: 'cdn.sanity.io' },
+      { hostname: 'https', hostname: 'source.unsplash.com' },
+      { hostname: 'https', hostname: 'images.unsplash.com' },
+      { hostname: 'https', hostname: 'i.scdn.co' }
     ]
   }
 };
