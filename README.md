@@ -14,5 +14,5 @@
 - [Blogs](https://github.com/ShubhamVerma1811/Blogs) - Runs a cron job that
   pulls in the Blogs from Sanity and save them as a markdown files.
 
-- [Shbm.fyi](https://github.com/ShubhamVerma1811/shbm.fyi/) - My 2nd domain that
+- [shbm.fyi](https://github.com/ShubhamVerma1811/shbm.fyi/) - My 2nd domain that
   acts as a URL shortner using Vercel Shortner
