@@ -13,7 +13,12 @@ export const metadata = generateMetaData({
 
 async function getData() {
   const testimonials: Array<Testimonial> = await getClient().fetch(
-    `*[_type == "testimonial"] | order(rank) {..., "id": _id}`
+    `*[_type == "testimonial"] | order(rank) {..., "id": _id}`,
+    {
+      next: {
+        cache: 'no-cache'
+      }
+    }
   );
 
   return testimonials;
@@ -34,14 +39,14 @@ export default async function Testimonials() {
         {testimonials.length === 0 ? (
           <div className='text-center'>
             <p className='text-xl font-secondary text-skin-secondary'>
-              No testimonials yet
+              No testimonials yet.
             </p>
             <p className='mt-4 text-lg font-medium text-skin-primary-muted'>
               Want to be the first?{' '}
               <Link
                 data-umami-event='wall-get-in-touch'
                 className='ml-1 text-skin-secondary underline'
-                href={`mailto:${HIRE_MAIL}?subject=I have a freelancing opportunity for you`}
+                href={`mailto:${HIRE_MAIL}?subject=I have a freelancing opportunity for you!&body=Hi Shubham, I'm reaching out to you because I want to hire you. I'm looking for someone who can help me with ...`}
                 title='Get in touch to give a testimonial'>
                 Get in touch
                 <DiagonalArrow className='inline' />
