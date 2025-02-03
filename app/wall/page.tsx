@@ -28,7 +28,7 @@ export default async function Testimonials() {
   const testimonials = await getData();
 
   return (
-    <div className='min-h-screen'>
+    <div className='100dvh'>
       <div className='max-w-7xl mx-auto px-8 mt-28'>
         <div className='text-center mb-8'>
           <p className='text-3xl md:text-4xl font-secondary text-skin-secondary'>
