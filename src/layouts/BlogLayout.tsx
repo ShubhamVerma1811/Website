@@ -16,7 +16,6 @@ export const BlogLayout: React.FC<IBlogLayoutProps> = ({ blog, children }) => {
       {children}
       <hr className='my-4 border-skin-primary-muted' />
       <ShareIntents title={blog?.title} url={url} />
-      <BackToTop />
     </React.Fragment>
   );
 };

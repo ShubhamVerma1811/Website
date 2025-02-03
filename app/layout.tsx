@@ -1,4 +1,4 @@
-import { Banner, Footer, Header } from 'components';
+import { BackToTop, Banner, Footer, Header } from 'components';
 import '../src/styles/global.css';
 import '../src/styles/tailwind.css';
 
@@ -29,6 +29,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
         </div>
+        <BackToTop />
       </body>
     </html>
   );
