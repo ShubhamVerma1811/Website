@@ -14,13 +14,14 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "format": "prettier --write .  --ignore-path .gitignore",
+    "format": "prettier --write . --ignore-pattern 'pnpm-lock.yaml' --ignore-path .gitignore",
     "lint": "next lint",
     "analyze": "cross-env ANALYZE=true yarn build"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^13.4.4",
     "@sanity/image-url": "^1.0.2",
+    "@spotify/web-api-ts-sdk": "^1.2.0",
     "@vercel/og": "^0.5.6",
     "copy-text-to-clipboard": "^3.1.0",
     "feed": "^4.2.2",

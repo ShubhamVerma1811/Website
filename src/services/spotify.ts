@@ -1,78 +1,12 @@
-const client_id = process.env.SPOTIFY_CLIENT_ID;
+import { SpotifyApi } from '@spotify/web-api-ts-sdk';
+
+const client_id = process.env.SPOTIFY_CLIENT_ID!;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET!;
 const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN!;
-const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
 
-const SPOTIFY_NOW_PLAYING_ENDPOINT = process.env.SPOTIFY_NOW_PLAYING_ENDPOINT!;
-const SPOTIFY_TOKEN_ENDPOINT = process.env.SPOTIFY_TOKEN_ENDPOINT!;
-const SPOTIFY_TOP_TRACKS_ENDPOINT = process.env.SPOTIFY_TOP_TRACKS_ENDPOINT!;
-const SPOTIFY_TOP_ARTISTS_ENDPOINT = process.env.SPOTIFY_TOP_ARTISTS_ENDPOINT!;
-
-export const getAccessToken = async () => {
-  const response = await fetch(SPOTIFY_TOKEN_ENDPOINT, {
-    method: 'POST',
-    headers: {
-      Authorization: `Basic ${basic}`,
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: new URLSearchParams({
-      grant_type: 'refresh_token',
-      refresh_token
-    })
-  });
-
-  return response.json();
-};
-
-export const getNowPlaying = async () => {
-  try {
-    const { access_token } = await getAccessToken();
-
-    return fetch(SPOTIFY_NOW_PLAYING_ENDPOINT, {
-      headers: {
-        Authorization: `Bearer ${access_token}`
-      }
-    });
-  } catch (error) {
-    return { status: 500 };
-  }
-};
-
-export const getTopTracks = async () => {
-  try {
-    const { access_token } = await getAccessToken();
-
-    return fetch(
-      `${SPOTIFY_TOP_TRACKS_ENDPOINT}?limit=10&time_range=short_term`,
-      {
-        headers: {
-          Authorization: `Bearer ${access_token}`
-        },
-        cache: 'no-store'
-      }
-    );
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const getTopArtists = async () => {
-  try {
-    const { access_token } = await getAccessToken();
-
-    return fetch(
-      `${SPOTIFY_TOP_ARTISTS_ENDPOINT}?limit=10&time_range=short_term`,
-      {
-        headers: {
-          Authorization: `Bearer ${access_token}`
-        },
-        cache: 'no-store'
-      }
-    );
-  } catch (error) {
-    throw error;
-  }
-};
+if (!client_id || !client_secret || !refresh_token) {
+  throw new Error('Missing required Spotify environment variables');
+}
 
 export type Song = {
   idx: number;
@@ -81,4 +15,114 @@ export type Song = {
   title: string;
   imageUrl: string;
   previewUrl: string;
+};
+
+let accessToken: string | null = null;
+let tokenExpirationTime: number | null = null;
+
+async function refreshAccessToken(): Promise<string> {
+  const response = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: `Basic ${Buffer.from(
+        `${client_id}:${client_secret}`
+      ).toString('base64')}`
+    },
+    body: new URLSearchParams({
+      grant_type: 'refresh_token',
+      refresh_token: refresh_token
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to refresh access token');
+  }
+
+  const data = await response.json();
+  accessToken = data.access_token;
+  tokenExpirationTime = Date.now() + data.expires_in * 1000;
+  return accessToken;
+}
+
+async function getValidAccessToken(): Promise<string> {
+  if (
+    !accessToken ||
+    !tokenExpirationTime ||
+    Date.now() >= tokenExpirationTime
+  ) {
+    return refreshAccessToken();
+  }
+  return accessToken;
+}
+
+async function getSpotifyApi(): Promise<SpotifyApi> {
+  const token = await getValidAccessToken();
+  return SpotifyApi.withAccessToken(client_id, {
+    access_token: token,
+    token_type: 'Bearer',
+    expires_in: 3600
+  });
+}
+
+export const getNowPlaying = async () => {
+  try {
+    const spotify = await getSpotifyApi();
+    const response = await spotify.player.getCurrentlyPlayingTrack();
+
+    return response;
+  } catch (error) {
+    console.error('Error getting now playing:', error);
+    throw error;
+  }
+};
+
+export const getTopTracks = async () => {
+  try {
+    const spotify = await getSpotifyApi();
+    const response = await spotify.currentUser.topItems(
+      'tracks',
+      'short_term',
+      10
+    );
+    return response;
+  } catch (error) {
+    console.error('Error getting top tracks:', error);
+    throw error;
+  }
+};
+
+export const getTopArtists = async () => {
+  try {
+    const spotify = await getSpotifyApi();
+    const response = await spotify.currentUser.topItems(
+      'artists',
+      'short_term',
+      10
+    );
+    return response;
+  } catch (error) {
+    console.error('Error getting top artists:', error);
+    throw error;
+  }
+};
+
+export const getRecentlyPlayed = async () => {
+  try {
+    const spotify = await getSpotifyApi();
+    const response = await spotify.player.getRecentlyPlayedTracks();
+    const tracks = response.items.map((item, idx) => ({
+      idx,
+      id: item.track.id,
+      artist: item.track.artists.map((artist) => artist.name).join(', '),
+      title: item.track.name,
+      imageUrl: item.track.album.images[0].url,
+      previewUrl: item.track.preview_url,
+      time: new Date(item.played_at)
+    }));
+    return tracks;
+  } catch (error) {
+    console.error('Error getting recently played:', error);
+    return [];
+  }
 };

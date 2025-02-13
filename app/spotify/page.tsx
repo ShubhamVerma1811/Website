@@ -1,3 +1,4 @@
+import { SpotifyHistoryBar } from 'components/craft/SpotifyHistoryBar';
 import React from 'react';
 import { getTopArtists, getTopTracks } from 'services/spotify';
 import { generateMetaData } from 'services/util';
@@ -12,17 +13,10 @@ export const metadata = generateMetaData({
 
 async function getData() {
   try {
-    const [tracksResponse, artistsResponse] = await Promise.all([
+    const [tracksData, artistsData] = await Promise.all([
       getTopTracks(),
       getTopArtists()
     ]);
-
-    if (!tracksResponse.ok || !artistsResponse.ok) {
-      return { tracks: [], artists: [] };
-    }
-
-    const tracksData = await tracksResponse.json();
-    const artistsData = await artistsResponse.json();
 
     if (!tracksData?.items || !artistsData?.items) {
       return { tracks: [], artists: [] };
@@ -72,6 +66,9 @@ export default async function Spotify() {
 
   return (
     <React.Fragment>
+      <span className='hidden md:inline'>
+        <SpotifyHistoryBar />
+      </span>
       <p className='text-lg text-skin-primary-muted'>
         These are the top Spotify tracks and artists that I&apos;ve been
         listening to this month!
