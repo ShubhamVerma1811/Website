@@ -35,3 +35,4 @@ yarn-error.log*
 .lighthouseci/*
 .sanity
 .vercel
+.env*.local
