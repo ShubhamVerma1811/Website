@@ -170,7 +170,6 @@ export const SpotifyHistoryBar = () => {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}>
                 <SongPill song={item} isVisible={hoveredIndex === index} />
-                <div className='my-2' />
               </div>
             </>
           );
