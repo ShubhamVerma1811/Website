@@ -20,11 +20,11 @@ const nextConfig = {
   },
   images: {
     remotePatterns: [
-      { hostname: 'https', hostname: 'avatars.githubusercontent.com' },
-      { hostname: 'https', hostname: 'cdn.sanity.io' },
-      { hostname: 'https', hostname: 'source.unsplash.com' },
-      { hostname: 'https', hostname: 'images.unsplash.com' },
-      { hostname: 'https', hostname: 'i.scdn.co' }
+      { protocol: 'https', hostname: 'avatars.githubusercontent.com' },
+      { protocol: 'https', hostname: 'cdn.sanity.io' },
+      { protocol: 'https', hostname: 'source.unsplash.com' },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'i.scdn.co' }
     ]
   }
 };
