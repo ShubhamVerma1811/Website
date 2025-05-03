@@ -21,7 +21,7 @@ export const Hero = () => {
           engineer, learner and builder. <br />
           {CURRENT_TITLE} at <strong>{CURRENT_ORGANIZATION}</strong>
           <br />
-          Currently based out of <Link href={`https://www.google.com/maps/place/${CITY},+${COUNTRY}`} target="_blank" rel="noopener noreferrer" className="text-skin-primary-muted underline underline-offset-4 hover:text-skin-secondary transition-colors">{CITY}, {COUNTRY}<DiagonalArrow className="inline text-sm ml-1" /></Link>
+          Based out of <Link href={`https://www.google.com/maps/place/${CITY},+${COUNTRY}`} target="_blank" rel="noopener noreferrer" className="text-skin-primary-muted underline underline-offset-4 hover:text-skin-secondary transition-colors">{CITY}, {COUNTRY}<DiagonalArrow className="inline text-sm ml-1" /></Link>
         </p>
         {/* <p className='text-md mt-3 text-skin-primary-muted md:text-lg'>
           I like to build open source tools and write articles.
