@@ -34,7 +34,7 @@ export const Hero = () => {
             data-umami-event='hero-calendar'
             className='text-md mt-3 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted md:text-lg'
             rel='noopener noreferrer'>
-            Hire Me
+            Work with me
             <DiagonalArrow className='inline text-xl' />
           </a>
           <Link
