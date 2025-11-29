@@ -11,41 +11,28 @@ export const metadata = generateMetaData({
 
 const exps = [
   {
-    title: 'Senior Software Engineer - II',
+    title: 'Senior Software Engineer',
     company: 'GeekyAnts',
     date: 'Jul 2021 - Present',
     iconPath: '/assets/logos/ga/logo.svg',
     roles: [
       {
-        title: 'Senior Software Engineer - II',
-        date: 'Jul 2024 - Present',
+        title: 'Senior Software Engineer',
+        date: 'Jul 2023 - Present',
         points: [
-          "Developed key modules/features of the website that resulted in significant increase in the customer's stock price by 10% after its announcement and release."
+          'Built online ordering platform for 12 Darden brands including Olive Garden and LongHorn Steakhouse, featuring menu system, location search, order tracking, and Azure B2C authentication, serving 3+ million monthly users.',
+          'Architected multi-brand Azure B2C templating system with automated build pipeline, generating brand-specific HTML/CSS/JS/assets from shared templates using dynamic variable injection and environment-based configuration, reducing deployment time from 30 minutes to 2 minutes across all brands (93% reduction).',
+          'Optimized project bundle size from 900KB to 540KB (40% reduction) through code-splitting and lazy-loading, improving page load times.',
+          'Collaborated with Amazon to develop Amazon Music desktop client proof-of-concept using Tauri with Rust-based IPC, HTTP caching for offline support, and automated GitLab CI/CD pipeline for multi-platform builds.'
         ]
       },
       {
-        title: 'Senior Software Engineer - I',
-        date: 'Jul 2023 - Jun 2024',
+        title: 'Software Engineer',
+        date: 'Jul 2021 - Jun 2023',
         points: [
-          'Successfully optimized frontend network performance by restructuring API responses and implementing caching strategies, resulting in accelerated API calls and reduced latency.',
-          'Mentored new team members within the organization.'
-        ]
-      },
-      {
-        title: 'Software Engineer - III',
-        date: 'Jul 2022 - Jun 2023',
-        points: [
-          'Led the team into multiple project tracks, ensuring seamless delivery from design to launch while collaborating with the stakeholders.',
-          'Achieved substantial project improvements, leading to 26% reduction in bundle size, and improved Lighthouse scores and faster loading of the project.',
-          'Integrated E2E tests using Cypress in the project significantly improving bugs detection and reducing developer time spent on debugging.'
-        ]
-      },
-      {
-        title: 'Software Engineer - I',
-        date: 'Jul 2021 - Jun 2022',
-        points: [
-          'Developed and Integrated cross-platform, multi-themed UI components into React, Next.JS and React Native projects.',
-          "Stepped into the responsibilities during the tech lead's absence, efficiently managing the team and project, leading to rapid career advancement."
+          'Engineered shared UI components using NX, Next.js, React Native, and NativeBase for multi-brand food ordering platform, eliminating duplicate web/mobile implementations.',
+          'Implemented HTTP caching layer with localStorage/sessionStorage and header-based invalidation across all Darden brands, reducing redundant API calls.',
+          'Coordinated delivery of 5 features across 8 engineers, managing client communication and sprint planning to meet deadlines.'
         ]
       }
     ]
