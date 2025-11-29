@@ -1,5 +1,5 @@
 export const DOMAIN = 'https://shubhamverma.me';
-export const SHORT_DOMAIN = 'https://shbm.fyi';
+export const SHORT_DOMAIN = 'https://shubhamverma.me/s';
 
 export const TWITTER_HANDLE = '@verma__shubham';
 export const TWITTER_URL = `${SHORT_DOMAIN}/tw`;
