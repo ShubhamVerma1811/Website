@@ -1,6 +1,6 @@
 import { MDXClient } from 'components/MDXClient';
 import { PageLayout } from 'layouts';
-import { serialize } from 'next-mdx-remote/serialize';
+import { serialize } from 'next-mdx-remote-client/serialize';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeResizeImage from 'rehype-image-resize';
@@ -17,23 +17,26 @@ export const metadata = generateMetaData({
 async function getData() {
   const about = await getClient().fetch(`*[_type == "about"][0]`);
 
-  const mdxSource = await serialize(about.body, {
-    mdxOptions: {
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [
-        rehypeSlug,
-        [
-          rehypeAutolinkHeadings,
-          {
-            behavior: 'wrap',
-            properties: {
-              className: 'anchor'
+  const mdxSource = await serialize({
+    source: about.body,
+    options: {
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+        rehypePlugins: [
+          rehypeSlug,
+          [
+            rehypeAutolinkHeadings,
+            {
+              behavior: 'wrap',
+              properties: {
+                className: 'anchor'
+              }
             }
-          }
-        ],
-        rehypeCodeTitles,
-        [rehypeResizeImage, { transformer }]
-      ]
+          ],
+          rehypeCodeTitles,
+          [rehypeResizeImage, { transformer }]
+        ]
+      }
     }
   });
 

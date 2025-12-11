@@ -1,14 +1,11 @@
 'use client';
 
 import CodeBlock from 'atoms/code';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { MDXClient as MDXRemote } from 'next-mdx-remote-client';
 import Image from 'next/image';
 
-export const MDXClient = (props: {
-  mdxSource:
-    | MDXRemoteSerializeResult<Record<string, unknown>, Record<string, unknown>>
-    | undefined;
-}) => {
+// TODO:: FIX THIS
+export const MDXClient = (props: { mdxSource: any }) => {
   const { mdxSource } = props;
 
   if (!mdxSource) return null;

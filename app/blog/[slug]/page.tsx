@@ -3,7 +3,7 @@ import { DiagonalArrow } from 'components';
 import { MDXClient } from 'components/MDXClient';
 import { BlogLayout } from 'layouts';
 import { Metadata, ResolvingMetadata } from 'next';
-import { serialize } from 'next-mdx-remote/serialize';
+import { serialize } from 'next-mdx-remote-client/serialize';
 import React from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
@@ -38,24 +38,27 @@ async function getData(params: { slug: string }) {
     };
   }
 
-  const mdxSource = await serialize(blog.body, {
-    mdxOptions: {
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [
-        rehypeSlug,
-        [
-          rehypeAutolinkHeadings,
-          {
-            behavior: 'wrap',
-            properties: {
-              className: 'anchor'
+  const mdxSource = await serialize({
+    source: blog.body,
+    options: {
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+        rehypePlugins: [
+          rehypeSlug,
+          [
+            rehypeAutolinkHeadings,
+            {
+              behavior: 'wrap',
+              properties: {
+                className: 'anchor'
+              }
             }
-          }
-        ],
-        rehypeCodeTitles,
-        [rehypeResizeImage, { transformer }]
-        // rehypeImageBlur
-      ]
+          ],
+          rehypeCodeTitles,
+          [rehypeResizeImage, { transformer }]
+          // rehypeImageBlur
+        ]
+      }
     }
   });
 
