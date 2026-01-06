@@ -137,6 +137,9 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.3.0
         version: 0.3.0(prettier@2.8.8)
+      schema-dts:
+        specifier: ^1.1.5
+        version: 1.1.5
       tailwindcss:
         specifier: ^3.4.19
         version: 3.4.19(yaml@2.8.2)
@@ -6940,6 +6943,12 @@ packages:
         integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==
       }
 
+  schema-dts@1.1.5:
+    resolution:
+      {
+        integrity: sha512-RJr9EaCmsLzBX2NDiO5Z3ux2BVosNZN5jo0gWgsyKvxKIUL5R3swNvoorulAeL9kLB0iTSX7V6aokhla2m7xbg==
+      }
+
   scroll-into-view-if-needed@3.1.0:
     resolution:
       {
@@ -8108,6 +8117,9 @@ packages:
         integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==
       }
     engines: { node: '>=18' }
+    deprecated:
+      Use @exodus/bytes instead for a more spec-conformant and faster
+      implementation
 
   whatwg-mimetype@4.0.0:
     resolution:
@@ -13186,6 +13198,8 @@ snapshots:
   scheduler@0.23.2:
     dependencies:
       loose-envify: 1.4.0
+
+  schema-dts@1.1.5: {}
 
   scroll-into-view-if-needed@3.1.0:
     dependencies:

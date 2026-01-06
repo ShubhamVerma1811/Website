@@ -2,14 +2,17 @@ import BlogViewIncrement from 'atoms/BlogViewIncrement';
 import { DiagonalArrow } from 'components';
 import { MDXClient } from 'components/MDXClient';
 import { BlogLayout } from 'layouts';
-import { Metadata, ResolvingMetadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
 import { serialize } from 'next-mdx-remote-client/serialize';
+import Script from 'next/script';
 import React from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeResizeImage from 'rehype-image-resize';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import type { BlogPosting, BreadcrumbList, WithContext } from 'schema-dts';
+import { DOMAIN } from 'services/constants';
 import { transformer } from 'services/image-transformer';
 import { getClient, urlFor } from 'services/sanity-server';
 import type { Blog as IBlog } from 'types';
@@ -87,18 +90,32 @@ export async function generateMetadata(
 
   const d = new Date(blog.date);
   const date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+  const url = `${DOMAIN}/blog/${blog.slug}`;
+  const imageUrl = blog?.cover
+    ? urlFor(blog?.cover).url()
+    : `${DOMAIN}/api/og?title=${blog?.title}&date=${date}&readTime=${blog?.readTime}&author=Shubham Verma&desc=${blog?.summary}`;
 
   return {
+    metadataBase: new URL(DOMAIN),
     title: blog?.title,
     description: blog?.summary,
+    alternates: {
+      canonical: `/blog/${blog.slug}`
+    },
     openGraph: {
       title: blog?.title,
       description: blog?.summary,
+      type: 'article',
+      url,
       images: {
-        url: blog?.cover
-          ? urlFor(blog?.cover).url()
-          : `${process.env.DOMAIN}/api/og?title=${blog?.title}&date=${date}&readTime=${blog?.readTime}&author=Shubham Verma&desc=${blog?.summary}`
+        url: imageUrl
       }
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: blog?.title,
+      description: blog?.summary,
+      images: [imageUrl]
     }
   };
 }
@@ -112,14 +129,76 @@ async function Blog({ params }: { params: { slug: string } }) {
 
   const d = new Date(blog.date);
   const date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+  const url = `${DOMAIN}/blog/${blog.slug}`;
+  const imageUrl = blog?.cover
+    ? urlFor(blog?.cover).url()
+    : `${DOMAIN}/api/og?title=${blog?.title}&date=${date}&readTime=${blog?.readTime}&author=Shubham Verma&desc=${blog?.summary}`;
 
   const formatter = new Intl.NumberFormat('en-US', {
     notation: 'compact',
     compactDisplay: 'short'
   });
 
+  const jsonLd: WithContext<BlogPosting> = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': url
+    },
+    headline: blog.title,
+    description: blog.summary,
+    image: [imageUrl],
+    author: {
+      '@id': `${DOMAIN}#person`
+    },
+    publisher: {
+      '@id': `${DOMAIN}#person`
+    },
+    datePublished: new Date(blog.date).toISOString(),
+    dateModified: new Date(blog.date).toISOString(),
+    url
+  };
+
+  const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: DOMAIN
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: `${DOMAIN}/blog`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: blog.title,
+        item: url
+      }
+    ]
+  };
+
   return (
     <BlogLayout blog={blog}>
+      <Script
+        id={`blog-post-${blog.slug}-ld-json`}
+        type='application/ld+json'
+        strategy='afterInteractive'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Script
+        id={`blog-post-${blog.slug}-breadcrumbs-ld-json`}
+        type='application/ld+json'
+        strategy='afterInteractive'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <p className='mb-3 font-secondary text-4xl font-bold text-skin-secondary'>
         {blog?.title}
       </p>
