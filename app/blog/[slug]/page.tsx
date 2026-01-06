@@ -1,6 +1,7 @@
 import BlogViewIncrement from 'atoms/BlogViewIncrement';
 import { DiagonalArrow } from 'components';
 import { MDXClient } from 'components/MDXClient';
+import Fuse from 'fuse.js';
 import { BlogLayout } from 'layouts';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { serialize } from 'next-mdx-remote-client/serialize';
@@ -16,6 +17,7 @@ import { DOMAIN } from 'services/constants';
 import { transformer } from 'services/image-transformer';
 import { getClient, urlFor } from 'services/sanity-server';
 import type { Blog as IBlog } from 'types';
+import blogs from '../../../src/fuse/data.json';
 
 export const revalidate = 86400;
 
@@ -30,7 +32,21 @@ export async function generateStaticParams() {
 async function getData(params: { slug: string }) {
   if (!params || !params.slug) throw new Error('No slug found in params');
 
-  const slug = typeof params.slug === 'string' ? params.slug : params.slug[0];
+  const fuse = new Fuse(blogs as Array<{ slug: string; title: string }>, {
+    keys: ['slug', 'title'],
+    useExtendedSearch: true,
+    ignoreLocation: true,
+    threshold: 0.44,
+    minMatchCharLength: 6
+  });
+
+  const slugLength = params.slug?.split('-').length || 0;
+  const relatedBlogs =
+    slugLength >= 3
+      ? fuse.search(params.slug).map(({ item }) => item)
+      : [{ slug: '', title: '' }];
+
+  const slug = relatedBlogs?.[0]?.slug;
   const blog: IBlog = await getClient().fetch(
     `*[_type == "post" && !defined(publicationUrl) && slug.current == "${slug}"][0] {...,"id": _id, "slug": slug.current, "readTime": round(length(body) / 5 / 180 )}`
   );

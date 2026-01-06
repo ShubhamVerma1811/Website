@@ -28,6 +28,9 @@ importers:
       framer-motion:
         specifier: ^11.18.2
         version: 11.18.2(@emotion/is-prop-valid@1.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      fuse.js:
+        specifier: ^7.1.0
+        version: 7.1.0
       jotai:
         specifier: ^2.16.0
         version: 2.16.0(@babel/core@7.28.5)(@babel/template@7.27.2)(@types/react@18.3.27)(react@18.3.1)
@@ -3702,6 +3705,13 @@ packages:
       {
         integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
       }
+
+  fuse.js@7.1.0:
+    resolution:
+      {
+        integrity: sha512-trLf4SzuuUxfusZADLINj+dE8clK1frKdmqiJNb1Es75fmI5oY6X2mxLVUciLLjxqw/xr72Dhy+lER6dGd02FQ==
+      }
+    engines: { node: '>=10' }
 
   generator-function@2.0.1:
     resolution:
@@ -10720,6 +10730,8 @@ snapshots:
       is-callable: 1.2.7
 
   functions-have-names@1.2.3: {}
+
+  fuse.js@7.1.0: {}
 
   generator-function@2.0.1: {}
 

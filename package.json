@@ -10,8 +10,9 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "pnpm prebuild && next dev",
+    "prebuild": "bun src/services/fuse.ts",
+    "build": "pnpm prebuild && next build",
     "start": "next start",
     "export": "next export",
     "format": "prettier --write . --ignore-pattern 'pnpm-lock.yaml' --ignore-path .gitignore",
@@ -25,6 +26,7 @@
     "copy-text-to-clipboard": "^3.2.2",
     "feed": "^4.2.2",
     "framer-motion": "^11.18.2",
+    "fuse.js": "^7.1.0",
     "jotai": "^2.16.0",
     "next": "^14.2.34",
     "next-mdx-remote-client": "^2.1.7",

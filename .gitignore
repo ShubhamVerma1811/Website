@@ -36,3 +36,4 @@ yarn-error.log*
 .sanity
 .vercel
 .env*.local
+src/fuse/data.json
