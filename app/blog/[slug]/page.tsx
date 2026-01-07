@@ -5,6 +5,7 @@ import Fuse from 'fuse.js';
 import { BlogLayout } from 'layouts';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { serialize } from 'next-mdx-remote-client/serialize';
+import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import React from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -47,15 +48,18 @@ async function getData(params: { slug: string }) {
       : [{ slug: '', title: '' }];
 
   const slug = relatedBlogs?.[0]?.slug;
+
+  if (!slug) {
+    return notFound();
+  }
+
   const blog: IBlog = await getClient().fetch(
     `*[_type == "post" && !defined(publicationUrl) && slug.current == $slug][0] {...,"id": _id, "slug": slug.current, "readTime": round(length(body) / 5 / 180 )}`,
     { slug }
   );
 
   if (!blog) {
-    return {
-      props: { blog: null }
-    };
+    return notFound();
   }
 
   const mdxSource = await serialize({
