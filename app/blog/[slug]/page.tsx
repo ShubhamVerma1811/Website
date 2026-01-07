@@ -42,7 +42,7 @@ async function getData(params: { slug: string }) {
 
   const slugLength = params.slug?.split('-').length || 0;
   const relatedBlogs =
-    slugLength >= 3
+    slugLength >= 2
       ? fuse.search(params.slug).map(({ item }) => item)
       : [{ slug: '', title: '' }];
 
