@@ -48,7 +48,8 @@ async function getData(params: { slug: string }) {
 
   const slug = relatedBlogs?.[0]?.slug;
   const blog: IBlog = await getClient().fetch(
-    `*[_type == "post" && !defined(publicationUrl) && slug.current == "${slug}"][0] {...,"id": _id, "slug": slug.current, "readTime": round(length(body) / 5 / 180 )}`
+    `*[_type == "post" && !defined(publicationUrl) && slug.current == $slug][0] {...,"id": _id, "slug": slug.current, "readTime": round(length(body) / 5 / 180 )}`,
+    { slug }
   );
 
   if (!blog) {
