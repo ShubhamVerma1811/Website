@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { generateBlogFuseData } from '../../services/fuse';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
@@ -13,6 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         res.revalidate('/blog'),
         res.revalidate(`/blog/${slug}`)
       ]);
+      await generateBlogFuseData();
       return res.status(200).json({ message: `Updated ${slug}` });
     } catch (error) {
       console.error(error);

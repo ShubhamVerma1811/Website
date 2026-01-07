@@ -2,7 +2,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { getClient } from './sanity-server';
 
-async function generateBlogFuseData() {
+export async function generateBlogFuseData() {
   const blogs = await getClient().fetch(
     `*[_type == "post" && !defined(publicationUrl)] |{title, "slug":slug.current}`
   );
