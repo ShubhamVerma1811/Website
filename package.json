@@ -21,7 +21,6 @@
 	"dependencies": {
 		"@sanity/image-url": "^1.2.0",
 		"@spotify/web-api-ts-sdk": "^1.2.0",
-		"@vercel/og": "^0.5.20",
 		"copy-text-to-clipboard": "^3.2.2",
 		"feed": "^4.2.2",
 		"framer-motion": "^11.18.2",

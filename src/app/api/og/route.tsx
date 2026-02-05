@@ -1,4 +1,4 @@
-import { ImageResponse } from "@vercel/og";
+import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
@@ -7,21 +7,16 @@ const font = fetch(
 ).then((res) => res.arrayBuffer());
 
 export async function GET(request: Request) {
-	const fontData = await font;
-
 	const { searchParams } = new URL(request.url);
 
-	const title = searchParams.has("title")
-		? searchParams.get("title")
-		: "My default title";
+	const title = searchParams.get("title") ?? "My default title";
+	const desc = searchParams.get("desc") ?? null;
+	const img = searchParams.get("img") ?? null;
+	const readTime = searchParams.get("readTime") ?? null;
+	const date = searchParams.get("date") ?? null;
+	const author = searchParams.get("author") ?? null;
 
-	const desc = searchParams.has("desc") ? searchParams.get("desc") : null;
-	const img = searchParams.has("img") ? searchParams.get("img") : null;
-	const readTime = searchParams.has("readTime")
-		? searchParams.get("readTime")
-		: null;
-	const date = searchParams.has("date") ? searchParams.get("date") : null;
-	const author = searchParams.has("author") ? searchParams.get("author") : null;
+	const fontData = await font;
 
 	return new ImageResponse(
 		<div tw="h-full w-full flex flex-col bg-gray-200 items-center relative">
@@ -32,11 +27,12 @@ export async function GET(request: Request) {
 				{readTime && `• ${readTime} min read`}
 			</p>
 			<div tw="shadow-2xl bg-gray-300 flex absolute bottom-0 rounded-t-3xl w-[900px] h-[400px] overflow-hidden">
+				{/** biome-ignore lint/performance/noImgElement: og route wont work with Next Image*/}
 				<img
 					tw="overflow-hidden w-[900px] h-[400px]"
 					src={
 						img ??
-						"https://images.unsplash.com/photo-1444065707204-12decac917e8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixid=MnwxfDB8MXxyYW5kb218MHx8bW91bnRhaW5zfHx8fHx8MTY3MDIxNzYyMg&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
+						"https://images.unsplash.com/photo-1444065707204-12decac917e8?fit=crop&h=400&&w=900"
 					}
 					alt={"og-image"}
 				/>
