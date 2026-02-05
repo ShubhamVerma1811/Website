@@ -5,10 +5,6 @@
 const nextConfig = {
 	reactStrictMode: true,
 	swcMinify: true,
-	// TODO: Remove this when figured out.
-	typescript: {
-		ignoreBuildErrors: true,
-	},
 	env: {
 		DOMAIN: process.env.DOMAIN,
 		SHOWBANNER: process.env.SHOWBANNER,
