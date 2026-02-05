@@ -1,3 +1,5 @@
+'use client';
+
 import { Tabs } from 'atoms/Tabs';
 import { Hero } from 'components';
 import React from 'react';

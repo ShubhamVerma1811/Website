@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { HIRE_MAIL } from 'services/constants';
 import { getClient, urlFor } from 'services/sanity-server';
 import { generateMetaData } from 'services/util';
-import { Testimonial } from 'types/testimonials.type';
+import type { Testimonial } from 'types/testimonials.type';
 
 export const metadata = generateMetaData({
   title: 'Testimonials | Shubham Verma',
@@ -13,12 +13,7 @@ export const metadata = generateMetaData({
 
 async function getData() {
   const testimonials: Array<Testimonial> = await getClient().fetch(
-    `*[_type == "testimonial"] | order(rank) {..., "id": _id}`,
-    {
-      next: {
-        cache: 'no-cache'
-      }
-    }
+    `*[_type == "testimonial"] | order(rank) {..., "id": _id}`
   );
 
   return testimonials;

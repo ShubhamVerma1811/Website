@@ -1,7 +1,7 @@
-import { PageLayout } from 'layouts';
-import Link from 'next/link';
 import fs from 'node:fs';
 import path from 'node:path';
+import { PageLayout } from 'layouts';
+import Link from 'next/link';
 import { generateMetaData } from 'services/util';
 
 export const metadata = generateMetaData({
@@ -10,7 +10,7 @@ export const metadata = generateMetaData({
 });
 
 function getCrafts() {
-  const craftDir = path.join(process.cwd(), 'app/craft');
+  const craftDir = path.join(process.cwd(), 'src/app/craft');
   const craftFolders = fs
     .readdirSync(craftDir, { withFileTypes: true })
     .filter((dirent) => dirent.isDirectory())

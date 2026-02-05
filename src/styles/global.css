@@ -13,7 +13,8 @@
 }
 
 :root {
-  font-family: 'Karla';
+  font-family: 'Karla', system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
 }
 
 html {

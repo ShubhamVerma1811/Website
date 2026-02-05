@@ -18,7 +18,8 @@ export function generateMetaData({
       type: 'website',
       images: [
         {
-          url: `${DOMAIN}/api/og?title=${title}&desc=${description}`
+          url: `${DOMAIN}/api/og?title=${title}&desc=${description}`,
+          alt: title
         }
       ]
     },

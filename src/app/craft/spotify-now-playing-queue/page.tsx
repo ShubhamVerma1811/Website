@@ -2,8 +2,7 @@ import { ClientMetaLayout } from 'layouts/ClientMetaLayout';
 import dynamic from 'next/dynamic';
 
 const Comp = dynamic(
-  () =>
-    import('../../../src/components/SpotifyQueue').then((mod) => mod.default),
+  () => import('../../../components/SpotifyQueue').then((mod) => mod.default),
   {
     ssr: false
   }

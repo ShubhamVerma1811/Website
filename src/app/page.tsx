@@ -28,7 +28,7 @@ export default async function Home() {
 
   return (
     <PageLayout>
-      {projects?.map((project, index) => {
+      {projects?.map((project) => {
         return <ProjectsCard key={project.title} project={project} />;
       })}
     </PageLayout>

@@ -15,13 +15,11 @@ async function getData() {
   );
 
   return {
-    // blogs,
     talks
-    // talks
   };
 }
 
-export default async function Talk() {
+export default async function TalkPage() {
   const { talks } = await getData();
 
   return (

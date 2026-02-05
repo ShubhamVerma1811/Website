@@ -1,12 +1,13 @@
 import BlogViewIncrement from 'atoms/BlogViewIncrement';
 import { DiagonalArrow } from 'components';
+// import { CopyBlog } from "components/CopyBlog";
 import { MDXClient } from 'components/MDXClient';
 import Fuse from 'fuse.js';
 import { BlogLayout } from 'layouts';
 import type { Metadata, ResolvingMetadata } from 'next';
-import { serialize } from 'next-mdx-remote-client/serialize';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
+import { serialize } from 'next-mdx-remote-client/serialize';
 import React from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
@@ -18,7 +19,7 @@ import { DOMAIN } from 'services/constants';
 import { transformer } from 'services/image-transformer';
 import { getClient, urlFor } from 'services/sanity-server';
 import type { Blog as IBlog } from 'types';
-import blogs from '../../../src/fuse/data.json';
+import blogs from '../../../fuse/data.json';
 
 export const revalidate = 86400;
 
@@ -224,7 +225,7 @@ async function Blog({ params }: { params: { slug: string } }) {
         {blog?.title}
       </p>
 
-      <p className='my-1 text-gray-400'>
+      <p className='flex flex-row my-1 text-gray-400'>
         {date} <span className='mx-3'>•</span>
         {formatter.format(blog.views)} views <span className='mx-3'>•</span>
         {blog?.readTime} min read
@@ -237,6 +238,7 @@ async function Blog({ params }: { params: { slug: string } }) {
             </a>
           </React.Fragment>
         )}
+        {/*<CopyBlog blog={blog} />*/}
       </p>
       <hr className='my-4 border-skin-primary-muted' />
       <div className='prose max-w-none text-lg text-skin-secondary prose-headings:scroll-m-20 prose-headings:font-secondary prose-headings:text-skin-secondary prose-a:text-skin-accent prose-strong:text-skin-secondary prose-em:text-skin-secondary prose-code:rounded-sm prose-code:text-skin-secondary prose-li:text-skin-secondary'>

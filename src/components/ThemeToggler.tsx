@@ -1,12 +1,20 @@
 'use client';
 
-import { useAtom } from 'jotai';
+import { useTheme } from 'providers/ThemeProvider';
 import { useEffect } from 'react';
-import { isDarkModeAtom } from 'store/atoms/theme';
 import { Moon, Sun } from './Icons';
 
 const ThemeToggler = () => {
-  const [isDarkMode, setIsDarkMode] = useAtom(isDarkModeAtom);
+  const { isDarkMode, toggleTheme } = useTheme();
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (event: MediaQueryListEvent) => {
+      toggleTheme();
+    };
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, [toggleTheme]);
 
   useEffect(() => {
     const body = document.querySelector('body');
@@ -23,14 +31,10 @@ const ThemeToggler = () => {
 
   return (
     <button
-      role='button'
+      type='button'
       aria-label='Toggle dark mode'
       className='ml-1 rounded-md p-2 hover:bg-skin-secondary-muted'
-      onClick={() => {
-        setIsDarkMode((prev) => {
-          return !prev;
-        });
-      }}>
+      onClick={toggleTheme}>
       {isDarkMode ? <Moon /> : <Sun />}
     </button>
   );
