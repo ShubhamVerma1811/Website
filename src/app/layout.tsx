@@ -52,37 +52,6 @@ const websiteSchema: WithContext<WebSite> = {
 		"Personal website of Shubham Verma, a software engineer and tech enthusiast.",
 };
 
-function setInitialColorMode() {
-	function getInitialColorMode() {
-		const preference = window.localStorage.getItem("theme");
-		const hasExplicitPreference = typeof preference === "string";
-
-		if (hasExplicitPreference) {
-			return preference;
-		}
-
-		// If there is no saved preference, use a media query
-		const mediaQuery = "(prefers-color-scheme: light)";
-		const mql = window.matchMedia(mediaQuery);
-		const hasImplicitPreference = typeof mql.matches === "boolean";
-
-		if (hasImplicitPreference) {
-			return mql.matches ? "light" : "dark";
-		}
-		return "dark";
-	}
-
-	const colorMode = getInitialColorMode();
-	const body = document.querySelector("body");
-	body?.classList.toggle("dark", colorMode === "dark");
-}
-
-const blockingSetInitialColorMode = `(function() {
-    ${setInitialColorMode.toString()}
-    setInitialColorMode();
-})()
-`;
-
 export default function RootLayout({
 	children,
 }: {
