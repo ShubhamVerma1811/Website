@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { Hero } from "components";
-import { Tabs } from "components/Tabs";
-import React from "react";
+import { Hero } from 'components';
+import { Tabs } from 'components/Tabs';
+import React from 'react';
 
 export const PageLayout: React.FC<{
-	title?: string;
-	children: React.ReactNode;
+  title?: string;
+  children: React.ReactNode;
 }> = (props) => {
-	return (
-		<React.Fragment>
-			<Hero />
-			<Tabs />
-			{props.children}
-		</React.Fragment>
-	);
+  return (
+    <React.Fragment>
+      <Hero />
+      <Tabs />
+      {props.children}
+    </React.Fragment>
+  );
 };

@@ -4,23 +4,23 @@
  * code that is not used on the client side.
  */
 
-import imageUrlBuilder from "@sanity/image-url";
-import { createClient } from "next-sanity";
-import { sanityConfig } from "./sanity-config";
+import imageUrlBuilder from '@sanity/image-url';
+import { createClient } from 'next-sanity';
+import { sanityConfig } from './sanity-config';
 
 export const sanityClient = createClient(sanityConfig);
 
 export const previewClient = createClient({
-	...sanityConfig,
-	useCdn: false,
+  ...sanityConfig,
+  useCdn: false
 });
 
 export const getClient = (preview?: boolean) =>
-	preview ? previewClient : sanityClient;
+  preview ? previewClient : sanityClient;
 
 const builder = imageUrlBuilder(getClient());
 
 //@ts-expect-error
 export const urlFor = (source) => {
-	return builder.image(source);
+  return builder.image(source);
 };

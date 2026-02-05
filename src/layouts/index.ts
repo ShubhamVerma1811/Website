@@ -1,2 +1,2 @@
-export * from "./BlogLayout";
-export * from "./PageLayout";
+export * from './BlogLayout';
+export * from './PageLayout';
