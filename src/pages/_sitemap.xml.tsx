@@ -1,11 +1,13 @@
+// TODO:: move to app sitemap maybe
+
 import type { GetServerSideProps } from "next";
-import prettier from "prettier";
+// import prettier from "prettier";
 import { DOMAIN } from "services/constants";
 import { getClient } from "services/sanity-server";
 import type { Blog } from "types";
 
 const generate = async (preview: boolean) => {
-	const prettierConfig = await prettier.resolveConfig("../../.prettierrc");
+	// const prettierConfig = await prettier.resolveConfig("../../.prettierrc");
 	const pages = [
 		"",
 		"about",
@@ -48,13 +50,13 @@ const generate = async (preview: boolean) => {
     </urlset>
     `;
 
-	const formatted = prettier.format(sitemap, {
-		...prettierConfig,
-		parser: "html",
-	});
+	// const formatted = prettier.format(sitemap, {
+	// 	...prettierConfig,
+	// 	parser: "html",
+	// });
 
 	// eslint-disable-next-line no-sync
-	return formatted;
+	return sitemap;
 };
 
 const Sitemap = () => {
