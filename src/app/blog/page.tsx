@@ -1,9 +1,10 @@
 import { BlogCard } from "components/Blogs/BlogCard";
+import { SchemaScript } from "components/SchemaScript";
 import { PageLayout } from "layouts";
-import Script from "next/script";
 import type { BreadcrumbList, WithContext } from "schema-dts";
 import { DOMAIN } from "services/constants";
 import { getClient } from "services/sanity-server";
+import { getBreadcrumbs } from "services/schemas";
 import { generateMetaData } from "services/util";
 import type { Blog } from "types";
 
@@ -28,36 +29,16 @@ async function getData() {
 export default async function BlogPage() {
 	const { blogs } = await getData();
 
-	const breadcrumbs: WithContext<BreadcrumbList> = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{
-				"@type": "ListItem",
-				position: 1,
-				name: "Home",
-				item: DOMAIN,
-			},
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Blog",
-				item: `${DOMAIN}/blog`,
-			},
-		],
-	};
-
 	return (
 		<PageLayout>
-			<Script
-				id="blog-index-breadcrumbs-ld-json"
-				type="application/ld+json"
-				strategy="afterInteractive"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
-			/>
-			{blogs.map((blog, index) => {
+			{blogs.map((blog) => {
 				return <BlogCard key={blog.id} blog={blog} />;
 			})}
+			<SchemaScript
+				scripts={[
+					{ id: "blog-index-breadcrumbs-ld-json", json: getBreadcrumbs() },
+				]}
+			/>
 		</PageLayout>
 	);
 }

@@ -1,22 +1,16 @@
-import BlogViewIncrement from "atoms/BlogViewIncrement";
 import { DiagonalArrow } from "components";
+import BlogViewIncrement from "components/BlogViewIncrement";
 // import { CopyBlog } from "components/CopyBlog";
 import { MDXClient } from "components/MDXClient";
+import { SchemaScript } from "components/SchemaScript";
 import Fuse from "fuse.js";
 import { BlogLayout } from "layouts";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Script from "next/script";
-import { serialize } from "next-mdx-remote-client/serialize";
 import React from "react";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeCodeTitles from "rehype-code-titles";
-import rehypeResizeImage from "rehype-image-resize";
-import rehypeSlug from "rehype-slug";
-import remarkGfm from "remark-gfm";
 import type { BlogPosting, BreadcrumbList, WithContext } from "schema-dts";
 import { DOMAIN } from "services/constants";
-import { transformer } from "services/image-transformer";
+import { getSerializedMdx } from "services/mdx";
 import { getClient, urlFor } from "services/sanity-server";
 import type { Blog as IBlog } from "types";
 import blogs from "../../../fuse/data.json";
@@ -63,30 +57,7 @@ async function getData(params: { slug: string }) {
 		return notFound();
 	}
 
-	const mdxSource = await serialize({
-		source: blog.body,
-		options: {
-			mdxOptions: {
-				remarkPlugins: [remarkGfm],
-				rehypePlugins: [
-					rehypeSlug,
-					[
-						rehypeAutolinkHeadings,
-						{
-							behavior: "wrap",
-							properties: {
-								className: "anchor",
-							},
-						},
-					],
-					rehypeCodeTitles,
-					[rehypeResizeImage, { transformer }],
-					// rehypeImageBlur
-				],
-			},
-		},
-	});
-
+	const mdxSource = await getSerializedMdx(blog.body);
 	return {
 		props: {
 			blog,
@@ -100,10 +71,7 @@ type Props = {
 	searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export async function generateMetadata(
-	{ params, searchParams }: Props,
-	parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const {
 		props: { blog },
 	} = await getData(params);
@@ -209,18 +177,6 @@ async function Blog({ params }: { params: { slug: string } }) {
 
 	return (
 		<BlogLayout blog={blog}>
-			<Script
-				id={`blog-post-${blog.slug}-ld-json`}
-				type="application/ld+json"
-				strategy="afterInteractive"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-			/>
-			<Script
-				id={`blog-post-${blog.slug}-breadcrumbs-ld-json`}
-				type="application/ld+json"
-				strategy="afterInteractive"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
 			<p className="mb-3 font-bold font-secondary text-4xl text-skin-secondary">
 				{blog?.title}
 			</p>
@@ -241,11 +197,19 @@ async function Blog({ params }: { params: { slug: string } }) {
 				{/*<CopyBlog blog={blog} />*/}
 			</p>
 			<hr className="my-4 border-skin-primary-muted" />
-			<div className="prose max-w-none prose-headings:scroll-m-20 prose-code:rounded-sm prose-headings:font-secondary prose-a:text-skin-accent prose-code:text-skin-secondary prose-em:text-skin-secondary prose-headings:text-skin-secondary prose-li:text-skin-secondary prose-strong:text-skin-secondary text-lg text-skin-secondary">
-				<MDXClient mdxSource={mdxSource} />
-			</div>
 
 			<BlogViewIncrement id={blog?.id} />
+			<MDXClient mdxSource={mdxSource} />
+
+			<SchemaScript
+				scripts={[
+					{ id: `blog-post-${blog.slug}-ld-json`, json: jsonLd },
+					{
+						id: `blog-post-${blog.slug}-breadcrumbs-ld-json`,
+						json: breadcrumbJsonLd,
+					},
+				]}
+			/>
 		</BlogLayout>
 	);
 }

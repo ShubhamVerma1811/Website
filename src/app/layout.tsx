@@ -1,56 +1,10 @@
 import { BackToTop, Banner, Footer, Header } from "components";
-import type { Person, WebSite, WithContext } from "schema-dts";
-import {
-	CITY,
-	COUNTRY,
-	CURRENT_ORGANIZATION,
-	CURRENT_TITLE,
-	DOMAIN,
-	GITHUB_URL,
-	HIRE_MAIL,
-	INSTAGRAM_URL,
-	LINKEDIN_URL,
-	SPOTIFY_URL,
-	TWITTER_HANDLE,
-	TWITTER_URL,
-} from "services/constants";
+import { SchemaScript } from "components/SchemaScript";
+import { ThemeProvider } from "providers/ThemeProvider";
+import { TWITTER_HANDLE } from "services/constants";
+import { personSchema, websiteSchema } from "services/schemas";
 import "../styles/global.css";
 import "../styles/tailwind.css";
-import { ThemeProvider } from "providers/ThemeProvider";
-
-const personSchema: WithContext<Person> = {
-	"@context": "https://schema.org",
-	"@type": "Person",
-	"@id": `${DOMAIN}#person`,
-	name: "Shubham Verma",
-	url: DOMAIN,
-	email: HIRE_MAIL,
-	jobTitle: CURRENT_TITLE,
-	worksFor: {
-		"@type": "Organization",
-		name: CURRENT_ORGANIZATION,
-	},
-	address: {
-		"@type": "PostalAddress",
-		addressLocality: CITY,
-		addressCountry: COUNTRY,
-	},
-	sameAs: [TWITTER_URL, LINKEDIN_URL, GITHUB_URL, INSTAGRAM_URL, SPOTIFY_URL],
-};
-
-const websiteSchema: WithContext<WebSite> = {
-	"@context": "https://schema.org",
-	"@type": "WebSite",
-	"@id": `${DOMAIN}#website`,
-	url: DOMAIN,
-	name: "Shubham Verma",
-	publisher: {
-		"@id": `${DOMAIN}#person`,
-	},
-	inLanguage: "en",
-	description:
-		"Personal website of Shubham Verma, a software engineer and tech enthusiast.",
-};
 
 export default function RootLayout({
 	children,
@@ -78,15 +32,11 @@ export default function RootLayout({
 					title="Blogs by Shubham Verma"
 					href="/rss.xml"
 				/>
-				<script
-					type="application/ld+json"
-					// biome-ignore lint/security/noDangerouslySetInnerHtml: Needed for JSONLD schema
-					dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-				/>
-				<script
-					type="application/ld+json"
-					// biome-ignore lint/security/noDangerouslySetInnerHtml: Needed for JSONLD schema
-					dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+				<SchemaScript
+					scripts={[
+						{ id: "website-schema", json: websiteSchema },
+						{ id: "person-schema", json: personSchema },
+					]}
 				/>
 				<script
 					async

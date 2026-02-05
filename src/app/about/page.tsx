@@ -1,12 +1,6 @@
 import { MDXClient } from "components/MDXClient";
 import { PageLayout } from "layouts";
-import { serialize } from "next-mdx-remote-client/serialize";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeCodeTitles from "rehype-code-titles";
-import rehypeResizeImage from "rehype-image-resize";
-import rehypeSlug from "rehype-slug";
-import remarkGfm from "remark-gfm";
-import { transformer } from "services/image-transformer";
+import { getSerializedMdx } from "services/mdx";
 import { getClient } from "services/sanity-server";
 import { generateMetaData } from "services/util";
 
@@ -17,28 +11,7 @@ export const metadata = generateMetaData({
 async function getData() {
 	const about = await getClient().fetch(`*[_type == "about"][0]`);
 
-	const mdxSource = await serialize({
-		source: about.body,
-		options: {
-			mdxOptions: {
-				remarkPlugins: [remarkGfm],
-				rehypePlugins: [
-					rehypeSlug,
-					[
-						rehypeAutolinkHeadings,
-						{
-							behavior: "wrap",
-							properties: {
-								className: "anchor",
-							},
-						},
-					],
-					rehypeCodeTitles,
-					[rehypeResizeImage, { transformer }],
-				],
-			},
-		},
-	});
+	const mdxSource = await getSerializedMdx(about.body);
 
 	return {
 		mdxSource,
@@ -50,9 +23,7 @@ export default async function AboutPage() {
 
 	return (
 		<PageLayout>
-			<div className="prose max-w-none prose-headings:scroll-m-20 prose-code:rounded-sm prose-headings:font-secondary prose-a:text-skin-accent prose-code:text-skin-secondary prose-em:text-skin-secondary prose-headings:text-skin-secondary prose-li:text-skin-secondary prose-strong:text-skin-secondary text-lg text-skin-secondary">
-				<MDXClient mdxSource={mdxSource} />
-			</div>
+			<MDXClient mdxSource={mdxSource} />
 		</PageLayout>
 	);
 }

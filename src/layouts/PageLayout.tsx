@@ -1,7 +1,7 @@
 "use client";
 
-import { Tabs } from "atoms/Tabs";
 import { Hero } from "components";
+import { Tabs } from "components/Tabs";
 import React from "react";
 
 export const PageLayout: React.FC<{
