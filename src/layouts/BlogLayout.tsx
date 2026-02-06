@@ -1,4 +1,4 @@
-import { BackToTop, LinkedInIcon, TwitterIcon } from 'components';
+import { LinkedInIcon, TwitterIcon } from 'components';
 import React from 'react';
 import { DOMAIN, TWITTER_HANDLE } from 'services/constants';
 import type { Blog } from 'types';

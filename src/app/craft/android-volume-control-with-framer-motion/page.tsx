@@ -53,15 +53,14 @@ function getVolumeIcon(vol: string, active = false) {
 
 type VolumeStates = 'vibrate' | 'silent' | 'ringer';
 
-export const AndroidVolumeBar = () => {
+const AndroidVolumeBar = () => {
   const [open, setIsOpen] = useState(true);
   const [showVolStates, setShowVolStates] = useState(false);
   const [activeVolState, setActiveVolState] = useState<VolumeStates>('ringer');
   // const timer = useRef<number | null>(null);
+  const containerRef = useRef(null);
 
   if (typeof window === 'undefined') return null;
-
-  const containerRef = useRef(null);
   // useEffect(() => {
   //   if (!open) return;
 

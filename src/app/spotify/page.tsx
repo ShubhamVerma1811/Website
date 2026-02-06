@@ -43,7 +43,6 @@ async function getData() {
       name: string;
       id: string;
       artistUrl: string;
-      //@ts-expect-error
     }> = artistsData.items.map((artist) => {
       return {
         name: artist?.name,

@@ -94,6 +94,7 @@ const Card = () => {
       <ClientMetaLayout title={`Evervault's Encrypted Card | Craft`} />
       <div className='mx-auto flex h-[500px] flex-col rounded-md border border-gray-700 p-2 md:w-[350px]'>
         <div
+          role='document'
           className='relative h-[300px] overflow-clip rounded-md'
           onMouseMove={handleMoveMove}
           onMouseLeave={() => {

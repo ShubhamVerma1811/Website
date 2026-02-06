@@ -28,10 +28,6 @@ export const generateRSSFeed = (blogs: Array<Blog>) => {
   });
 
   blogs?.forEach((blog) => {
-    const d = new Date(blog.date);
-    const date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
-    const cover = `${baseURL}/api/og?title=${blog.title}&amp;readTime=${blog.readTime}&amp;date=${date}`;
-
     const html = remark()
       .use(remarkHTML)
       .processSync(blog.body ?? '')

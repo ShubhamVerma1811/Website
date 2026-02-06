@@ -13,8 +13,11 @@ export function getSerializedMdx(body: string) {
       mdxOptions: {
         remarkPlugins: [remarkGfm],
         rehypePlugins: [
+          // @ts-expect-error FIX THIS
           rehypeSlug,
           [
+            // @ts-expect-error FIX THIS
+
             rehypeAutolinkHeadings,
             {
               behavior: 'wrap',

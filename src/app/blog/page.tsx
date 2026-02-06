@@ -1,8 +1,6 @@
 import { BlogCard } from 'components/Blogs/BlogCard';
 import { SchemaScript } from 'components/SchemaScript';
 import { PageLayout } from 'layouts';
-import type { BreadcrumbList, WithContext } from 'schema-dts';
-import { DOMAIN } from 'services/constants';
 import { getClient } from 'services/sanity-server';
 import { getBreadcrumbs } from 'services/schemas';
 import { generateMetaData } from 'services/util';
