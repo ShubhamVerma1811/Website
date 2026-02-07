@@ -4,7 +4,6 @@
 
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   env: {
     DOMAIN: process.env.DOMAIN,
     SHOWBANNER: process.env.SHOWBANNER

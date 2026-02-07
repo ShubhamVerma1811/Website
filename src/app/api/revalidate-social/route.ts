@@ -4,14 +4,14 @@ import { NextResponse } from 'next/server';
 
 export async function POST() {
   try {
-    const headerStore = headers();
+    const headerStore = await headers();
     const token = headerStore.get(process.env.SANITY_WEBHOOK_SECRET_HEADER!);
 
     if (token !== process.env.SANITY_WEBHOOK_SECRET_TOKEN) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
 
-    await revalidatePath('/socials');
+    revalidatePath('/socials');
 
     return NextResponse.json({ message: 'Updated Socials' });
   } catch (error) {

@@ -22,7 +22,7 @@ export async function generateStaticParams() {
     `*[_type == "post"] | order(date desc) {"slug":slug.current}`
   );
 
-  return blogs?.map(({ slug }) => slug);
+  return blogs?.map(({ slug }) => ({ slug }));
 }
 
 async function getData(params: { slug: string }) {
@@ -67,14 +67,15 @@ async function getData(params: { slug: string }) {
 }
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
   const {
     props: { blog }
-  } = await getData(params);
+  } = await getData({ slug });
 
   if (!blog) return {};
 
@@ -110,10 +111,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-async function Blog({ params }: { params: { slug: string } }) {
+async function Blog({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const {
     props: { blog, mdxSource }
-  } = await getData(params);
+  } = await getData({ slug });
 
   if (!blog) return null;
 

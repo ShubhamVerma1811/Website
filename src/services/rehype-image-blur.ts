@@ -1,5 +1,4 @@
 import { getPlaiceholder } from 'plaiceholder';
-// @ts-expect-error
 import { visit } from 'unist-util-visit';
 
 // TODO:: fix types
@@ -9,7 +8,6 @@ export default function rehypeImageBlur() {
     // @ts-expect-error
     const nodes = [];
 
-    // @ts-expect-error
     visit(tree, (node) => {
       if (node.tagName === 'img') {
         nodes.push(node);

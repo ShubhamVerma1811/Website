@@ -5,7 +5,7 @@ import { generateBlogFuseData } from 'services/fuse';
 
 export async function POST(request: NextRequest) {
   try {
-    const headerStore = headers();
+    const headerStore = await headers();
     const token = headerStore.get(process.env.SANITY_WEBHOOK_SECRET_HEADER!);
 
     if (token !== process.env.SANITY_WEBHOOK_SECRET_TOKEN) {
@@ -14,7 +14,6 @@ export async function POST(request: NextRequest) {
 
     const { slug } = await request.json();
 
-    // ✅ App Router equivalent: revalidatePath replaces res.revalidate
     await Promise.all([
       revalidatePath('/'),
       revalidatePath('/blog'),

@@ -5,7 +5,7 @@ import { getClient } from 'services/sanity-server';
 
 export async function POST(req: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const isPreview = cookieStore.has('__prerender_bypass');
 
     if (isPreview) {

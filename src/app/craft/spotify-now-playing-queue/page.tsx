@@ -1,3 +1,4 @@
+'use client';
 import { ClientMetaLayout } from 'layouts/ClientMetaLayout';
 import dynamic from 'next/dynamic';
 
