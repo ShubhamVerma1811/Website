@@ -21,11 +21,10 @@ export const BlogCard = ({ blog }: BlogsCompProps) => {
         href={
           blog?.publicationUrl ? blog?.publicationUrl : `/blog/${blog?.slug}`
         }
-        passHref
         data-umami-event={`blog-${blog.slug}`}>
         <div className='my-4 cursor-pointer rounded-md bg-skin-secondary-muted p-3 transition-all hover:scale-[1.02]'>
           <div className='flex items-center'>
-            <p className='text-xl text-skin-secondary'>{blog.title}</p>
+            <p className='text-skin-secondary text-xl'>{blog.title}</p>
           </div>
 
           <p className='my-1 text-skin-primary-muted'>
@@ -37,7 +36,7 @@ export const BlogCard = ({ blog }: BlogsCompProps) => {
               </React.Fragment>
             )}
             {blog.publicationUrl && (
-              <Link href={blog.publicationUrl} legacyBehavior>
+              <Link href={blog.publicationUrl}>
                 <span className='text-md text-skin-secondary'>
                   <span className='mx-3'>•</span>
                   Publication
@@ -51,7 +50,7 @@ export const BlogCard = ({ blog }: BlogsCompProps) => {
               </React.Fragment>
             )}
           </p>
-          <p className='text-md truncate rounded-md text-skin-primary-muted'>
+          <p className='truncate rounded-md text-md text-skin-primary-muted'>
             {blog.summary}
           </p>
         </div>

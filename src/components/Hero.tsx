@@ -16,7 +16,7 @@ export const Hero = () => {
         {/* <p className='font-secondary text-3xl font-bold text-skin-secondary'>
           Shubham Verma
         </p> */}
-        <p className='mt-1 max-w-lg text-xl text-skin-primary-muted'>
+        <p className='mt-1 max-w-lg text-skin-primary-muted text-xl'>
           I'm <span className='text-skin-secondary'>Shubham Verma</span>, an
           engineer, learner and builder. <br />
           {CURRENT_TITLE} at <strong>{CURRENT_ORGANIZATION}</strong>
@@ -26,9 +26,9 @@ export const Hero = () => {
             href={`https://www.google.com/maps/place/${CITY},+${COUNTRY}`}
             target='_blank'
             rel='noopener noreferrer'
-            className='text-skin-primary-muted underline underline-offset-4 hover:text-skin-secondary transition-colors'>
+            className='text-skin-primary-muted underline underline-offset-4 transition-colors hover:text-skin-secondary'>
             {CITY}, {COUNTRY}
-            <DiagonalArrow className='inline text-sm ml-1' />
+            <DiagonalArrow className='ml-1 inline text-sm' />
           </Link>
         </p>
         {/* <p className='text-md mt-3 text-skin-primary-muted md:text-lg'>
@@ -40,7 +40,7 @@ export const Hero = () => {
             target='_blank'
             href={`mailto:${HIRE_MAIL}`}
             data-umami-event='hero-calendar'
-            className='text-md mt-3 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted md:text-lg'
+            className='mt-3 w-max rounded-md p-2 text-lg text-md text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted md:text-lg'
             rel='noopener noreferrer'>
             Work with me
             <DiagonalArrow className='inline text-xl' />
@@ -50,7 +50,7 @@ export const Hero = () => {
             target='_blank'
             rel='noopener noreferrer'
             data-umami-event='hero-resume'
-            className='mr-2 mt-3 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted'>
+            className='mt-3 mr-2 w-max rounded-md p-2 text-lg text-skin-secondary underline underline-offset-4 hover:bg-skin-secondary-muted'>
             Resume
             <DiagonalArrow className='inline text-xl' />
           </Link>

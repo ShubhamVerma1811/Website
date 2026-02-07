@@ -1,3 +1,3 @@
 export const fetcher = (...args: any) =>
-  // @ts-ignore
+  // @ts-expect-error
   fetch(...args).then((res) => res.json());

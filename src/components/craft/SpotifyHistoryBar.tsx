@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { Song } from 'services/spotify';
+import type { Song } from 'services/spotify';
 
 type Data = Song & { time: Date; spotifyUrl: string };
 
@@ -21,7 +21,7 @@ const SongPill = ({ song, isVisible }: SongPillProps) => {
           animate={{ opacity: 1, x: -170 }}
           exit={{ opacity: 0, x: -150 }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          className='absolute -translate-y-1/2 bg-[#1DB954] rounded-full p-1 flex items-center gap-2 w-[160px] shadow-lg cursor-pointer'
+          className='absolute flex w-[160px] -translate-y-1/2 cursor-pointer items-center gap-2 rounded-full bg-[#1DB954] p-1 shadow-lg'
           onClick={() => window.open(song.spotifyUrl, '_blank')}
           role='link'
           tabIndex={0}
@@ -33,7 +33,7 @@ const SongPill = ({ song, isVisible }: SongPillProps) => {
           <motion.div
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
-            className='relative w-8 h-8 shrink-0'>
+            className='relative h-8 w-8 shrink-0'>
             <Image
               src={song.imageUrl}
               alt={song.title}
@@ -45,9 +45,9 @@ const SongPill = ({ song, isVisible }: SongPillProps) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className='flex flex-col text-xs font-medium font-secondary text-skin-primary min-w-0'>
+            className='flex min-w-0 flex-col font-medium font-secondary text-skin-primary text-xs'>
             <span className='truncate'>{song.title}</span>
-            <span className='text-[10px] '>
+            <span className='text-[10px]'>
               played at -{' '}
               {song.time.toLocaleTimeString([], {
                 hour: '2-digit',
@@ -144,8 +144,8 @@ export const SpotifyHistoryBar = () => {
 
   if (isLoading) {
     return (
-      <div className='fixed right-0 top-0 h-dvh flex items-center pr-4'>
-        <div className='w-6 h-6 border-2 border-[#1DB954] border-t-transparent rounded-full animate-spin' />
+      <div className='fixed top-0 right-0 flex h-dvh items-center pr-4'>
+        <div className='h-6 w-6 animate-spin rounded-full border-2 border-[#1DB954] border-t-transparent' />
       </div>
     );
   }
@@ -155,15 +155,15 @@ export const SpotifyHistoryBar = () => {
   }
 
   return (
-    <div className='fixed right-0 top-0 h-dvh' style={{ height }}>
-      <div className={`relative mx-4 w-6 rounded-full h-full`}>
+    <div className='fixed top-0 right-0 h-dvh' style={{ height }}>
+      <div className={`relative mx-4 h-full w-6 rounded-full`}>
         {recentTracks.map((item, index) => {
           const position = getPosition(item.time);
           return (
             <>
               <div
                 key={index}
-                className='absolute rounded-full w-full h-1 bg-[#1DB954] transform -translate-y-1/2 cursor-pointer'
+                className='absolute h-1 w-full -translate-y-1/2 transform cursor-pointer rounded-full bg-[#1DB954]'
                 style={{
                   top: `${position}px`
                 }}

@@ -3,9 +3,10 @@
  * utilities we use on the client side, we are able to tree-shake (remove)
  * code that is not used on the client side.
  */
+
+import imageUrlBuilder from '@sanity/image-url';
 import { createClient } from 'next-sanity';
 import { sanityConfig } from './sanity-config';
-import imageUrlBuilder from '@sanity/image-url';
 
 export const sanityClient = createClient(sanityConfig);
 
@@ -19,7 +20,7 @@ export const getClient = (preview?: boolean) =>
 
 const builder = imageUrlBuilder(getClient());
 
-//@ts-ignore
+//@ts-expect-error
 export const urlFor = (source) => {
   return builder.image(source);
 };

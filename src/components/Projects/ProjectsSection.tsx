@@ -1,4 +1,4 @@
-import { Project } from 'types';
+import type { Project } from 'types';
 import { ProjectsCard } from '.';
 
 interface ProjectCompProps {
@@ -11,7 +11,7 @@ export const ProjectsSection = ({ projects }: ProjectCompProps) => {
   return (
     <section className='my-12 scroll-m-20' id='top-projects'>
       <a href='#top-projects'>
-        <p className='mb-3 font-secondary text-2xl font-bold text-skin-secondary'>
+        <p className='mb-3 font-bold font-secondary text-2xl text-skin-secondary'>
           Featured Projects
         </p>
       </a>

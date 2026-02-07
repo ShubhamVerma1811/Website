@@ -14,19 +14,18 @@ export const NowPlaying = () => {
 
   return (
     <div className='truncate'>
-      <div className='flex text-lg gap-3 items-center'>
+      <div className='flex items-center gap-3 text-lg'>
         <SpotifyIcon className='inline h-6 w-6 text-[#1DB954]' />
         <div className='overflow-hidden'>
           <a
             href={track?.songUrl}
             target='_blank'
             rel='noopener noreferrer'
-            className={`truncate underline-offset-4 hover:underline
-              ${
-                track?.isPlaying
-                  ? 'text-skin-secondary'
-                  : 'text-skin-primary-muted'
-              }
+            className={`truncate underline-offset-4 hover:underline ${
+              track?.isPlaying
+                ? 'text-skin-secondary'
+                : 'text-skin-primary-muted'
+            }
             `}>
             {track?.isPlaying ? track.title : 'Not Playing'}{' '}
             {track?.isPlaying && track?.artist && (

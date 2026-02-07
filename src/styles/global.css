@@ -1,19 +1,29 @@
 @font-face {
   font-family: Karla;
   font-display: swap;
-  src: local('Karla'),
+  src:
+    local('Karla'),
     url('../../public/assets/fonts/Karla/Karla.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Mona-Sans';
   font-display: swap;
-  src: local('Mona-Sans'),
+  src:
+    local('Mona-Sans'),
     url('../../public/assets/fonts/Mona-Sans/Mona-Sans.woff2') format('woff2');
 }
 
 :root {
-  font-family: 'Karla';
+  font-family:
+    'Karla',
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
 }
 
 html {

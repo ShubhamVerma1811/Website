@@ -4,11 +4,6 @@
 
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-  // TODO: Remove this when figured out.
-  typescript: {
-    ignoreBuildErrors: true
-  },
   env: {
     DOMAIN: process.env.DOMAIN,
     SHOWBANNER: process.env.SHOWBANNER
@@ -19,6 +14,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'cdn.sanity.io' },
       { protocol: 'https', hostname: 'source.unsplash.com' },
       { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'fastly.picsum.photos' },
       { protocol: 'https', hostname: 'i.scdn.co' }
     ]
   }

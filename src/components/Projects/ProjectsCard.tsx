@@ -9,10 +9,10 @@ export const ProjectsCard = ({ project }: ProjectCompProps) => {
   return (
     <div className='my-4 cursor-pointer rounded-md bg-skin-secondary-muted p-3 transition-all hover:scale-[1.02]'>
       <div className='flex items-center'>
-        <p className='text-xl text-skin-secondary'>{project.title}</p>
+        <p className='text-skin-secondary text-xl'>{project.title}</p>
       </div>
 
-      <p className='text-md my-2 rounded-md text-skin-primary-muted line-clamp-2'>
+      <p className='my-2 line-clamp-2 rounded-md text-md text-skin-primary-muted'>
         {project.summary}
       </p>
       <div className='mt-3'>

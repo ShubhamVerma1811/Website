@@ -1,15 +1,13 @@
 import { getPlaiceholder } from 'plaiceholder';
-// @ts-ignore
 import { visit } from 'unist-util-visit';
 
 // TODO:: fix types
 export default function rehypeImageBlur() {
-  // @ts-ignore
+  // @ts-expect-error
   return async (tree) => {
-    // @ts-ignore
+    // @ts-expect-error
     const nodes = [];
 
-    // @ts-ignore
     visit(tree, (node) => {
       if (node.tagName === 'img') {
         nodes.push(node);
@@ -17,7 +15,7 @@ export default function rehypeImageBlur() {
     });
 
     await Promise.all(
-      // @ts-ignore
+      // @ts-expect-error
       nodes.map(async (node) => {
         if (node.properties.src) {
           node.properties.hash = (

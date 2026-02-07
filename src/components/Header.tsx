@@ -8,7 +8,7 @@ export const Header = () => {
     <header className='my-5 rounded-md bg-skin-primary' id='header'>
       <nav className='flex items-center'>
         <div className='ml-0'>
-          <Link className='text-2xl font-bold text-skin-secondary' href='/'>
+          <Link className='font-bold text-2xl text-skin-secondary' href='/'>
             <p className='font-bold'>🌱</p>
           </Link>
         </div>
@@ -18,7 +18,7 @@ export const Header = () => {
               target='_blank'
               href={TWITTER_URL}
               data-umami-event='hero-twitter'
-              className=' mr-1 w-max rounded-md p-2 text-lg text-[#1DA1F2] hover:bg-skin-secondary-muted'
+              className='mr-1 w-max rounded-md p-2 text-[#1DA1F2] text-lg hover:bg-skin-secondary-muted'
               rel='noopener noreferrer'>
               <TwitterIcon />
             </a>
@@ -34,7 +34,7 @@ export const Header = () => {
               target='_blank'
               href={LINKEDIN_URL}
               data-umami-event='hero-linkedin'
-              className='w-max rounded-md p-2 text-lg text-[#0a66c2] hover:bg-skin-secondary-muted dark:text-[#ffffffe6]'
+              className='w-max rounded-md p-2 text-[#0a66c2] text-lg hover:bg-skin-secondary-muted dark:text-[#ffffffe6]'
               rel='noopener noreferrer'>
               <LinkedInIcon />
             </a>

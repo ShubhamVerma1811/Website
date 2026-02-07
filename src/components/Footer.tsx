@@ -33,29 +33,23 @@ export const Footer = () => {
   const path = usePathname();
 
   return (
-    <footer className='body-font bg-skin-primary mt-auto'>
+    <footer className='body-font mt-auto bg-skin-primary'>
       <hr className='my-4 border-skin-primary-muted' />
-
       <NowPlaying />
-
       <hr className='my-4 border-skin-primary-muted' />
-
       <ul className='flex flex-row gap-4'>
         {footerLinks.site.map((link, index) => {
           return (
             <li
               key={index}
               data-umami-event={`footer-${link.name}`}
-              className={`my-2 w-max cursor-pointer list-none hover:underline hover:underline-offset-4
-                 ${
-                   path === link.href
-                     ? 'text-skin-secondary'
-                     : 'text-skin-primary-muted'
-                 }
+              className={`my-2 w-max cursor-pointer list-none hover:underline hover:underline-offset-4 ${
+                path === link.href
+                  ? 'text-skin-secondary'
+                  : 'text-skin-primary-muted'
+              }
               `}>
-              <Link href={link.href} passHref>
-                {link.name}
-              </Link>
+              <Link href={link.href}>{link.name}</Link>
             </li>
           );
         })}

@@ -152,7 +152,7 @@ const SpotifyQueue = () => {
   };
 
   return (
-    <div className='bg-gray-950 h-dvh spotify'>
+    <div className='spotify h-dvh bg-gray-950'>
       <audio
         src={activeSong?.previewUrl}
         controls
@@ -162,7 +162,7 @@ const SpotifyQueue = () => {
         muted={muted}>
         <track kind='captions' />
       </audio>
-      <div className='p-4 bg-gray-950 lg:w-[600px] mx-auto'>
+      <div className='mx-auto bg-gray-950 p-4 lg:w-[600px]'>
         <NavBar
           setActiveSection={setActiveSection}
           activeSection={activeSection}
@@ -213,20 +213,20 @@ function NavBar({
     <div className='flex flex-row items-center gap-4'>
       <motion.button onClick={() => setActiveSection('queue')}>
         <p
-          className={`pb-2 border-b-2  font-bold ${
+          className={`border-b-2 pb-2 font-bold ${
             activeSection === 'queue'
-              ? 'text-white border-[#1ED760]'
-              : 'text-gray-400 border-transparent'
+              ? 'border-[#1ED760] text-white'
+              : 'border-transparent text-gray-400'
           }`}>
           Queue
         </p>
       </motion.button>
       <motion.button onClick={() => setActiveSection('recently')}>
         <p
-          className={`pb-2 border-b-2  font-bold ${
+          className={`border-b-2 pb-2 font-bold ${
             activeSection === 'recently'
-              ? 'text-white border-[#1ED760]'
-              : 'text-gray-400 border-transparent'
+              ? 'border-[#1ED760] text-white'
+              : 'border-transparent text-gray-400'
           }`}>
           Recently Played
         </p>
@@ -234,8 +234,8 @@ function NavBar({
       <div className='ml-auto'>
         {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
         <div
-          className='cursor-pointer w-10 h-10 rounded-full bg-gray-950 flex items-center justify-center'
-          // @ts-ignore
+          className='flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-950'
+          // @ts-expect-error
           onClick={() => setMuted((p) => !p)}>
           {muted ? (
             <svg
@@ -294,7 +294,7 @@ function QueueUI({
       animate={{ x: 0 }}
       exit={{ x: 100 }}>
       <div className='my-4'>
-        <p className='pb-2 text-white font-bold'>Now Playing</p>
+        <p className='pb-2 font-bold text-white'>Now Playing</p>
         <AnimatePresence mode='popLayout'>
           {activeSong ? (
             <SongItem song={activeSong} setActiveSong={setActiveSong} />
@@ -306,12 +306,12 @@ function QueueUI({
         <AnimatePresence>
           {!songsList?.length ? (
             <>
-              <p className='text-white font-lg'>
+              <p className='font-lg text-white'>
                 Queue empty,{' '}
                 {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
                 <span
                   className={
-                    'text-[#1ED760] underline underline-offset-2 cursor-pointer'
+                    'cursor-pointer text-[#1ED760] underline underline-offset-2'
                   }
                   onClick={() => {
                     setSongsList(initialSongs.slice(1));
@@ -323,7 +323,7 @@ function QueueUI({
             </>
           ) : (
             <>
-              <motion.p layout className='pb-2 text-white font-bold'>
+              <motion.p layout className='pb-2 font-bold text-white'>
                 Next from: Liked Songs
               </motion.p>
 
@@ -357,7 +357,7 @@ function RecentlyPlayedUI({
         key='recent-ui'
         initial={{ x: 20 }}
         animate={{ x: 0 }}
-        className='text-white my-5 text-lg'>
+        className='my-5 text-lg text-white'>
         Recent songs empty
       </motion.p>
     );
@@ -368,16 +368,16 @@ function RecentlyPlayedUI({
       {prevSongs.map((song) => {
         return (
           <div key={song.id}>
-            <div className='flex flex-row items-center my-3 cursor-pointer rounded-md'>
+            <div className='my-3 flex cursor-pointer flex-row items-center rounded-md'>
               <Image
                 width={40}
                 height={40}
                 src={song.imageUrl}
                 alt={song.title}
-                className='w-10 h-10 rounded-md'
+                className='h-10 w-10 rounded-md'
               />
               <div className='ml-3'>
-                <p className='text-md text-[#1ED760]'>{song.title}</p>
+                <p className='text-[#1ED760] text-md'>{song.title}</p>
                 <p className='text-gray-400'>{song.artist}</p>
               </div>
             </div>
@@ -399,18 +399,18 @@ const SongItem = ({
     <motion.div
       key={song.id}
       layoutId={`song-${song.id}`}
-      className='flex flex-row items-center my-3 cursor-pointer ounded-md'
+      className='ounded-md my-3 flex cursor-pointer flex-row items-center'
       onClick={() => setActiveSong(song)}>
       <motion.img
         layoutId={`song-image-${song.id}`}
         src={song.imageUrl}
         alt={song.title}
-        className='w-10 h-10 rounded-md'
+        className='h-10 w-10 rounded-md'
       />
       <div className='ml-3'>
         <motion.p
           layoutId={`song-title-${song.id}`}
-          className='text-md text-[#1ED760]'>
+          className='text-[#1ED760] text-md'>
           {song.title}
         </motion.p>
         <motion.p layoutId={`song-artist-${song.id}`} className='text-gray-400'>
