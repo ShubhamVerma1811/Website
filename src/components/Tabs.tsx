@@ -33,6 +33,8 @@ const tabs = [
 export const Tabs = () => {
 	const path = usePathname();
 
+	console.log(path);
+
 	return (
 		<div className="my-6 flex flex-row gap-6 overflow-auto border-b py-2">
 			{tabs.map((tab, idx) => (
