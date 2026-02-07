@@ -1,24 +1,24 @@
-'use client';
-import { ClientMetaLayout } from 'layouts/ClientMetaLayout';
-import dynamic from 'next/dynamic';
+"use client";
+import { ClientMetaLayout } from "layouts/ClientMetaLayout";
+import dynamic from "next/dynamic";
 
 const Comp = dynamic(
-  () => import('../../../components/SpotifyQueue').then((mod) => mod.default),
-  {
-    ssr: false
-  }
+	() => import("../../../components/SpotifyQueue").then((mod) => mod.default),
+	{
+		ssr: false,
+	}
 );
 
 const Page = () => {
-  return (
-    <div>
-      <p className='mb-6 font-extrabold font-secondary text-3xl text-skin-secondary'>
-        Spotify's Now Playing with Framer Motion
-      </p>
-      <ClientMetaLayout title={`Spotify's Now Playing with Framer Motion`} />
-      <Comp />
-    </div>
-  );
+	return (
+		<div>
+			<p className="mb-6 font-extrabold font-secondary text-3xl text-skin-secondary">
+				Spotify's Now Playing with Framer Motion
+			</p>
+			<ClientMetaLayout title={`Spotify's Now Playing with Framer Motion`} />
+			<Comp />
+		</div>
+	);
 };
 
 export default Page;
