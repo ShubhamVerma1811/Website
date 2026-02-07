@@ -21,7 +21,6 @@ export const BlogCard = ({ blog }: BlogsCompProps) => {
         href={
           blog?.publicationUrl ? blog?.publicationUrl : `/blog/${blog?.slug}`
         }
-        passHref
         data-umami-event={`blog-${blog.slug}`}>
         <div className='my-4 cursor-pointer rounded-md bg-skin-secondary-muted p-3 transition-all hover:scale-[1.02]'>
           <div className='flex items-center'>
@@ -37,7 +36,7 @@ export const BlogCard = ({ blog }: BlogsCompProps) => {
               </React.Fragment>
             )}
             {blog.publicationUrl && (
-              <Link href={blog.publicationUrl} legacyBehavior>
+              <Link href={blog.publicationUrl}>
                 <span className='text-md text-skin-secondary'>
                   <span className='mx-3'>•</span>
                   Publication

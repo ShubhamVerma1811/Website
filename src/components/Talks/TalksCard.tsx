@@ -7,7 +7,6 @@ export const TalkCard = ({ talk }: { talk: ITalk }) => {
     <React.Fragment>
       <Link
         href={talk.url}
-        passHref
         target='_blank'
         rel='noopener noreferrer'
         data-umami-event={`umami--click--talk-${talk.title

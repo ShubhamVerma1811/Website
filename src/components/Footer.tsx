@@ -35,11 +35,8 @@ export const Footer = () => {
   return (
     <footer className='body-font mt-auto bg-skin-primary'>
       <hr className='my-4 border-skin-primary-muted' />
-
       <NowPlaying />
-
       <hr className='my-4 border-skin-primary-muted' />
-
       <ul className='flex flex-row gap-4'>
         {footerLinks.site.map((link, index) => {
           return (
@@ -52,9 +49,7 @@ export const Footer = () => {
                   : 'text-skin-primary-muted'
               }
               `}>
-              <Link href={link.href} passHref>
-                {link.name}
-              </Link>
+              <Link href={link.href}>{link.name}</Link>
             </li>
           );
         })}
