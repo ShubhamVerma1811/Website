@@ -1,2 +1,2 @@
-export * from './BlogCard';
-export * from './RecentBlogSection';
+export * from "./BlogCard";
+export * from "./RecentBlogSection";
