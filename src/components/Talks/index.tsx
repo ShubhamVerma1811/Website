@@ -1,2 +1,2 @@
-export * from './TalksCard';
-export * from './TalksSection';
+export * from "./TalksCard";
+export * from "./TalksSection";

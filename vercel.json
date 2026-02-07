@@ -1,9 +1,9 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "redirects": [
-    {
-      "destination": "https://shbm.fyi/:path*",
-      "source": "/s/:path*"
-    }
-  ]
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"redirects": [
+		{
+			"destination": "https://shbm.fyi/:path*",
+			"source": "/s/:path*"
+		}
+	]
 }

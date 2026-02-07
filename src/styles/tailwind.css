@@ -3,30 +3,30 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-primary: #f9fafb;
-    --color-secondary: #111827;
-    --color-primary-muted: #a3a3a3;
-    --color-secondary-muted: #f0f2f4;
-    --color-accent: #60a5fa;
-  }
+	:root {
+		--color-primary: #f9fafb;
+		--color-secondary: #111827;
+		--color-primary-muted: #a3a3a3;
+		--color-secondary-muted: #f0f2f4;
+		--color-accent: #60a5fa;
+	}
 
-  .dark {
-    --color-primary: #111;
-    --color-secondary: #f9fafb;
-    --color-primary-muted: #6b7280;
-    --color-secondary-muted: #1f2021;
-    --color-accent: #60a5fa;
-  }
+	.dark {
+		--color-primary: #111;
+		--color-secondary: #f9fafb;
+		--color-primary-muted: #6b7280;
+		--color-secondary-muted: #1f2021;
+		--color-accent: #60a5fa;
+	}
 }
 
 .anchor {
-  color: var(--color-secondary) !important;
-  text-decoration: none;
-  font-weight: bold;
+	color: var(--color-secondary) !important;
+	text-decoration: none;
+	font-weight: bold;
 }
 
 .anchor:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+	text-decoration: underline;
+	text-underline-offset: 4px;
 }
