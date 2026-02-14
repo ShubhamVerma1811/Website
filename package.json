@@ -10,9 +10,8 @@
 		"node": ">=20"
 	},
 	"scripts": {
-		"dev": "pnpm prebuild && next dev",
-		"prebuild": "bun src/services/fuse.ts",
-		"build": "pnpm prebuild && next build",
+		"dev": "next dev",
+		"build": "next build",
 		"start": "next start",
 		"export": "next export",
 		"lint": "next lint",
