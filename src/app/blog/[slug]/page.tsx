@@ -13,7 +13,6 @@ import { DOMAIN } from "services/constants";
 import { getSerializedMdx } from "services/mdx";
 import { getClient, urlFor } from "services/sanity-server";
 import type { Blog as IBlog } from "types";
-import blogs from "../../../fuse/data.json";
 
 export const revalidate = 86400;
 
@@ -28,7 +27,14 @@ export async function generateStaticParams() {
 async function getData(params: { slug: string }) {
 	if (!params || !params.slug) throw new Error("No slug found in params");
 
-	const fuse = new Fuse(blogs as Array<{ slug: string; title: string }>, {
+	// Fetch all blog slugs from Sanity for fuzzy matching
+	const allBlogs = await getClient().fetch<
+		Array<{ title: string; slug: string }>
+	>(
+		`*[_type == "post" && !defined(publicationUrl)]{title, "slug":slug.current}`
+	);
+
+	const fuse = new Fuse(allBlogs, {
 		keys: ["slug", "title"],
 		useExtendedSearch: true,
 		ignoreLocation: true,

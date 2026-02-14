@@ -1,7 +1,6 @@
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import { type NextRequest, NextResponse } from "next/server";
-import { generateBlogFuseData } from "services/fuse";
 
 export async function POST(request: NextRequest) {
 	try {
@@ -19,8 +18,6 @@ export async function POST(request: NextRequest) {
 			revalidatePath("/blog"),
 			revalidatePath(`/blog/${slug}`),
 		]);
-
-		await generateBlogFuseData();
 
 		return NextResponse.json({ message: `Updated ${slug}` });
 	} catch (error) {
