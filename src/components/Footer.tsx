@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useWebHaptics } from "web-haptics/react";
 import { NowPlaying } from "./NowPlaying";
 
 const footerLinks = {
@@ -31,6 +32,7 @@ const footerLinks = {
 
 export const Footer = () => {
 	const path = usePathname();
+	const { trigger } = useWebHaptics();
 
 	return (
 		<footer className="body-font mt-auto bg-skin-primary">
@@ -41,7 +43,7 @@ export const Footer = () => {
 				{footerLinks.site.map((link, index) => {
 					return (
 						<li
-							key={index}
+							key={link.href}
 							data-umami-event={`footer-${link.name}`}
 							className={`my-2 w-max cursor-pointer list-none hover:underline hover:underline-offset-4 ${
 								path === link.href
@@ -50,7 +52,9 @@ export const Footer = () => {
 							}
               `}
 						>
-							<Link href={link.href}>{link.name}</Link>
+							<Link onClick={() => trigger()} href={link.href}>
+								{link.name}
+							</Link>
 						</li>
 					);
 				})}

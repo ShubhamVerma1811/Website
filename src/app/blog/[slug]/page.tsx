@@ -185,7 +185,7 @@ async function Blog({ params }: { params: Promise<{ slug: string }> }) {
 
 	return (
 		<BlogLayout blog={blog}>
-			<p className="mb-3 font-bold font-secondary text-4xl text-skin-secondary">
+			<p className="mb-3 text-balance font-bold font-secondary text-4xl text-skin-secondary">
 				{blog?.title}
 			</p>
 

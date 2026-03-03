@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useWebHaptics } from "web-haptics/react";
 
 const tabs = [
 	{
@@ -32,13 +33,13 @@ const tabs = [
 
 export const Tabs = () => {
 	const path = usePathname();
-
-	console.log(path);
+	const { trigger } = useWebHaptics();
 
 	return (
 		<div className="my-6 flex flex-row gap-6 overflow-auto border-b py-2">
 			{tabs.map((tab, idx) => (
 				<Link
+					onClick={(e) => trigger([{ duration: 40 }])}
 					key={tab.href}
 					href={tab.href}
 					data-umami-event={`tab-${tab.title.toLowerCase()}`}

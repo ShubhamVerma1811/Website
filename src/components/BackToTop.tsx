@@ -1,9 +1,11 @@
 "use client";
 
 import React from "react";
+import { useWebHaptics } from "web-haptics/react";
 
 export const BackToTop = () => {
 	const [showBackToTop, setShowBackToTop] = React.useState(false);
+	const { trigger } = useWebHaptics();
 
 	React.useEffect(() => {
 		const handleScroll = () => {
@@ -23,8 +25,10 @@ export const BackToTop = () => {
 
 	return showBackToTop ? (
 		<button
+			type="button"
 			className="fixed right-5 bottom-5 h-12 w-12 rounded-full border-2 border-skin-primary-muted bg-skin-primary text-2xl text-skin-secondary md:right-12 md:bottom-12"
 			onClick={() => {
+				trigger();
 				window.scrollTo({
 					top: 0,
 					behavior: "smooth",
