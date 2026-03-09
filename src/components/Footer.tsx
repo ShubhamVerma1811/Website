@@ -19,10 +19,10 @@ const footerLinks = {
 			name: "Socials",
 			href: "/socials",
 		},
-		{
-			name: "Spotify",
-			href: "/spotify",
-		},
+		// {
+		// 	name: "Spotify",
+		// 	href: "/spotify",
+		// },
 		{
 			name: "RSS",
 			href: "/rss.xml",
@@ -36,8 +36,8 @@ export const Footer = () => {
 
 	return (
 		<footer className="body-font mt-auto bg-skin-primary">
-			<hr className="my-4 border-skin-primary-muted" />
-			<NowPlaying />
+			{/*<hr className="my-4 border-skin-primary-muted" />*/}
+			{/*<NowPlaying />*/}
 			<hr className="my-4 border-skin-primary-muted" />
 			<ul className="flex flex-row gap-4">
 				{footerLinks.site.map((link, index) => {
