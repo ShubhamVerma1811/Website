@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useWebHaptics } from "web-haptics/react";
+
 // import { NowPlaying } from "./NowPlaying";
 
 const footerLinks = {
