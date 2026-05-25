@@ -4,3 +4,4 @@ export * from "./projects.types";
 export * from "./socials.types";
 export * from "./spotify.types";
 export * from "./talks.types";
+export * from "./work.types";

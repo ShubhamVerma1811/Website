@@ -10,7 +10,7 @@
 		"node": ">=20"
 	},
 	"scripts": {
-		"dev": "next dev",
+		"dev": "portless website next dev",
 		"build": "next build",
 		"start": "next start",
 		"export": "next export",

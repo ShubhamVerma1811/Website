@@ -1,11 +1,11 @@
 "use client";
 
+import { useWebHapticsHook } from "hooks/useWebHaptics";
 import React from "react";
-import { useWebHaptics } from "web-haptics/react";
 
 export const BackToTop = () => {
 	const [showBackToTop, setShowBackToTop] = React.useState(false);
-	const { trigger } = useWebHaptics();
+	const { trigger } = useWebHapticsHook();
 
 	React.useEffect(() => {
 		const handleScroll = () => {
