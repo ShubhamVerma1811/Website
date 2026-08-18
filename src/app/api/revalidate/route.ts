@@ -3,7 +3,6 @@ import { headers } from "next/headers";
 import { type NextRequest, NextResponse } from "next/server";
 
 interface RevalidateBody {
-	_type: string;
 	slug?: string;
 }
 
@@ -30,21 +29,24 @@ export async function POST(request: NextRequest) {
 			return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
 		}
 
-		const body = (await request.json()) as RevalidateBody;
-		const getPaths = REVALIDATORS[body._type];
+		const type = request.nextUrl.searchParams.get("type") ?? "";
+		const getPaths = REVALIDATORS[type];
 
 		if (!getPaths) {
 			return NextResponse.json(
-				{ message: `No revalidation configured for type "${body._type}"` },
+				{ message: `No revalidation configured for type "${type}"` },
 				{ status: 400 }
 			);
 		}
+
+		const body = (await request.json()) as RevalidateBody;
+		console.log(`revalidate type="${type}" body=`, body);
 
 		for (const path of getPaths(body)) {
 			revalidatePath(path);
 		}
 
-		return NextResponse.json({ message: `Revalidated ${body._type}` });
+		return NextResponse.json({ message: `Revalidated ${type}` });
 	} catch (error) {
 		console.error(error);
 		return NextResponse.json({ message: "Server Error" }, { status: 500 });
