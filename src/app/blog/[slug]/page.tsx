@@ -9,30 +9,21 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
 import type { BlogPosting, BreadcrumbList, WithContext } from "schema-dts";
+import { blogsService } from "services/blogs";
 import { DOMAIN } from "services/constants";
 import { getSerializedMdx } from "services/mdx";
-import { getClient, urlFor } from "services/sanity-server";
-import type { Blog as IBlog } from "types";
 
 export const revalidate = 86400;
 
 export async function generateStaticParams() {
-	const blogs: Array<IBlog> = await getClient().fetch(
-		`*[_type == "post"] | order(date desc) {"slug":slug.current}`
-	);
-
-	return blogs?.map(({ slug }) => ({ slug }));
+	return blogsService.getBlogSlugs();
 }
 
 async function getData(params: { slug: string }) {
 	if (!params || !params.slug) throw new Error("No slug found in params");
 
 	// Fetch all blog slugs from Sanity for fuzzy matching
-	const allBlogs = await getClient().fetch<
-		Array<{ title: string; slug: string }>
-	>(
-		`*[_type == "post" && !defined(publicationUrl)]{title, "slug":slug.current}`
-	);
+	const allBlogs = await blogsService.getSearchIndex();
 
 	const fuse = new Fuse(allBlogs, {
 		keys: ["slug", "title"],
@@ -54,10 +45,7 @@ async function getData(params: { slug: string }) {
 		return notFound();
 	}
 
-	const blog: IBlog = await getClient().fetch(
-		`*[_type == "post" && !defined(publicationUrl) && slug.current == $slug][0] {...,"id": _id, "slug": slug.current, "readTime": round(length(body) / 5 / 180 )}`,
-		{ slug }
-	);
+	const blog = await blogsService.getBySlug(slug);
 
 	if (!blog) {
 		return notFound();
@@ -88,9 +76,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const d = new Date(blog.date);
 	const date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
 	const url = `${DOMAIN}/blog/${blog.slug}`;
-	const imageUrl = blog?.cover
-		? urlFor(blog?.cover).url()
-		: `${DOMAIN}/api/og?title=${blog?.title}&date=${date}&readTime=${blog?.readTime}&author=Shubham Verma&desc=${blog?.summary}`;
+	const imageUrl =
+		blog?.cover ??
+		`${DOMAIN}/api/og?title=${blog?.title}&date=${date}&readTime=${blog?.readTime}&author=Shubham Verma&desc=${blog?.summary}`;
 
 	return {
 		metadataBase: new URL(DOMAIN),
@@ -128,9 +116,9 @@ async function Blog({ params }: { params: Promise<{ slug: string }> }) {
 	const d = new Date(blog.date);
 	const date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
 	const url = `${DOMAIN}/blog/${blog.slug}`;
-	const imageUrl = blog?.cover
-		? urlFor(blog?.cover).url()
-		: `${DOMAIN}/api/og?title=${blog?.title}&date=${date}&readTime=${blog?.readTime}&author=Shubham Verma&desc=${blog?.summary}`;
+	const imageUrl =
+		blog?.cover ??
+		`${DOMAIN}/api/og?title=${blog?.title}&date=${date}&readTime=${blog?.readTime}&author=Shubham Verma&desc=${blog?.summary}`;
 
 	const formatter = new Intl.NumberFormat("en-US", {
 		notation: "compact",

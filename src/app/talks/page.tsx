@@ -1,8 +1,7 @@
 import { TalkCard } from "components/Talks";
 import { PageLayout } from "layouts";
-import { getClient } from "services/sanity-server";
+import { talksService } from "services/talks";
 import { generateMetaData } from "services/util";
-import type { Talk } from "types";
 
 export const metadata = generateMetaData({
 	title: "Talks | Shubham Verma",
@@ -10,9 +9,7 @@ export const metadata = generateMetaData({
 });
 
 async function getData() {
-	const talks: Array<Talk> = await getClient().fetch(
-		`*[_type == "talk"] {..., "id": _id}`
-	);
+	const talks = await talksService.getTalks();
 
 	return {
 		talks,

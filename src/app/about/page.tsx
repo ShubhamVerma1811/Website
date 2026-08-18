@@ -2,19 +2,19 @@ import { MDXClient } from "components/MDXClient";
 import { WorkHistory } from "components/WorkHistory";
 import { PageLayout } from "layouts";
 import type { Metadata } from "next";
+import { aboutService } from "services/about";
 import { getSerializedMdx } from "services/mdx";
-import { getClient } from "services/sanity-server";
 import { generateMetaData } from "services/util";
-import { getWorks } from "services/work";
+import { worksService } from "services/work";
 
 export const metadata: Metadata = generateMetaData({
 	title: "About | Shubham Verma",
 });
 
 async function getData() {
-	const about = await getClient().fetch(`*[_type == "about"][0]`);
+	const about = await aboutService.getAbout();
 	const mdxSource = await getSerializedMdx(about.body);
-	const works = await getWorks();
+	const works = await worksService.getWorks();
 
 	return { mdxSource, works };
 }

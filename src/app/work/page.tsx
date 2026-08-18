@@ -5,14 +5,14 @@ import Link from "next/link";
 import React from "react";
 import { HIRE_MAIL, RESUME_URL } from "services/constants";
 import { generateMetaData } from "services/util";
-import { getWorks } from "services/work";
+import { worksService } from "services/work";
 
 export const metadata: Metadata = generateMetaData({
 	title: "Experience | Shubham Verma",
 });
 
 export default async function WorkPage() {
-	const works = await getWorks();
+	const works = await worksService.getWorks();
 
 	return (
 		<React.Fragment>

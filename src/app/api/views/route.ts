@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { type NextRequest, NextResponse } from "next/server";
 
-import { getClient } from "services/sanity-server";
+import { blogsService } from "services/blogs";
 
 export async function POST(req: NextRequest) {
 	try {
@@ -16,16 +16,7 @@ export async function POST(req: NextRequest) {
 		}
 
 		const { page_id } = await req.json();
-		const doc = await getClient(false).mutate([
-			{
-				patch: {
-					id: page_id,
-					inc: {
-						views: 1,
-					},
-				},
-			},
-		]);
+		const doc = await blogsService.incrementViews(page_id);
 		return NextResponse.json(doc);
 	} catch (error) {
 		console.error(error);

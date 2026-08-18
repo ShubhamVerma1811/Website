@@ -1,9 +1,8 @@
 import type { MetadataRoute } from "next";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
+import { blogsService } from "services/blogs";
 import { DOMAIN } from "services/constants";
-import { getClient } from "services/sanity-server";
-import type { Blog } from "types";
 import { unified } from "unified";
 import { visit } from "unist-util-visit";
 
@@ -40,9 +39,7 @@ const pages = [
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const baseUrl = DOMAIN;
 
-	const blogs: Array<Blog> = await getClient().fetch(
-		`*[_type == "post"] | order(date desc) {...,"slug": slug.current, "readTime": round(length(body) / 5 / 180 )}`
-	);
+	const blogs = await blogsService.getBlogs();
 
 	const staticPages = pages.map((page) => ({
 		url: `${baseUrl}/${page}`,

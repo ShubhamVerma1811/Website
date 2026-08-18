@@ -1,9 +1,8 @@
 import { ProjectsCard } from "components";
 import { PageLayout } from "layouts";
 
-import { getClient } from "services/sanity-server";
+import { projectsService } from "services/projects";
 import { generateMetaData } from "services/util";
-import type { Project } from "types";
 
 export const revalidate = 86400;
 
@@ -14,9 +13,7 @@ export const metadata = generateMetaData({
 });
 
 async function getData() {
-	const projects: Array<Project> = await getClient().fetch(
-		`*[_type == "project"] | order(rank)`
-	);
+	const projects = await projectsService.getProjects();
 
 	return {
 		projects,

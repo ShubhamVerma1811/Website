@@ -1,10 +1,9 @@
 import { BlogCard } from "components/Blogs/BlogCard";
 import { SchemaScript } from "components/SchemaScript";
 import { PageLayout } from "layouts";
-import { getClient } from "services/sanity-server";
+import { blogsService } from "services/blogs";
 import { getBreadcrumbs } from "services/schemas";
 import { generateMetaData } from "services/util";
-import type { Blog } from "types";
 
 export const revalidate = 86400;
 
@@ -15,9 +14,7 @@ export const metadata = generateMetaData({
 });
 
 async function getData() {
-	const blogs: Array<Blog> = await getClient().fetch(
-		`*[_type == "post"] | order(date desc) {...,"slug": slug.current, "readTime": round(length(body) / 5 / 180 )}`
-	);
+	const blogs = await blogsService.getBlogs();
 
 	return {
 		blogs,

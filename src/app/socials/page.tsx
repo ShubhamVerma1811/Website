@@ -1,9 +1,8 @@
 import { DiagonalArrow } from "components/Icons";
 import React from "react";
 
-import { getClient } from "services/sanity-server";
+import { socialsService } from "services/socials";
 import { generateMetaData } from "services/util";
-import type { Social } from "types";
 
 export const metadata = generateMetaData({
 	title: "Socials | Shubham Verma",
@@ -11,9 +10,7 @@ export const metadata = generateMetaData({
 });
 
 async function getData() {
-	const socials: Array<Social> = await getClient().fetch(
-		`*[_type == "social"] | order(_createdAt asc) {..., "id": _id}`
-	);
+	const socials = await socialsService.getSocials();
 
 	return {
 		socials,
