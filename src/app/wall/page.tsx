@@ -2,9 +2,8 @@ import { BackToTop, DiagonalArrow } from "components";
 import Image from "next/image";
 import Link from "next/link";
 import { HIRE_MAIL } from "services/constants";
-import { getClient, urlFor } from "services/sanity-server";
+import { testimonialsService } from "services/testimonials";
 import { generateMetaData } from "services/util";
-import type { Testimonial } from "types/testimonials.type";
 
 export const metadata = generateMetaData({
 	title: "Testimonials | Shubham Verma",
@@ -12,11 +11,7 @@ export const metadata = generateMetaData({
 });
 
 async function getData() {
-	const testimonials: Array<Testimonial> = await getClient().fetch(
-		`*[_type == "testimonial"] | order(rank) {..., "id": _id}`
-	);
-
-	return testimonials;
+	return testimonialsService.getTestimonials();
 }
 
 export default async function Testimonials() {
@@ -60,7 +55,7 @@ export default async function Testimonials() {
 									>
 										<div className="h-12 w-12 overflow-hidden rounded-full bg-gray-200">
 											<Image
-												src={urlFor(testimonial.avatar).url()}
+												src={testimonial.avatar}
 												alt={testimonial.author}
 												className="h-full w-full"
 												width={48}
@@ -90,7 +85,7 @@ export default async function Testimonials() {
 									<div className="mt-4 flex flex-row items-center justify-center">
 										<div className="">
 											<Image
-												src={urlFor(testimonial.avatar).url()}
+												src={testimonial.avatar}
 												alt={testimonial.author}
 												className="size-10 rounded-full"
 												width={40}
