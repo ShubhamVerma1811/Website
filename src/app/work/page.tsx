@@ -3,7 +3,7 @@ import { WorkHistory } from "components/WorkHistory";
 import type { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
-import { HIRE_MAIL, RESUME_URL } from "services/constants";
+import { HIRE_MAIL, RESUME_URL } from "services/util";
 import { generateMetaData } from "services/util";
 import { worksService } from "services/work";
 

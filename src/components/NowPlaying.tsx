@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { fetcher } from "services/fetcher";
 import useSWR from "swr";
 import type { NowPlaying as INowPlaying } from "types/spotify.types";
 import { SpotifyIcon } from "./Icons";
@@ -9,7 +8,7 @@ import { SpotifyIcon } from "./Icons";
 export const NowPlaying = () => {
 	const { data: track } = useSWR<INowPlaying>(
 		"/api/spotify/nowPlaying",
-		fetcher
+		(key: string) => fetch(key).then((res) => res.json())
 	);
 
 	return (

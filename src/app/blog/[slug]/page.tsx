@@ -10,7 +10,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import type { BlogPosting, BreadcrumbList, WithContext } from "schema-dts";
 import { blogsService } from "services/blogs";
-import { DOMAIN } from "services/constants";
+import { DOMAIN } from "services/util";
 import { getSerializedMdx } from "services/mdx";
 
 export const revalidate = 86400;

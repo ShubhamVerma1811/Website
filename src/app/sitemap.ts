@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import { blogsService } from "services/blogs";
-import { DOMAIN } from "services/constants";
+import { DOMAIN } from "services/util";
 import { unified } from "unified";
 import { visit } from "unist-util-visit";
 

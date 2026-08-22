@@ -1,7 +1,7 @@
 import { BackToTop, DiagonalArrow } from "components";
 import Image from "next/image";
 import Link from "next/link";
-import { HIRE_MAIL } from "services/constants";
+import { HIRE_MAIL } from "services/util";
 import { testimonialsService } from "services/testimonials";
 import { generateMetaData } from "services/util";
 

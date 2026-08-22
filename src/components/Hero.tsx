@@ -6,7 +6,7 @@ import {
 	CURRENT_TITLE,
 	HIRE_MAIL,
 	RESUME_URL,
-} from "services/constants";
+} from "services/util";
 import { DiagonalArrow } from "./Icons";
 
 export const Hero = () => {

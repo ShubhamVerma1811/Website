@@ -1,6 +1,6 @@
 import { LinkedInIcon, TwitterIcon } from "components";
 import React from "react";
-import { DOMAIN, TWITTER_HANDLE } from "services/constants";
+import { DOMAIN, TWITTER_HANDLE } from "services/util";
 import type { Blog } from "types";
 
 interface IBlogLayoutProps {

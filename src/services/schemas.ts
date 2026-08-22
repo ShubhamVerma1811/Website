@@ -11,7 +11,7 @@ import {
 	LINKEDIN_URL,
 	SPOTIFY_URL,
 	TWITTER_URL,
-} from "./constants";
+} from "services/util";
 
 export const getBreadcrumbs = (): WithContext<BreadcrumbList> => ({
 	"@context": "https://schema.org",

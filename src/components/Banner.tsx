@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { HIRE_MAIL } from "services/constants";
+import { HIRE_MAIL } from "services/util";
 
 export const Banner = () => {
 	if (process.env.SHOWBANNER === "false") {

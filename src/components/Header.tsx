@@ -1,6 +1,6 @@
 import { GithubIcon, LinkedInIcon, TwitterIcon } from "components/Icons";
 import Link from "next/link";
-import { GITHUB_URL, LINKEDIN_URL, TWITTER_URL } from "services/constants";
+import { GITHUB_URL, LINKEDIN_URL, TWITTER_URL } from "services/util";
 import ThemeToggler from "./ThemeToggler";
 
 export const Header = () => {

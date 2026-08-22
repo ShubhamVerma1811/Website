@@ -1,7 +1,7 @@
 import { BackToTop, Banner, Footer, Header } from "components";
 import { SchemaScript } from "components/SchemaScript";
 import { ThemeProvider } from "providers/ThemeProvider";
-import { TWITTER_HANDLE } from "services/constants";
+import { TWITTER_HANDLE } from "services/util";
 import { personSchema, websiteSchema } from "services/schemas";
 import "../styles/global.css";
 import "../styles/tailwind.css";
