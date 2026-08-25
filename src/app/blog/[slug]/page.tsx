@@ -8,10 +8,10 @@ import { BlogLayout } from "layouts";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
-import type { BlogPosting, BreadcrumbList, WithContext } from "schema-dts";
 import { blogsService } from "services/blogs";
-import { DOMAIN } from "services/util";
 import { getSerializedMdx } from "services/mdx";
+import { getBlogPostGraph } from "services/schemas";
+import { DOMAIN } from "services/util";
 
 export const revalidate = 86400;
 
@@ -115,61 +115,13 @@ async function Blog({ params }: { params: Promise<{ slug: string }> }) {
 
 	const d = new Date(blog.date);
 	const date = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
-	const url = `${DOMAIN}/blog/${blog.slug}`;
-	const imageUrl =
-		blog?.cover ??
-		`${DOMAIN}/api/og?title=${blog?.title}&date=${date}&readTime=${blog?.readTime}&author=Shubham Verma&desc=${blog?.summary}`;
 
 	const formatter = new Intl.NumberFormat("en-US", {
 		notation: "compact",
 		compactDisplay: "short",
 	});
 
-	const jsonLd: WithContext<BlogPosting> = {
-		"@context": "https://schema.org",
-		"@type": "BlogPosting",
-		mainEntityOfPage: {
-			"@type": "WebPage",
-			"@id": url,
-		},
-		headline: blog.title,
-		description: blog.summary,
-		image: [imageUrl],
-		author: {
-			"@id": `${DOMAIN}#person`,
-		},
-		publisher: {
-			"@id": `${DOMAIN}#person`,
-		},
-		datePublished: new Date(blog.date).toISOString(),
-		dateModified: new Date(blog.date).toISOString(),
-		url,
-	};
-
-	const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{
-				"@type": "ListItem",
-				position: 1,
-				name: "Home",
-				item: DOMAIN,
-			},
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Blog",
-				item: `${DOMAIN}/blog`,
-			},
-			{
-				"@type": "ListItem",
-				position: 3,
-				name: blog.title,
-				item: url,
-			},
-		],
-	};
+	const graph = getBlogPostGraph(blog);
 
 	return (
 		<BlogLayout blog={blog}>
@@ -198,13 +150,7 @@ async function Blog({ params }: { params: Promise<{ slug: string }> }) {
 			<MDXClient mdxSource={mdxSource} />
 
 			<SchemaScript
-				scripts={[
-					{ id: `blog-post-${blog.slug}-ld-json`, json: jsonLd },
-					{
-						id: `blog-post-${blog.slug}-breadcrumbs-ld-json`,
-						json: breadcrumbJsonLd,
-					},
-				]}
+				scripts={[{ id: `blog-post-${blog.slug}-graph`, json: graph }]}
 			/>
 		</BlogLayout>
 	);

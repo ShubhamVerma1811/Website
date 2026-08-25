@@ -1,7 +1,10 @@
 import { ProjectsCard } from "components";
+import { SchemaScript } from "components/SchemaScript";
 import { PageLayout } from "layouts";
+import React from "react";
 
 import { projectsService } from "services/projects";
+import { getProfilePageGraph, getProjectsGraph } from "services/schemas";
 import { generateMetaData } from "services/util";
 
 export const revalidate = 86400;
@@ -24,10 +27,18 @@ export default async function Home() {
 	const { projects } = await getData();
 
 	return (
-		<PageLayout>
-			{projects?.map((project) => {
-				return <ProjectsCard key={project.title} project={project} />;
-			})}
-		</PageLayout>
+		<React.Fragment>
+			<PageLayout>
+				{projects?.map((project) => {
+					return <ProjectsCard key={project.title} project={project} />;
+				})}
+			</PageLayout>
+			<SchemaScript
+				scripts={[
+					{ id: "home-graph", json: getProfilePageGraph() },
+					{ id: "projects-graph", json: getProjectsGraph(projects) },
+				]}
+			/>
+		</React.Fragment>
 	);
 }

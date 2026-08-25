@@ -1,10 +1,11 @@
 import { DiagonalArrow } from "components";
+import { SchemaScript } from "components/SchemaScript";
 import { WorkHistory } from "components/WorkHistory";
 import type { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
-import { HIRE_MAIL, RESUME_URL } from "services/util";
-import { generateMetaData } from "services/util";
+import { getWorkGraph } from "services/schemas";
+import { generateMetaData, HIRE_MAIL, RESUME_URL } from "services/util";
 import { worksService } from "services/work";
 
 export const metadata: Metadata = generateMetaData({
@@ -43,6 +44,9 @@ export default async function WorkPage() {
 			</div>
 
 			<WorkHistory works={works} />
+			<SchemaScript
+				scripts={[{ id: "work-graph", json: getWorkGraph(works) }]}
+			/>
 		</React.Fragment>
 	);
 }

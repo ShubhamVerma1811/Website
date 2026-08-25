@@ -1,9 +1,11 @@
 import { MDXClient } from "components/MDXClient";
+import { SchemaScript } from "components/SchemaScript";
 import { WorkHistory } from "components/WorkHistory";
 import { PageLayout } from "layouts";
 import type { Metadata } from "next";
 import { aboutService } from "services/about";
 import { getSerializedMdx } from "services/mdx";
+import { getAboutPageGraph, getWorkGraph } from "services/schemas";
 import { generateMetaData } from "services/util";
 import { worksService } from "services/work";
 
@@ -32,6 +34,12 @@ export default async function AboutPage() {
 				</p>
 				<WorkHistory works={works} />
 			</div>
+			<SchemaScript
+				scripts={[
+					{ id: "about-graph", json: getAboutPageGraph() },
+					{ id: "about-work-graph", json: getWorkGraph(works) },
+				]}
+			/>
 		</PageLayout>
 	);
 }

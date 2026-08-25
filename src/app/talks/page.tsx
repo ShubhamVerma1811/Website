@@ -1,5 +1,7 @@
+import { SchemaScript } from "components/SchemaScript";
 import { TalkCard } from "components/Talks";
 import { PageLayout } from "layouts";
+import { getTalksGraph } from "services/schemas";
 import { talksService } from "services/talks";
 import { generateMetaData } from "services/util";
 
@@ -24,6 +26,9 @@ export default async function TalkPage() {
 			{talks?.map((talk, index) => {
 				return <TalkCard key={talk.id} talk={talk} />;
 			})}
+			<SchemaScript
+				scripts={[{ id: "talks-graph", json: getTalksGraph(talks) }]}
+			/>
 		</PageLayout>
 	);
 }

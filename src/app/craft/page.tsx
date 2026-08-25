@@ -1,7 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
+import { SchemaScript } from "components/SchemaScript";
 import { PageLayout } from "layouts";
 import Link from "next/link";
+import { getCraftsGraph } from "services/schemas";
 import { generateMetaData } from "services/util";
 
 export const metadata = generateMetaData({
@@ -54,6 +56,9 @@ export default function Craft() {
 					</li>
 				))}
 			</ul>
+			<SchemaScript
+				scripts={[{ id: "crafts-graph", json: getCraftsGraph(crafts) }]}
+			/>
 		</PageLayout>
 	);
 }

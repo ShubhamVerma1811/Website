@@ -2,7 +2,7 @@ import { BlogCard } from "components/Blogs/BlogCard";
 import { SchemaScript } from "components/SchemaScript";
 import { PageLayout } from "layouts";
 import { blogsService } from "services/blogs";
-import { getBreadcrumbs } from "services/schemas";
+import { getBlogIndexGraph } from "services/schemas";
 import { generateMetaData } from "services/util";
 
 export const revalidate = 86400;
@@ -30,9 +30,7 @@ export default async function BlogPage() {
 				return <BlogCard key={blog.id} blog={blog} />;
 			})}
 			<SchemaScript
-				scripts={[
-					{ id: "blog-index-breadcrumbs-ld-json", json: getBreadcrumbs() },
-				]}
+				scripts={[{ id: "blog-index-graph", json: getBlogIndexGraph(blogs) }]}
 			/>
 		</PageLayout>
 	);

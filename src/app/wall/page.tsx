@@ -1,9 +1,10 @@
 import { BackToTop, DiagonalArrow } from "components";
+import { SchemaScript } from "components/SchemaScript";
 import Image from "next/image";
 import Link from "next/link";
-import { HIRE_MAIL } from "services/util";
+import { getReviewsGraph } from "services/schemas";
 import { testimonialsService } from "services/testimonials";
-import { generateMetaData } from "services/util";
+import { generateMetaData, HIRE_MAIL } from "services/util";
 
 export const metadata = generateMetaData({
 	title: "Testimonials | Shubham Verma",
@@ -110,6 +111,9 @@ export default async function Testimonials() {
 				)}
 			</div>
 			<BackToTop />
+			<SchemaScript
+				scripts={[{ id: "reviews-graph", json: getReviewsGraph(testimonials) }]}
+			/>
 		</div>
 	);
 }

@@ -1,8 +1,8 @@
 import { BackToTop, Banner, Footer, Header } from "components";
 import { SchemaScript } from "components/SchemaScript";
 import { ThemeProvider } from "providers/ThemeProvider";
+import { rootGraph } from "services/schemas";
 import { TWITTER_HANDLE } from "services/util";
-import { personSchema, websiteSchema } from "services/schemas";
 import "../styles/global.css";
 import "../styles/tailwind.css";
 
@@ -32,12 +32,7 @@ export default function RootLayout({
 					title="Blogs by Shubham Verma"
 					href="/rss.xml"
 				/>
-				<SchemaScript
-					scripts={[
-						{ id: "website-schema", json: websiteSchema },
-						{ id: "person-schema", json: personSchema },
-					]}
-				/>
+				<SchemaScript scripts={[{ id: "root-graph", json: rootGraph }]} />
 				<script
 					async
 					defer
