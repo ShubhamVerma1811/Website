@@ -15,26 +15,26 @@ module.exports = {
 					"secondary-muted": "var(--color-secondary-muted)",
 				},
 			},
-			backgroundColor: (theme) => {
+			backgroundColor: (_theme) => {
 				return {
 					skin: {
 						primary: "var(--color-primary)",
 						secondary: "var(--color-secondary)",
 						accent: "var(--color-accent)",
-						"primary-muted": (props) => {
+						"primary-muted": (_props) => {
 							return "var(--color-primary-muted)";
 						},
 						"secondary-muted": "var(--color-secondary-muted)",
 					},
 				};
 			},
-			borderColor: (theme) => {
+			borderColor: (_theme) => {
 				return {
 					skin: {
 						primary: "var(--color-primary)",
 						secondary: "var(--color-secondary)",
 						accent: "var(--color-accent)",
-						"primary-muted": (props) => {
+						"primary-muted": (_props) => {
 							return "var(--color-primary-muted)";
 						},
 						"secondary-muted": "var(--color-secondary-muted)",

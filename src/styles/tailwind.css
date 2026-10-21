@@ -21,7 +21,7 @@
 }
 
 .anchor {
-	color: var(--color-secondary) !important;
+	color: var(--color-secondary);
 	text-decoration: none;
 	font-weight: bold;
 }

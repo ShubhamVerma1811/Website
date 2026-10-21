@@ -55,7 +55,7 @@ async function getData() {
 			tracks,
 			artists,
 		};
-	} catch (error) {
+	} catch (_error) {
 		return { tracks: [], artists: [] };
 	}
 }

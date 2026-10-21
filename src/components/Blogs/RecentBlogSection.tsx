@@ -17,8 +17,8 @@ export const RecentBlogSection = ({ blogs }: BlogsCompProps) => {
 					Top Blogs
 				</p>
 			</a>
-			{blogs?.map((blog, index) => {
-				return <BlogCard key={index} blog={blog} />;
+			{blogs?.map((blog) => {
+				return <BlogCard key={blog.id} blog={blog} />;
 			})}
 			<Link
 				href="/blog"

@@ -1,4 +1,5 @@
-// TODO: add SVG types, I am too lazy to do this right now
+import type { SVGProps } from "react";
+
 export const GithubIcon = () => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
@@ -16,7 +17,7 @@ export const GithubIcon = () => (
 	</svg>
 );
 
-export const SpotifyIcon = (props: any) => (
+export const SpotifyIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		aria-hidden="true"
@@ -34,7 +35,7 @@ export const SpotifyIcon = (props: any) => (
 	</svg>
 );
 
-export const LinkedInIcon = (props: any) => (
+export const LinkedInIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		{...props}
 		xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +53,7 @@ export const LinkedInIcon = (props: any) => (
 	</svg>
 );
 
-export const TwitterIcon = (props: any) => (
+export const TwitterIcon = (props: SVGProps<SVGSVGElement>) => (
 	<svg
 		{...props}
 		xmlns="http://www.w3.org/2000/svg"
@@ -94,6 +95,7 @@ export const CommandIcon = () => (
 		height="1em"
 		viewBox="0 0 24 24"
 		className="text-skin-secondary"
+		aria-hidden="true"
 	>
 		<path
 			fill="currentColor"
@@ -108,6 +110,7 @@ export const Moon = () => (
 		height="1em"
 		viewBox="0 0 24 24"
 		className="text-skin-secondary"
+		aria-hidden="true"
 	>
 		<path
 			fill="currentColor"
@@ -122,6 +125,7 @@ export const Sun = () => (
 		height="1em"
 		viewBox="0 0 24 24"
 		className="text-skin-secondary"
+		aria-hidden="true"
 	>
 		<path
 			fill="currentColor"
@@ -130,8 +134,14 @@ export const Sun = () => (
 	</svg>
 );
 
-export const DiagonalArrow = (props: any) => (
-	<svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+export const DiagonalArrow = (props: SVGProps<SVGSVGElement>) => (
+	<svg
+		width="1em"
+		height="1em"
+		viewBox="0 0 24 24"
+		aria-hidden="true"
+		{...props}
+	>
 		<path
 			fill="currentColor"
 			d="M18 7.05a1 1 0 0 0-1-1L9 6a1 1 0 0 0 0 2h5.56l-8.27 8.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0L16 9.42V15a1 1 0 0 0 1 1a1 1 0 0 0 1-1Z"
@@ -139,14 +149,26 @@ export const DiagonalArrow = (props: any) => (
 	</svg>
 );
 
-export const RightArrow = (props: any) => (
-	<svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+export const RightArrow = (props: SVGProps<SVGSVGElement>) => (
+	<svg
+		width="1em"
+		height="1em"
+		viewBox="0 0 24 24"
+		aria-hidden="true"
+		{...props}
+	>
 		<path fill="currentColor" d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z"></path>
 	</svg>
 );
 
-export const PauseIcon = (props: any) => (
-	<svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+export const PauseIcon = (props: SVGProps<SVGSVGElement>) => (
+	<svg
+		width="1em"
+		height="1em"
+		viewBox="0 0 24 24"
+		aria-hidden="true"
+		{...props}
+	>
 		<path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
 	</svg>
 );

@@ -1,7 +1,7 @@
 "use client";
 
 import { ClientMetaLayout } from "layouts/ClientMetaLayout";
-import { useRef, useState } from "react";
+import { type MouseEvent, useRef, useState } from "react";
 
 function generateFakeEncryptedString(length: number) {
 	const characters =
@@ -34,14 +34,14 @@ const Card = () => {
 		textRef.current.style["-webkit-text-fill-color"] = color;
 	}
 
-	function relativeCoords(e: any) {
-		var bounds = e.target.getBoundingClientRect();
+	function relativeCoords(e: MouseEvent<HTMLElement>) {
+		var bounds = e.currentTarget.getBoundingClientRect();
 		var x = e.clientX - bounds.left;
 		var y = e.clientY - bounds.top;
 		return { x: x, y: y };
 	}
 
-	function handleMoveMove(e: any) {
+	function handleMoveMove(e: MouseEvent<HTMLElement>) {
 		if (!textRef.current) {
 			return;
 		}

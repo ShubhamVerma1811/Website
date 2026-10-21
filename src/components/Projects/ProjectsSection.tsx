@@ -15,8 +15,8 @@ export const ProjectsSection = ({ projects }: ProjectCompProps) => {
 					Featured Projects
 				</p>
 			</a>
-			{projects?.map((project, index) => {
-				return <ProjectsCard key={index} project={project} />;
+			{projects?.map((project) => {
+				return <ProjectsCard key={project.title} project={project} />;
 			})}
 		</section>
 	);

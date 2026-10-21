@@ -127,13 +127,13 @@ const SpotifyQueue = () => {
 			setActiveSong(initialSongs[0]);
 			setSongsList(initialSongs.slice(1));
 		}
-	}, [initialSongs]);
+	}, []);
 
 	useEffect(() => {
 		if (initialSongs && activeSong) {
 			setSongsList(initialSongs.filter((song) => song.idx > activeSong.idx));
 		}
-	}, [activeSong, initialSongs]);
+	}, [activeSong]);
 
 	useEffect(() => {
 		if (activeSong?.previewUrl) {
@@ -235,7 +235,7 @@ function NavBar({
 				</p>
 			</motion.button>
 			<div className="ml-auto">
-				{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+				{/* biome-ignore lint/a11y/useKeyWithClickEvents: onClick handler for restart */}
 				<div
 					className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-950"
 					// @ts-expect-error
@@ -315,7 +315,7 @@ function QueueUI({
 						<>
 							<p className="font-lg text-white">
 								Queue empty,{" "}
-								{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+								{/* biome-ignore lint/a11y/useKeyWithClickEvents: onClick handler for restart */}
 								<span
 									className={
 										"cursor-pointer text-[#1ED760] underline underline-offset-2"
@@ -411,6 +411,7 @@ const SongItem = ({
 			className="ounded-md my-3 flex cursor-pointer flex-row items-center"
 			onClick={() => setActiveSong(song)}
 		>
+			{/* biome-ignore lint/performance/noImgElement: framer-motion layout animations require motion.img */}
 			<motion.img
 				layoutId={`song-image-${song.id}`}
 				src={song.imageUrl}

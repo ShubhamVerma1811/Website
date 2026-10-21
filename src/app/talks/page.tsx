@@ -23,7 +23,7 @@ export default async function TalkPage() {
 
 	return (
 		<PageLayout>
-			{talks?.map((talk, index) => {
+			{talks?.map((talk) => {
 				return <TalkCard key={talk.id} talk={talk} />;
 			})}
 			<SchemaScript

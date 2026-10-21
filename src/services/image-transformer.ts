@@ -8,8 +8,8 @@ export const transformer = ({
 	const dimensionsRegex = /\[\[(.*?)\]\]/;
 	const dimensions = alt?.match(dimensionsRegex);
 	if (dimensions) {
-		if (!dimensions?.[1].includes(" x ")) return;
-		const [width, height] = dimensions?.[1]?.split(" x ");
+		if (!dimensions[1].includes(" x ")) return;
+		const [width, height] = dimensions[1].split(" x ");
 		return {
 			width,
 			height,

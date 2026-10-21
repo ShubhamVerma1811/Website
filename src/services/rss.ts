@@ -1,8 +1,8 @@
 import { Feed, type Item } from "feed";
 import { remark } from "remark";
 import remarkHTML from "remark-html";
-import type { Blog } from "types";
 import { HIRE_MAIL, TWITTER_URL } from "services/util";
+import type { Blog } from "types";
 
 export const generateRSSFeed = (blogs: Array<Blog>) => {
 	const baseURL = process.env.DOMAIN!;

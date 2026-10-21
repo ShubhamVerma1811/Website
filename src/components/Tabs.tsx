@@ -37,9 +37,9 @@ export const Tabs = () => {
 
 	return (
 		<div className="my-6 flex flex-row gap-6 overflow-auto border-b py-2">
-			{tabs.map((tab, idx) => (
+			{tabs.map((tab, _idx) => (
 				<Link
-					onClick={(e) => trigger([{ duration: 40 }])}
+					onClick={(_e) => trigger([{ duration: 40 }])}
 					key={tab.href}
 					href={tab.href}
 					data-umami-event={`tab-${tab.title.toLowerCase()}`}

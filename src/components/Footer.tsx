@@ -41,7 +41,7 @@ export const Footer = () => {
 			{/*<NowPlaying />*/}
 			<hr className="my-4 border-skin-primary-muted" />
 			<ul className="flex flex-row gap-4">
-				{footerLinks.site.map((link, index) => {
+				{footerLinks.site.map((link, _index) => {
 					return (
 						<li
 							key={link.href}

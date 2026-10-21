@@ -110,7 +110,7 @@ export const SpotifyHistoryBar = () => {
 				);
 
 				const tracksWithDates = data
-					.map((track: any) => ({
+					.map((track: Song & { time: number }) => ({
 						...track,
 						time: new Date(track.time),
 						spotifyUrl: `https://open.spotify.com/track/${track.id}`,
@@ -165,7 +165,7 @@ export const SpotifyHistoryBar = () => {
 					return (
 						<>
 							<div
-								key={index}
+								key={item.id}
 								className="absolute h-1 w-full -translate-y-1/2 transform cursor-pointer rounded-full bg-[#1DB954]"
 								style={{
 									top: `${position}px`,

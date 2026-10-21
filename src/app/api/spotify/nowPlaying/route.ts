@@ -15,7 +15,7 @@ export async function GET() {
 	const title = song.item.name;
 	// @ts-expect-error
 	const artist = song.item.artists
-		.map((_artist: any) => _artist.name)
+		.map((_artist: { name: string }) => _artist.name)
 		.join(", ");
 	// @ts-expect-error
 	const album = song.item.album.name;

@@ -11,7 +11,7 @@ function extractImages(markdown: string): string[] {
 
 	const urls = new Set<string>();
 
-	visit(tree, (node: any) => {
+	visit(tree, (node) => {
 		if (node.type === "image" && typeof node.url === "string")
 			urls.add(node.url);
 		if (node.type === "html" && typeof node.value === "string") {
